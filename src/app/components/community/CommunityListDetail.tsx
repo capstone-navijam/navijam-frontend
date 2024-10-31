@@ -1,7 +1,7 @@
 import {getCookie} from "cookies-next";
 
 export interface CommunityListDetailProps {
-    id: bigint;
+    id: string;
     profile: string;
     nickname: string;
     categories: [];  // 문자열 배열로 정의

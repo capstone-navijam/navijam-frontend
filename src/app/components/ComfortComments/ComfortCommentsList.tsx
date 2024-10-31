@@ -1,7 +1,6 @@
-import React from 'react';
 import {getCookie} from "cookies-next";
 
-export interface CommentsDetailProps {
+export interface ComfortCommentsDetailProps {
     id: string;
     nickname: string;
     profile: string;
@@ -10,7 +9,7 @@ export interface CommentsDetailProps {
     consoleId: string;
 }
 
-export default async function CommentsList(consoleId: string): Promise<CommentsDetailProps[] | null> {
+export default async function ComfortCommentsList(consoleId: string): Promise<ComfortCommentsDetailProps[] | null> {
     const token = getCookie('accessToken');
 
     const res = await fetch(`${process.env["NEXT_PUBLIC_BACKEND_SERVER"]}/consoles/${consoleId}/comments`, {

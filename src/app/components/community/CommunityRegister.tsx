@@ -125,7 +125,7 @@ export default function CommunityRegister() {
                     {/* 카테고리 */}
                     <RegisterCategory selectedCategories={selectedCategory}
                                       setSelectedCategories={setSelectedCategory}/>
-                    <div className='mt-4 mx-auto w-[80%] flex justify-between'>
+                    <div className='mt-4 mx-auto w-[80%] flex justify-between mb-12'>
                         <button
                             type="button"
                             onClick={handleBackClick}

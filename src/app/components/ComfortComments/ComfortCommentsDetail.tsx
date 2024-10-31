@@ -1,11 +1,10 @@
 import React, {useEffect, useState} from 'react';
-import CommentsList, {CommentsDetailProps} from "@/app/components/comments/CommentsList";
+import ComfortCommentsList, {ComfortCommentsDetailProps} from "@/app/components/ComfortComments/ComfortCommentsList";
 import Image from "next/image";
 import {useMobile} from "@/service/MediaQuery";
 
-export default function CommentsDetail({consoleId, onCommentCount}) {
-    const [comments, setComments] = useState<CommentsDetailProps[]>([]);
-    const [role, setRole] = useState("");
+export default function ComfortCommentsDetail({consoleId, onCommentCount}) {
+    const [comments, setComments] = useState<ComfortCommentsDetailProps[]>([]);
     const isMobile = useMobile();
 
     useEffect(() => {
@@ -13,8 +12,10 @@ export default function CommentsDetail({consoleId, onCommentCount}) {
         const fetchComments = async () => {
             if (consoleId) {
                 try {
-                    const data = await CommentsList(consoleId);
+                    const data = await ComfortCommentsList(consoleId);
                     setComments(data);
+
+                    // eslint-disable-next-line react-hooks/exhaustive-deps
                     onCommentCount(data.length);
                 } catch (err) {
                     console.error("댓글을 불러오는 데 실패했습니다.");

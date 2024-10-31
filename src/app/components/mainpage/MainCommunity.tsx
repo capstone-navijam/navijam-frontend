@@ -50,23 +50,23 @@ export default function MainCommunity() {
                 </div>
             ))}
         </Carousel>
-        <div className='w-[80%] mx-auto mt-8 mb-4'>
-            <p className='text-5xl font-medium mb-4'>최근 등록된 글</p>
+        <div className='w-[80%] mx-auto mt-12 mb-12'>
+            <p className='text-5xl font-medium mb-8'>최근 등록된 글</p>
             <div className='flex flex-row gap-4'>
                 {mainCommunity.map((community) => (
                     <div key={community.id}
                          onClick={() => handleDetailClick(community.id)}
-                         className='flex flex-col border-4 w-full rounded-3xl border-yellow-2 p-2'
+                         className='flex flex-col border-4 w-full h-[400px] rounded-3xl border-yellow-2 p-2'
                     >
                         <div className='flex justify-between items-center'>
                             <div className='flex flex-col '>
-                                <p className='text-4xl'>제목{community.title}</p>
+                                <p className='text-4xl'>{community.title}</p>
                                 <p className='text-2xl text-yellow-2'>{community.categories.join(', ')}</p>
                             </div>
                             <Image src={community.profile} alt="Profile Image" width={100} height={100}
-                                   className="rounded-full w-[30px] h-[30px]"/>
+                                   className="rounded-full w-[50px] h-[50px] -mt-4"/>
                         </div>
-                        <p> 내용 {community.content}</p>
+                        <p className='whitespace-pre-wrap text-3xl mt-2'>{community.content}</p>
                     </div>
                 ))}
             </div>

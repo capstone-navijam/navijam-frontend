@@ -7,7 +7,7 @@ import {CiHeart} from 'react-icons/ci';
 import {FaRegCommentAlt, FaRegHeart} from "react-icons/fa";
 import {useMobile} from "@/service/MediaQuery";
 
-export default function () {
+export default function CommunityList() {
     const isMobile = useMobile();
 
     const [communities, setCommunities] = useState<CommunityListProps[]>([]);
@@ -58,7 +58,7 @@ export default function () {
                                 </div>
                             </div>
                             <p className="text-yellow-1 text-xl mt-2">{community.categories.join(', ')}</p>
-                            <p className="text-2xl truncate mt-4 whitespace-pre-wrap">{community.content}</p> {/* 긴 내용은 잘라냅니다 */}
+                            <p className="text-2xl truncate mt-4 whitespace-pre-wrap overflow-hidden h-[120px]">{community.content}</p> {/* 긴 내용은 잘라냅니다 */}
 
                             <div className='absolute bottom-4 left-4 flex flex-row gap-4 text-3xl'>
                                 <FaRegHeart/>
@@ -80,7 +80,7 @@ export default function () {
                     {currentCommunities.map((community, index) => (
                         <div key={community.id}
                              onClick={() => handleDetailClick(community.id)}
-                             className="relative border-2 border-yellow-6 rounded-3xl p-4 cursor-pointer w-full h-[300px]">
+                             className="relative border-2 border-yellow-6 rounded-3xl p-4 cursor-pointer w-full h-[400px]">
                             <div className='flex flex-row items-center mt-2 justify-between'>
                                 <p className="font-bold text-4xl">{community.title}</p>
                                 <div className='flex flex-row gap-2'>
@@ -90,7 +90,7 @@ export default function () {
                                 </div>
                             </div>
                             <p className="text-yellow-1 text-2xl mt-2">{community.categories.join(', ')}</p>
-                            <p className="text-2xl truncate mt-4 whitespace-pre-wrap">{community.content}</p> {/* 긴 내용은 잘라냅니다 */}
+                            <p className="text-3xl truncate mt-4 whitespace-pre-wrap overflow-hidden h-[225px]">{community.content}</p> {/* 긴 내용은 잘라냅니다 */}
 
                             <div className='absolute bottom-4 left-4 flex flex-row gap-4 text-3xl'>
                                 <FaRegHeart/>
