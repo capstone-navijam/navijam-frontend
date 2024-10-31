@@ -70,10 +70,10 @@ export default function MainListeners() {
             </div>
         )}
 
-        <div className='flex flex-row w-[80%] justify-between mx-auto'>
-            <p className={`font-semibold ${isMobile ? 'text-xl' : 'text-2xl'}`}>누구에게 상담 받고 싶나요 ?</p>
+        <div className='flex flex-row w-[80%] justify-between mx-auto mb-4'>
+            <p className={`font-semibold ${isMobile ? 'text-xl' : 'text-4xl'}`}>누구에게 상담 받고 싶나요 ?</p>
             <Link href='/listeners'
-                  className={`text-gray-400 flex ${isMobile ? 'text-xl' : 'text-2xl'} items-center gap-1`}>더 많은 상담사
+                  className={`text-gray-400 flex ${isMobile ? 'text-xl' : 'text-4xl'} items-center gap-1`}>더 많은 상담사
                 만나기 <FaArrowRight/></Link>
         </div>
 

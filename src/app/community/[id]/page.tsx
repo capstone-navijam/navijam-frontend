@@ -1,10 +1,13 @@
 'use client'
-import React from 'react';
+import React, {useEffect, useState} from 'react';
 import CommunityDetail from "@/app/components/community/CommunityDetail";
 import {useMobile} from "@/service/MediaQuery";
+import CommunityListDetail from "@/app/components/community/CommunityListDetail";
+import {useParams} from "next/navigation";
 
 export default function CommunityDetailPage() {
     const isMobile = useMobile();
+
     return (
         <>
             <div className='flex flex-col text-center'><h1

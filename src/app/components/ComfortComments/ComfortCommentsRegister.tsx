@@ -5,7 +5,7 @@ import Swal from "sweetalert2";
 import {RiArrowRightDoubleLine} from "react-icons/ri";
 import {useMobile} from "@/service/MediaQuery";
 
-export default function CommentsRegister({consoleId}) {
+export default function ComfortCommentsRegister({consoleId}) {
 
     const isMobile = useMobile();
 

@@ -6,12 +6,16 @@ import Image from 'next/image'
 import {getCookie} from "cookies-next";
 import Swal from "sweetalert2";
 import {useMobile} from "@/service/MediaQuery";
+import CommunityCommentsRegister from "@/app/components/CommunityComments/CommunityCommentsRegister";
+import CommunityCommentsDetail from "@/app/components/CommunityComments/CommunityCommentsDetail";
+
 
 export default function CommunityDetail() {
 
     const isMobile = useMobile();
 
     const [community, setCommunity] = useState<CommunityListDetailProps | null>(null);
+
     const [loggedInUser, setLoggedInUser] = useState<string | null>(null); // 로그인한 사용자 이름 상태
     const {id} = useParams();
     const router = useRouter();
@@ -36,6 +40,7 @@ export default function CommunityDetail() {
         }
         fetchCommunity();
     }, [id]);
+
 
     const handleModifyClick = () => {
         router.push(`/community/${id.toString()}/modify`);
@@ -79,6 +84,7 @@ export default function CommunityDetail() {
             console.error("삭제 요청 중 오류 발생", err);
         }
     }
+
 
     if (!community) {
         return null;
@@ -174,10 +180,8 @@ export default function CommunityDetail() {
             </section>
 
             <section className='w-[80%] mx-auto mt-10'>
-                <h1 className='text-4xl font-semibold'>댓글 <span className='text-yellow-2'>0</span>개가 달렸어요.</h1>
-                <div className='border-2 h-[420px] mt-2'>
-
-                </div>
+                <h1 className='text-5xl mb-4'>댓글 <span className='text-yellow-6'>0</span>개가 달렸어요.</h1>
+                <CommunityCommentsRegister communityId={community.id}/>
             </section>
         </>)}
 

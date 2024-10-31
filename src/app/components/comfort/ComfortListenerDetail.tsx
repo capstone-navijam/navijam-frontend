@@ -6,9 +6,9 @@ import {getCookie} from "cookies-next";
 import {useParams, useRouter} from "next/navigation";
 import Swal from "sweetalert2";
 import ComfortListenerRegister from "@/app/components/comfort/ComfortListenerRegister";
-import CommentsRegister from "@/app/components/comments/CommentsRegister";
-import CommentsDetail from "@/app/components/comments/CommentsDetail";
-import CommentsList from '../comments/CommentsList';
+import ComfortCommentsRegister from "@/app/components/ComfortComments/ComfortCommentsRegister";
+import ComfortCommentsDetail from "@/app/components/ComfortComments/ComfortCommentsDetail";
+import ComfortCommentsList from '@/app/components/ComfortComments/ComfortCommentsList';
 import {useMobile} from '@/service/MediaQuery';
 
 interface Props {
@@ -50,7 +50,7 @@ export default function ComfortListenerDetail({consoles}: Props) {
         const fetchCommentCounts = async () => {
             const counts: { [key: string]: number } = {};
             for (const console of consoles) {
-                const comments = await CommentsList(console.id); // 댓글 리스트 가져오기
+                const comments = await ComfortCommentsList(console.id); // 댓글 리스트 가져오기
                 counts[console.id] = comments.length; // 댓글 개수 저장
             }
             setCommentCount(counts); // 상태에 저장
@@ -169,9 +169,9 @@ export default function ComfortListenerDetail({consoles}: Props) {
 
                                 {activeCommentBoxId === console.id && (
                                     <>
-                                        <CommentsRegister consoleId={console.id}/>
-                                        <CommentsDetail consoleId={console.id}
-                                                        onCommentCount={(count) => handleCommentCountUpdate(console.id, count)}/>
+                                        <ComfortCommentsRegister consoleId={console.id}/>
+                                        <ComfortCommentsDetail consoleId={console.id}
+                                                               onCommentCount={(count) => handleCommentCountUpdate(console.id, count)}/>
                                     </>
                                 )}
                             </div>
