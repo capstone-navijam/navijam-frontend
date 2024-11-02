@@ -181,6 +181,7 @@ export default function CommunityDetail() {
 
             <section className='w-[80%] mx-auto mt-10'>
                 <h1 className='text-5xl mb-4'>댓글 <span className='text-yellow-6'>0</span>개가 달렸어요.</h1>
+                <CommunityCommentsDetail id={community.memberId} nickname={community.nickname} profile={community.profile} content={community.profile} timestamp={community.timestamp} communityId={community.id} />
                 <CommunityCommentsRegister communityId={community.id}/>
             </section>
         </>)}
