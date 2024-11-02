@@ -1,19 +1,28 @@
 'use client';
-import React from 'react';
+import React, {useEffect} from 'react';
 import Image from "next/image";
 import Link from 'next/link';
 import {MdCheckCircleOutline} from 'react-icons/md';
 import useInput from '@/service/useInput';
-import {useRouter} from 'next/navigation';
 import Swal from "sweetalert2";
 import {useMobile, usePC} from "@/service/MediaQuery";
+import {getCookie} from "cookies-next";
+import {useRouter} from "next/navigation";
 
 export default function LoginPage() {
     const isMobile = useMobile();
     const isPC = usePC();
+    const router = useRouter();
 
     const email = useInput('');
     const password = useInput('');
+
+    useEffect(() => {
+        const accessToken = getCookie('accessToken');
+        if (accessToken) {
+            router.replace('/'); // 이미 로그인된 경우 메인 페이지로 리다이렉트
+        }
+    }, [router]);
 
     const handleSubmit = async (e) => {
         e.preventDefault();
@@ -65,7 +74,7 @@ export default function LoginPage() {
 
     return (
         <section>
-            <div className='flex flex-col items-center text-center'>
+            <div className='flex flex-col items-center text-center mt-10'>
                 {isPC && (<Link href='/'>
                     <Image src='/images/TextLogo.png' alt="icon" width={350} height={350} priority/>
                 </Link>)}
