@@ -36,7 +36,7 @@ export default function MultiCarousel() {
             id: 4,
             description: "걱정도 좀 덜 하고, 노력도 좀 덜 하고,\n후회도 좀 덜 하면 좋겠다.",
             button: '1:1상담',
-            path: 'nabistory',
+            path: 'chat',
             image: '/images/carouselImage4.svg',
         },
         {
@@ -68,7 +68,7 @@ export default function MultiCarousel() {
             >
                 {items.map((e) => (
                     <div key={e.id}
-                         className={`flex ${isTablet ? 'flex-col' : 'flex-row'} items-center justify-between mx-8 mt-8`}>
+                         className={`flex ${isTablet ? 'flex-col' : 'flex-row'} items-center justify-between mx-8 mt-8 relative`}>
                         <div className='gap-2 flex flex-col text-center'>
                             <Link href={`/${e.path}`}
                                   className={`rounded-3xl p-1 flex items-center gap-1 justify-center ${isTablet ? 'text-2xl' : 'text-4xl'}`}>
@@ -80,7 +80,7 @@ export default function MultiCarousel() {
                             </p>
                         </div>
                         <Image src={e.image} alt="Image" width={300} height={300}
-                             className={isTablet ? 'h-[300px] w-[300px] object-cover' : 'h-[500px] w-[500px] object-cover'}/>
+                             className={isTablet ? 'h-[400px] w-[600px]' : 'h-[500px] w-[700px] '}/>
                     </div>
                 ))}
             </Carousel>

@@ -71,7 +71,7 @@ export default function MainSideBar() {
                         <p className='text-sm'>커뮤니티</p>
                     </Link>
                     <hr className="border-0 border-l-2 border-dotted h-5 mx-auto border-yellow-3"/>
-                    <Link href='/nabistory' className='flex flex-col items-center'>
+                    <Link href='/chat' className='flex flex-col items-center'>
                         <MdOutlineNoteAlt
                             className='text-yellow-3 text-6xl border-2 rounded-full border-yellow-3 p-2 hover:bg-yellow-3 hover:scale-105 hover:text-white'/>
                         <p className='text-sm'>나비 Story</p>

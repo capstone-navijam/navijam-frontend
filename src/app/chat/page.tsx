@@ -1,7 +1,7 @@
 import React from 'react';
 
-export default function Nabistory() {
+export default function chat() {
     return (<div>
-    나비스토리
+    1:1상담
     </div>);
 }

@@ -38,7 +38,7 @@ export default function MainMenu() {
 
             <hr className=" border-0 border-t-2 border-dotted w-20 mt-8 mb-2 border-yellow-3"/>
 
-            <Link href='/nabistory' className='flex flex-col items-center'>
+            <Link href='/chat' className='flex flex-col items-center'>
                 <MdOutlineNoteAlt
                     className='text-6xl border-2 rounded-full border-yellow-3 p-2 hover:bg-yellow-3 hover:scale-105 hover:text-white'/>
                 <p className='text-sm'>나비 Story</p>
