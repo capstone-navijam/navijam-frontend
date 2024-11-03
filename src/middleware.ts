@@ -1,18 +1,18 @@
-import { getCookie } from "cookies-next";
-import { NextRequest, NextResponse } from "next/server";
+import {getCookie} from "cookies-next";
+import {NextRequest, NextResponse} from "next/server";
 
 export default function middleware(request: NextRequest) {
     // 서버 요청 객체를 전달하여 토큰을 가져옵니다.
-    const token = getCookie('accessToken', { req: request });
+    const token = getCookie('accessToken', {req: request});
     const pathname = request.nextUrl.pathname;
 
     {/* 로그인 시, 로그인 페이지 접근 제한 */}
-    if(token && pathname.startsWith(`/auth/login`)) {
+    if (token && pathname.startsWith(`/auth/login`)) {
         return NextResponse.redirect(new URL('/', request.url));
     }
 
     {/* 로그인 시, 회원가입 페이지 접근 제한 */}
-    if(token && pathname.startsWith(`/auth/signup`)) {
+    if (token && pathname.startsWith(`/auth/signup`)) {
         return NextResponse.redirect(new URL('/', request.url));
     }
 
@@ -31,7 +31,9 @@ export default function middleware(request: NextRequest) {
         return NextResponse.redirect(new URL('/auth/login', request.url));
     }
 
-
+    if (!token && pathname.startsWith(`/chat`)) {
+        return NextResponse.redirect(new URL('/auth/login', request.url));
+    }
 
 
 }
