@@ -9,7 +9,7 @@ import ComfortListenerRegister from "@/app/components/comfort/ComfortListenerReg
 import ComfortCommentsRegister from "@/app/components/ComfortComments/ComfortCommentsRegister";
 import ComfortCommentsDetail from "@/app/components/ComfortComments/ComfortCommentsDetail";
 import ComfortCommentsList from '@/app/components/ComfortComments/ComfortCommentsList';
-import {useMobile} from '@/service/MediaQuery';
+import {useMobile, useTablet} from '@/service/MediaQuery';
 
 interface Props {
     consoles: ConsoleProps[];
@@ -17,7 +17,7 @@ interface Props {
 
 export default function ComfortListenerDetail({consoles}: Props) {
 
-    const isMobile = useMobile();
+    const isTablet = useTablet();
 
     const [role, setRole] = useState("");
     const router = useRouter();
@@ -113,11 +113,11 @@ export default function ComfortListenerDetail({consoles}: Props) {
     return (
         <>
             <div className='flex flex-col mx-auto mt-8 mb-10'>
-                <div className={` ${isMobile ? 'w-[95%]' : 'w-[80%]'} mx-auto`}>
-                    <div className={`${isMobile ? 'w-[25%]' : 'w-[15%]'}  border-[4px] border-yellow-2`}></div>
-                    <h1 className={`font-[Tenada] text-start mt-4 ${isMobile ? 'text-3xl' : 'text-4xl'}`}>전문가의 답변</h1>
+                <div className={` ${isTablet ? 'w-[95%]' : 'w-[80%]'} mx-auto`}>
+                    <div className={`${isTablet ? 'w-[25%]' : 'w-[15%]'}  border-[4px] border-yellow-2`}></div>
+                    <h1 className={`font-[Tenada] text-start mt-4 ${isTablet ? 'text-3xl' : 'text-4xl'}`}>전문가의 답변</h1>
                 </div>
-                <div className={`mx-auto ${isMobile ? 'w-[95%]' : 'w-[80%]'}`}> {/* 하단 여백 추가 */}
+                <div className={`mx-auto ${isTablet ? 'w-[95%]' : 'w-[80%]'}`}> {/* 하단 여백 추가 */}
                     {consoles.length > 0 ? (
                         consoles.map((console) => (
                             <div
@@ -127,27 +127,27 @@ export default function ComfortListenerDetail({consoles}: Props) {
                                 <div className='mb-4'>
                                     <div className='flex flex-row justify-between items-center mx-2'>
                                         <div className='flex flex-row gap-1 items-center'>
-                                            <p className={` ${isMobile ? 'text-3xl' : 'text-4xl'}`}>{console.nickname} <span
-                                                className={` ${isMobile ? 'text-xl' : 'text-2xl'}`}>상담사</span>
+                                            <p className={` ${isTablet ? 'text-3xl' : 'text-4xl'}`}>{console.nickname} <span
+                                                className={` ${isTablet ? 'text-xl' : 'text-2xl'}`}>상담사</span>
                                             </p>
                                             <Image src={console.profile} alt="Profile" width={30} height={30}
-                                                   className={`rounded-full object-cover  ${isMobile ? ' w-[30px] h-[30px] ' : ' w-[60px] h-[60px] '}`}/>
+                                                   className={`rounded-full object-cover  ${isTablet ? ' w-[30px] h-[30px] ' : ' w-[60px] h-[60px] '}`}/>
                                         </div>
-                                        <p className={`${isMobile ? 'text-lg' : 'text-xl'} mt-2`}>{console.timestamp}</p>
+                                        <p className={`${isTablet ? 'text-lg' : 'text-xl'} mt-2`}>{console.timestamp}</p>
                                     </div>
 
                                     <div className="mx-auto w-full border-[1px] border-lightGray/30 mt-2 mb-2"></div>
 
-                                    <div className={`mx-1 mt-4 whitespace-pre-wrap ${isMobile ? 'text-xl' : 'text-3xl'}`}
+                                    <div className={`mx-1 mt-4 whitespace-pre-wrap ${isTablet ? 'text-xl' : 'text-3xl'}`}
                                          style={{lineHeight: '1.8'}}>{console.content}</div>
                                 </div>
 
                                 <div className='mx-1 flex flex-row gap-6 justify-between mt-10 text-center items-center'>
                                     <div className='flex flex-row items-center text-center gap-2'>
-                                        <FaRegComment className={`mt-4 ${isMobile ? 'text-3xl' : 'text-4xl'} text-yellow-6`}
+                                        <FaRegComment className={`mt-4 ${isTablet ? 'text-3xl' : 'text-4xl'} text-yellow-6`}
                                                       onClick={() => handleCommentClick(console.id)}/>
                                         {commentCount[console.id] > 0 &&
-                                            <span className={`mt-4  ${isMobile ? 'text-2xl' : 'text-3xl'} text-yellow-6`}>{commentCount[console.id]}</span>}
+                                            <span className={`mt-4  ${isTablet ? 'text-2xl' : 'text-3xl'} text-yellow-6`}>{commentCount[console.id]}</span>}
                                     </div>
                                     {role === "LISTENER" && nickName === console.nickname ? (
                                         <div className='gap-4 flex flex-row'>
@@ -181,7 +181,7 @@ export default function ComfortListenerDetail({consoles}: Props) {
                             {role === "MEMBER" && (
                                 <div
                                     className='relative mt-10 rounded-lg mx-auto w-full h-[250px] text-start border-yellow-2 border-2 p-4'>
-                                    <p className={`${isMobile ? 'text-4xl' : 'text-6xl'} items-center text-center mt-20 text-gray-500`}>아직
+                                    <p className={`${isTablet ? 'text-4xl' : 'text-6xl'} items-center text-center mt-20 text-gray-500`}>아직
                                         등록된 답변이
                                         없습니다.</p>
                                 </div>

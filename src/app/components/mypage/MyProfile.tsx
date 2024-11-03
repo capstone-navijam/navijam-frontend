@@ -1,14 +1,14 @@
 import React from 'react';
 import Image from 'next/image'
-import {useMobile} from "@/service/MediaQuery";
+import {useMobile, useTablet} from "@/service/MediaQuery";
 
 export default function MyProfile() {
 
-    const isMobile = useMobile();
+    const isTablet = useTablet();
 
     return (
         <>
-            {isMobile ? (<>
+            {isTablet ? (<>
                 <article className='w-full'>
                     <div
                         className='border-4 border-yellow-6 rounded-2xl flex flex-row mt-4 items-center w-full h-[240px] p-4 gap-4'>

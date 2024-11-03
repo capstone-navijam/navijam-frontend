@@ -7,11 +7,11 @@ import {ComfortListAll, ComfortListProps} from "@/app/components/comfort/Comfort
 import {useRouter} from 'next/navigation';
 import ComfortSearch from "@/app/components/comfort/ComfortSearch";
 import Pagination from '@mui/material/Pagination';
-import {useMobile} from "@/service/MediaQuery";
+import {useMobile, useTablet} from "@/service/MediaQuery";
 
 export default function ComfortContent() {
 
-    const isMobile = useMobile();
+    const isTablet = useTablet();
 
     const [showComfortMemberRegister, setShowComfortMemberRegister] = useState(false);
     const [comforts, setComforts] = useState<ComfortListProps[]>([]);
@@ -75,25 +75,25 @@ export default function ComfortContent() {
                     {comforts.length === 0 ? (
                         <section className='content-center '>
                             <div className='flex flex-col text-center'>
-                                <h1 className={`font-bold mt-52 ${isMobile ? 'text-5xl' : 'text-7xl'}`}>위로 받기</h1>
-                                {isMobile ? (
+                                <h1 className={`font-bold mt-52 ${isTablet ? 'text-5xl' : 'text-7xl'}`}>위로 받기</h1>
+                                {isTablet ? (
                                     <span className='mt-4 text-2xl'>내용은 비밀이 보장되므로,<br/>작은 고민이라도 괜찮아요.</span>) : (
                                     <span className='mt-4 text-3xl'>내용은 비밀이 보장되므로, 작은 고민이라도 괜찮아요.</span>)}
                             </div>
                             <div className='flex justify-center mt-8'>
                                 <button
                                     onClick={handleClick}
-                                    className={`${isMobile ? 'w-[95%]' : 'w-[75%]'} h-28 text-center bg-yellow-6 p-8 rounded-lg`}
+                                    className={`${isTablet ? 'w-[95%]' : 'w-[75%]'} h-28 text-center bg-yellow-6 p-8 rounded-lg`}
                                 >
                                     <div
-                                        className={`flex flex-row justify-center gap-2 text-white ${isMobile ? 'text-2xl' : 'text-3xl'}`}>
+                                        className={`flex flex-row justify-center gap-2 text-white ${isTablet ? 'text-2xl' : 'text-3xl'}`}>
                                         <FaPen className='mt-1'/>
                                         <span>고민을 털어 놓으면 한결 마음이 편질거에요.</span>
                                     </div>
                                 </button>
                             </div>
                             <div className='flex justify-center mt-6 mb-52 '>
-                                <div className={`${isMobile ? 'w-[95%] text-2xl' : 'w-[75%] text-3xl '} h-20 text-center bg-user-gray p-4 rounded-lg`}>
+                                <div className={`${isTablet ? 'w-[95%] text-2xl' : 'w-[75%] text-3xl '} h-20 text-center bg-user-gray p-4 rounded-lg`}>
                                     <span>아직 기록된 고민이 없어요.</span>
                                 </div>
                             </div>
@@ -103,9 +103,9 @@ export default function ComfortContent() {
                         <section className='content-center'>
 
                             <div className='flex flex-col text-center'>
-                                <h1 className={`font-bold mt-8 ${isMobile ? 'text-5xl' : 'text-7xl'}`}>위로
+                                <h1 className={`font-bold mt-8 ${isTablet ? 'text-5xl' : 'text-7xl'}`}>위로
                                     받기</h1>
-                                {isMobile ? (
+                                {isTablet ? (
                                     <span className='mt-4 text-2xl'>내용은 비밀이 보장되므로,<br/>작은 고민이라도 괜찮아요.</span>) : (
                                     <span className='mt-4 text-3xl'>내용은 비밀이 보장되므로, 작은 고민이라도 괜찮아요.</span>)}
 
@@ -113,16 +113,16 @@ export default function ComfortContent() {
                             <div className='flex justify-center mt-8'>
                                 <button
                                     onClick={handleClick}
-                                    className={`${isMobile ? 'w-[95%]' : 'w-[75%]'} h-28 text-center bg-yellow-6 p-8 rounded-lg`}
+                                    className={`${isTablet ? 'w-[95%]' : 'w-[75%]'} h-28 text-center bg-yellow-6 p-8 rounded-lg`}
                                 >
                                     <div
-                                        className={`flex flex-row justify-center gap-2 text-white ${isMobile ? 'text-2xl' : 'text-3xl'}`}>
+                                        className={`flex flex-row justify-center gap-2 text-white ${isTablet ? 'text-2xl' : 'text-3xl'}`}>
                                         <FaPen className='mt-1'/>
                                         <span>고민을 털어 놓으면 한결 마음이 편질거에요.</span>
                                     </div>
                                 </button>
                             </div>
-                            <div className={`flex flex-row justify-between ${isMobile ? 'w-[95%]' : 'w-[75%]'} mx-auto mt-4`}>
+                            <div className={`flex flex-row justify-between ${isTablet ? 'w-[95%]' : 'w-[75%]'} mx-auto mt-4`}>
                                 {/* 검색 컴포넌트 */}
                                 <ComfortSearch/>
                                 {/* 내림차순, 오름차순 컴포넌트 */}
@@ -144,9 +144,9 @@ export default function ComfortContent() {
                                 {currentComforts.map((comfort) => (
                                     <div key={comfort.id}
                                          onClick={() => handleDetailClick(comfort.id)}
-                                         className={`flex rounded-lg justify-between border-2 items-center font-semibold border-yellow-6 p-6 ${isMobile ? 'w-[95%] h-[100px]' : 'w-[75%]'}`}>
-                                        <h1 className={`${isMobile ? 'text-2xl' : 'text-3xl'}  w-1/2 text-ellipsis whitespace-nowrap overflow-hidden`}>{comfort.title}</h1>
-                                        <p className={`${isMobile ? 'text-lg' : 'text-xl'} w-1/2 text-gray-400 text-end`}>{comfort.createdAt}</p>
+                                         className={`flex rounded-lg justify-between border-2 items-center font-semibold border-yellow-6 p-6 ${isTablet ? 'w-[95%] h-[100px]' : 'w-[75%]'}`}>
+                                        <h1 className={`${isTablet ? 'text-2xl' : 'text-3xl'}  w-1/2 text-ellipsis whitespace-nowrap overflow-hidden`}>{comfort.title}</h1>
+                                        <p className={`${isTablet ? 'text-lg' : 'text-xl'} w-1/2 text-gray-400 text-end`}>{comfort.createdAt}</p>
                                     </div>
                                 ))}
 

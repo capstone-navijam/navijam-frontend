@@ -8,11 +8,11 @@ import ComfortListDetail from "@/app/components/comfort/ComfortListlDetail";
 import ComfortListenerRegister from "@/app/components/comfort/ComfortListenerRegister";
 import ComfortSkeleton from "@/app/components/SkeletonUI/ComfortSkeleton";
 import {getCookie} from "cookies-next";
-import {useMobile} from "@/service/MediaQuery";
+import {useMobile, useTablet} from "@/service/MediaQuery";
 
 export default function ComfortDetailPage() {
 
-    const isMobile = useMobile();
+    const isTablet = useTablet();
 
     const {id} = useParams();
     const [comfort, setComfort] = useState(null);
@@ -57,14 +57,14 @@ export default function ComfortDetailPage() {
                         <ComfortListenerDetail consoles={comfort.consoles}/>
                     </div>
                 ) : (
-                    <div className={`mx-auto mt-10 ${isMobile ? 'w-[95%]' : 'w-[80%]'}`}>
-                        <div className={`${isMobile ? 'w-[25%]' : 'w-[15%]'}  border-[4px] border-yellow-2`}></div>
-                        <h1 className={`font-[Tenada] text-start mt-4 ${isMobile ? 'text-3xl' : 'text-4xl'}`}>전문가의 답변</h1>
+                    <div className={`mx-auto mt-10 ${isTablet ? 'w-[95%]' : 'w-[80%]'}`}>
+                        <div className={`${isTablet ? 'w-[25%]' : 'w-[15%]'}  border-[4px] border-yellow-2`}></div>
+                        <h1 className={`font-[Tenada] text-start mt-4 ${isTablet ? 'text-3xl' : 'text-4xl'}`}>전문가의 답변</h1>
                         {role === "MEMBER" ? (
                             <>
                                 <div
                                     className='relative mt-10 rounded-lg mx-auto w-full h-[250px] text-start border-yellow-2 border-2 p-4'>
-                                    <p className={`${isMobile ? 'text-4xl' : 'text-6xl'} items-center text-center mt-20 text-gray-500`}>아직
+                                    <p className={`${isTablet ? 'text-4xl' : 'text-6xl'} items-center text-center mt-20 text-gray-500`}>아직
                                         등록된 답변이
                                         없습니다.</p>
                                 </div>

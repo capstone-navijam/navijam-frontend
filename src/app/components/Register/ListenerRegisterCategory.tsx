@@ -1,5 +1,5 @@
 import React from 'react';
-import {useMobile} from "@/service/MediaQuery";
+import {useMobile, useTablet} from "@/service/MediaQuery";
 
 const categories = [
     '자유', '육아', '진로', '결혼', '외모', '인간관계', '중독',
@@ -13,7 +13,7 @@ interface ListerCategoryProps {
 
 export default function ComfortCategory({ selectedCategories, setSelectedCategories }: ListerCategoryProps) {
 
-    const isMobile = useMobile();
+    const isTablet = useTablet();
     const handleClick = (category) => {
         setSelectedCategories(prev =>
             prev.includes(category) ? prev.filter(cat => cat !== category)
@@ -25,7 +25,7 @@ export default function ComfortCategory({ selectedCategories, setSelectedCategor
         <>
             <div className='flex w-full'>
                 <label htmlFor='category'
-                       className={` ${isMobile ? 'text-2xl' : 'text-3xl'}  font-semibold w-40 text-wrap`}>카테고리</label>
+                       className={` ${isTablet ? 'text-2xl' : 'text-3xl'}  font-semibold w-40 text-wrap`}>카테고리</label>
 
                 <div className=' text-center flex gap-4 flex-wrap w-full'>
                     {categories.map(category => (
