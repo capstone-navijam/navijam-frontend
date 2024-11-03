@@ -80,7 +80,7 @@ export default function Header({nickname, status, role, profile}: HeaderProps) {
                                             <div className="w-full   border-[1px] border-lightGray/30"></div>
                                             <Link href='/community' onClick={closeNav}>커뮤니티</Link>
                                             <div className="w-full   border-[1px] border-lightGray/30"></div>
-                                            <Link href='/nabistory' onClick={closeNav}>실시간 상담</Link>
+                                            <Link href='/chat' onClick={closeNav}>실시간 상담</Link>
                                             <div className="w-full   border-[1px] border-lightGray/30"></div>
                                             <Link href='/mypage' onClick={closeNav}>마이 페이지</Link>
                                         </nav>
@@ -101,7 +101,7 @@ export default function Header({nickname, status, role, profile}: HeaderProps) {
                                     </Link>
                                     <Link href='/listeners' className='hover:text-gray-700 hover:scale-105'>나비잠 멘토</Link>
                                     <Link href='/community' className='hover:text-gray-700 hover:scale-105'>커뮤니티</Link>
-                                    <Link href='/nabistory' className='hover:text-gray-700 hover:scale-105'>실시간 상담</Link>
+                                    <Link href='/chat' className='hover:text-gray-700 hover:scale-105'>실시간 상담</Link>
                                     <Link href='/mypage' className='hover:text-gray-700 hover:scale-105'>마이 페이지</Link>
                                 </nav>
 
@@ -160,7 +160,7 @@ export default function Header({nickname, status, role, profile}: HeaderProps) {
                                             <div className="w-full   border-[1px] border-lightGray/30"></div>
                                             <Link href='/community' onClick={closeNav}>커뮤니티</Link>
                                             <div className="w-full   border-[1px] border-lightGray/30"></div>
-                                            <Link href='/nabistory' onClick={closeNav}>실시간 상담</Link>
+                                            <Link href='/chat' onClick={closeNav}>실시간 상담</Link>
                                             <div className="w-full   border-[1px] border-lightGray/30"></div>
                                             <Link href='/mypage' onClick={closeNav}>마이 페이지</Link>
                                         </nav>
@@ -176,7 +176,7 @@ export default function Header({nickname, status, role, profile}: HeaderProps) {
                                     <Link href='/comforts' className='hover:text-gray-700 hover:scale-105'>위로받기</Link>
                                     <Link href='/listeners' className='hover:text-gray-700 hover:scale-105'>나비잠 멘토</Link>
                                     <Link href='/community' className='hover:text-gray-700 hover:scale-105'>커뮤니티</Link>
-                                    <Link href='/nabistory' className='hover:text-gray-700 hover:scale-105'>실시간 상담</Link>
+                                    <Link href='/chat' className='hover:text-gray-700 hover:scale-105'>실시간 상담</Link>
                                     <Link href='/mypage' className='hover:text-gray-700 hover:scale-105'>마이 페이지</Link>
                                 </nav>
                                 <Link href='/mypage' className='ml-auto text-3xl'><FiUser/></Link>
