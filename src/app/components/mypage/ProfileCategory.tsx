@@ -6,11 +6,11 @@ import MyProfile from "@/app/components/mypage/MyProfile";
 import MyComfort from "@/app/components/mypage/MyComfort";
 import MyCommunity from "@/app/components/mypage/MyCommunity";
 import MyCounseling from "@/app/components/mypage/MyCounseling";
-import {useMobile} from "@/service/MediaQuery";
+import {useMobile, useTablet} from "@/service/MediaQuery";
 
 export default function ProfileCategory() {
 
-    const isMobile = useMobile();
+    const isTablet = useTablet();
     const [selectedMenu, setSelectedMenu] = useState('profile'); // 현재 선택된 메뉴를 추적하는 상태
 
     const handleMenuClick = (menu) => {
@@ -19,7 +19,7 @@ export default function ProfileCategory() {
 
     return (
         <>
-            {isMobile ? (<>
+            {isTablet ? (<>
                 <section className='flex flex-row'>
                     <div className='border-l-2 h-full w-full shadow-custom'>
 

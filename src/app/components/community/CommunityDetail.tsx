@@ -5,14 +5,14 @@ import {useParams, useRouter} from "next/navigation";
 import Image from 'next/image'
 import {getCookie} from "cookies-next";
 import Swal from "sweetalert2";
-import {useMobile} from "@/service/MediaQuery";
+import {useMobile, useTablet} from "@/service/MediaQuery";
 import CommunityCommentsRegister from "@/app/components/CommunityComments/CommunityCommentsRegister";
 import CommunityCommentsDetail from "@/app/components/CommunityComments/CommunityCommentsDetail";
 
 
 export default function CommunityDetail() {
 
-    const isMobile = useMobile();
+    const isTablet = useTablet();
 
     const [community, setCommunity] = useState<CommunityListDetailProps | null>(null);
 
@@ -91,7 +91,7 @@ export default function CommunityDetail() {
     }
 
     return (<>
-        {isMobile ? (<>
+        {isTablet ? (<>
             <section className='w-[95%] mx-auto mt-20'>
                 <div className="w-[20%] border-[4px] border-yellow-6"></div>
 

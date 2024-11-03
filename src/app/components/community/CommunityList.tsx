@@ -5,10 +5,10 @@ import Pagination from "@mui/material/Pagination";
 import Image from "next/image";
 import {CiHeart} from 'react-icons/ci';
 import {FaRegCommentAlt, FaRegHeart} from "react-icons/fa";
-import {useMobile} from "@/service/MediaQuery";
+import {useMobile, useTablet} from "@/service/MediaQuery";
 
 export default function CommunityList() {
-    const isMobile = useMobile();
+    const isTablet = useTablet();
 
     const [communities, setCommunities] = useState<CommunityListProps[]>([]);
     const [currentPage, setCurrentPage] = useState(1);
@@ -43,7 +43,7 @@ export default function CommunityList() {
 
     return (
         <>
-            {isMobile ? (<>
+            {isTablet ? (<>
                 <div className={`grid grid-cols-2 justify-center w-[95%] mx-auto mt-10 gap-4`}>
                     {currentCommunities.map((community, index) => (
                         <div key={community.id}

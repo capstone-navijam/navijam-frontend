@@ -1,5 +1,5 @@
 import React from 'react';
-import {useMobile} from "@/service/MediaQuery";
+import {useMobile, useTablet} from "@/service/MediaQuery";
 
 const categories = [
     '자유', '육아', '진로', '결혼', '외모', '인간관계', '중독',
@@ -13,7 +13,7 @@ interface ComfortCategoryProps {
 
 export default function RegisterCategory({selectedCategories, setSelectedCategories}: ComfortCategoryProps) {
 
-    const isMobile = useMobile();
+    const isTablet = useTablet();
 
     const handleClick = (category) => {
         setSelectedCategories(prev =>
@@ -25,8 +25,8 @@ export default function RegisterCategory({selectedCategories, setSelectedCategor
     return (
         <>
             <span
-                className={` ${isMobile ? 'w-[95%]' : 'w-[80%]'}  mx-auto flex font-medium text-3xl text-nowrap mt-6 font-[Tenada] text-yellow-6`}>카테고리 설정</span>
-            <div className={` ${isMobile ? 'w-[95%]' : 'w-[80%]'} flex text-center mx-auto rounded-lg mt-3`}>
+                className={` ${isTablet ? 'w-[95%]' : 'w-[80%]'}  mx-auto flex font-medium text-3xl text-nowrap mt-6 font-[Tenada] text-yellow-6`}>카테고리 설정</span>
+            <div className={` ${isTablet ? 'w-[95%]' : 'w-[80%]'} flex text-center mx-auto rounded-lg mt-3`}>
                 <div className='flex gap-1 p-1 flex-wrap'>
                     {categories.map(category => (
                         <div

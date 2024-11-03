@@ -14,7 +14,7 @@ export const useMobile = () => {
 
 export const useTablet = () => {
     const [isTablet, setIsTablet] = useState(false);
-    const tablet = useMediaQuery({query: '(min-width: 768px) and (max-width: 1023px)'});
+    const tablet = useMediaQuery({query: '(min-width: 834px) and (max-width: 1023px)'});
 
     useEffect(() => {
         setIsTablet(tablet);

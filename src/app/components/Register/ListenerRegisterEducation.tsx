@@ -1,11 +1,11 @@
 "use client"
 import React, {useEffect} from 'react';
-import {useMobile} from "@/service/MediaQuery";
+import {useMobile, useTablet} from "@/service/MediaQuery";
 
 
 export default function ListenerRegisterEducation({educationField, setEducationField}) {
 
-    const isMobile = useMobile();
+    const isTablet = useTablet();
 
     useEffect(() => {
         if (educationField.length === 0) {
@@ -33,7 +33,7 @@ export default function ListenerRegisterEducation({educationField, setEducationF
             {/* 경력 label과 입력 필드들 */}
             <div className='flex items-center'>
                 <label htmlFor='career'
-                       className={` ${isMobile ? 'text-2xl' : 'text-3xl'}  font-semibold w-40 text-wrap`}>학력</label>
+                       className={` ${isTablet ? 'text-2xl' : 'text-3xl'}  font-semibold w-40 text-wrap`}>학력</label>
 
                 <div className='flex flex-col w-full'>
                     <div className=' flex flex-col gap-6 w-full'>
@@ -41,7 +41,7 @@ export default function ListenerRegisterEducation({educationField, setEducationF
                             <div key={index} className='flex'>
                                 <input
                                     id={`career-${index}`}
-                                    className={`block border border-yellow-6 p-5 w-full rounded ${isMobile ? ' placeholder:text-lg':' placeholder:text-xl'}`}
+                                    className={`block border border-yellow-6 p-5 w-full rounded ${isTablet ? ' placeholder:text-lg':' placeholder:text-xl'}`}
                                     type="text"
                                     value={field}
                                     onChange={(e) => handleChange(index, e.target.value)}

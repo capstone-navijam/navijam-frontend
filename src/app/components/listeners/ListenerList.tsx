@@ -8,11 +8,11 @@ import ListenerSearch from "@/app/components/listeners/ListenerSearch";
 import ListenerSearchCategory from "@/app/components/listeners/ListenerSearchCategory";
 import ListenerDetail from "@/app/components/listeners/ListenerDetail";
 import Pagination from "@mui/material/Pagination";
-import {useMobile} from "@/service/MediaQuery";
+import {useMobile, useTablet} from "@/service/MediaQuery";
 
 export default function ListenerList() {
 
-    const isMobile = useMobile();
+    const isTablet = useTablet();
 
     const [showListenersDetail, setShowListenersDetail] = useState(false);
     const [listeners, setListeners] = useState<ListenersListProps[]>([]);
@@ -60,7 +60,7 @@ export default function ListenerList() {
                     className='fixed inset-0 bg-black/50 flex flex-col justify-center items-center z-50'>
                     <div
                         onClick={(e) => e.stopPropagation()}
-                        className={`bg-white rounded-xl shadow-lg  ${isMobile ? ' w-[90%] h-auto' : ' w-[70%] h-auto'}`}>
+                        className={`bg-white rounded-xl shadow-lg  ${isTablet ? ' w-[90%] h-auto' : ' w-[70%] h-auto'}`}>
                         <ListenerDetail
                             nickname={selectedListener.nickname}
                             categories={selectedListener.categories}
@@ -73,7 +73,7 @@ export default function ListenerList() {
             )}
 
             <div className='text-center mt-8'>
-                <h1 className={`font-bold ${isMobile ? 'text-5xl' : 'text-7xl'}`}>나비잠 멘토</h1>
+                <h1 className={`font-bold ${isTablet ? 'text-5xl' : 'text-7xl'}`}>나비잠 멘토</h1>
             </div>
             {listeners.length === 0 ? (
                 <div className='text-center items-center'>
@@ -85,21 +85,21 @@ export default function ListenerList() {
                             <div key={listener.id}
                                  className='flex flex-col items-center'
                             >
-                                <div className={`flex flex-row ${isMobile ? 'w-[95%]' : 'w-[70%]'} mt-10`}>
+                                <div className={`flex flex-row ${isTablet ? 'w-[95%]' : 'w-[70%]'} mt-10`}>
                                     <div className='flex flex-col gap-6'>
                                         <div className='flex gap-4'>
-                                            <h1 className={`${isMobile ? 'text-4xl' : 'text-6xl'} font-semibold`}>{listener.nickname} <span
-                                                className={`${isMobile ? 'text-2xl' : 'text-4xl'} font-medium`}>상담사</span></h1>
-                                            <p className={`text-yellow-2 ${isMobile ? 'text-xl' : 'text-2l'} mt-auto font-bold`}>#{listener.categories.join(' #')}</p>
+                                            <h1 className={`${isTablet ? 'text-4xl' : 'text-6xl'} font-semibold`}>{listener.nickname} <span
+                                                className={`${isTablet ? 'text-2xl' : 'text-4xl'} font-medium`}>상담사</span></h1>
+                                            <p className={`text-yellow-2 ${isTablet ? 'text-xl' : 'text-2l'} mt-auto font-bold`}>#{listener.categories.join(' #')}</p>
                                         </div>
-                                        <h2 className={`${isMobile ? 'text-xl' : 'text-3xl'} text-gray-600 italic`}>{listener.description}</h2>
-                                        <p className={`flex flex-row items-center gap-1 ${isMobile ? 'text-xl' : 'text-2xl'}`}>
+                                        <h2 className={`${isTablet ? 'text-xl' : 'text-3xl'} text-gray-600 italic`}>{listener.description}</h2>
+                                        <p className={`flex flex-row items-center gap-1 ${isTablet ? 'text-xl' : 'text-2xl'}`}>
                                             <MdLocationOn/>{listener.address}</p>
-                                        <p className={`flex flex-row items-center gap-1 ${isMobile ? 'text-xl' : 'text-2xl'}`}>
+                                        <p className={`flex flex-row items-center gap-1 ${isTablet ? 'text-xl' : 'text-2xl'}`}>
                                             <MdLocalPhone/>{listener.contactNumber}</p>
-                                        <p className={`flex flex-row items-center gap-1 ${isMobile ? 'text-xl' : 'text-2xl'}`}>
+                                        <p className={`flex flex-row items-center gap-1 ${isTablet ? 'text-xl' : 'text-2xl'}`}>
                                             <MdOutlineEmail/>{listener.email}</p>
-                                        <p className={`${isMobile ? 'text-xl' : 'text-3xl'} mt-2 flex flex-row gap-1 items-center`}
+                                        <p className={`${isTablet ? 'text-xl' : 'text-3xl'} mt-2 flex flex-row gap-1 items-center`}
                                            key={listener.id}
                                            onClick={() => handleDetailClick(listener)}
                                         >전문가 프로필 보기 <MdArrowForward/></p>
@@ -109,7 +109,7 @@ export default function ListenerList() {
                                            className='rounded-2xl ml-auto'
                                     />
                                 </div>
-                                <div className={`${isMobile ? 'w-[95%]' : 'w-[75%]'} mt-4 mb-2 border-[1px] border-lightGray/30`}></div>
+                                <div className={`${isTablet ? 'w-[95%]' : 'w-[75%]'} mt-4 mb-2 border-[1px] border-lightGray/30`}></div>
                             </div>
                         ))}
                         <div className="flex justify-center p-10">

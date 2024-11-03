@@ -3,11 +3,11 @@ import React, {useState} from 'react';
 import CommunityRegister from "@/app/components/community/CommunityRegister";
 import {FaPen} from "react-icons/fa";
 import CommunityList from "@/app/components/community/CommunityList";
-import {useMobile} from "@/service/MediaQuery";
+import {useMobile, useTablet} from "@/service/MediaQuery";
 
 export default function CommunityContent() {
 
-    const isMobile = useMobile();
+    const isTablet = useTablet();
 
     const [showCommunityRegister, setShowCommunityRegister] = useState(false);
 
@@ -19,7 +19,7 @@ export default function CommunityContent() {
         <>
             {showCommunityRegister ? (<CommunityRegister/>) : (
                 <>
-                    {isMobile ? (<>
+                    {isTablet ? (<>
                         <div className='w-[95%] mx-auto mt-4 flex justify-end'>
                             <button
                                 onClick={handleClick}
