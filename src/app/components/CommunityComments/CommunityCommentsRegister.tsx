@@ -1,3 +1,4 @@
+'use client';
 import useInput from '@/service/useInput';
 import React, {useCallback} from 'react';
 import {getCookie} from "cookies-next";
@@ -60,14 +61,14 @@ export default function CommunityCommentsRegister({communityId}) {
             <div className="relative mb-12">
                 <textarea
                     name="content"
-                    className='mt-2 w-full h-[300px] border-2 border-yellow-1 rounded-2xl p-4 resize-none pr-10 outline-none text-4xl placeholder:text-3xl placeholder:p-2'
+                    className='mt-2 w-full h-[300px] border-2 border-yellow-2 rounded-2xl p-4 resize-none pr-10 outline-none text-4xl placeholder:text-3xl placeholder:p-2'
                     placeholder={`당신의 응원 한마디가 사연자에게 큰 힘이 될 수 있어요.\n작은 한마디라도 댓글을 남겨볼까요?`}
                     value={content.value}
                     onChange={handleCommentsChange}
                     style={{paddingBottom: '2rem'}}
                 />
                 <button type="submit" className="absolute bottom-4 right-2">
-                    <FaPencilAlt className='text-5xl text-yellow-1'/>
+                    <FaPencilAlt className='text-5xl text-yellow-2'/>
                 </button>
             </div>
         </form>

@@ -1,3 +1,5 @@
+'use client';
+
 import {getCookie} from "cookies-next";
 
 export interface CommunityCommentsDetailProps {

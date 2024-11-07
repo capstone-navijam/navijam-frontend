@@ -1,3 +1,4 @@
+'use client'
 import React, {useEffect, useState} from 'react';
 import ComfortCommentsList, {ComfortCommentsDetailProps} from "@/app/components/ComfortComments/ComfortCommentsList";
 import Image from "next/image";

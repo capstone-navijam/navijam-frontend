@@ -1,3 +1,4 @@
+'use client'
 import React, { useEffect, useState } from 'react';
 import CommunityCommentsList, {
     CommunityCommentsDetailProps
@@ -23,7 +24,7 @@ export default function CommunityCommentsDetail({ communityId }: CommunityCommen
     }, [communityId]);
 
     return (
-        <div className='mt-8 flex flex-col gap-8'>
+        <div className='mt-8 flex flex-col gap-10 mb-10'>
             {comments.length > 0 ? (
                 comments.map(comment => (
                     <div key={comment.id}>
@@ -35,8 +36,8 @@ export default function CommunityCommentsDetail({ communityId }: CommunityCommen
                             </div>
                             <p className='text-xl mt-1'>{comment.timestamp}</p>
                         </div>
-                        <p className='text-3xl mt-8 mb-4 mx-2'>{comment.content}</p>
-                        <div className="w-full mt-1 mb-2 border-[0.5px] border-lightGray/30"></div>
+                        <p className='text-3xl mt-10 mb-4 mx-2'>{comment.content}</p>
+                        <div className="w-full mt-1 mb-2 border-[2px] border-lightGray/30"></div>
                     </div>
                 ))
             ) : (<></>)}
