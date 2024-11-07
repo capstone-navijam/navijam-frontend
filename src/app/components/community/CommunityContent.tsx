@@ -1,9 +1,10 @@
 'use client';
+
 import React, {useState} from 'react';
 import CommunityRegister from "@/app/components/community/CommunityRegister";
 import {FaPen} from "react-icons/fa";
 import CommunityList from "@/app/components/community/CommunityList";
-import {useMobile, useTablet} from "@/service/MediaQuery";
+import {useTablet} from "@/service/MediaQuery";
 
 export default function CommunityContent() {
 

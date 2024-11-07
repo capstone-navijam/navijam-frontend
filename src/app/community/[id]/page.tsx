@@ -1,9 +1,7 @@
 'use client'
-import React, {useEffect, useState} from 'react';
+import React from 'react';
 import CommunityDetail from "@/app/components/community/CommunityDetail";
-import {useMobile, useTablet} from "@/service/MediaQuery";
-import CommunityListDetail from "@/app/components/community/CommunityListDetail";
-import {useParams} from "next/navigation";
+import {useTablet} from "@/service/MediaQuery";
 
 export default function CommunityDetailPage() {
     const isTablet = useTablet();

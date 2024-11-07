@@ -1,3 +1,4 @@
+'use client'
 import React, {useCallback} from 'react';
 import {getCookie} from "cookies-next";
 import useInput from '@/service/useInput';

@@ -1,3 +1,4 @@
+'use client'
 import {getCookie} from "cookies-next";
 
 export interface CommunityListProps {
@@ -8,6 +9,8 @@ export interface CommunityListProps {
     title: string,
     content: string,
     memberId: string,
+    liked: boolean,
+    likeCount: number,
 }
 
 export default async function CommunityListAll(): Promise<CommunityListProps[]> {
@@ -33,6 +36,8 @@ export default async function CommunityListAll(): Promise<CommunityListProps[]> 
             title: item.title,
             content: item.content,
             memberId: item.memberId,
+            liked: item.liked,
+            likeCount: item.likeCount,
         }))
     }
 

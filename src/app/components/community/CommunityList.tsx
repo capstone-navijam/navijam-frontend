@@ -1,11 +1,13 @@
+'use client';
+
 import React, {useEffect, useState} from 'react';
 import CommunityListAll, {CommunityListProps} from "@/app/components/community/CommunityListAll";
 import {useRouter} from "next/navigation";
 import Pagination from "@mui/material/Pagination";
 import Image from "next/image";
-import {CiHeart} from 'react-icons/ci';
 import {FaRegCommentAlt, FaRegHeart} from "react-icons/fa";
-import {useMobile, useTablet} from "@/service/MediaQuery";
+import {useTablet} from "@/service/MediaQuery";
+import CommunityLikesCount from "@/app/components/community/CommunityLikesCount";
 
 export default function CommunityList() {
     const isTablet = useTablet();
@@ -58,10 +60,10 @@ export default function CommunityList() {
                                 </div>
                             </div>
                             <p className="text-yellow-1 text-xl mt-2">{community.categories.join(', ')}</p>
-                            <p className="text-2xl truncate mt-4 whitespace-pre-wrap overflow-hidden h-[120px]">{community.content}</p> {/* 긴 내용은 잘라냅니다 */}
+                            <p className="text-2xl truncate mt-4 whitespace-pre-wrap overflow-hidden h-[125px]">{community.content}</p> {/* 긴 내용은 잘라냅니다 */}
 
-                            <div className='absolute bottom-4 left-4 flex flex-row gap-4 text-3xl'>
-                                <FaRegHeart/>
+                            <div className='absolute bottom-4 left-4 flex flex-row gap-4 text-2xl'>
+                                <CommunityLikesCount communityId={community.id} initialLiked={community.liked} initialLikeCount={community.likeCount} />
                                 <FaRegCommentAlt/>
                             </div>
                         </div>
@@ -79,9 +81,9 @@ export default function CommunityList() {
                 <div className={`grid grid-cols-2 justify-center w-[80%] mx-auto mt-10 gap-16`}>
                     {currentCommunities.map((community, index) => (
                         <div key={community.id}
-                             onClick={() => handleDetailClick(community.id)}
                              className="relative border-2 border-yellow-6 rounded-3xl p-4 cursor-pointer w-full h-[400px]">
-                            <div className='flex flex-row items-center mt-2 justify-between'>
+                            <div className='flex flex-row items-center mt-2 justify-between'
+                                 onClick={() => handleDetailClick(community.id)}>
                                 <p className="font-bold text-4xl">{community.title}</p>
                                 <div className='flex flex-row gap-2'>
                                     <p className='text-2xl '>{community.nickname}</p>
@@ -93,7 +95,7 @@ export default function CommunityList() {
                             <p className="text-3xl truncate mt-4 whitespace-pre-wrap overflow-hidden h-[225px]">{community.content}</p> {/* 긴 내용은 잘라냅니다 */}
 
                             <div className='absolute bottom-4 left-4 flex flex-row gap-4 text-3xl'>
-                                <FaRegHeart/>
+                                <CommunityLikesCount communityId={community.id} initialLiked={community.liked} initialLikeCount={community.likeCount} />
                                 <FaRegCommentAlt/>
                             </div>
                         </div>
