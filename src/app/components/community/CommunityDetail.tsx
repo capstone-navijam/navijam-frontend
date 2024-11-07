@@ -5,9 +5,11 @@ import {useParams, useRouter} from "next/navigation";
 import Image from 'next/image'
 import {getCookie} from "cookies-next";
 import Swal from "sweetalert2";
-import {useMobile, useTablet} from "@/service/MediaQuery";
+import {useTablet} from "@/service/MediaQuery";
 import CommunityCommentsRegister from "@/app/components/CommunityComments/CommunityCommentsRegister";
 import CommunityCommentsDetail from "@/app/components/CommunityComments/CommunityCommentsDetail";
+import {FaHeart, FaRegHeart} from "react-icons/fa6";
+import CommunityLikesCount from "@/app/components/community/CommunityLikesCount";
 
 
 export default function CommunityDetail() {
@@ -96,7 +98,13 @@ export default function CommunityDetail() {
                 <div className="w-[20%] border-[4px] border-yellow-6"></div>
 
                 <div className='flex flex-row justify-between'>
-                    <h1 className='text-4xl mt-4 font-semibold overflow-hidden text-ellipsis whitespace-nowrap'>{community.title}</h1>
+                    <div className='flex flex-row gap-4'>
+                        <h1 className='text-4xl mt-4 font-semibold overflow-hidden text-ellipsis whitespace-nowrap'>{community.title}</h1>
+                        <div className='flex flec-row items-end gap-2 text-2xl'>
+                            <CommunityLikesCount communityId={community.id} initialLiked={community.liked}
+                                                 initialLikeCount={community.likeCount}/>
+                        </div>
+                    </div>
                     <div className='flex flex-row items-end gap-4'>
                         <p className='text-3xl'>{community.nickname}</p>
                         <Image src={community.profile} alt="Profile" width={100} height={100}
@@ -133,17 +141,23 @@ export default function CommunityDetail() {
             </section>
 
             <section className='w-[95%] mx-auto mt-10'>
-                <h1 className='text-4xl font-semibold'>댓글 <span className='text-yellow-2'>0</span>개가 달렸어요.</h1>
-                <div className='border-2 h-[420px] mt-2'>
-
-                </div>
+                <h1 className='text-4xl mb-4'>댓글 <span className='text-yellow-6'>0</span>개가 달렸어요.</h1>
+                <CommunityCommentsRegister communityId={community.id}/>
+                <CommunityCommentsDetail id={community.memberId} nickname={community.nickname}
+                                         profile={community.profile} content={community.profile}
+                                         timestamp={community.timestamp} communityId={community.id}/>
             </section>
         </>) : (<>
             <section className='w-[80%] mx-auto mt-20'>
                 <div className="w-[10%] border-[4px] border-yellow-6"></div>
 
                 <div className='flex flex-row justify-between'>
-                    <h1 className='text-6xl mt-4 font-semibold'>{community.title}</h1>
+                    <div className='flex flex-row gap-4'>
+                        <h1 className='text-6xl mt-4 font-semibold'>{community.title}</h1>
+                        <div className='flex flec-row items-end gap-2 text-4xl'>
+                            <CommunityLikesCount communityId={community.id} initialLiked={community.liked} initialLikeCount={community.likeCount} />
+                        </div>
+                    </div>
                     <div className='flex flex-row items-end gap-4'>
                         <p className='text-4xl'>{community.nickname}</p>
                         <Image src={community.profile} alt="Profile" width={100} height={100}
@@ -152,6 +166,7 @@ export default function CommunityDetail() {
                 </div>
                 <div className='flex flex-row justify-between'>
                     <p className='text-4xl text-yellow-2 font-bold mt-2'>{community.categories.join(', ')}</p>
+
                     <p className='items-end text-2xl mt-1'>{community.timestamp}</p>
                 </div>
                 <p className='mt-8 text-3xl h-[480px]'>{community.content}</p>
@@ -181,8 +196,10 @@ export default function CommunityDetail() {
 
             <section className='w-[80%] mx-auto mt-10'>
                 <h1 className='text-5xl mb-4'>댓글 <span className='text-yellow-6'>0</span>개가 달렸어요.</h1>
-                <CommunityCommentsDetail id={community.memberId} nickname={community.nickname} profile={community.profile} content={community.profile} timestamp={community.timestamp} communityId={community.id} />
                 <CommunityCommentsRegister communityId={community.id}/>
+                <CommunityCommentsDetail id={community.memberId} nickname={community.nickname}
+                                         profile={community.profile} content={community.profile}
+                                         timestamp={community.timestamp} communityId={community.id}/>
             </section>
         </>)}
 

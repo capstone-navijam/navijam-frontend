@@ -42,7 +42,7 @@ export default function CommunityRegister() {
     }
 
 
-    const handlesubmit = async (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault();
 
         const formData = {
@@ -98,7 +98,7 @@ export default function CommunityRegister() {
     return (
         <>
             {showCommunityContent ? (<CommunityContent/>) : (
-                <form onSubmit={handlesubmit}>
+                <form onSubmit={handleSubmit}>
                     <div className='mt-14 rounded-lg mx-auto border-yellow-6 border-2 h-[45%] w-[80%]'>
                         {/* 제목 */}
                         <input

@@ -1,3 +1,4 @@
+'use client'
 import {getCookie} from "cookies-next";
 
 export interface CommunityListDetailProps {
@@ -9,6 +10,8 @@ export interface CommunityListDetailProps {
     content: string;
     timestamp: string;
     memberId: string;
+    liked: boolean,
+    likeCount: number,
 }
 
 export default async function CommunityListDetail(id: bigint): Promise<CommunityListDetailProps | null> {
@@ -36,6 +39,8 @@ export default async function CommunityListDetail(id: bigint): Promise<Community
                 content: result.data.content,
                 memberId: result.data.memberId,
                 timestamp: result.data.timestamp,
+                liked: result.data.liked,
+                likeCount: result.data.likeCount,
             };
         } else {
             console.error(`응답 실패`);
