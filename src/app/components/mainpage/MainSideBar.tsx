@@ -74,19 +74,19 @@ export default function MainSideBar() {
                     <Link href='/chat' className='flex flex-col items-center'>
                         <MdOutlineNoteAlt
                             className='text-yellow-3 text-6xl border-2 rounded-full border-yellow-3 p-2 hover:bg-yellow-3 hover:scale-105 hover:text-white'/>
-                        <p className='text-sm'>나비 Story</p>
+                        <p className='text-sm'>실시간상담</p>
                     </Link>
                     <hr className="border-0 border-l-2 border-dotted h-5 mx-auto border-yellow-3"/>
-                    <Link href='/counselors' className='flex flex-col items-center -mx-2'>
+                    <Link href='/listeners' className='flex flex-col items-center -mx-2'>
                         <MdOutlineSummarize
                             className='text-yellow-3 text-6xl border-2 rounded-full border-yellow-3 p-2 hover:bg-yellow-3 hover:scale-105 hover:text-white'/>
                         <p className='text-sm'>상담사 리스트</p>
                     </Link>
                     <hr className="border-0 border-l-2 border-dotted h-5 mx-auto border-yellow-3"/>
-                    <Link href='/todayword' className='flex flex-col items-center'>
+                    <Link href='/mypage' className='flex flex-col items-center'>
                         <MdCreate
                             className='text-yellow-3 text-6xl border-2 rounded-full border-yellow-3 p-2 hover:bg-yellow-3 hover:scale-105 hover:text-white'/>
-                        <p className='text-sm'>오늘 한 줄</p>
+                        <p className='text-sm'>마이페이지</p>
                     </Link>
                 </div>
             </aside>
