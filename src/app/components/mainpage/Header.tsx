@@ -62,7 +62,12 @@ export default function Header({nickname, status, role, profile}: HeaderProps) {
                                 <div className="flex flex-col items-center w-full">
                                     <div className="flex justify-between items-center w-full">
                                         <Link href='/'>
-                                            <Image src='/images/TextLogo.png' alt="icon" width={100} height={100} priority/>
+                                            <Image  src='/images/TextLogo.png'
+                                                    alt="icon"
+                                                    width={150}
+                                                    height={150}
+                                                    priority
+                                                    style={{ width: 'auto', height: 'auto' }} />
                                         </Link>
                                         <button onClick={toggleNav} className="text-4xl">
                                             <PiListBold/>
