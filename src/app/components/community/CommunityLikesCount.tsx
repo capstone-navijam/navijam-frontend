@@ -35,7 +35,7 @@ export default function CommunityLikesCount({ communityId, initialLiked, initial
     };
 
     return (
-        <div className="flex flex-row gap-1 -mt-1">
+        <div className="flex flex-row gap-1 -mt-1 text-yellow-2">
             <button onClick={handleSubmit} style={{ background: 'none', border: 'none', cursor: 'pointer' }}>
                 {liked ? <FaHeart /> : <FaRegHeart />}
             </button>

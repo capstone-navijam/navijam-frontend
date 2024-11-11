@@ -39,7 +39,7 @@ export default function ComfortCommentsDetail({consoleId, onCommentCount}) {
                             </div>
                             <p className={`${isTablet ? 'text-lg' : 'text-xl'} mt-1`}>{comment.timestamp}</p>
                         </div>
-                        <p className={`${isTablet ? 'text-xl' : 'text-3xl'} mt-8 mb-4 mx-2`}>{comment.content}</p>
+                        <p className={`${isTablet ? 'text-xl' : 'text-3xl'} mt-8 mb-4 mx-2 whitespace-pre-wrap leading-normal `}>{comment.content}</p>
                         <div className="w-full mt-1 mb-2 border-[0.5px] border-lightGray/30"></div>
                     </div>
                 ))

@@ -61,19 +61,20 @@ export default function MainCommunity() {
                         {mainCommunity.map((community) => (
                             <div key={community.id}
                                  onClick={() => handleDetailClick(community.id)}
-                                 className='flex flex-col border-4 w-full h-[300px] rounded-3xl border-yellow-2 p-2'
+                                 className='flex flex-col border-4 w-full h-[320px] rounded-3xl border-yellow-2 p-2 overflow-hidden'
                             >
                                 <div className='flex justify-between items-center'>
-                                    <div className='flex flex-row gap-2 '>
+                                    <div className='flex flex-row gap-2'>
                                         <p className='text-4xl'>{community.title}</p>
                                         <p className='text-2xl text-yellow-2 content-end'>{community.categories.join(', ')}</p>
                                     </div>
                                     <Image src={community.profile} alt="Profile Image" width={100} height={100}
-                                           className="rounded-full w-[50px] h-[50px] "/>
+                                           className="rounded-full w-[50px] h-[50px]"/>
                                 </div>
                                 <div className="w-full mt-2 mb-2 border-[2px] border-lightGray/30"></div>
-                                <p className='whitespace-pre-wrap h-[200px] text-3xl mt-2'>{community.content}</p>
+                                <p className='whitespace-pre-wrap leading-normal h-[200px] text-3xl mt-10 overflow-hidden'>{community.content}</p>
                             </div>
+
                         ))}
                     </div>
                 </div>
@@ -121,7 +122,7 @@ export default function MainCommunity() {
                                         <Image src={community.profile} alt="Profile Image" width={100} height={100}
                                                className="rounded-full w-[50px] h-[50px] -mt-4"/>
                                     </div>
-                                    <p className='whitespace-pre-wrap h-[300px] text-3xl mt-2'>{community.content}</p>
+                                    <p className='whitespace-pre-wrap leading-normal h-[300px] text-3xl mt-10'>{community.content}</p>
                                 </div>
                             ))}
                         </div>

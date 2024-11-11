@@ -128,7 +128,7 @@ export default function ComfortMemberDetail() {
                         <div className="mx-auto w-full border-[1px] border-lightGray/30 mt-2 mb-2"></div>
 
                         <div className='mt-6 mx-4'>
-                            <p className='whitespace-pre-wrap text-xl'>{comfort.content}</p>
+                            <p className='whitespace-pre-wrap leadng-normal text-xl'>{comfort.content}</p>
                         </div>
 
                         {role === "MEMBER" && (
@@ -195,7 +195,7 @@ export default function ComfortMemberDetail() {
                         <div className="mx-auto w-full border-[1px] border-lightGray/30 mt-2 mb-2"></div>
 
                         <div className='mt-6 mx-4'>
-                            <p className='whitespace-pre-wrap text-3xl'>{comfort.content}</p>
+                            <p className='whitespace-pre-wrap leading-normal text-3xl'>{comfort.content}</p>
                         </div>
 
                         {role === "MEMBER" && (

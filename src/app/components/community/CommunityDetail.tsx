@@ -115,7 +115,7 @@ export default function CommunityDetail() {
                     <p className='text-2xl text-yellow-2 font-bold mt-2'>{community.categories.join(', ')}</p>
                     <p className='items-end text-xl mt-1'>{community.timestamp}</p>
                 </div>
-                <p className='mt-8 text-2xl h-[480px]'>{community.content}</p>
+                <p className='mt-8 whitespace-pre-wrap leading-normal text-3xl h-[480px]'>{community.content}</p>
 
                 {/* 로그인된 사용자와 작성자가 같을 경우에만 수정/삭제 버튼 표시 */}
                 {loggedInUser === community.nickname && (
@@ -142,14 +142,16 @@ export default function CommunityDetail() {
 
             <section className='w-[95%] mx-auto mt-10'>
                 <h1 className='text-4xl mb-4'>댓글 <span className='text-yellow-6'>0</span>개가 달렸어요.</h1>
-                <CommunityCommentsRegister communityId={community.id}/>
                 <CommunityCommentsDetail id={community.memberId} nickname={community.nickname}
                                          profile={community.profile} content={community.profile}
                                          timestamp={community.timestamp} communityId={community.id}/>
+                <div className="w-full mt-1 mb-4 border-[2px] border-lightGray/30"></div>
+                <CommunityCommentsRegister communityId={community.id}/>
+
             </section>
         </>) : (<>
             <section className='w-[80%] mx-auto mt-20'>
-                <div className="w-[10%] border-[4px] border-yellow-6"></div>
+            <div className="w-[10%] border-[4px] border-yellow-6"></div>
 
                 <div className='flex flex-row justify-between'>
                     <div className='flex flex-row gap-4'>
@@ -196,10 +198,12 @@ export default function CommunityDetail() {
 
             <section className='w-[80%] mx-auto mt-10'>
                 <h1 className='text-5xl mb-4'>댓글 <span className='text-yellow-6'>0</span>개가 달렸어요.</h1>
-                <CommunityCommentsRegister communityId={community.id}/>
                 <CommunityCommentsDetail id={community.memberId} nickname={community.nickname}
                                          profile={community.profile} content={community.profile}
                                          timestamp={community.timestamp} communityId={community.id}/>
+                <div className="w-full mt-1 mb-4 border-[2px] border-lightGray/30"></div>
+                <CommunityCommentsRegister communityId={community.id}/>
+
             </section>
         </>)}
 

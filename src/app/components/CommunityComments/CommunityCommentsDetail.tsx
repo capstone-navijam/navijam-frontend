@@ -1,12 +1,15 @@
 'use client'
-import React, { useEffect, useState } from 'react';
+import React, {useEffect, useState} from 'react';
 import CommunityCommentsList, {
     CommunityCommentsDetailProps
 } from "@/app/components/CommunityComments/CommunityCommentsList";
 import Image from "next/image";
+import {useTablet} from "@/service/MediaQuery";
 
 
-export default function CommunityCommentsDetail({ communityId }: CommunityCommentsDetailProps) {
+export default function CommunityCommentsDetail({communityId}: CommunityCommentsDetailProps) {
+
+    const isTablet = useTablet();
     const [comments, setComments] = useState<CommunityCommentsDetailProps[]>([]);
 
     useEffect(() => {
@@ -24,23 +27,48 @@ export default function CommunityCommentsDetail({ communityId }: CommunityCommen
     }, [communityId]);
 
     return (
-        <div className='mt-8 flex flex-col gap-10 mb-10'>
-            {comments.length > 0 ? (
-                comments.map(comment => (
-                    <div key={comment.id}>
-                        <div className='flex flex-row justify-between mx-2 text-center items-center'>
-                            <div className='flex flex-row gap-2 items-center text-center'>
-                                <p className='text-4xl'>{comment.nickname}</p>
-                                <Image src={comment.profile} alt="Profile Image" width={30} height={30}
-                                       className='mt-1 rounded-full object-cover w-[60px] h-[60px]'/>
-                            </div>
-                            <p className='text-xl mt-1'>{comment.timestamp}</p>
-                        </div>
-                        <p className='text-3xl mt-10 mb-4 mx-2'>{comment.content}</p>
-                        <div className="w-full mt-1 mb-2 border-[2px] border-lightGray/30"></div>
-                    </div>
-                ))
-            ) : (<></>)}
-        </div>
+        <>
+            {isTablet ? (<>
+                <div className='mt-8 flex flex-col gap-10 mb-10'>
+                    {comments.length > 0 ? (
+                        comments.map(comment => (
+                            <>
+                                <div key={comment.id} className='border-2 rounded-3xl h-auto p-2'>
+                                    <div className='flex flex-row justify-between mx-2 text-center items-center'>
+                                        <div className='flex flex-row gap-2 items-center text-center'>
+                                            <p className='text-3xl'>{comment.nickname}</p>
+                                            <Image src={comment.profile} alt="Profile Image" width={30} height={30}
+                                                   className='mt-1 rounded-full object-cover w-[45px] h-[45px]'/>
+                                        </div>
+                                        <p className='text-xl mt-1'>{comment.timestamp}</p>
+                                    </div>
+                                    <p className='text-3xl leading-normal whitespace-pre-wrap mt-10 mb-10 mx-2'>{comment.content}</p>
+                                </div>
+                            </>
+                        ))
+                    ) : (<></>)}
+                </div>
+            </>) : (<>
+                <div className='mt-8 flex flex-col gap-10 mb-10'>
+                    {comments.length > 0 ? (
+                        comments.map(comment => (
+                            <>
+                                <div key={comment.id} className='border-2 rounded-3xl h-auto p-2'>
+                                    <div className='flex flex-row justify-between mx-2 text-center items-center'>
+                                        <div className='flex flex-row gap-2 items-center text-center'>
+                                            <p className='text-4xl'>{comment.nickname}</p>
+                                            <Image src={comment.profile} alt="Profile Image" width={30} height={30}
+                                                   className='mt-1 rounded-full object-cover w-[60px] h-[60px]'/>
+                                        </div>
+                                        <p className='text-xl mt-1'>{comment.timestamp}</p>
+                                    </div>
+                                    <p className='text-4xl leading-normal whitespace-pre-wrap mt-10 mb-10 mx-2'>{comment.content}</p>
+                                </div>
+                            </>
+                        ))
+                    ) : (<></>)}
+                </div>
+            </>)}
+        </>
     );
 }
