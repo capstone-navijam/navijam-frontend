@@ -64,7 +64,7 @@ export default function CommunityList() {
 
                             <div className='absolute bottom-4 left-4 flex flex-row gap-4 text-2xl'>
                                 <CommunityLikesCount communityId={community.id} initialLiked={community.liked} initialLikeCount={community.likeCount} />
-                                <FaRegCommentAlt/>
+                                <FaRegCommentAlt className='text-yellow-2'/>
                             </div>
                         </div>
                     ))}
@@ -96,7 +96,7 @@ export default function CommunityList() {
 
                             <div className='absolute bottom-4 left-4 flex flex-row gap-4 text-3xl'>
                                 <CommunityLikesCount communityId={community.id} initialLiked={community.liked} initialLikeCount={community.likeCount} />
-                                <FaRegCommentAlt/>
+                                <FaRegCommentAlt className='text-yellow-2'/>
                             </div>
                         </div>
                     ))}

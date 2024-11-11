@@ -138,8 +138,8 @@ export default function ComfortListenerDetail({consoles}: Props) {
 
                                     <div className="mx-auto w-full border-[1px] border-lightGray/30 mt-2 mb-2"></div>
 
-                                    <div className={`mx-1 mt-4 whitespace-pre-wrap ${isTablet ? 'text-xl' : 'text-3xl'}`}
-                                         style={{lineHeight: '1.8'}}>{console.content}</div>
+                                    <div className={`mx-1 mt-4 whitespace-pre-wrap leading-normal ${isTablet ? 'text-xl' : 'text-3xl'}`}
+                                       >{console.content}</div>
                                 </div>
 
                                 <div className='mx-1 flex flex-row gap-6 justify-between mt-10 text-center items-center'>
