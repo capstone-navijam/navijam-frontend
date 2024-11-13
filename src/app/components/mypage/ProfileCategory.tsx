@@ -51,15 +51,15 @@ export default function ProfileCategory() {
                                 )}
                             </li>
                             <li
-                                className={`text-5xl cursor-pointer ${selectedMenu === 'community' ? 'text-black' : 'text-gray-400'}`}
-                                onClick={() => handleMenuClick('community')}>
+                                className={`text-5xl cursor-pointer ${selectedMenu === 'Community' ? 'text-black' : 'text-gray-400'}`}
+                                onClick={() => handleMenuClick('Community')}>
                                 커뮤니티
-                                {selectedMenu === 'community' && (
+                                {selectedMenu === 'Community' && (
                                     <>
                                     <span>
                                         <div className="w-[180px] mt-1.5 border-[2px] border-black"></div>
                                     </span>
-                                        {selectedMenu === 'community' && <MyCommunity/>}
+                                        {selectedMenu === 'Community' && <MyCommunity/>}
                                     </>
                                 )}
                             </li>
@@ -115,10 +115,10 @@ export default function ProfileCategory() {
                                 )}
                             </li>
                             <li
-                                className={`text-5xl cursor-pointer ${selectedMenu === 'community' ? 'text-black' : 'text-gray-400'}`}
-                                onClick={() => handleMenuClick('community')}>
+                                className={`text-5xl cursor-pointer ${selectedMenu === 'Community' ? 'text-black' : 'text-gray-400'}`}
+                                onClick={() => handleMenuClick('Community')}>
                                 커뮤니티
-                                {selectedMenu === 'community' && (
+                                {selectedMenu === 'Community' && (
                                     <span>
                                     <div className="w-[40%] mt-1.5 border-[2px] border-black"></div>
                                 </span>
@@ -140,7 +140,7 @@ export default function ProfileCategory() {
                     {/* 선택된 메뉴에 따라 MyProfile 컴포넌트가 표시됨 */}
                     {selectedMenu === 'profile' && <MyProfile/>}
                     {selectedMenu === 'Comfort' && <MyComfort/>}
-                    {selectedMenu === 'community' && <MyCommunity/>}
+                    {selectedMenu === 'Community' && <MyCommunity/>}
                     {selectedMenu === 'counseling' && <MyCounseling/>}
 
                     {/* 다른 메뉴를 선택할 경우 다른 컴포넌트나 내용을 표시할 수 있음 */}

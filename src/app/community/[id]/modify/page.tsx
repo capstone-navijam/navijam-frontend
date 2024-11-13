@@ -1,7 +1,7 @@
 'use client'
 
 import React from 'react';
-import CommunityModify from "@/app/components/community/CommunityModify";
+import CommunityModify from "@/app/components/Community/CommunityModify";
 
 export default function CommunityModifyPage() {
     return (<>

@@ -29,14 +29,14 @@ export default function MultiCarousel() {
             id: 3,
             description: "마음의 무거운 짐들은 내려놓고\n세상을 자유롭게 날아봐\n",
             button: '커뮤니티',
-            path: 'community',
+            path: 'Community',
             image: '/images/carouselImage3.svg',
         },
         {
             id: 4,
             description: "걱정도 좀 덜 하고, 노력도 좀 덜 하고,\n후회도 좀 덜 하면 좋겠다.",
             button: '1:1상담',
-            path: 'chat',
+            path: 'Chat',
             image: '/images/carouselImage4.svg',
         },
         {

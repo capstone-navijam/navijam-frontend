@@ -2,7 +2,7 @@
 
 import React from 'react';
 import {FaPen} from "react-icons/fa";
-import CommunityList from "@/app/components/community/CommunityList";
+import CommunityList from "@/app/components/Community/CommunityList";
 import {useTablet} from "@/service/MediaQuery";
 import {useRouter} from "next/navigation";
 

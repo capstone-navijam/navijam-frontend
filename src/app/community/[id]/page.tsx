@@ -1,6 +1,6 @@
 'use client'
 import React from 'react';
-import CommunityDetail from "@/app/components/community/CommunityDetail";
+import CommunityDetail from "@/app/components/Community/CommunityDetail";
 import {useTablet} from "@/service/MediaQuery";
 
 export default function CommunityDetailPage() {

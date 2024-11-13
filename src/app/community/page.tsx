@@ -1,7 +1,7 @@
 'use client';
 
 import React, {useState} from 'react';
-import CommunityContent from "@/app/components/community/CommunityContent";
+import CommunityContent from "@/app/components/Community/CommunityContent";
 import {useMobile, useTablet} from "@/service/MediaQuery";
 
 export default function CommunityPage() {
