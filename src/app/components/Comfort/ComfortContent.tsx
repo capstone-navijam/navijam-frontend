@@ -1,11 +1,11 @@
 'use client'
 
 import React, {useEffect, useState} from 'react';
-import ComfortMemberRegister from "@/app/components/comfort/ComfortMemberRegister";
+import ComfortMemberRegister from "@/app/components/Comfort/ComfortMemberRegister";
 import {FaPen, FaSortNumericDown, FaSortNumericUp} from "react-icons/fa";
-import {ComfortListAll, ComfortListProps} from "@/app/components/comfort/ComfortListAll";
+import {ComfortListAll, ComfortListProps} from "@/app/components/Comfort/ComfortListAll";
 import {useRouter} from 'next/navigation';
-import ComfortSearch from "@/app/components/comfort/ComfortSearch";
+import ComfortSearch from "@/app/components/Comfort/ComfortSearch";
 import Pagination from '@mui/material/Pagination';
 import {useMobile, useTablet} from "@/service/MediaQuery";
 

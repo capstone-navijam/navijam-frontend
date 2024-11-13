@@ -137,8 +137,9 @@ export default function SignUpPage() {
                             </div>
                             <div className="gap-16 flex flex-col">
                                 <div className="flex flex-col items-center gap-2">
-                                    <ImageRegister ImageUrl={handleImageUpload} />
-                                    <label htmlFor="profileImage" className="text-4xl text-center font-semibold w-fit">프로필 설정</label>
+                                    <ImageRegister ImageUrl={handleImageUpload}/>
+                                    <label htmlFor="profileImage" className="text-4xl text-center font-semibold w-fit">프로필
+                                        설정</label>
                                 </div>
 
                                 <div className="flex flex-col gap-12 w-full">
@@ -156,17 +157,20 @@ export default function SignUpPage() {
                                                     {...email}
                                                     placeholder="아이디를 입력해주세요"
                                                 />
-                                                <button type="button" onClick={handleCheckEmail} className="border p-4 text-2xl rounded border-yellow-6">
+                                                <button type="button" onClick={handleCheckEmail}
+                                                        className="border p-4 text-2xl rounded border-yellow-6  hover:bg-yellow-6 hover:text-white">
                                                     중복 확인
                                                 </button>
                                             </div>
-                                            <span className={`${emailValid === false ? 'text-red-500 text-2xl' : 'text-green-500 text-2xl'}`}>{emailMessage}</span>
+                                            <span
+                                                className={`${emailValid === false ? 'text-red-500 text-2xl' : 'text-green-500 text-2xl'}`}>{emailMessage}</span>
                                         </div>
                                     </div>
                                 </div>
 
                                 <div className="flex items-center">
-                                    <label htmlFor="userName" className="text-2xl font-semibold w-40 text-wrap">닉네임<span className="text-red-500">*</span></label>
+                                    <label htmlFor="userName" className="text-2xl font-semibold w-40 text-wrap">닉네임<span
+                                        className="text-red-500">*</span></label>
                                     <div className="w-full">
                                         <div className="flex items-center gap-2">
                                             <input
@@ -178,16 +182,20 @@ export default function SignUpPage() {
                                                 title="닉네임을 2~8글자로 입력해주세요."
                                                 placeholder="닉네임을 입력해주세요"
                                             />
-                                            <button type="button" onClick={handleCheckNickname} className="border p-4 text-2xl rounded border-yellow-6">
+                                            <button type="button" onClick={handleCheckNickname}
+                                                    className="border p-4 text-2xl rounded border-yellow-6  hover:bg-yellow-6 hover:text-white ">
                                                 중복 확인
                                             </button>
                                         </div>
-                                        <span className={`${nicknameValid === false ? 'text-red-500 text-2xl' : 'text-green-500 text-2xl'}`}>{nicknameMessage}</span>
+                                        <span
+                                            className={`${nicknameValid === false ? 'text-red-500 text-2xl' : 'text-green-500 text-2xl'}`}>{nicknameMessage}</span>
                                     </div>
                                 </div>
 
                                 <div className="flex items-center">
-                                    <label htmlFor="password" className="text-2xl font-semibold w-40 text-wrap">비밀번호<span className="text-red-500">*</span></label>
+                                    <label htmlFor="password"
+                                           className="text-2xl font-semibold w-40 text-wrap">비밀번호<span
+                                        className="text-red-500">*</span></label>
                                     <input
                                         id="password"
                                         className="block border border-yellow-6 p-5 w-full rounded placeholder:text-lg"
@@ -200,7 +208,8 @@ export default function SignUpPage() {
                                 </div>
 
                                 <div className="flex items-center">
-                                    <label htmlFor="checkPassword" className="text-2xl font-semibold w-40 text-wrap">비밀번호<br/>재확인<span className="text-red-500">*</span></label>
+                                    <label htmlFor="checkPassword" className="text-2xl font-semibold w-40 text-wrap">비밀번호<br/>재확인<span
+                                        className="text-red-500">*</span></label>
                                     <input
                                         id="checkPassword"
                                         className="block border border-yellow-6 p-5 w-full rounded placeholder:text-lg"
@@ -210,7 +219,9 @@ export default function SignUpPage() {
                                     />
                                 </div>
                             </div>
-                            <button className="w-full mt-12 bg-yellow-400 text-center h-24 rounded text-black text-5xl font-[Tenada] hover:scale-105 hover:bg-yellow-500 items-center" type="submit">
+                            <button
+                                className="w-full mt-12 bg-yellow-400 text-center h-24 rounded text-black text-5xl font-[Tenada] hover:scale-105 hover:bg-yellow-500 items-center"
+                                type="submit">
                                 가입하기
                             </button>
                         </div>
@@ -218,7 +229,7 @@ export default function SignUpPage() {
                 </form>
             ) : (
                 <form onSubmit={handleSubmit}>
-                    <div className="flex flex-col h-full mt-10 w-[60%] mx-auto text-nowrap">
+                    <div className="flex flex-col h-full mt-10 w-[60%] mx-auto text-nowrap mb-10">
                         <div className="px-6 py-8 rounded border-yellow-6 border-2 shadow-xl text-black w-full">
                             <h2 className="font-semibold text-7xl text-center mb-4">회원가입</h2>
                             <div className="flex flex-col">
@@ -229,8 +240,9 @@ export default function SignUpPage() {
                             </div>
                             <div className="gap-16 flex flex-col">
                                 <div className="flex flex-col items-center gap-2">
-                                    <ImageRegister ImageUrl={handleImageUpload} />
-                                    <label htmlFor="profileImage" className="text-4xl text-center font-semibold w-fit">프로필 설정</label>
+                                    <ImageRegister ImageUrl={handleImageUpload}/>
+                                    <label htmlFor="profileImage" className="text-4xl text-center font-semibold w-fit">프로필
+                                        설정</label>
                                 </div>
 
                                 <div className="flex flex-col gap-12 w-full">
@@ -241,48 +253,55 @@ export default function SignUpPage() {
                                         <div className="w-full">
                                             <div className="flex items-center gap-1">
                                                 <input
-                                                    className="block border border-yellow-6 p-5 w-full rounded placeholder:text-xl"
+                                                    className="block border border-yellow-6 p-5 w-full rounded placeholder:text-xl text-2xl"
                                                     pattern="^[^\s@]{1,50}@[^\s@]{1,50}\S*$"
                                                     title="잘못된 아이디(이메일) 형식입니다. 다시 입력해주세요."
                                                     type="text"
                                                     {...email}
                                                     placeholder="아이디를 입력해주세요"
                                                 />
-                                                <button type="button" onClick={handleCheckEmail} className="border p-4 text-2xl rounded border-yellow-6">
+                                                <button type="button" onClick={handleCheckEmail}
+                                                        className="border p-5 text-2xl rounded border-yellow-6 hover:bg-yellow-6 hover:text-white">
                                                     중복 확인
                                                 </button>
                                             </div>
-                                            <span className={`${emailValid === false ? 'text-red-500 text-2xl' : 'text-green-500 text-2xl'}`}>{emailMessage}</span>
+                                            <span
+                                                className={`${emailValid === false ? 'text-red-500 text-2xl' : 'text-green-500 text-2xl'}`}>{emailMessage}</span>
                                         </div>
                                     </div>
                                 </div>
 
                                 <div className="flex items-center">
-                                    <label htmlFor="userName" className="text-3xl font-semibold w-40 text-wrap">닉네임<span className="text-red-500">*</span></label>
+                                    <label htmlFor="userName" className="text-3xl font-semibold w-40 text-wrap">닉네임<span
+                                        className="text-red-500">*</span></label>
                                     <div className="w-full">
                                         <div className="flex items-center gap-2">
                                             <input
                                                 id="userName"
-                                                className="block border border-yellow-6 p-5 w-full rounded placeholder:text-xl"
+                                                className="block border border-yellow-6 p-5 w-full rounded placeholder:text-xl text-2xl"
                                                 type="text"
                                                 pattern="^[a-zA-Z가-힣]{2,8}$"
                                                 {...nickname}
                                                 title="닉네임을 2~8글자로 입력해주세요."
                                                 placeholder="닉네임을 입력해주세요"
                                             />
-                                            <button type="button" onClick={handleCheckNickname} className="border p-4 text-2xl rounded border-yellow-6">
+                                            <button type="button" onClick={handleCheckNickname}
+                                                    className="border p-5 text-2xl rounded border-yellow-6 hover:bg-yellow-6 hover:text-white">
                                                 중복 확인
                                             </button>
                                         </div>
-                                        <span className={`${nicknameValid === false ? 'text-red-500 text-2xl' : 'text-green-500 text-2xl'}`}>{nicknameMessage}</span>
+                                        <span
+                                            className={`${nicknameValid === false ? 'text-red-500 text-2xl' : 'text-green-500 text-2xl'}`}>{nicknameMessage}</span>
                                     </div>
                                 </div>
 
                                 <div className="flex items-center">
-                                    <label htmlFor="password" className="text-3xl font-semibold w-40 text-wrap">비밀번호<span className="text-red-500">*</span></label>
+                                    <label htmlFor="password"
+                                           className="text-3xl font-semibold w-40 text-wrap">비밀번호<span
+                                        className="text-red-500">*</span></label>
                                     <input
                                         id="password"
-                                        className="block border border-yellow-6 p-5 w-full rounded placeholder:text-xl"
+                                        className="block border border-yellow-6 p-5 w-full rounded placeholder:text-xl text-2xl"
                                         type="password"
                                         pattern="^(?=.*[a-zA-Z])(?=.*[0-9])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]{8,14}$"
                                         title="잘못된 비밀번호 형식입니다. 다시 입력해주세요."
@@ -292,17 +311,20 @@ export default function SignUpPage() {
                                 </div>
 
                                 <div className="flex items-center">
-                                    <label htmlFor="checkPassword" className="text-3xl font-semibold w-40 text-wrap">비밀번호<br/>재확인<span className="text-red-500">*</span></label>
+                                    <label htmlFor="checkPassword" className="text-3xl font-semibold w-40 text-wrap">비밀번호<br/>재확인<span
+                                        className="text-red-500">*</span></label>
                                     <input
                                         id="checkPassword"
-                                        className="block border border-yellow-6 p-5 w-full rounded placeholder:text-xl"
+                                        className="block border border-yellow-6 p-5 w-full rounded placeholder:text-xl text-2xl"
                                         type="password"
                                         {...checkPassword}
                                         placeholder="비밀번호를 다시 입력해주세요"
                                     />
                                 </div>
                             </div>
-                            <button className="w-full mt-12 bg-yellow-400 text-center h-24 rounded text-black text-5xl font-[Tenada] hover:scale-105 hover:bg-yellow-500 items-center" type="submit">
+                            <button
+                                className="w-full mt-12 bg-yellow-400 text-center h-24 rounded text-black text-5xl font-[Tenada] hover:scale-105 hover:bg-yellow-500 items-center"
+                                type="submit">
                                 가입하기
                             </button>
                         </div>

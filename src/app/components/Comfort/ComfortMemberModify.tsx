@@ -1,6 +1,6 @@
 "use client";
 import React, {useCallback, useEffect, useState} from 'react';
-import ComfortListDetail from "@/app/components/comfort/ComfortListlDetail";
+import ComfortListDetail from "@/app/components/Comfort/ComfortListlDetail";
 import {getCookie} from "cookies-next";
 import {useParams, useRouter} from "next/navigation";
 import useInput from '@/service/useInput';

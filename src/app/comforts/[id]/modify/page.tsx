@@ -1,9 +1,9 @@
 "use client";
 
 import React, {useEffect, useState} from 'react';
-import ComfortMemberModify from "@/app/components/comfort/ComfortMemberModify";
+import ComfortMemberModify from "@/app/components/Comfort/ComfortMemberModify";
 import {getCookie} from "cookies-next";
-import ComfortListenerModify from "@/app/components/comfort/ComfortListenerModify";
+import ComfortListenerModify from "@/app/components/Comfort/ComfortListenerModify";
 
 export default function ModifyPage() {
 

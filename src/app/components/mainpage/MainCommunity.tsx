@@ -1,11 +1,12 @@
 'use client';
 import React, {useEffect, useState} from 'react';
 import CommunityListAll, {CommunityListProps} from "@/app/components/community/CommunityListAll";
-import {FaArrowCircleLeft, FaArrowCircleRight} from "react-icons/fa";
+import {FaArrowCircleLeft, FaArrowCircleRight, FaRegCommentAlt} from "react-icons/fa";
 import Carousel from "react-material-ui-carousel";
 import {useRouter} from "next/navigation";
 import Image from 'next/image'
 import {useTablet} from "@/service/MediaQuery";
+import CommunityLikesCount from "@/app/components/community/CommunityLikesCount";
 
 export default function MainCommunity() {
 
@@ -56,16 +57,16 @@ export default function MainCommunity() {
                     ))}
                 </Carousel>
                 <div className='w-[80%] mx-auto mt-12 mb-12'>
-                    <p className='text-4xl font-medium mb-4'>최근 등록된 글</p>
+                    <p className='text-4xl font-medium mb-4'>최근 등록된 커뮤니티</p>
                     <div className='flex flex-col gap-4'>
                         {mainCommunity.map((community) => (
                             <div key={community.id}
                                  onClick={() => handleDetailClick(community.id)}
-                                 className='flex flex-col border-4 w-full h-[320px] rounded-3xl border-yellow-2 p-2 overflow-hidden'
+                                 className='relative flex flex-col border-4 w-full h-[320px] rounded-3xl border-yellow-2 p-2 overflow-hidden'
                             >
                                 <div className='flex justify-between items-center'>
                                     <div className='flex flex-row gap-2'>
-                                        <p className='text-4xl'>{community.title}</p>
+                                        <p className='text-4xl font-bold'>{community.title}</p>
                                         <p className='text-2xl text-yellow-2 content-end'>{community.categories.join(', ')}</p>
                                     </div>
                                     <Image src={community.profile} alt="Profile Image" width={100} height={100}
@@ -73,6 +74,11 @@ export default function MainCommunity() {
                                 </div>
                                 <div className="w-full mt-2 mb-2 border-[2px] border-lightGray/30"></div>
                                 <p className='whitespace-pre-wrap leading-normal h-[200px] text-3xl mt-10 overflow-hidden'>{community.content}</p>
+                                <div className='absolute bottom-4 left-4 flex flex-row gap-4 text-3xl'>
+                                    <CommunityLikesCount communityId={community.id} initialLiked={community.liked}
+                                                         initialLikeCount={community.likeCount}/>
+                                    <FaRegCommentAlt className='text-yellow-2'/>
+                                </div>
                             </div>
 
                         ))}
@@ -102,27 +108,32 @@ export default function MainCommunity() {
                                  onClick={() => handleDetailClick(community.id)}
                             >
                                 <p className='w-[95%] mx-auto overflow-hidden overflow-ellipsis whitespace-nowrap text-white text-2xl'>
-                                    <span className='text-start'>인기있는 사연 👀 | </span>{community.content}</p>
+                                    <span className='text-start text-3xl'>인기있는 사연 👀 | </span>{community.content}</p>
                             </div>
                         ))}
                     </Carousel>
                     <div className='w-[80%] mx-auto mt-12 mb-12'>
-                        <p className='text-5xl font-medium mb-8'>최근 등록된 글</p>
+                        <p className='text-5xl font-medium mb-8'>최근 등록된 커뮤니티</p>
                         <div className='flex flex-row gap-4'>
                             {mainCommunity.map((community) => (
                                 <div key={community.id}
-                                     onClick={() => handleDetailClick(community.id)}
-                                     className='flex flex-col border-4 w-full h-[400px] rounded-3xl border-yellow-2 p-2'
+                                     className='relative flex flex-col border-4 w-full h-[500px] rounded-3xl border-yellow-2 p-2'
                                 >
-                                    <div className='flex justify-between items-center'>
+                                    <div className='flex flex-col'
+                                         onClick={() => handleDetailClick(community.id)}>
                                         <div className='flex flex-col '>
-                                            <p className='text-4xl'>{community.title}</p>
+                                            <Image src={community.profile} alt="Profile Image" width={100} height={100}
+                                                   className="rounded-full w-[50px] h-[50px]"/>
+                                            <p className='text-4xl font-bold'>{community.title}</p>
                                             <p className='text-2xl text-yellow-2'>{community.categories.join(', ')}</p>
                                         </div>
-                                        <Image src={community.profile} alt="Profile Image" width={100} height={100}
-                                               className="rounded-full w-[50px] h-[50px] -mt-4"/>
+                                        <p className='whitespace-pre-wrap leading-normal h-[300px] text-3xl mt-2'>{community.content}</p>
                                     </div>
-                                    <p className='whitespace-pre-wrap leading-normal h-[300px] text-3xl mt-10'>{community.content}</p>
+                                    <div className='absolute bottom-4 left-4 flex flex-row gap-4 text-3xl'>
+                                        <CommunityLikesCount communityId={community.id} initialLiked={community.liked}
+                                                             initialLikeCount={community.likeCount}/>
+                                        <FaRegCommentAlt className='text-yellow-2'/>
+                                    </div>
                                 </div>
                             ))}
                         </div>

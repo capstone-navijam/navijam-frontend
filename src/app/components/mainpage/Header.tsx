@@ -7,7 +7,7 @@ import Image from "next/image";
 import {PiListBold} from "react-icons/pi";  // 토글 아이콘
 import Logout from "@/app/components/mainpage/Logout";
 import HeaderSkeleton from '../SkeletonUI/HeaderSkeleton';
-import {useMobile, usePC, useTablet} from "@/service/MediaQuery";
+import {usePC, useTablet} from "@/service/MediaQuery";
 
 interface HeaderProps {
     nickname: string;
