@@ -1,7 +1,6 @@
 'use client';
 
-import React, {useState} from 'react';
-import CommunityRegister from "@/app/components/community/CommunityRegister";
+import React from 'react';
 import {FaPen} from "react-icons/fa";
 import CommunityList from "@/app/components/community/CommunityList";
 import {useTablet} from "@/service/MediaQuery";
