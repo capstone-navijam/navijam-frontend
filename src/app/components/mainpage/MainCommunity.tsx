@@ -67,7 +67,7 @@ export default function MainCommunity() {
                                 <div className='flex justify-between items-center'>
                                     <div className='flex flex-row gap-2'>
                                         <p className='text-4xl font-bold'>{community.title}</p>
-                                        <p className='text-2xl text-yellow-2 content-end'>{community.categories.join(', ')}</p>
+                                        <p className='text-2xl text-yellow-2 content-end mt-1'>{community.categories.join(', ')}</p>
                                     </div>
                                     <Image src={community.profile} alt="Profile Image" width={100} height={100}
                                            className="rounded-full w-[50px] h-[50px]"/>
@@ -125,7 +125,7 @@ export default function MainCommunity() {
                                             <Image src={community.profile} alt="Profile Image" width={100} height={100}
                                                    className="rounded-full w-[50px] h-[50px]"/>
                                             <p className='text-4xl font-bold'>{community.title}</p>
-                                            <p className='text-2xl text-yellow-2'>{community.categories.join(', ')}</p>
+                                            <p className='text-2xl text-yellow-2 mt-1'>{community.categories.join(', ')}</p>
                                         </div>
                                         <p className='whitespace-pre-wrap leading-normal h-[300px] text-3xl mt-2'>{community.content}</p>
                                     </div>
