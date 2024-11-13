@@ -62,7 +62,7 @@ export default function MainCommunity() {
                         {mainCommunity.map((community) => (
                             <div key={community.id}
                                  onClick={() => handleDetailClick(community.id)}
-                                 className='relative flex flex-col border-4 w-full h-[320px] rounded-3xl border-yellow-2 p-2 overflow-hidden'
+                                 className='relative flex flex-col border-4 w-full h-[380px] rounded-3xl border-yellow-2 p-2 overflow-hidden'
                             >
                                 <div className='flex justify-between items-center'>
                                     <div className='flex flex-row gap-2'>
@@ -73,7 +73,7 @@ export default function MainCommunity() {
                                            className="rounded-full w-[50px] h-[50px]"/>
                                 </div>
                                 <div className="w-full mt-2 mb-2 border-[2px] border-lightGray/30"></div>
-                                <p className='whitespace-pre-wrap leading-normal h-[200px] text-3xl mt-10 overflow-hidden'>{community.content}</p>
+                                <p className='whitespace-pre-wrap leading-normal h-[220px] text-3xl overflow-hidden mt-1'>{community.content}</p>
                                 <div className='absolute bottom-4 left-4 flex flex-row gap-4 text-3xl'>
                                     <CommunityLikesCount communityId={community.id} initialLiked={community.liked}
                                                          initialLikeCount={community.likeCount}/>
@@ -127,7 +127,7 @@ export default function MainCommunity() {
                                             <p className='text-4xl font-bold'>{community.title}</p>
                                             <p className='text-2xl text-yellow-2 mt-1'>{community.categories.join(', ')}</p>
                                         </div>
-                                        <p className='whitespace-pre-wrap leading-normal h-[300px] text-3xl mt-2'>{community.content}</p>
+                                        <p className='whitespace-pre-wrap leading-normal h-[278px] text-3xl mt-2 overflow-hidden'>{community.content}</p>
                                     </div>
                                     <div className='absolute bottom-4 left-4 flex flex-row gap-4 text-3xl'>
                                         <CommunityLikesCount communityId={community.id} initialLiked={community.liked}
