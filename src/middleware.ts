@@ -21,16 +21,17 @@ export default function middleware(request: NextRequest) {
         return NextResponse.redirect(new URL('/auth/login', request.url));
     }
 
-    {/* 비로그인 시, 위로받기 기능 제한 */}
+    {/* 비로그인 시, 커뮤니티 게시글 등록 기능 제한 */}
     if (!token && pathname.startsWith(`/community/register`)) {
         return NextResponse.redirect(new URL('/auth/login', request.url));
     }
 
-    {/* 비로그인 시, 위로받기 기능 제한 */}
+    {/* 비로그인 시, 마이페이지 기능 제한 */}
     if (!token && pathname.startsWith(`/mypage`)) {
         return NextResponse.redirect(new URL('/auth/login', request.url));
     }
 
+    {/* 비로그인 시, 실시간상담 기능 제한 */}
     if (!token && pathname.startsWith(`/chat`)) {
         return NextResponse.redirect(new URL('/auth/login', request.url));
     }

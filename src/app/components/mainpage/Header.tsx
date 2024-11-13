@@ -62,11 +62,12 @@ export default function Header({nickname, status, role, profile}: HeaderProps) {
                                 <div className="flex flex-col items-center w-full">
                                     <div className="flex justify-between items-center w-full">
                                         <Link href='/'>
-                                            <Image  src='/images/TextLogo.png'
-                                                    alt="icon"
-                                                    width={150}
-                                                    height={150}
-                                                    style={{ width: 'auto', height: 'auto' }} />
+                                            <Image src='/images/TextLogo.png'
+                                                   alt="icon"
+                                                   width={150}
+                                                   height={150}
+                                                   priority
+                                                   style={{width: 'auto', height: 'auto'}}/>
                                         </Link>
                                         <button onClick={toggleNav} className="text-4xl">
                                             <PiListBold/>
@@ -76,7 +77,8 @@ export default function Header({nickname, status, role, profile}: HeaderProps) {
                                     {/* 토글된 네비게이션 메뉴 */}
                                     {isNavOpen && (
                                         <nav className='flex flex-col items-center text-3xl gap-5 mt-1 w-full'>
-                                            <Link href='/comforts' onClick={closeNav} className='hover:text-gray-700 hover:scale-105'>
+                                            <Link href='/comforts' onClick={closeNav}
+                                                  className='hover:text-gray-700 hover:scale-105'>
                                                 {role === "LISTENER" ? "위로하기" : "위로받기"}
                                             </Link>
                                             <div className="w-full   border-[1px] border-lightGray/30"></div>
@@ -98,12 +100,14 @@ export default function Header({nickname, status, role, profile}: HeaderProps) {
                             <>
                                 <nav className='flex items-center text-4xl gap-28 font-semibold text-gray-400'>
                                     <Link href='/'>
-                                        <Image src='/images/TextLogo.png' alt="icon" width={150} height={150} className='w-[200px] h-[100px]'/>
+                                        <Image src='/images/TextLogo.png' alt="icon" width={150} height={150}
+                                               style={{width: 'auto', height: 'auto'}}/>
                                     </Link>
                                     <Link href='/comforts' className='hover:text-gray-700 hover:scale-105'>
                                         {role === "LISTENER" ? "위로하기" : "위로받기"}
                                     </Link>
-                                    <Link href='/listeners' className='hover:text-gray-700 hover:scale-105'>나비잠 멘토</Link>
+                                    <Link href='/listeners' className='hover:text-gray-700 hover:scale-105'>나비잠
+                                        멘토</Link>
                                     <Link href='/community' className='hover:text-gray-700 hover:scale-105'>커뮤니티</Link>
                                     <Link href='/chat' className='hover:text-gray-700 hover:scale-105'>실시간 상담</Link>
                                     <Link href='/mypage' className='hover:text-gray-700 hover:scale-105'>마이 페이지</Link>
@@ -112,7 +116,7 @@ export default function Header({nickname, status, role, profile}: HeaderProps) {
                                 <div className='flex ml-auto gap-6 text-center items-center'>
                                     <p className='text-3xl font-[Tenada]'>
                                         <span className='text-yellow-6'>{nickname}</span>
-                                        {role === "LISTENER" ? " 상담사님 환영합니다." : "님 환영합니다."}
+                                        {role === "LISTENER" ? (<>상담사님<br/>환영합니다.</>) : (<>님 환영합니다.</>)}
                                     </p>
                                     {profile ? (
                                         <Image src={profile} alt="Profile Image" width={60} height={60}
@@ -148,7 +152,8 @@ export default function Header({nickname, status, role, profile}: HeaderProps) {
                                 <div className="flex flex-col items-center w-full">
                                     <div className="flex justify-between items-center w-full">
                                         <Link href='/'>
-                                            <Image src='/images/TextLogo.png' alt="icon" width={100} height={100} />
+                                            <Image src='/images/TextLogo.png' alt="icon" width={100} height={100}
+                                                   style={{width: 'auto', height: 'auto'}}/>
                                         </Link>
                                         <button onClick={toggleNav} className="text-4xl">
                                             <PiListBold/>
@@ -174,11 +179,13 @@ export default function Header({nickname, status, role, profile}: HeaderProps) {
                         ) : (
                             <>
                                 <nav className='flex items-center text-4xl gap-28 font-semibold text-gray-400'>
-                                    <Link href='/' className='text-4xl text-yellow-400'>
-                                        <Image src='/images/TextLogo.png' alt="icon" width={150} height={150}  className='w-[200px] h-[100px]'/>
+                                    <Link href='/'>
+                                        <Image src='/images/TextLogo.png' alt="icon" width={150} height={150}
+                                               style={{width: 'auto', height: 'auto'}}/>
                                     </Link>
                                     <Link href='/comforts' className='hover:text-gray-700 hover:scale-105'>위로받기</Link>
-                                    <Link href='/listeners' className='hover:text-gray-700 hover:scale-105'>나비잠 멘토</Link>
+                                    <Link href='/listeners' className='hover:text-gray-700 hover:scale-105'>나비잠
+                                        멘토</Link>
                                     <Link href='/community' className='hover:text-gray-700 hover:scale-105'>커뮤니티</Link>
                                     <Link href='/chat' className='hover:text-gray-700 hover:scale-105'>실시간 상담</Link>
                                     <Link href='/mypage' className='hover:text-gray-700 hover:scale-105'>마이 페이지</Link>
