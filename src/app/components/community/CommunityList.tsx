@@ -81,9 +81,9 @@ export default function CommunityList() {
                 <div className={`grid grid-cols-2 justify-center w-[80%] mx-auto mt-10 gap-16`}>
                     {currentCommunities.map((community, index) => (
                         <div key={community.id}
+                             onClick={() => handleDetailClick(community.id)}
                              className="relative border-2 border-yellow-6 rounded-3xl p-4 cursor-pointer w-full h-[400px]">
-                            <div className='flex flex-row items-center mt-2 justify-between'
-                                 onClick={() => handleDetailClick(community.id)}>
+                            <div className='flex flex-row items-center mt-2 justify-between'>
                                 <p className="font-bold text-4xl whitespace-nowrap overflow-hidden text-ellipsis ">{community.title}</p>
                                 <div className='flex flex-row gap-2'>
                                     <p className='text-2xl whitespace-nowrap '>{community.nickname}</p>
@@ -92,7 +92,7 @@ export default function CommunityList() {
                                 </div>
                             </div>
                             <p className="text-yellow-1 text-2xl mt-2">{community.categories.join(', ')}</p>
-                            <p className="text-3xl truncate mt-4 whitespace-pre-wrap overflow-hidden h-[225px]">{community.content}</p> {/* 긴 내용은 잘라냅니다 */}
+                            <p className="text-3xl truncate mt-4 whitespace-pre-wrap overflow-hidden h-[220px]">{community.content}</p> {/* 긴 내용은 잘라냅니다 */}
 
                             <div className='absolute bottom-4 left-4 flex flex-row gap-4 text-3xl'>
                                 <CommunityLikesCount communityId={community.id} initialLiked={community.liked} initialLikeCount={community.likeCount} />
