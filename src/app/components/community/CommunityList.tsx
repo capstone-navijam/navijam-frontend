@@ -40,7 +40,7 @@ export default function CommunityList() {
     }, []);
 
     const handleDetailClick = (id: string) => {
-        router.push(`/community/${id}`);
+        router.push(`/community/${id.toString()}`);
     }
 
     return (
