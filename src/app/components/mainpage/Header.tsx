@@ -98,7 +98,7 @@ export default function Header({nickname, status, role, profile}: HeaderProps) {
                             <>
                                 <nav className='flex items-center text-4xl gap-28 font-semibold text-gray-400'>
                                     <Link href='/'>
-                                        <Image src='/images/TextLogo.png' alt="icon" width={150} height={150}/>
+                                        <Image src='/images/TextLogo.png' alt="icon" width={150} height={150} className='w-[200px] h-[100px]'/>
                                     </Link>
                                     <Link href='/comforts' className='hover:text-gray-700 hover:scale-105'>
                                         {role === "LISTENER" ? "위로하기" : "위로받기"}
@@ -175,7 +175,7 @@ export default function Header({nickname, status, role, profile}: HeaderProps) {
                             <>
                                 <nav className='flex items-center text-4xl gap-28 font-semibold text-gray-400'>
                                     <Link href='/' className='text-4xl text-yellow-400'>
-                                        <Image src='/images/TextLogo.png' alt="icon" width={150} height={150}/>
+                                        <Image src='/images/TextLogo.png' alt="icon" width={150} height={150}  className='w-[200px] h-[100px]'/>
                                     </Link>
                                     <Link href='/comforts' className='hover:text-gray-700 hover:scale-105'>위로받기</Link>
                                     <Link href='/listeners' className='hover:text-gray-700 hover:scale-105'>나비잠 멘토</Link>
