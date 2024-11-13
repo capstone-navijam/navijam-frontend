@@ -8,6 +8,7 @@ import Image from "next/image";
 import {FaRegCommentAlt, FaRegHeart} from "react-icons/fa";
 import {useTablet} from "@/service/MediaQuery";
 import CommunityLikesCount from "@/app/components/community/CommunityLikesCount";
+import Link from 'next/link';
 
 export default function CommunityList() {
     const isTablet = useTablet();
@@ -39,34 +40,33 @@ export default function CommunityList() {
         fetchCommunities();
     }, []);
 
-    const handleDetailClick = (id: string) => {
-        router.push(`/community/${id.toString()}`);
-    }
-
     return (
         <>
             {isTablet ? (<>
                 <div className={`grid grid-cols-2 justify-center w-[95%] mx-auto mt-10 gap-4`}>
                     {currentCommunities.map((community, index) => (
-                        <div key={community.id}
-                             onClick={() => handleDetailClick(community.id)}
-                             className="relative border-2 border-yellow-6 rounded-3xl p-4 cursor-pointer w-full h-[300px]">
-                            <div className='flex flex-row items-center mt-2 justify-between'>
-                                <p className="font-bold text-2xl whitespace-nowrap overflow-hidden ">{community.title}</p>
-                                <div className='flex flex-row gap-2 items-center'>
-                                    <p className='text-lg'>{community.nickname}</p>
-                                    <Image src={community.profile} alt="Profile Image" width={400} height={400}
-                                           className='w-[20px] h-[20px] rounded-full'/>
+
+                        <Link href={`/community/${community.id}`}>
+                            <div key={community.id}
+                                 className="relative border-2 border-yellow-6 rounded-3xl p-4 cursor-pointer w-full h-[300px]">
+                                <div className='flex flex-row items-center mt-2 justify-between'>
+                                    <p className="font-bold text-2xl whitespace-nowrap overflow-hidden ">{community.title}</p>
+                                    <div className='flex flex-row gap-2 items-center'>
+                                        <p className='text-lg'>{community.nickname}</p>
+                                        <Image src={community.profile} alt="Profile Image" width={400} height={400}
+                                               className='w-[20px] h-[20px] rounded-full'/>
+                                    </div>
+                                </div>
+                                <p className="text-yellow-1 text-xl mt-2">{community.categories.join(', ')}</p>
+                                <p className="text-2xl truncate mt-4 whitespace-pre-wrap overflow-hidden h-[125px]">{community.content}</p> {/* 긴 내용은 잘라냅니다 */}
+
+                                <div className='absolute bottom-4 left-4 flex flex-row gap-4 text-2xl'>
+                                    <CommunityLikesCount communityId={community.id} initialLiked={community.liked}
+                                                         initialLikeCount={community.likeCount}/>
+                                    <FaRegCommentAlt className='text-yellow-2'/>
                                 </div>
                             </div>
-                            <p className="text-yellow-1 text-xl mt-2">{community.categories.join(', ')}</p>
-                            <p className="text-2xl truncate mt-4 whitespace-pre-wrap overflow-hidden h-[125px]">{community.content}</p> {/* 긴 내용은 잘라냅니다 */}
-
-                            <div className='absolute bottom-4 left-4 flex flex-row gap-4 text-2xl'>
-                                <CommunityLikesCount communityId={community.id} initialLiked={community.liked} initialLikeCount={community.likeCount} />
-                                <FaRegCommentAlt className='text-yellow-2'/>
-                            </div>
-                        </div>
+                        </Link>
                     ))}
                 </div>
 
@@ -80,25 +80,28 @@ export default function CommunityList() {
             </>) : (<>
                 <div className={`grid grid-cols-2 justify-center w-[80%] mx-auto mt-10 gap-16`}>
                     {currentCommunities.map((community, index) => (
-                        <div key={community.id}
-                             onClick={() => handleDetailClick(community.id)}
-                             className="relative border-2 border-yellow-6 rounded-3xl p-4 cursor-pointer w-full h-[400px]">
-                            <div className='flex flex-row items-center mt-2 justify-between'>
-                                <p className="font-bold text-4xl whitespace-nowrap overflow-hidden text-ellipsis ">{community.title}</p>
-                                <div className='flex flex-row gap-2'>
-                                    <p className='text-2xl whitespace-nowrap '>{community.nickname}</p>
-                                    <Image src={community.profile} alt="Profile Image" width={400} height={400}
-                                           className='w-[30px] h-[30px] rounded-full'/>
+
+                        <Link href={`/community/${community.id}`}>
+                            <div key={community.id}
+                                 className="relative border-2 border-yellow-6 rounded-3xl p-4 cursor-pointer w-full h-[400px]">
+                                <div className='flex flex-row items-center mt-2 justify-between'>
+                                    <p className="font-bold text-4xl whitespace-nowrap overflow-hidden text-ellipsis ">{community.title}</p>
+                                    <div className='flex flex-row gap-2'>
+                                        <p className='text-2xl whitespace-nowrap '>{community.nickname}</p>
+                                        <Image src={community.profile} alt="Profile Image" width={400} height={400}
+                                               className='w-[30px] h-[30px] rounded-full'/>
+                                    </div>
+                                </div>
+                                <p className="text-yellow-1 text-2xl mt-2">{community.categories.join(', ')}</p>
+                                <p className="text-3xl truncate mt-4 whitespace-pre-wrap overflow-hidden h-[220px]">{community.content}</p> {/* 긴 내용은 잘라냅니다 */}
+
+                                <div className='absolute bottom-4 left-4 flex flex-row gap-4 text-3xl'>
+                                    <CommunityLikesCount communityId={community.id} initialLiked={community.liked}
+                                                         initialLikeCount={community.likeCount}/>
+                                    <FaRegCommentAlt className='text-yellow-2'/>
                                 </div>
                             </div>
-                            <p className="text-yellow-1 text-2xl mt-2">{community.categories.join(', ')}</p>
-                            <p className="text-3xl truncate mt-4 whitespace-pre-wrap overflow-hidden h-[220px]">{community.content}</p> {/* 긴 내용은 잘라냅니다 */}
-
-                            <div className='absolute bottom-4 left-4 flex flex-row gap-4 text-3xl'>
-                                <CommunityLikesCount communityId={community.id} initialLiked={community.liked} initialLikeCount={community.likeCount} />
-                                <FaRegCommentAlt className='text-yellow-2'/>
-                            </div>
-                        </div>
+                        </Link>
                     ))}
                 </div>
 
