@@ -5,8 +5,8 @@ import React, {useCallback, useEffect, useState} from "react";
 import {useParams, useRouter} from "next/navigation";
 import {getCookie} from "cookies-next";
 import Swal from "sweetalert2";
-import ComfortMemberDetail from "@/app/components/comfort/ComfortMemberDetail";
-import ComfortListDetail from "@/app/components/comfort/ComfortListlDetail";
+import ComfortMemberDetail from "@/app/components/Comfort/ComfortMemberDetail";
+import ComfortListDetail from "@/app/components/Comfort/ComfortListlDetail";
 
 export default function ComfortListenerModify() {
     const content = useInput("");

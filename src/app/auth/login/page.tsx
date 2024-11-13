@@ -115,7 +115,6 @@ export default function LoginPage() {
 
                                 <div className="mt-4 text-xl justify-center w-[80%] mx-auto flex gap-8 mb-10">
                                     <Link href="/findpassword" className="text-gray-400 text-nowrap w-40">비밀번호 찾기</Link>
-                                    <Link href="/findid" className="text-gray-400 text-nowrap w-40">아이디 찾기</Link>
                                     <Link href="/auth/signup" className="text-gray-400 text-nowrap w-40">회원가입</Link>
                                 </div>
                             </div>
@@ -163,8 +162,7 @@ export default function LoginPage() {
 
                                 <div className="mt-4 text-xl justify-center w-[80%] mx-auto flex gap-8 mb-10">
                                     <Link href="/findpassword" className="text-gray-400 text-nowrap w-40">비밀번호 찾기</Link>
-                                    <Link href="/findid" className="text-gray-400 text-nowrap w-40">아이디 찾기</Link>
-                                    <Link href="/auth/signup" className="text-gray-400 text-nowrap w-40">회원가입</Link>
+                                   <Link href="/auth/signup" className="text-gray-400 text-nowrap w-40">회원가입</Link>
                                 </div>
                             </div>
                         </form>

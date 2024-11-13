@@ -52,7 +52,7 @@ export default function CommunityList() {
                              onClick={() => handleDetailClick(community.id)}
                              className="relative border-2 border-yellow-6 rounded-3xl p-4 cursor-pointer w-full h-[300px]">
                             <div className='flex flex-row items-center mt-2 justify-between'>
-                                <p className="font-bold text-2xl">{community.title}</p>
+                                <p className="font-bold text-2xl whitespace-nowrap overflow-hidden ">{community.title}</p>
                                 <div className='flex flex-row gap-2 items-center'>
                                     <p className='text-lg'>{community.nickname}</p>
                                     <Image src={community.profile} alt="Profile Image" width={400} height={400}
@@ -84,9 +84,9 @@ export default function CommunityList() {
                              className="relative border-2 border-yellow-6 rounded-3xl p-4 cursor-pointer w-full h-[400px]">
                             <div className='flex flex-row items-center mt-2 justify-between'
                                  onClick={() => handleDetailClick(community.id)}>
-                                <p className="font-bold text-4xl">{community.title}</p>
+                                <p className="font-bold text-4xl whitespace-nowrap overflow-hidden text-ellipsis ">{community.title}</p>
                                 <div className='flex flex-row gap-2'>
-                                    <p className='text-2xl '>{community.nickname}</p>
+                                    <p className='text-2xl whitespace-nowrap '>{community.nickname}</p>
                                     <Image src={community.profile} alt="Profile Image" width={400} height={400}
                                            className='w-[30px] h-[30px] rounded-full'/>
                                 </div>

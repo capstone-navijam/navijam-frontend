@@ -1,11 +1,11 @@
 import React, {useEffect, useState} from 'react';
 import {FaRegComment} from "react-icons/fa";
 import Image from 'next/image'
-import ComfortListDetail, {ConsoleProps} from "@/app/components/comfort/ComfortListlDetail";
+import ComfortListDetail, {ConsoleProps} from "@/app/components/Comfort/ComfortListlDetail";
 import {getCookie} from "cookies-next";
 import {useParams, useRouter} from "next/navigation";
 import Swal from "sweetalert2";
-import ComfortListenerRegister from "@/app/components/comfort/ComfortListenerRegister";
+import ComfortListenerRegister from "@/app/components/Comfort/ComfortListenerRegister";
 import ComfortCommentsRegister from "@/app/components/ComfortComments/ComfortCommentsRegister";
 import ComfortCommentsDetail from "@/app/components/ComfortComments/ComfortCommentsDetail";
 import ComfortCommentsList from '@/app/components/ComfortComments/ComfortCommentsList';

@@ -1,7 +1,7 @@
 'use client';
 
 import React, {useEffect, useState} from 'react';
-import ComfortListDetail, {ComfortListDetailProps} from "@/app/components/comfort/ComfortListlDetail";
+import ComfortListDetail, {ComfortListDetailProps} from "@/app/components/Comfort/ComfortListlDetail";
 import {useParams, useRouter} from "next/navigation";
 import Image from 'next/image'
 import Swal from "sweetalert2";

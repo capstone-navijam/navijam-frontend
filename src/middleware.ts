@@ -22,7 +22,7 @@ export default function middleware(request: NextRequest) {
     }
 
     {/* 비로그인 시, 위로받기 기능 제한 */}
-    if (!token && pathname.startsWith(`/community`)) {
+    if (!token && pathname.startsWith(`/community/register`)) {
         return NextResponse.redirect(new URL('/auth/login', request.url));
     }
 
@@ -34,6 +34,5 @@ export default function middleware(request: NextRequest) {
     if (!token && pathname.startsWith(`/chat`)) {
         return NextResponse.redirect(new URL('/auth/login', request.url));
     }
-
 
 }

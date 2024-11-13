@@ -1,6 +1,6 @@
 import React, {useState, useCallback} from 'react';
-import ComfortContent from "@/app/components/comfort/ComfortContent";
-import RegisterCategory from "@/app/components/comfort/RegisterCategory";
+import ComfortContent from "@/app/components/Comfort/ComfortContent";
+import RegisterCategory from "@/app/components/Comfort/RegisterCategory";
 import useInput from '@/service/useInput';
 import {getCookie} from "cookies-next";
 import Swal from "sweetalert2";
@@ -79,7 +79,7 @@ export default function ComfortMemberRegister() {
                         title: "작성 완료!",
                         text: "글이 등록되었습니다.",
                         icon: "success",
-                        timer: 30000
+                        timer: 1000
                     }).then(() => {
                         window.location.replace('/comforts');
                     });
@@ -135,7 +135,7 @@ export default function ComfortMemberRegister() {
                             selectedCategories={selectedCategories}
                             setSelectedCategories={setSelectedCategories}
                         />
-                        <div className={`mt-10 mx-auto ${isTablet ? 'w-[95%]' : 'w-[80%]'} flex justify-between`}>
+                        <div className={`mt-10 mx-auto ${isTablet ? 'w-[95%]' : 'w-[80%]'} flex justify-between mb-10`}>
                             <button
                                 type="button"
                                 onClick={handleBackClick}

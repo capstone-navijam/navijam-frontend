@@ -41,7 +41,7 @@ export default function ListenerRegisterEducation({educationField, setEducationF
                             <div key={index} className='flex'>
                                 <input
                                     id={`career-${index}`}
-                                    className={`block border border-yellow-6 p-5 w-full rounded ${isTablet ? ' placeholder:text-lg':' placeholder:text-xl'}`}
+                                    className={`block border border-yellow-6 p-5 w-full rounded ${isTablet ? ' placeholder:text-lg text-xl':' placeholder:text-xl text-2xl'} `}
                                     type="text"
                                     value={field}
                                     onChange={(e) => handleChange(index, e.target.value)}

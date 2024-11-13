@@ -5,7 +5,7 @@ import React, {useCallback, useState} from 'react';
 import Swal from "sweetalert2";
 import {getCookie} from "cookies-next";
 import CommunityContent from "@/app/components/community/CommunityContent";
-import RegisterCategory from "@/app/components/comfort/RegisterCategory";
+import RegisterCategory from "@/app/components/Comfort/RegisterCategory";
 
 export default function CommunityRegister() {
 

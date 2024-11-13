@@ -150,7 +150,7 @@ export default function SignUpPage() {
                                         <div className="w-full">
                                             <div className="flex items-center gap-1">
                                                 <input className="block border border-yellow-6 p-5 w-full rounded placeholder:text-lg" type="text" {...email} placeholder="아이디를 입력해주세요" />
-                                                <button type="button" onClick={handleCheckEmail} className="border p-4 text-2xl rounded border-yellow-6">중복 확인</button>
+                                                <button type="button" onClick={handleCheckEmail} className="border p-4 text-2xl rounded border-yellow-6  hover:bg-yellow-6 hover:text-white">중복 확인</button>
                                             </div>
                                             <span className={`${emailValid === false ? 'text-red-500 text-2xl' : 'text-green-500 text-2xl'}`}>{emailMessage}</span>
                                         </div>
@@ -171,7 +171,7 @@ export default function SignUpPage() {
                                         <div className="w-full">
                                             <div className="flex items-center gap-2">
                                                 <input id="userName" className="block border border-yellow-6 p-5 w-full rounded placeholder:text-lg" type="text" {...nickname} placeholder="닉네임을 입력해주세요" />
-                                                <button type="button" onClick={handleCheckNickname} className="border p-4 text-2xl rounded border-yellow-6">중복 확인</button>
+                                                <button type="button" onClick={handleCheckNickname} className="border p-4 text-2xl rounded border-yellow-6  hover:bg-yellow-6 hover:text-white">중복 확인</button>
                                             </div>
                                             <span className={`${nicknameValid === false ? 'text-red-500 text-2xl' : 'text-green-500 text-2xl'}`}>{nicknameMessage}</span>
                                         </div>
@@ -231,8 +231,8 @@ export default function SignUpPage() {
                                         <label htmlFor="email" className="text-3xl font-semibold w-40 text-wrap">아이디<br/>(이메일)<span className="text-red-500">*</span></label>
                                         <div className="w-full">
                                             <div className="flex items-center gap-1">
-                                                <input className="block border border-yellow-6 p-5 w-full rounded placeholder:text-xl" type="text" {...email} placeholder="아이디를 입력해주세요" />
-                                                <button type="button" onClick={handleCheckEmail} className="border p-4 text-2xl rounded border-yellow-6">중복 확인</button>
+                                                <input className="block border border-yellow-6 p-5 w-full rounded placeholder:text-xl text-2xl" type="text" {...email} placeholder="아이디를 입력해주세요" />
+                                                <button type="button" onClick={handleCheckEmail} className="border p-5 text-2xl rounded border-yellow-6  hover:bg-yellow-6 hover:text-white">중복 확인</button>
                                             </div>
                                             <span className={`${emailValid === false ? 'text-red-500 text-2xl' : 'text-green-500 text-2xl'}`}>{emailMessage}</span>
                                         </div>
@@ -240,20 +240,20 @@ export default function SignUpPage() {
 
                                     <div className="flex items-center">
                                         <label htmlFor="password" className="text-3xl font-semibold w-40 text-wrap">비밀번호<span className="text-red-500">*</span></label>
-                                        <input id="password" className="block border border-yellow-6 p-5 w-full rounded placeholder:text-xl" type="password" {...password} placeholder="비밀번호를 입력해주세요(영여/숫자/특수문자 1개씩 필수 입력)" />
+                                        <input id="password" className="block border border-yellow-6 p-5 w-full rounded placeholder:text-xl text-2xl" type="password" {...password} placeholder="비밀번호를 입력해주세요(영여/숫자/특수문자 1개씩 필수 입력)" />
                                     </div>
 
                                     <div className="flex items-center">
                                         <label htmlFor="checkPassword" className="text-3xl font-semibold w-40 text-wrap">비밀번호<br/>재확인<span className="text-red-500">*</span></label>
-                                        <input id="checkPassword" className="block border border-yellow-6 p-5 w-full rounded placeholder:text-xl" type="password" {...checkPassword} placeholder="비밀번호를 다시 입력해주세요" />
+                                        <input id="checkPassword" className="block border border-yellow-6 p-5 w-full rounded placeholder:text-xl text-2xl" type="password" {...checkPassword} placeholder="비밀번호를 다시 입력해주세요" />
                                     </div>
 
                                     <div className="flex items-center">
                                         <label htmlFor="userName" className="text-3xl font-semibold w-40 text-wrap">닉네임<span className="text-red-500">*</span></label>
                                         <div className="w-full">
                                             <div className="flex items-center gap-2">
-                                                <input id="userName" className="block border border-yellow-6 p-5 w-full rounded placeholder:text-xl" type="text" {...nickname} placeholder="닉네임을 입력해주세요" />
-                                                <button type="button" onClick={handleCheckNickname} className="border p-4 text-2xl rounded border-yellow-6">중복 확인</button>
+                                                <input id="userName" className="block border border-yellow-6 p-5 w-full rounded placeholder:text-xl text-2xl" type="text" {...nickname} placeholder="닉네임을 입력해주세요" />
+                                                <button type="button" onClick={handleCheckNickname} className="border p-5 text-2xl rounded border-yellow-6  hover:bg-yellow-6 hover:text-white">중복 확인</button>
                                             </div>
                                             <span className={`${nicknameValid === false ? 'text-red-500 text-2xl' : 'text-green-500 text-2xl'}`}>{nicknameMessage}</span>
                                         </div>
@@ -261,17 +261,17 @@ export default function SignUpPage() {
 
                                     <div className="flex items-center">
                                         <label htmlFor="phoneNumber" className="text-3xl font-semibold w-40 text-wrap">휴대전화</label>
-                                        <input id="phoneNumber" className="block border border-yellow-6 p-5 w-full rounded placeholder:text-xl" type="text" {...phoneNumber} placeholder="하이픈(-) 붙여서 휴대전화를 입력해주세요" />
+                                        <input id="phoneNumber" className="block border border-yellow-6 p-5 w-full rounded placeholder:text-xl text-2xl" type="text" {...phoneNumber} placeholder="하이픈(-) 붙여서 휴대전화를 입력해주세요" />
                                     </div>
 
                                     <div className="flex items-center">
                                         <label htmlFor="contactNumber" className="text-3xl font-semibold w-40 text-wrap">전화번호</label>
-                                        <input id="contactNumber" className="block border border-yellow-6 p-5 w-full rounded placeholder:text-xl" type="text" {...contactNumber} placeholder="하이픈(-) 붙여서 전화번호를 입력해주세요" />
+                                        <input id="contactNumber" className="block border border-yellow-6 p-5 w-full rounded placeholder:text-xl text-2xl" type="text" {...contactNumber} placeholder="하이픈(-) 붙여서 전화번호를 입력해주세요" />
                                     </div>
 
                                     <div className="flex items-center">
                                         <label htmlFor="address" className="text-3xl font-semibold w-40 text-wrap">주소</label>
-                                        <input id="address" className="block border border-yellow-6 p-5 w-full rounded placeholder:text-xl" type="text" {...address} placeholder="주소를 입력해주세요" />
+                                        <input id="address" className="block border border-yellow-6 p-5 w-full rounded placeholder:text-xl text-2xl" type="text" {...address} placeholder="주소를 입력해주세요" />
                                     </div>
 
                                     <ListenerRegisterCareer careerField={careerField} setCareerField={setCareerField} />

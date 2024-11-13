@@ -3,8 +3,8 @@
                 <div className="w-[10%] border-[2px] border-yellow-2"></div>
                 <h1 className='font-[Tenada] text-start mt-4 text-2xl'>전문가의 답변</h1>
                 <div>
-                    {comfort.consoles.length > 0 ? (
-                        comfort.consoles.map(console => (
+                    {Comfort.consoles.length > 0 ? (
+                        Comfort.consoles.map(console => (
                             <div
                                 className='relative mt-4 rounded-lg mx-auto w-full h-[250px] text-start border-yellow-2 border-2 p-4'>
                                 <div key={console.id} className='mb-4'>

@@ -38,15 +38,15 @@ export default function ProfileCategory() {
                                 )}
                             </li>
                             <li
-                                className={`text-5xl cursor-pointer ${selectedMenu === 'comfort' ? 'text-black' : 'text-gray-400'}`}
-                                onClick={() => handleMenuClick('comfort')}>
+                                className={`text-5xl cursor-pointer ${selectedMenu === 'Comfort' ? 'text-black' : 'text-gray-400'}`}
+                                onClick={() => handleMenuClick('Comfort')}>
                                 위로받기
-                                {selectedMenu === 'comfort' && (
+                                {selectedMenu === 'Comfort' && (
                                     <>
                                     <span>
                                         <div className="w-[180px] mt-1.5 border-[2px] border-black"></div>
                                     </span>
-                                        {selectedMenu === 'comfort' && <MyComfort/>}
+                                        {selectedMenu === 'Comfort' && <MyComfort/>}
                                     </>
                                 )}
                             </li>
@@ -105,10 +105,10 @@ export default function ProfileCategory() {
                                 )}
                             </li>
                             <li
-                                className={`text-5xl cursor-pointer ${selectedMenu === 'comfort' ? 'text-black' : 'text-gray-400'}`}
-                                onClick={() => handleMenuClick('comfort')}>
+                                className={`text-5xl cursor-pointer ${selectedMenu === 'Comfort' ? 'text-black' : 'text-gray-400'}`}
+                                onClick={() => handleMenuClick('Comfort')}>
                                 위로받기
-                                {selectedMenu === 'comfort' && (
+                                {selectedMenu === 'Comfort' && (
                                     <span>
                                     <div className="w-[40%] mt-1.5 border-[2px] border-black"></div>
                                 </span>
@@ -139,7 +139,7 @@ export default function ProfileCategory() {
 
                     {/* 선택된 메뉴에 따라 MyProfile 컴포넌트가 표시됨 */}
                     {selectedMenu === 'profile' && <MyProfile/>}
-                    {selectedMenu === 'comfort' && <MyComfort/>}
+                    {selectedMenu === 'Comfort' && <MyComfort/>}
                     {selectedMenu === 'community' && <MyCommunity/>}
                     {selectedMenu === 'counseling' && <MyCounseling/>}
 

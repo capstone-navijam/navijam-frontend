@@ -1,11 +1,11 @@
 'use client';
 
 import React, {useEffect, useState} from 'react';
-import ComfortMemberDetail from "@/app/components/comfort/ComfortMemberDetail";
-import ComfortListenerDetail from "@/app/components/comfort/ComfortListenerDetail";
+import ComfortMemberDetail from "@/app/components/Comfort/ComfortMemberDetail";
+import ComfortListenerDetail from "@/app/components/Comfort/ComfortListenerDetail";
 import {useParams} from "next/navigation";
-import ComfortListDetail from "@/app/components/comfort/ComfortListlDetail";
-import ComfortListenerRegister from "@/app/components/comfort/ComfortListenerRegister";
+import ComfortListDetail from "@/app/components/Comfort/ComfortListlDetail";
+import ComfortListenerRegister from "@/app/components/Comfort/ComfortListenerRegister";
 import ComfortSkeleton from "@/app/components/SkeletonUI/ComfortSkeleton";
 import {getCookie} from "cookies-next";
 import {useMobile, useTablet} from "@/service/MediaQuery";
