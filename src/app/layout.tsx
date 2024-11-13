@@ -4,8 +4,8 @@ import {Inter} from "next/font/google";
 import "./globals.css";
 import {useEffect, useState} from "react";
 import {getCookie} from "cookies-next";
-import Header from "./components/mainpage/Header";
-import Footer from "./components/mainpage/Footer";
+import Header from "@/app/components/Mainpage/Header";
+import Footer from "@/app/components/Mainpage/Footer";
 
 /*
 export const metadata: Metadata = {
@@ -41,11 +41,11 @@ export default function RootLayout({
             setRole("");
         }
 
-        if(username != null) {
+        if (username != null) {
             setNickname(username.toString());
         }
 
-        if(profile != null) {
+        if (profile != null) {
             setProfile(profile.toString());
         }
     }, []);
@@ -57,13 +57,9 @@ export default function RootLayout({
             <title>나비잠 - 온라인 정신상담 웹 플랫폼</title>
         </head>
         <body className='flex flex-col w-full mx-auto'>
-        <header>
-            <Header nickname={nickname} status={status} role={role} profile={profile}/>
-        </header>
+        <Header nickname={nickname} status={status} role={role} profile={profile}/>
         <main className='grow'>{children}</main>
-        <footer>
-            <Footer/>
-        </footer>
+        <Footer/>
         </body>
         </html>
     );

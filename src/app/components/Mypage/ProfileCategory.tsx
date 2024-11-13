@@ -2,10 +2,10 @@
 
 import React, {useState} from 'react';
 import Image from 'next/image';
-import MyProfile from "@/app/components/mypage/MyProfile";
-import MyComfort from "@/app/components/mypage/MyComfort";
-import MyCommunity from "@/app/components/mypage/MyCommunity";
-import MyCounseling from "@/app/components/mypage/MyCounseling";
+import MyProfile from "@/app/components/Mypage/MyProfile";
+import MyComfort from "@/app/components/Mypage/MyComfort";
+import MyCommunity from "@/app/components/Mypage/MyCommunity";
+import MyCounseling from "@/app/components/Mypage/MyCounseling";
 import {useMobile, useTablet} from "@/service/MediaQuery";
 
 export default function ProfileCategory() {
@@ -86,10 +86,10 @@ export default function ProfileCategory() {
                             <Image src='/images/Profile.jpeg' alt="Default Profile" width={400} height={400}
                                    className='w-[200px] h-[200px]'/>
 
-                            {/* {mypage.nickname}이 들어갈 곳 */}
+                            {/* {Mypage.nickname}이 들어갈 곳 */}
                             <h1 className='text-5xl'>짱구</h1>
 
-                            {/* {mypage.address}가 들어갈 곳 */}
+                            {/* {Mypage.address}가 들어갈 곳 */}
                             <h2 className='text-2xl'>test1@test.com</h2>
                         </div>
 

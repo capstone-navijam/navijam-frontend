@@ -1,9 +1,9 @@
 'use client';
 
 import React, {useEffect, useState} from 'react';
-import ConsoleListAll, {ConsoleListProps} from "@/app/components/console/ConsoleListAll";
+import ConsoleListAll, {ConsoleListProps} from "@/app/components/Console/ConsoleListAll";
 import {MdOutlineCheckBox, MdOutlineCheckBoxOutlineBlank} from 'react-icons/md';
-import ConsoleSearch from "@/app/components/console/ConsoleSearch";
+import ConsoleSearch from "@/app/components/Console/ConsoleSearch";
 import {FaSortNumericDown, FaSortNumericUp} from "react-icons/fa";
 import Pagination from "@mui/material/Pagination";
 import {useRouter} from "next/navigation";

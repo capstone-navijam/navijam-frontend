@@ -1,12 +1,12 @@
 'use client';
 
 import React, {useEffect, useState} from 'react';
-import {ListenersListAll, ListenersListProps} from "@/app/components/listeners/ListenersListAll";
+import {ListenersListAll, ListenersListProps} from "@/app/components/Listeners/ListenersListAll";
 import Image from 'next/image';
 import {MdArrowForward, MdLocalPhone, MdLocationOn, MdOutlineEmail} from "react-icons/md";
-import ListenerSearch from "@/app/components/listeners/ListenerSearch";
-import ListenerSearchCategory from "@/app/components/listeners/ListenerSearchCategory";
-import ListenerDetail from "@/app/components/listeners/ListenerDetail";
+import ListenerSearch from "@/app/components/Listeners/ListenerSearch";
+import ListenerSearchCategory from "@/app/components/Listeners/ListenerSearchCategory";
+import ListenerDetail from "@/app/components/Listeners/ListenerDetail";
 import Pagination from "@mui/material/Pagination";
 import {useMobile, useTablet} from "@/service/MediaQuery";
 
