@@ -3,7 +3,7 @@
 import React, {useEffect, useState} from 'react';
 import ComfortContent from "@/app/components/Comfort/ComfortContent";
 import {getCookie} from "cookies-next";
-import ConsoleContent from "@/app/components/console/ConsoleContent";
+import ConsoleContent from "@/app/components/Console/ConsoleContent";
 
 export default function ComfortPage() {
 

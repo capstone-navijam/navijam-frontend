@@ -43,7 +43,7 @@ export default function MultiCarousel() {
             id: 5,
             description: "수없이 많은 별들 중 가장 빛나는 별은\n바로 너야\n",
             button: '마이페이지',
-            path: 'mypage',
+            path: 'Mypage',
             image: '/images/carouselImage5.svg',
         },
     ]

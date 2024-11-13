@@ -4,11 +4,11 @@
 import React, {useEffect, useState} from 'react';
 import Link from "next/link";
 import {FaArrowCircleLeft, FaArrowCircleRight, FaArrowRight} from "react-icons/fa";
-import {ListenersListAll, ListenersListProps} from "@/app/components/listeners/ListenersListAll";
+import {ListenersListAll, ListenersListProps} from "@/app/components/Listeners/ListenersListAll";
 import Carousel from "react-material-ui-carousel";
 import {MdLocalPhone, MdLocationOn, MdOutlineEmail} from "react-icons/md";
 import Image from "next/image";
-import ListenerDetail from "@/app/components/listeners/ListenerDetail";
+import ListenerDetail from "@/app/components/Listeners/ListenerDetail";
 import {useMobile, useTablet} from "@/service/MediaQuery";
 
 export default function MainListeners() {

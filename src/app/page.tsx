@@ -1,16 +1,10 @@
-import React, {Suspense} from "react";
-import MainPage from "./components/mainpage/MainPage";
-import {Metadata} from "next";
-
-
+import React from "react";
+import MainPage from "@/app/components/Mainpage/MainPage";
 
 export default function Home() {
 
-
-
     return (
-        <section className='flex flex-col'>
-                <MainPage/>
-        </section>
-    );
+        <div className='flex flex-col'>
+            <MainPage/>
+        </div>);
 }

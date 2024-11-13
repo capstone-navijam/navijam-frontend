@@ -5,7 +5,7 @@ import Link from "next/link";
 import {FiUser} from "react-icons/fi";
 import Image from "next/image";
 import {PiListBold} from "react-icons/pi";  // 토글 아이콘
-import Logout from "@/app/components/mainpage/Logout";
+import Logout from "@/app/components/Mainpage/Logout";
 import HeaderSkeleton from '../SkeletonUI/HeaderSkeleton';
 import {usePC, useTablet} from "@/service/MediaQuery";
 
@@ -46,28 +46,29 @@ export default function Header({nickname, status, role, profile}: HeaderProps) {
         <>
             {status ? (
                 <>
-                    {/* PC 및 모바일 공통 상단 네비게이션 */}
-                    <nav className='flex text-center text-2xl items-center justify-end gap-12 mx-10 mt-2'>
-                        <Logout/>
-                        <div className='border-2 left-1 -mx-6 h-6'/>
-                        <Link href='/mypage' className='font-[Tenada] hover:text-yellow-6'>마이페이지</Link>
-                    </nav>
+                    <header>
 
-                    <div className="w-full mt-2 mb-2 border-[2px] border-lightGray/30"></div>
+                        {/* PC 및 모바일 공통 상단 네비게이션 */}
+                        <nav className='flex text-center text-2xl items-center justify-end gap-12 mx-10 mt-2'>
+                            <Logout/>
+                            <div className='border-2 left-1 -mx-6 h-6'/>
+                            <Link href='/mypage' className='font-[Tenada] hover:text-yellow-6'>마이페이지</Link>
+                        </nav>
 
-                    <header className='flex p-4 font-["Tenada"]'>
+                        <div className="w-full mt-2 mb-2 border-[2px] border-lightGray/30"></div>
+
                         {/* 태블릿 화면 */}
                         {isTablet && (
-                            <>
+                            <div className='flex p-4 font-["Tenada"]'>
                                 <div className="flex flex-col items-center w-full">
                                     <div className="flex justify-between items-center w-full">
-                                        <Link href='/'>
-                                            <Image src='/images/TextLogo.png'
-                                                   alt="icon"
-                                                   width={150}
-                                                   height={150}
+                                        {/* 텍스트 로고 이미지 */}
+                                        <Link href="/">
+                                            <Image src="/images/TextLogo.png" alt="icon" width={150} height={150}
                                                    priority
-                                                   style={{width: 'auto', height: 'auto'}}/>
+                                                   style={{width: 'auto', height: 'auto'}}
+                                                   className="cursor-pointer"
+                                            />
                                         </Link>
                                         <button onClick={toggleNav} className="text-4xl">
                                             <PiListBold/>
@@ -92,16 +93,19 @@ export default function Header({nickname, status, role, profile}: HeaderProps) {
                                         </nav>
                                     )}
                                 </div>
-                            </>
+                            </div>
                         )}
 
                         {/* PC 화면 */}
                         {isPC && (
-                            <>
+                            <div className='flex p-4 font-["Tenada"]'>
                                 <nav className='flex items-center text-4xl gap-28 font-semibold text-gray-400'>
-                                    <Link href='/'>
-                                        <Image src='/images/TextLogo.png' alt="icon" width={150} height={150}
-                                               style={{width: 'auto', height: 'auto'}}/>
+                                    {/* 텍스트 로고 이미지 */}
+                                    <Link href="/">
+                                        <Image src="/images/TextLogo.png" alt="icon" width={150} height={150}
+                                               style={{width: 'auto', height: 'auto'}}
+                                               className="cursor-pointer"
+                                        />
                                     </Link>
                                     <Link href='/comforts' className='hover:text-gray-700 hover:scale-105'>
                                         {role === "LISTENER" ? "위로하기" : "위로받기"}
@@ -125,7 +129,7 @@ export default function Header({nickname, status, role, profile}: HeaderProps) {
                                         <Link href='/mypage' className='text-3xl'> <FiUser/></Link>
                                     )}
                                 </div>
-                            </>
+                            </div>
                         )}
                     </header>
 
@@ -133,28 +137,35 @@ export default function Header({nickname, status, role, profile}: HeaderProps) {
                 </>
             ) : (
                 <>
-                    {/* 비로그인 상태 */}
-                    <nav className='flex text-center text-2xl items-center justify-end gap-12 mx-10 mt-1'>
-                        <Link href='/auth/listener' className='font-["Tenada"]'>
-                            <span className='text-yellow-6'>상담사</span><br/>회원가입
-                        </Link>
-                        <div className='border-2 left-1 -mx-6 h-6'/>
-                        <Link href='/auth/login' className='font-["Tenada"]'>로그인</Link>
-                        <div className='border-2 left-1 -mx-6 h-6'/>
-                        <Link href='/auth/signup' className='font-["Tenada"]'>회원가입</Link>
-                    </nav>
+                    <header>
 
-                    <div className="w-full mt-1 mb-2 border-[2px] border-lightGray/30"></div>
+                        {/* 비로그인 상태 */}
+                        <nav className='flex text-center text-2xl items-center justify-end gap-12 mx-10 mt-1'>
+                            <Link href='/auth/listener' className='font-["Tenada"]'>
+                                <span className='text-yellow-6'>상담사</span><br/>회원가입
+                            </Link>
+                            <div className='border-2 left-1 -mx-6 h-6'/>
+                            <Link href='/auth/login' className='font-["Tenada"]'>로그인</Link>
+                            <div className='border-2 left-1 -mx-6 h-6'/>
+                            <Link href='/auth/signup' className='font-["Tenada"]'>회원가입</Link>
+                        </nav>
 
-                    <header className='flex p-4 font-["Tenada"] items-center'>
+                        <div className="w-full mt-1 mb-2 border-[2px] border-lightGray/30"></div>
+
+
                         {isTablet ? (
-                            <>
+                            <div className='flex p-4 font-["Tenada"] items-center'>
                                 <div className="flex flex-col items-center w-full">
                                     <div className="flex justify-between items-center w-full">
-                                        <Link href='/'>
-                                            <Image src='/images/TextLogo.png' alt="icon" width={100} height={100}
-                                                   style={{width: 'auto', height: 'auto'}}/>
+                                        {/* 텍스트 로고 이미지 */}
+                                        <Link href="/">
+                                            <Image src="/images/TextLogo.png" alt="icon" width={150} height={150}
+                                                   priority
+                                                   style={{width: 'auto', height: 'auto'}}
+                                                   className="cursor-pointer"
+                                            />
                                         </Link>
+
                                         <button onClick={toggleNav} className="text-4xl">
                                             <PiListBold/>
                                         </button>
@@ -175,14 +186,19 @@ export default function Header({nickname, status, role, profile}: HeaderProps) {
                                         </nav>
                                     )}
                                 </div>
-                            </>
+                            </div>
                         ) : (
-                            <>
+                            <div className='flex p-4 font-["Tenada"] items-center'>
                                 <nav className='flex items-center text-4xl gap-28 font-semibold text-gray-400'>
-                                    <Link href='/'>
-                                        <Image src='/images/TextLogo.png' alt="icon" width={150} height={150}
-                                               style={{width: 'auto', height: 'auto'}}/>
+                                    {/* 텍스트 로고 이미지 */}
+                                    <Link href="/">
+                                        <Image src="/images/TextLogo.png" alt="icon" width={150} height={150}
+                                               priority
+                                               style={{width: 'auto', height: 'auto'}}
+                                               className="cursor-pointer"
+                                        />
                                     </Link>
+
                                     <Link href='/comforts' className='hover:text-gray-700 hover:scale-105'>위로받기</Link>
                                     <Link href='/listeners' className='hover:text-gray-700 hover:scale-105'>나비잠
                                         멘토</Link>
@@ -191,7 +207,7 @@ export default function Header({nickname, status, role, profile}: HeaderProps) {
                                     <Link href='/mypage' className='hover:text-gray-700 hover:scale-105'>마이 페이지</Link>
                                 </nav>
                                 <Link href='/mypage' className='ml-auto text-3xl'><FiUser/></Link>
-                            </>
+                            </div>
                         )}
 
                     </header>

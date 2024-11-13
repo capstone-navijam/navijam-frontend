@@ -5,8 +5,8 @@ import React, {useState} from 'react';
 import {useRouter} from 'next/navigation'
 import ListenerRegisterCategory from '@/app/components/Register/ListenerRegisterCategory';
 import ListenerRegisterCareer from "@/app/components/Register/ListenerRegisterCareer";
-import AuthCheckNickName from "@/app/components/authcheck/AuthCheckNickName";
-import AuthCheckEmail from "@/app/components/authcheck/AuthCheckEmail";
+import AuthCheckNickName from "@/app/components/AuthCheck/AuthCheckNickName";
+import AuthCheckEmail from "@/app/components/AuthCheck/AuthCheckEmail";
 import Swal from "sweetalert2";
 import ImageRegister from "@/app/components/Register/ImageRegister";
 import ListenerRegisterEducation from "@/app/components/Register/ListenerRegisterEducation";
