@@ -4,7 +4,7 @@ import React, {useCallback, useEffect} from 'react';
 import {useParams, useRouter} from "next/navigation";
 import {getCookie} from "cookies-next";
 import Swal from "sweetalert2";
-import CommunityListDetail from "@/app/components/community/CommunityListDetail";
+import CommunityListDetail from "@/app/components/Community/CommunityListDetail";
 
 export default function CommunityModify() {
 

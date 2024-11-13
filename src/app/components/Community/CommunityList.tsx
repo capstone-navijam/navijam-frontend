@@ -1,13 +1,13 @@
 'use client';
 
 import React, {useEffect, useState} from 'react';
-import CommunityListAll, {CommunityListProps} from "@/app/components/community/CommunityListAll";
+import CommunityListAll, {CommunityListProps} from "@/app/components/Community/CommunityListAll";
 import {useRouter} from "next/navigation";
 import Pagination from "@mui/material/Pagination";
 import Image from "next/image";
 import {FaRegCommentAlt, FaRegHeart} from "react-icons/fa";
 import {useTablet} from "@/service/MediaQuery";
-import CommunityLikesCount from "@/app/components/community/CommunityLikesCount";
+import CommunityLikesCount from "@/app/components/Community/CommunityLikesCount";
 import Link from 'next/link';
 
 export default function CommunityList() {

@@ -1,6 +1,6 @@
 'use client';
 import React from 'react';
-import CommunityRegister from "@/app/components/community/CommunityRegister";
+import CommunityRegister from "@/app/components/Community/CommunityRegister";
 import {useTablet} from "@/service/MediaQuery";
 
 export default function CommunityRegisterPage() {

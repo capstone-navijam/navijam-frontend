@@ -1,6 +1,6 @@
 'use client';
 import React, {useEffect, useState} from 'react';
-import CommunityListDetail, {CommunityListDetailProps} from "@/app/components/community/CommunityListDetail";
+import CommunityListDetail, {CommunityListDetailProps} from "@/app/components/Community/CommunityListDetail";
 import {useParams, useRouter} from "next/navigation";
 import Image from 'next/image'
 import {getCookie} from "cookies-next";
@@ -9,7 +9,7 @@ import {useTablet} from "@/service/MediaQuery";
 import CommunityCommentsRegister from "@/app/components/CommunityComments/CommunityCommentsRegister";
 import CommunityCommentsDetail from "@/app/components/CommunityComments/CommunityCommentsDetail";
 import {FaHeart, FaRegHeart} from "react-icons/fa6";
-import CommunityLikesCount from "@/app/components/community/CommunityLikesCount";
+import CommunityLikesCount from "@/app/components/Community/CommunityLikesCount";
 
 
 export default function CommunityDetail() {
