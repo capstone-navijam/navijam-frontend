@@ -15,7 +15,7 @@ export default function MultiCarousel() {
             id: 1,
             description: "수고했어,\n 오늘도",
             button: '상담하기',
-            path: 'counselors',
+            path: 'comforts',
             image: '/images/carouselImage1.svg',
         },
         {
@@ -29,21 +29,21 @@ export default function MultiCarousel() {
             id: 3,
             description: "마음의 무거운 짐들은 내려놓고\n세상을 자유롭게 날아봐\n",
             button: '커뮤니티',
-            path: 'Community',
+            path: 'community',
             image: '/images/carouselImage3.svg',
         },
         {
             id: 4,
             description: "걱정도 좀 덜 하고, 노력도 좀 덜 하고,\n후회도 좀 덜 하면 좋겠다.",
             button: '1:1상담',
-            path: 'Chat',
+            path: 'chat',
             image: '/images/carouselImage4.svg',
         },
         {
             id: 5,
             description: "수없이 많은 별들 중 가장 빛나는 별은\n바로 너야\n",
             button: '마이페이지',
-            path: 'Mypage',
+            path: 'mypage',
             image: '/images/carouselImage5.svg',
         },
     ]

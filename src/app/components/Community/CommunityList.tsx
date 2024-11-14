@@ -2,7 +2,6 @@
 
 import React, {useEffect, useState} from 'react';
 import CommunityListAll, {CommunityListProps} from "@/app/components/Community/CommunityListAll";
-import {useRouter} from "next/navigation";
 import Pagination from "@mui/material/Pagination";
 import Image from "next/image";
 import {FaRegCommentAlt, FaRegHeart} from "react-icons/fa";
@@ -25,9 +24,6 @@ export default function CommunityList() {
         (currentPage - 1) * communitiesPerPage,
         currentPage * communitiesPerPage
     )
-
-    const router = useRouter();
-
     useEffect(() => {
         const fetchCommunities = async () => {
             try {
@@ -46,7 +42,7 @@ export default function CommunityList() {
                 <div className={`grid grid-cols-2 justify-center w-[95%] mx-auto mt-10 gap-4`}>
                     {currentCommunities.map((community, index) => (
 
-                        <Link href={`/community/${community.id}`}>
+                        <Link href={`/community/[id]`} as="/community/1">
                             <div key={community.id}
                                  className="relative border-2 border-yellow-6 rounded-3xl p-4 cursor-pointer w-full h-[300px]">
                                 <div className='flex flex-row items-center mt-2 justify-between'>
@@ -81,7 +77,7 @@ export default function CommunityList() {
                 <div className={`grid grid-cols-2 justify-center w-[80%] mx-auto mt-10 gap-16`}>
                     {currentCommunities.map((community, index) => (
 
-                        <Link href={`/community/${community.id}`}>
+                        <Link href={`/community/[id]`} as="/community/1">
                             <div key={community.id}
                                  className="relative border-2 border-yellow-6 rounded-3xl p-4 cursor-pointer w-full h-[400px]">
                                 <div className='flex flex-row items-center mt-2 justify-between'>

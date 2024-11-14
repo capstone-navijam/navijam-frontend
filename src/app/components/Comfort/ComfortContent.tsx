@@ -4,10 +4,10 @@ import React, {useEffect, useState} from 'react';
 import ComfortMemberRegister from "@/app/components/Comfort/ComfortMemberRegister";
 import {FaPen, FaSortNumericDown, FaSortNumericUp} from "react-icons/fa";
 import {ComfortListAll, ComfortListProps} from "@/app/components/Comfort/ComfortListAll";
-import {useRouter} from 'next/navigation';
 import ComfortSearch from "@/app/components/Comfort/ComfortSearch";
 import Pagination from '@mui/material/Pagination';
-import {useMobile, useTablet} from "@/service/MediaQuery";
+import {useTablet} from "@/service/MediaQuery";
+import Link from "next/link";
 
 export default function ComfortContent() {
 
@@ -20,7 +20,6 @@ export default function ComfortContent() {
     const [currentPage, setCurrentPage] = useState(1);
     const [comfortsPerPage] = useState(4);
 
-    const router = useRouter();
 
     const sortComforts = (data: ComfortListProps[], order: 'asc' | 'desc') => {
         return data.sort((a, b) => {
@@ -51,10 +50,6 @@ export default function ComfortContent() {
 
     const handleClick = () => {
         setShowComfortMemberRegister(true);
-    }
-
-    const handleDetailClick = (id: string) => {
-        router.push(`/comforts/${id}`);
     }
 
     const handlePageChange = (event: React.ChangeEvent<unknown>, page: number) => {
@@ -93,7 +88,8 @@ export default function ComfortContent() {
                                 </button>
                             </div>
                             <div className='flex justify-center mt-6 mb-52 '>
-                                <div className={`${isTablet ? 'w-[95%] text-2xl' : 'w-[75%] text-3xl '} h-20 text-center bg-user-gray p-4 rounded-lg`}>
+                                <div
+                                    className={`${isTablet ? 'w-[95%] text-2xl' : 'w-[75%] text-3xl '} h-20 text-center bg-user-gray p-4 rounded-lg`}>
                                     <span>아직 기록된 고민이 없어요.</span>
                                 </div>
                             </div>
@@ -122,7 +118,8 @@ export default function ComfortContent() {
                                     </div>
                                 </button>
                             </div>
-                            <div className={`flex flex-row justify-between ${isTablet ? 'w-[95%]' : 'w-[75%]'} mx-auto mt-4`}>
+                            <div
+                                className={`flex flex-row justify-between ${isTablet ? 'w-[95%]' : 'w-[75%]'} mx-auto mt-4`}>
                                 {/* 검색 컴포넌트 */}
                                 <ComfortSearch/>
                                 {/* 내림차순, 오름차순 컴포넌트 */}
@@ -142,12 +139,13 @@ export default function ComfortContent() {
                             {/* 위로받기 게시글 전체 목록 */}
                             <div className="flex flex-col gap-5  mt-2 items-center mx-auto">
                                 {currentComforts.map((comfort) => (
-                                    <div key={comfort.id}
-                                         onClick={() => handleDetailClick(comfort.id)}
-                                         className={`flex rounded-lg justify-between border-2 items-center font-semibold border-yellow-6 p-6 ${isTablet ? 'w-[95%] h-[100px]' : 'w-[75%]'}`}>
-                                        <h1 className={`${isTablet ? 'text-2xl' : 'text-3xl'}  w-1/2 text-ellipsis whitespace-nowrap overflow-hidden`}>{comfort.title}</h1>
-                                        <p className={`${isTablet ? 'text-lg' : 'text-xl'} w-1/2 text-gray-400 text-end`}>{comfort.createdAt}</p>
-                                    </div>
+                                    <Link href="/comforts/[id]" as="/comforts/1">
+                                        <div key={comfort.id}
+                                             className={`flex rounded-lg justify-between border-2 items-center font-semibold border-yellow-6 p-6 ${isTablet ? 'w-[95%] h-[100px]' : 'w-[75%]'}`}>
+                                            <h1 className={`${isTablet ? 'text-2xl' : 'text-3xl'}  w-1/2 text-ellipsis whitespace-nowrap overflow-hidden`}>{comfort.title}</h1>
+                                            <p className={`${isTablet ? 'text-lg' : 'text-xl'} w-1/2 text-gray-400 text-end`}>{comfort.createdAt}</p>
+                                        </div>
+                                    </Link>
                                 ))}
 
                                 <Pagination

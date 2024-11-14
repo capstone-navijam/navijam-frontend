@@ -8,6 +8,7 @@ import {FaSortNumericDown, FaSortNumericUp} from "react-icons/fa";
 import Pagination from "@mui/material/Pagination";
 import {useRouter} from "next/navigation";
 import {useMobile, useTablet} from "@/service/MediaQuery";
+import Link from "next/link";
 
 export default function ConsoleContent() {
 
@@ -55,9 +56,6 @@ export default function ConsoleContent() {
         setConsoles(sortConsoles([...consoles], order));
     }
 
-    const handleClick = (id: string) => {
-        router.push(`/comforts/${id}`);
-    }
 
     return (
         <>
@@ -112,41 +110,18 @@ export default function ConsoleContent() {
 
                         <div>
                             {currentConsoles.map((console, index) => (
-                                <div
-                                    key={console.id}
-                                    onClick={() => handleClick(console.id)}
-                                    className={`table w-full border-b border-solid border-gray-300 `}
-                                >
-                                    {isTablet ? (<>
-                                        <div className='flex flex-row text-2xl h-16 items-center justify-between'>
-                                            <div className='text-start text-ellipsis whitespace-nowrap overflow-hidden mx-2'>
-                                                {console.title.length > 25 ? console.title.slice(0, 25) + '...' : console.title}
-                                            </div>
-                                            <div className=''>
-                                                {console.isAnswered ? (
-                                                    <MdOutlineCheckBox className='text-5xl text-yellow-6'/>
-                                                ) : (
-                                                    <MdOutlineCheckBoxOutlineBlank
-                                                        className='text-5xl text-yellow-6'/>
-                                                )}
-                                            </div>
-                                        </div>
-                                    </>) : (<>
-                                        <div className='flex flex-col items-center p-2 text-3xl h-16'>
-                                            <div className='flex w-full'>
-                                                {/* 카테고리와 제목 */}
-                                                <div className='flex w-1/2'>
-                                                    <p className='w-1/2 text-start mx-5 text-yellow-1 font-semibold'>
-                                                        {console.categories.join(', ')}
-                                                    </p>
-                                                    <h1 className='w-1/2 text-start text-ellipsis whitespace-nowrap overflow-hidden'>
-                                                        {console.title}
-                                                    </h1>
+                                <Link href="/comforts/[id]" as="/comforts/1">
+                                    <div
+                                        key={console.id}
+                                        className={`table w-full border-b border-solid border-gray-300 `}
+                                    >
+                                        {isTablet ? (<>
+                                            <div className='flex flex-row text-2xl h-16 items-center justify-between'>
+                                                <div
+                                                    className='text-start text-ellipsis whitespace-nowrap overflow-hidden mx-2'>
+                                                    {console.title.length > 25 ? console.title.slice(0, 25) + '...' : console.title}
                                                 </div>
-
-                                                {/* 작성일과 답변여부 */}
-                                                <div className='flex w-1/2 justify-end gap-20'>
-                                                    <p className='w-1/2 text-start'>{console.createdAt}</p>
+                                                <div className=''>
                                                     {console.isAnswered ? (
                                                         <MdOutlineCheckBox className='text-5xl text-yellow-6'/>
                                                     ) : (
@@ -155,10 +130,35 @@ export default function ConsoleContent() {
                                                     )}
                                                 </div>
                                             </div>
-                                        </div>
+                                        </>) : (<>
+                                            <div className='flex flex-col items-center p-2 text-3xl h-16'>
+                                                <div className='flex w-full'>
+                                                    {/* 카테고리와 제목 */}
+                                                    <div className='flex w-1/2'>
+                                                        <p className='w-1/2 text-start mx-5 text-yellow-1 font-semibold'>
+                                                            {console.categories.join(', ')}
+                                                        </p>
+                                                        <h1 className='w-1/2 text-start text-ellipsis whitespace-nowrap overflow-hidden'>
+                                                            {console.title}
+                                                        </h1>
+                                                    </div>
 
-                                    </>)}
-                                </div>
+                                                    {/* 작성일과 답변여부 */}
+                                                    <div className='flex w-1/2 justify-end gap-20'>
+                                                        <p className='w-1/2 text-start'>{console.createdAt}</p>
+                                                        {console.isAnswered ? (
+                                                            <MdOutlineCheckBox className='text-5xl text-yellow-6'/>
+                                                        ) : (
+                                                            <MdOutlineCheckBoxOutlineBlank
+                                                                className='text-5xl text-yellow-6'/>
+                                                        )}
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                        </>)}
+                                    </div>
+                                </Link>
                             ))}
                         </div>
                     </div>
