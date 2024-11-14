@@ -280,7 +280,7 @@ export default function SignUpPage() {
                                                 id="userName"
                                                 className="block border border-yellow-6 p-5 w-full rounded placeholder:text-xl text-2xl"
                                                 type="text"
-                                                pattern="^[a-zA-Z가-힣]{2,8}$"
+                                                pattern="^[a-zA-Z가-힣0-9]{2,8}$"
                                                 {...nickname}
                                                 title="닉네임을 2~8글자로 입력해주세요."
                                                 placeholder="닉네임을 입력해주세요"
