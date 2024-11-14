@@ -32,18 +32,12 @@ export default function ComfortDetailPage() {
 
         const fetchComfortData = async () => {
             if (id) {
-                console.log("Fetching data for ID:", id);
-                try {
-                    //@ts-ignore
-                    const data = await ComfortListDetail(BigInt(id));
-                    console.log("Fetched data: ", data);
-                    setComfort(data);
-                    setIsAnswered(data.isAnswered);
-                } catch (error) {
-                    console.error("Error fetching data:", error);
-                } finally {
-                    setIsLoading(false);
-                }
+                //@ts-ignore
+                const data = await ComfortListDetail(BigInt(id));
+                console.log("Fetched data: ", data);
+                setComfort(data);
+                setIsAnswered(data.isAnswered);
+                setIsLoading(false);
             }
         };
 
