@@ -8,7 +8,7 @@ import ComfortListDetail from "@/app/components/Comfort/ComfortListlDetail";
 import ComfortListenerRegister from "@/app/components/Comfort/ComfortListenerRegister";
 import ComfortSkeleton from "@/app/components/SkeletonUI/ComfortSkeleton";
 import {getCookie} from "cookies-next";
-import {useMobile, useTablet} from "@/service/MediaQuery";
+import {useTablet} from "@/service/MediaQuery";
 
 export default function ComfortDetailPage() {
 
@@ -32,11 +32,18 @@ export default function ComfortDetailPage() {
 
         const fetchComfortData = async () => {
             if (id) {
-                //@ts-ignore
-                const data = await ComfortListDetail(BigInt(id));
-                setComfort(data);
-                setIsAnswered(data.isAnswered);
-                setIsLoading(false);
+                console.log("Fetching data for ID:", id);
+                try {
+                    //@ts-ignore
+                    const data = await ComfortListDetail(BigInt(id));
+                    console.log("Fetched data: ", data);
+                    setComfort(data);
+                    setIsAnswered(data.isAnswered);
+                } catch (error) {
+                    console.error("Error fetching data:", error);
+                } finally {
+                    setIsLoading(false);
+                }
             }
         };
 

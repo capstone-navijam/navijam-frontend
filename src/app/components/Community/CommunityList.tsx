@@ -77,7 +77,7 @@ export default function CommunityList() {
                 <div className={`grid grid-cols-2 justify-center w-[80%] mx-auto mt-10 gap-16`}>
                     {currentCommunities.map((community, index) => (
 
-                        <Link href={`/community/[id]`} as="/community/1">
+                        <Link href={`/community/${community.id}`} as={`/community/${community.id}`}>
                             <div key={community.id}
                                  className="relative border-2 border-yellow-6 rounded-3xl p-4 cursor-pointer w-full h-[400px]">
                                 <div className='flex flex-row items-center mt-2 justify-between'>
