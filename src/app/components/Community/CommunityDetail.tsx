@@ -31,15 +31,17 @@ export default function CommunityDetail() {
 
         const fetchCommunity = async () => {
             if (id) {
+                console.log("Fetching community data for ID:", id); // ID 값 확인
                 try {
                     //@ts-ignore
                     const data = await CommunityListDetail(BigInt(id));
+                    console.log("Fetched data: ", data); // 데이터 확인
                     setCommunity(data);
                 } catch (err) {
-                    console.error("커뮤니티 게시글 상세 정보를 불러오는 데 실패했습니다.")
+                    console.error("커뮤니티 게시글 상세 정보를 불러오는 데 실패했습니다.", err);
                 }
             }
-        }
+        };
         fetchCommunity();
     }, [id]);
 

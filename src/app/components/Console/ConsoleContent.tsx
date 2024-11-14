@@ -110,7 +110,7 @@ export default function ConsoleContent() {
 
                         <div>
                             {currentConsoles.map((console, index) => (
-                                <Link href="/comforts/[id]" as="/comforts/1">
+                                <Link href={`/comforts/${console.id}`} as={`/comforts/${console.id}`}>
                                     <div
                                         key={console.id}
                                         className={`table w-full border-b border-solid border-gray-300 `}

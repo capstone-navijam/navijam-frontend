@@ -139,7 +139,7 @@ export default function ComfortContent() {
                             {/* 위로받기 게시글 전체 목록 */}
                             <div className="flex flex-col gap-5  mt-2 items-center mx-auto">
                                 {currentComforts.map((comfort) => (
-                                    <Link href="/comforts/[id]" as="/comforts/1">
+                                    <Link href={`/comforts/${comfort.id}`} as={`/comforts/${comfort.id}`}>
                                         <div key={comfort.id}
                                              className={`flex rounded-lg justify-between border-2 items-center font-semibold border-yellow-6 p-6 ${isTablet ? 'w-[95%] h-[100px]' : 'w-[75%]'}`}>
                                             <h1 className={`${isTablet ? 'text-2xl' : 'text-3xl'}  w-1/2 text-ellipsis whitespace-nowrap overflow-hidden`}>{comfort.title}</h1>
