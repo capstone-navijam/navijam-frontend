@@ -11,7 +11,7 @@ export default function MyProfile() {
             {isTablet ? (<>
                 <article className='w-full'>
                     <div
-                        className='border-4 border-yellow-6 rounded-2xl flex flex-row mt-4 items-center w-full h-[240px] p-4 gap-4'>
+                        className='border-4 border-yellow-6 rounded-2xl flex flex-row mt-4 items-center w-full h-[300px] p-4 gap-4'>
 
                         {/* {Mypage.profile}이 들어갈 곳 */}
                         <Image src="/images/profile.jpeg" alt="Default Profile" width={250} height={250} className='w-[90px] h-[90px]'/>
