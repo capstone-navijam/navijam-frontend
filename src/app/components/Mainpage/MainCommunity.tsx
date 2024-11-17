@@ -117,14 +117,14 @@ export default function MainCommunity() {
                         <div className='flex flex-row gap-4'>
                             {mainCommunity.map((community) => (
                                 <div key={community.id}
-                                     className='relative flex flex-col border-4 w-full h-[500px] rounded-3xl border-yellow-2 p-2'
+                                     className='relative flex flex-col border-4 w-[33%] h-[500px] rounded-3xl border-yellow-2 p-2'
                                 >
                                     <div className='flex flex-col'
                                          onClick={() => handleDetailClick(community.id)}>
                                         <div className='flex flex-col '>
                                             <Image src={community.profile} alt="Profile Image" width={100} height={100}
                                                    className="rounded-full w-[50px] h-[50px]"/>
-                                            <p className='text-4xl font-bold'>{community.title}</p>
+                                            <p className='text-4xl font-bold overflow-hidden text-ellipsis whitespace-nowrap'>{community.title}</p>
                                             <p className='text-2xl text-yellow-2 mt-1'>{community.categories.join(', ')}</p>
                                         </div>
                                         <p className='whitespace-pre-wrap leading-normal h-[278px] text-3xl mt-2 overflow-hidden'>{community.content}</p>

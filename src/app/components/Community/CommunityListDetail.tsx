@@ -5,7 +5,7 @@ export interface CommunityListDetailProps {
     id: string;
     profile: string;
     nickname: string;
-    categories: [];  // 문자열 배열로 정의
+    categories: string[];
     title: string;
     content: string;
     timestamp: string;
