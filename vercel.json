@@ -1,5 +1,7 @@
 {
-  "rewrites":  [
-    {"source": "/(.*)", "destination": "/"}
+  "rewrites": [
+    { "source": "/community/:id", "destination": "/community/:id" },
+    { "source": "/comforts/:id", "destination": "/comforts/:id" },
+    { "source": "/(.*)", "destination": "/" }
   ]
 }
