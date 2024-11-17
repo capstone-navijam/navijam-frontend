@@ -7,6 +7,7 @@ import MyCommunity from "@/app/components/Mypage/MyCommunity";
 import MyCounseling from "@/app/components/Mypage/MyCounseling";
 import { useTablet } from "@/service/MediaQuery";
 import { IoIosArrowForward, IoIosArrowDown } from 'react-icons/io';
+import Image from 'next/image'
 
 export default function ProfileCategory() {
     const isTablet = useTablet();
@@ -21,10 +22,13 @@ export default function ProfileCategory() {
         { id: 'counseling', label: '상담내역', component: <MyCounseling /> },
     ];
 
-    const handleMenuClick = (menuId, menuName) => {
+    const handleMenuClick = (menuId, menuLabel) => {
         setSelectedMenu(menuId); // 선택된 메뉴 ID 업데이트
-        setMenuLabel(menuName); // 버튼에 표시할 메뉴 이름 업데이트
-        setIsNavOpen(false); // 메뉴 닫기
+        setMenuLabel(menuLabel); // 선택된 메뉴 이름 업데이트
+
+        if (isTablet) {
+            setIsNavOpen(false); // 태블릿 환경에서는 메뉴 닫기
+        }
     };
 
     const toggleNav = () => {
@@ -65,7 +69,17 @@ export default function ProfileCategory() {
                 </section>
             ) : (
                 <section className="flex flex-row">
-                    <aside className="mx-20 border-l-2 h-full w-[40%] shadow-custom">
+                    <aside className="border-l-2 h-full w-[35%] shadow-custom">
+                        <div className='flex flex-col items-center gap-4'>
+                            <Image src='/images/Profile.jpeg' alt="Default Profile" width={400} height={400}
+                                   className='w-[200px] h-[200px]'/>
+
+                            {/* {mypage.nickname}이 들어갈 곳 */}
+                            <h1 className='text-5xl'>짱구</h1>
+
+                            {/* {mypage.address}가 들어갈 곳 */}
+                            <h2 className='text-2xl'>test1@test.com</h2>
+                        </div>
                         <ul className="flex flex-col gap-28 p-4 mx-4 mt-8 mb-2 font-bold">
                             {menuItems.map((menu) => (
                                 <li
@@ -81,14 +95,9 @@ export default function ProfileCategory() {
                         </ul>
                     </aside>
 
-                    {/* 모든 컴포넌트를 한 번에 표시 */}
+                    {/* 선택된 메뉴의 컴포넌트만 표시 */}
                     <div className="flex-1 p-8">
-                        {menuItems.map((menu) => (
-                            <div key={menu.id} className="mb-10">
-                                <h2 className="text-4xl font-bold mb-4">{menu.label}</h2>
-                                {menu.component}
-                            </div>
-                        ))}
+                        {menuItems.find((menu) => menu.id === selectedMenu)?.component}
                     </div>
                 </section>
             )}
