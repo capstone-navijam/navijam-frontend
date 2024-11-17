@@ -58,19 +58,19 @@ export default function MainCommunity() {
                 </Carousel>
                 <div className='w-[80%] mx-auto mt-12 mb-12'>
                     <p className='text-4xl font-medium mb-4'>최근 등록된 커뮤니티</p>
-                    <div className='flex flex-col gap-4'>
+                    <div className='flex flex-col gap-4 w-full'>
                         {mainCommunity.map((community) => (
                             <div key={community.id}
                                  onClick={() => handleDetailClick(community.id)}
                                  className='relative flex flex-col border-4 w-full h-[380px] rounded-3xl border-yellow-2 p-2 overflow-hidden'
                             >
                                 <div className='flex justify-between items-center'>
-                                    <div className='flex flex-row gap-2'>
-                                        <p className='text-4xl font-bold'>{community.title}</p>
-                                        <p className='text-2xl text-yellow-2 content-end mt-1'>{community.categories.join(', ')}</p>
+                                    <p className='text-4xl font-bold whitespace-nowrap text-ellipsis overflow-hidden w-[70%]'>{community.title}</p>
+                                    <div className='flex flex-row items-center gap-1'>
+                                        <p className="text-2xl text-yellow-2" style={{whiteSpace: "pre-line"}}>{community.categories.join(`\n`)}</p>
+                                        <Image src={community.profile} alt="Profile Image" width={100} height={100}
+                                               className="rounded-full w-[50px] h-[50px]"/>
                                     </div>
-                                    <Image src={community.profile} alt="Profile Image" width={100} height={100}
-                                           className="rounded-full w-[50px] h-[50px]"/>
                                 </div>
                                 <div className="w-full mt-2 mb-2 border-[2px] border-lightGray/30"></div>
                                 <p className='whitespace-pre-wrap leading-normal h-[220px] text-3xl overflow-hidden mt-1'>{community.content}</p>
