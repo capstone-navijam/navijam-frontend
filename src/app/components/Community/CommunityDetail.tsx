@@ -8,7 +8,6 @@ import Swal from "sweetalert2";
 import {useTablet} from "@/service/MediaQuery";
 import CommunityCommentsRegister from "@/app/components/CommunityComments/CommunityCommentsRegister";
 import CommunityCommentsDetail from "@/app/components/CommunityComments/CommunityCommentsDetail";
-import {FaHeart, FaRegHeart} from "react-icons/fa6";
 import CommunityLikesCount from "@/app/components/Community/CommunityLikesCount";
 
 
@@ -117,7 +116,7 @@ export default function CommunityDetail() {
                     <p className='text-2xl text-yellow-2 font-bold mt-2'>{community.categories.join(', ')}</p>
                     <p className='items-end text-xl mt-1'>{community.timestamp}</p>
                 </div>
-                <p className='mt-8 whitespace-pre-wrap leading-normal text-3xl h-[480px]'>{community.content}</p>
+                <p className='mt-8 whitespace-pre-wrap leading-normal text-3xl  min-h-[480px]'>{community.content}</p>
 
                 {/* 로그인된 사용자와 작성자가 같을 경우에만 수정/삭제 버튼 표시 */}
                 {loggedInUser === community.nickname && (
@@ -143,7 +142,6 @@ export default function CommunityDetail() {
             </section>
 
             <section className='w-[95%] mx-auto mt-10'>
-                <h1 className='text-4xl mb-4'>댓글 <span className='text-yellow-6'>0</span>개가 달렸어요.</h1>
                 <CommunityCommentsDetail id={community.memberId} nickname={community.nickname}
                                          profile={community.profile} content={community.profile}
                                          timestamp={community.timestamp} communityId={community.id}/>
@@ -173,7 +171,7 @@ export default function CommunityDetail() {
 
                     <p className='items-end text-2xl mt-1'>{community.timestamp}</p>
                 </div>
-                <p className='mt-8 text-3xl h-[480px]'>{community.content}</p>
+                <p className='mt-8 text-3xl min-h-[480px] whitespace-pre-wrap leadng-normal '>{community.content}</p>
 
                 {/* 로그인된 사용자와 작성자가 같을 경우에만 수정/삭제 버튼 표시 */}
                 {loggedInUser === community.nickname && (
@@ -199,7 +197,6 @@ export default function CommunityDetail() {
             </section>
 
             <section className='w-[80%] mx-auto mt-10'>
-                <h1 className='text-5xl mb-4'>댓글 <span className='text-yellow-6'>0</span>개가 달렸어요.</h1>
                 <CommunityCommentsDetail id={community.memberId} nickname={community.nickname}
                                          profile={community.profile} content={community.profile}
                                          timestamp={community.timestamp} communityId={community.id}/>
