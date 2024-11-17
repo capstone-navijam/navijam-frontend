@@ -32,7 +32,7 @@ export default function CommunityModify() {
             }
         }
         fetchCommunity();
-    }, [id, handleChange]);
+    }, [id]);
 
     const handleClick = () => {
         if (id) {

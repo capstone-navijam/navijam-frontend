@@ -37,7 +37,7 @@ export default function ComfortListenerModify() {
             }
         };
         fetchComfort();
-    }, [id, nickname, handleContentChange]);
+    }, [id, nickname]);
 
     const handleBackClick = () => {
         if (id) {

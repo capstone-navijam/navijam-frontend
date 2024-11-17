@@ -32,7 +32,7 @@ export default function ComfortMemberModify() {
             }
         };
         fetchComfort();
-    }, [id, handleChange]);
+    }, [id]);
 
     const handleClick = () => {
         if (id) {
