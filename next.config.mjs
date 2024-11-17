@@ -1,13 +1,5 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-    async rewrites() {
-        return [
-            {
-                source: '/community/:id',
-                destination: '/community/[id]/page.tsx',
-            },
-        ];
-    },
     eslint: {
         ignoreDuringBuilds: true,
     },
