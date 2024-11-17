@@ -1,6 +1,6 @@
 import { useState } from 'react';
 
-export default function LoginInput( defaultValue ) {
+export default function useInput( defaultValue:string ) {
     const [value, setValue] = useState(defaultValue);
 
     const handleChange = (e) => {
@@ -8,5 +8,5 @@ export default function LoginInput( defaultValue ) {
         setValue(newValue);
     };
 
-    return { value, onChange: handleChange };
+    return { value, onChange: handleChange, setValue };
 }
