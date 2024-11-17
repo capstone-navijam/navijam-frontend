@@ -47,7 +47,7 @@ export default function CommunityCommentsRegister({communityId}) {
                         Swal.fire({title: "등록 완료!", text: "댓글이 등록되었습니다.", icon: "success", timer: 1000});
                         window.location.reload();
                     } else {
-                        Swal.fire({title: "댓글 등록이 실패하였습니다.", text: "다시 시도해주세요.", icon: "error", timer: 1000});
+                        Swal.fire({title: "댓글 등록이 실패하였습니다.", text: "댓글은 최소 5글자 이상, 100글자 이하입니다.", icon: "error", timer: 1000});
                     }
                 }
             })
