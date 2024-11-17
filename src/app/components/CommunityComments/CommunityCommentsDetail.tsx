@@ -11,11 +11,18 @@ import {useRouter} from "next/navigation";
 import {IoMdClose} from "react-icons/io";
 
 export default function CommunityCommentsDetail({communityId}: CommunityCommentsDetailProps) {
+
+    const [loggedInUser, setLoggedInUser] = useState<string | null>(null);
     const isTablet = useTablet();
     const router = useRouter();
     const [comments, setComments] = useState<CommunityCommentsDetailProps[]>([]);
 
     useEffect(() => {
+        const userName = getCookie("nickname");
+        if (userName) {
+            setLoggedInUser(userName.toString());
+        }
+
         const fetchComments = async () => {
             if (communityId) {
                 try {
@@ -90,10 +97,10 @@ export default function CommunityCommentsDetail({communityId}: CommunityComments
                                     </div>
                                     <div className='flex flex-row items-center'>
                                         <p className='text-xl -mt-0.5'>{comment.timestamp}</p>
-                                        <IoMdClose
+                                        {loggedInUser === comment.nickname && (<IoMdClose
                                             className='text-3xl'
                                             onClick={() => handleDeleteClick(comment.id)} // comment.id 전달
-                                        />
+                                        />)}
                                     </div>
                                 </div>
                                 <p className='text-3xl leading-normal whitespace-pre-wrap mt-10 mb-10 mx-2'>{comment.content}</p>
@@ -123,10 +130,10 @@ export default function CommunityCommentsDetail({communityId}: CommunityComments
                                     </div>
                                     <div className='flex flex-row items-center'>
                                         <p className='text-2xl -mt-0.5'>{comment.timestamp}</p>
-                                        <IoMdClose
+                                        {loggedInUser === comment.nickname && (<IoMdClose
                                             className='text-3xl'
                                             onClick={() => handleDeleteClick(comment.id)} // comment.id 전달
-                                        />
+                                        />)}
                                     </div>
                                 </div>
                                 <p className='text-4xl leading-normal whitespace-pre-wrap mt-10 mb-10 mx-2'>{comment.content}</p>
