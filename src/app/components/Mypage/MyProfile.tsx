@@ -41,7 +41,7 @@ export default function MyProfile() {
                         className='border-4 border-yellow-6 rounded-2xl flex flex-row mt-24 items-center w-[95%] mx-auto min-h-[480px] p-4 gap-4'>
 
                         {/* {Mypage.profile}이 들어갈 곳 */}
-                        <Image src="/images/profile.jpeg" alt="Default Profile" width={250} height={250}/>
+                        <Image src="/images/Profile.jpeg" alt="Default Profile" width={250} height={250}/>
 
                         <div className='flex flex-col gap-20 w-full'>
 
