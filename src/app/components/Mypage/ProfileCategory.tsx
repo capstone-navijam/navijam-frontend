@@ -80,7 +80,7 @@ export default function ProfileCategory() {
                             {/* {mypage.address}가 들어갈 곳 */}
                             <h2 className='text-2xl'>test1@test.com</h2>
                         </div>
-                        <ul className="flex flex-col gap-28 p-4 mx-4 mt-8 mb-2 font-bold">
+                        <ul className="flex flex-col gap-24 p-4 mx-4 mt-8 mb-2 font-bold">
                             {menuItems.map((menu) => (
                                 <li
                                     key={menu.id}
@@ -90,6 +90,11 @@ export default function ProfileCategory() {
                                     onClick={() => handleMenuClick(menu.id, menu.label)} // 메뉴 클릭 시 ID와 이름 전달
                                 >
                                     {menu.label}
+                                    <div>
+                                        {selectedMenu === menu.id && (
+                                            <div className="w-[30%] border-[2px] border-black mt-2"></div>
+                                        )}
+                                    </div>
                                 </li>
                             ))}
                         </ul>

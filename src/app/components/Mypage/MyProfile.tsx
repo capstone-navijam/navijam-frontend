@@ -1,6 +1,7 @@
+'use client';
 import React from 'react';
 import Image from 'next/image'
-import {useMobile, useTablet} from "@/service/MediaQuery";
+import {useTablet} from "@/service/MediaQuery";
 
 export default function MyProfile() {
 
@@ -11,7 +12,7 @@ export default function MyProfile() {
             {isTablet ? (<>
                 <article className='w-full'>
                     <div
-                        className='border-4 border-yellow-6 rounded-2xl flex flex-row mt-4 items-center w-full h-[300px] p-4 gap-4'>
+                        className='border-4 border-yellow-6 rounded-2xl flex flex-row mt-4 items-center w-full min-h-[300px] p-4 gap-4'>
 
                         {/* {Mypage.profile}이 들어갈 곳 */}
                         <Image src="/images/profile.jpeg" alt="Default Profile" width={250} height={250} className='w-[90px] h-[90px]'/>
@@ -35,9 +36,9 @@ export default function MyProfile() {
                 </article>
             </>) : (<>
                 <article className='w-full'>
-                    <h1 className='text-6xl w-fit font-semibold mt-20'>내 프로필</h1>
+                    <h1 className='text-6xl w-fit font-semibold mt-4'>내 프로필</h1>
                     <div
-                        className='border-4 border-yellow-6 rounded-2xl flex flex-row mt-32 items-center w-[95%] mx-auto h-[40%] p-4 gap-4'>
+                        className='border-4 border-yellow-6 rounded-2xl flex flex-row mt-24 items-center w-[95%] mx-auto min-h-[480px] p-4 gap-4'>
 
                         {/* {Mypage.profile}이 들어갈 곳 */}
                         <Image src="/images/profile.jpeg" alt="Default Profile" width={250} height={250}/>
