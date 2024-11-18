@@ -64,7 +64,7 @@ export default function ComfortDetailPage() {
                         {role === "MEMBER" ? (
                             <>
                                 <div
-                                    className='relative mt-10 rounded-lg mx-auto w-full h-[250px] text-start border-yellow-2 border-2 p-4'>
+                                    className='relative mt-10 rounded-lg mx-auto w-full h-[250px] text-start border-yellow-2 border-2 p-4 mb-10'>
                                     <p className={`${isTablet ? 'text-4xl' : 'text-6xl'} items-center text-center mt-20 text-gray-500`}>아직
                                         등록된 답변이
                                         없습니다.</p>

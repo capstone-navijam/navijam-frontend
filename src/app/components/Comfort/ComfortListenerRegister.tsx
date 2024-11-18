@@ -70,7 +70,7 @@ export default function ComfortListenerRegister() {
                                 style={{lineHeight: '1.8'}}
                             />
                     </div>
-                    <div className='mt-4 w-full flex justify-between'>
+                    <div className='mt-4 w-full flex justify-between mb-10'>
                         <button
                             type="button"
                             onClick={handleBackClick}
