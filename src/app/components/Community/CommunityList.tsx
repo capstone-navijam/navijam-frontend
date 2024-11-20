@@ -5,12 +5,12 @@ import CommunityListAll, {CommunityListProps} from "@/app/components/Community/C
 import Pagination from "@mui/material/Pagination";
 import Image from "next/image";
 import {FaRegCommentAlt} from "react-icons/fa";
-import {useTablet} from "@/service/MediaQuery";
+import {useTabletHeight} from "@/service/MediaQuery";
 import CommunityLikesCount from "@/app/components/Community/CommunityLikesCount";
 import Link from 'next/link';
 
 export default function CommunityList() {
-    const isTablet = useTablet();
+    const isTabletHeight = useTabletHeight();
 
     const [communities, setCommunities] = useState<CommunityListProps[]>([]);
     const [currentPage, setCurrentPage] = useState(1);
@@ -38,7 +38,7 @@ export default function CommunityList() {
 
     return (
         <>
-            {isTablet ? (<>
+            {isTabletHeight ? (<>
                 <div className={`grid grid-cols-2 justify-center w-[95%] mx-auto mt-10 gap-4`}>
                     {currentCommunities.map((community, index) => (
 

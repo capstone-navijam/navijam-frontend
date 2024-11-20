@@ -6,11 +6,11 @@ import Swal from "sweetalert2";
 import {getCookie} from "cookies-next";
 import CommunityContent from "@/app/components/Community/CommunityContent";
 import RegisterCategory from "@/app/components/Comfort/RegisterCategory";
-import {useTablet} from "@/service/MediaQuery";
+import {useTabletHeight} from "@/service/MediaQuery";
 
 export default function CommunityRegister() {
 
-    const isTablet = useTablet();
+    const isTabletHeight = useTabletHeight();
 
     const title = useInput('');
     const content = useInput('');
@@ -100,7 +100,7 @@ export default function CommunityRegister() {
 
     return (
         <>
-            {isTablet ? (<>
+            {isTabletHeight ? (<>
                 {showCommunityContent ? (<CommunityContent/>) : (
                     <form onSubmit={handleSubmit}>
                         <div className='mt-14 rounded-lg mx-auto border-yellow-6 border-2 h-[45%] w-[95%]'>

@@ -4,10 +4,10 @@ import RegisterCategory from "@/app/components/Comfort/RegisterCategory";
 import useInput from '@/service/useInput';
 import {getCookie} from "cookies-next";
 import Swal from "sweetalert2";
-import {useMobile, useTablet} from "@/service/MediaQuery";
+import {useMobile, useTabletHeight} from "@/service/MediaQuery";
 
 export default function ComfortMemberRegister() {
-    const isTablet = useTablet();
+    const isTabletHeight = useTabletHeight();
     const [showComfortContent, setShowComfortContent] = useState(false);
     const title = useInput('');
     const content = useInput('');
@@ -101,20 +101,20 @@ export default function ComfortMemberRegister() {
             ) : (
                 <>
                     <div className='flex flex-col text-center'>
-                        <h1 className={`font-bold mt-8 ${isTablet ? 'text-5xl' : 'text-7xl'}`}>위로
+                        <h1 className={`font-bold mt-8 ${isTabletHeight ? 'text-5xl' : 'text-7xl'}`}>위로
                             받기</h1>
-                        {isTablet ? (
+                        {isTabletHeight ? (
                             <span className='mt-4 text-2xl'>내용은 비밀이 보장되므로,<br/>작은 고민이라도 괜찮아요.</span>) : (
                             <span className='mt-4 text-3xl'>내용은 비밀이 보장되므로, 작은 고민이라도 괜찮아요.</span>)}
 
                     </div>
                     <form onSubmit={handleSubmit}>
                         <div
-                            className={`mt-4 rounded-lg mx-auto border-yellow-6 border-2  h-[500px] ${isTablet ? 'w-[95%]' : 'w-[80%]'}`}>
+                            className={`mt-4 rounded-lg mx-auto border-yellow-6 border-2  h-[500px] ${isTabletHeight ? 'w-[95%]' : 'w-[80%]'}`}>
                             <input
                                 name="title"
                                 id="title"
-                                className={`p-4 mt-14 w-[95%] mx-auto outline-0 block  placeholder:font-medium ${isTablet ? 'text-2xl placeholder:text-3xl' : 'text-3xl placeholder:text-5xl'}`}
+                                className={`p-4 mt-14 w-[95%] mx-auto outline-0 block  placeholder:font-medium ${isTabletHeight ? 'text-2xl placeholder:text-3xl' : 'text-3xl placeholder:text-5xl'}`}
                                 title="제목을 입력해주세요."
                                 placeholder="제목"
                                 value={title.value}
@@ -124,7 +124,7 @@ export default function ComfortMemberRegister() {
                             <textarea
                                 name="content"
                                 id="content"
-                                className={`p-4 mt-4 w-[95%] h-[60%] outline-0 mx-auto block placeholder:text-2xl placeholder:font-medium resize-none ${isTablet ? 'placeholder:text-lg text-lg' : 'placeholder:text-2xl text-2xl'}`}
+                                className={`p-4 mt-4 w-[95%] h-[60%] outline-0 mx-auto block placeholder:text-2xl placeholder:font-medium resize-none ${isTabletHeight ? 'placeholder:text-lg text-lg' : 'placeholder:text-2xl text-2xl'}`}
                                 title="내용을 입력해주세요."
                                 placeholder="오늘의 고민은 무엇인가요? 이 곳에 고민을 털어놓아보세요."
                                 value={content.value}
@@ -135,17 +135,17 @@ export default function ComfortMemberRegister() {
                             selectedCategories={selectedCategories}
                             setSelectedCategories={setSelectedCategories}
                         />
-                        <div className={`mt-10 mx-auto ${isTablet ? 'w-[95%]' : 'w-[80%]'} flex justify-between mb-10`}>
+                        <div className={`mt-10 mx-auto ${isTabletHeight ? 'w-[95%]' : 'w-[80%]'} flex justify-between mb-10`}>
                             <button
                                 type="button"
                                 onClick={handleBackClick}
-                                className={`bg-gray-300 ${isTablet ? 'text-2xl' : 'text-3xl'} p-1.5 rounded-lg w-40`}
+                                className={`bg-gray-300 ${isTabletHeight ? 'text-2xl' : 'text-3xl'} p-1.5 rounded-lg w-40`}
                             >
                                 돌아가기
                             </button>
                             <button
                                 type="submit"
-                                className={`bg-yellow-6 ${isTablet ? 'text-2xl' : 'text-3xl'} p-1.5 rounded-lg text-white w-40`}
+                                className={`bg-yellow-6 ${isTabletHeight ? 'text-2xl' : 'text-3xl'} p-1.5 rounded-lg text-white w-40`}
                             >
                                 작성완료
                             </button>

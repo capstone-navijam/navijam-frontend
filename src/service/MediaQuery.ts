@@ -12,24 +12,36 @@ export const useMobile = () => {
     return isMobile;
 }
 
-export const useTablet = () => {
-    const [isTablet, setIsTablet] = useState(false);
-    const tablet = useMediaQuery({query: '(min-width: 834px) and (max-width: 1023px)'});
+export const useTabletHeight = () => {
+    const [isTabletHeight, setIsTabletHeight] = useState(false);
+    const tabletHeight = useMediaQuery({query: '(min-width: 834px) and (max-width: 1023px)'});
 
     useEffect(() => {
-        setIsTablet(tablet);
-    }, [tablet]);
+        setIsTabletHeight(tabletHeight);
+    }, [tabletHeight]);
 
-    return isTablet;
+    return isTabletHeight;
 }
 
 export const usePC = () => {
     const [isPC, setIsPC] = useState(false);
-    const PC = useMediaQuery({query: '(min-width: 1024px) and (max-width: 2560px)'});
+    const PC = useMediaQuery({query: '(min-width: 1920px) and (max-width: 2560px)'});
 
     useEffect(() => {
         setIsPC(PC);
     }, [PC]);
 
     return isPC;
+}
+
+
+export const useTabletWidth = () => {
+    const [isTabletWidth, setIsTabletWidth] = useState(false);
+    const tabletWidth = useMediaQuery({query: '(min-width: 1194px) and (max-width: 1920px)'});
+
+    useEffect(() => {
+        setIsTabletWidth(tabletWidth);
+    }, [tabletWidth]);
+
+    return isTabletWidth;
 }

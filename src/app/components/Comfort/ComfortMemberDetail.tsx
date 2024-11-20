@@ -6,11 +6,11 @@ import {useParams, useRouter} from "next/navigation";
 import Image from 'next/image'
 import Swal from "sweetalert2";
 import {getCookie} from "cookies-next";
-import {useMobile, useTablet} from "@/service/MediaQuery";
+import {useMobile, useTabletHeight} from "@/service/MediaQuery";
 
 export default function ComfortMemberDetail() {
 
-    const isTablet = useTablet();
+    const isTabletHeight = useTabletHeight();
 
     const [comfort, setComfort] = useState<ComfortListDetailProps | null>(null);
     const {id} = useParams(); // URL 파라미터에서 id 가져오기
@@ -98,7 +98,7 @@ export default function ComfortMemberDetail() {
 
     return (
         <>
-            {isTablet ? (
+            {isTabletHeight ? (
                 <>
                     {role === "LISTENER" ? (
                         <div className='flex flex-col text-center'>

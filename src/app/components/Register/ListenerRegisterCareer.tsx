@@ -1,11 +1,11 @@
 "use client"
 import React, {useEffect} from 'react';
-import {useMobile, useTablet} from "@/service/MediaQuery";
+import {useMobile, useTabletHeight} from "@/service/MediaQuery";
 
 
 export default function ListenerRegisterCareer({careerField, setCareerField}) {
 
-    const isTablet = useTablet();
+    const isTabletHeight = useTabletHeight();
 
     useEffect(() => {
         if (careerField.length === 0) {
@@ -33,7 +33,7 @@ export default function ListenerRegisterCareer({careerField, setCareerField}) {
             {/* 경력 label과 입력 필드들 */}
             <div className='flex items-center'>
                 <label htmlFor='career'
-                       className={` ${isTablet ? 'text-2xl' : 'text-3xl'}  font-semibold w-40 text-wrap`}>경력</label>
+                       className={` ${isTabletHeight ? 'text-2xl' : 'text-3xl'}  font-semibold w-40 text-wrap`}>경력</label>
 
                 <div className='flex flex-col w-full'>
                     <div className=' flex flex-col gap-6 w-full'>
@@ -41,7 +41,7 @@ export default function ListenerRegisterCareer({careerField, setCareerField}) {
                             <div key={index} className='flex'>
                                 <input
                                     id={`career-${index}`}
-                                    className={`block border border-yellow-6 p-5 w-full rounded ${isTablet ? ' placeholder:text-lg text-xl':' placeholder:text-xl text-2xl'}`}
+                                    className={`block border border-yellow-6 p-5 w-full rounded ${isTabletHeight ? ' placeholder:text-lg text-xl':' placeholder:text-xl text-2xl'}`}
                                     type="text"
                                     value={field}
                                     onChange={(e) => handleChange(index, e.target.value)}

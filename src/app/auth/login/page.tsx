@@ -5,12 +5,12 @@ import Link from 'next/link';
 import {MdCheckCircleOutline} from 'react-icons/md';
 import useInput from '@/service/useInput';
 import Swal from "sweetalert2";
-import {useMobile, usePC, useTablet} from "@/service/MediaQuery";
+import {useMobile, usePC, useTabletHeight} from "@/service/MediaQuery";
 import {getCookie} from "cookies-next";
 import {useRouter} from "next/navigation";
 
 export default function LoginPage() {
-    const isTablet = useTablet();
+    const isTabletHeight = useTabletHeight();
     const isPC = usePC();
     const router = useRouter();
 
@@ -74,7 +74,7 @@ export default function LoginPage() {
 
     return (
         <>
-            {isTablet ? (
+            {isTabletHeight ? (
                 <section>
                     <div className="flex flex-col items-center text-center ">
                         {isPC && (

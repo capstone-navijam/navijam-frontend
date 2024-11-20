@@ -4,11 +4,11 @@ import {getCookie} from "cookies-next";
 import useInput from '@/service/useInput';
 import Swal from "sweetalert2";
 import {RiArrowRightDoubleLine} from "react-icons/ri";
-import {useMobile, useTablet} from "@/service/MediaQuery";
+import {useMobile, useTabletHeight} from "@/service/MediaQuery";
 
 export default function ComfortCommentsRegister({consoleId}) {
 
-    const isTablet = useTablet();
+    const isTabletHeight = useTabletHeight();
 
     const content = useInput("");
 
@@ -66,14 +66,14 @@ export default function ComfortCommentsRegister({consoleId}) {
                 <div className="relative">
                 <textarea
                     name="content"
-                    className={`mt-2 w-full h-28 border rounded-2xl p-2 resize-none pr-10 outline-none ${isTablet ? 'text-lg placeholder:text-2xl' : 'text-2xl placeholder:text-3xl'}`}
+                    className={`mt-2 w-full h-28 border rounded-2xl p-2 resize-none pr-10 outline-none ${isTabletHeight ? 'text-lg placeholder:text-2xl' : 'text-2xl placeholder:text-3xl'}`}
                     placeholder="댓글을 입력해주세요."
                     value={content.value}
                     onChange={handleCommentsChange}
                     style={{paddingBottom: '2rem'}}
                 />
                     <button type="submit" className="absolute bottom-2 right-1">
-                        <RiArrowRightDoubleLine className={`${isTablet ? 'text-4xl' : 'text-5xl'} text-gray-400`}/>
+                        <RiArrowRightDoubleLine className={`${isTabletHeight ? 'text-4xl' : 'text-5xl'} text-gray-400`}/>
                     </button>
                 </div>
             </form>

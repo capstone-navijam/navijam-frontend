@@ -5,14 +5,14 @@ import {FaArrowCircleLeft, FaArrowCircleRight, FaRegCommentAlt} from "react-icon
 import Carousel from "react-material-ui-carousel";
 import {useRouter} from "next/navigation";
 import Image from 'next/image'
-import {useTablet} from "@/service/MediaQuery";
+import {useTabletHeight} from "@/service/MediaQuery";
 import CommunityLikesCount from "@/app/components/Community/CommunityLikesCount";
 
 export default function MainCommunity() {
 
     const [mainCommunity, setMainCommunity] = useState<CommunityListProps[]>([]);
     const router = useRouter();
-    const isTablet = useTablet();
+    const isTabletHeight = useTabletHeight();
 
     useEffect(() => {
         const fetchMainCommunity = async () => {
@@ -31,7 +31,7 @@ export default function MainCommunity() {
     }
 
     return (
-        <>{isTablet ? (<>
+        <>{isTabletHeight ? (<>
             <section className="mt-12">
                 <div className='flex flex-col items-center text-center'>
                     <h1 className='font-semibold text-yellow-6 text-5xl mb-4 mt-12'>같이 소통해요</h1>

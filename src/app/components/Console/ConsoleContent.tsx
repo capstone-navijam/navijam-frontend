@@ -7,17 +7,16 @@ import ConsoleSearch from "@/app/components/Console/ConsoleSearch";
 import {FaSortNumericDown, FaSortNumericUp} from "react-icons/fa";
 import Pagination from "@mui/material/Pagination";
 import {useRouter} from "next/navigation";
-import {useMobile, useTablet} from "@/service/MediaQuery";
+import {useMobile, useTabletHeight} from "@/service/MediaQuery";
 import Link from "next/link";
 
 export default function ConsoleContent() {
 
-    const isTablet = useTablet();
+    const isTabletHeight = useTabletHeight();
 
     const [consoles, setConsoles] = useState<ConsoleListProps[]>([]);
     const [currentPage, setCurrentPage] = useState(1);
     const [consolesPerPage] = useState(10);
-    const router = useRouter();
     const [sortOrder, setSortOrder] = useState<'asc' | 'desc'>('desc');
 
     const sortConsoles = (data: ConsoleListProps[], order: 'asc' | 'desc') => {
@@ -60,19 +59,19 @@ export default function ConsoleContent() {
     return (
         <>
             <div className='flex flex-col text-center'>
-                <h1 className={`font-bold mt-8 ${isTablet ? 'text-5xl' : 'text-7xl'}`}>위로 하기</h1>
-                {isTablet ? (
+                <h1 className={`font-bold mt-8 ${isTabletHeight ? 'text-5xl' : 'text-7xl'}`}>위로 하기</h1>
+                {isTabletHeight ? (
                     <span className='mt-4 text-2xl'>내용은 비밀이 보장되므로,<br/>작은 고민이라도 괜찮아요.</span>) : (
                     <span className='mt-4 text-3xl'>내용은 비밀이 보장되므로, 작은 고민이라도 괜찮아요.</span>)}
                 <div
-                    className={`border-2 border-yellow-6 ${isTablet ? 'w-[95%]' : 'w-[75%]'} h-full mx-auto mt-12 rounded-lg flex flex-col mb-10`}>
+                    className={`border-2 border-yellow-6 ${isTabletHeight ? 'w-[95%]' : 'w-[75%]'} h-full mx-auto mt-12 rounded-lg flex flex-col mb-10`}>
                     <div>
                         <div className='flex flex-row items-center justify-between p-4'>
                             <p className='font-[Tenada] text-5xl mx-2 text-center'>등록된 글 목록</p>
                             <ConsoleSearch/>
                         </div>
 
-                        {isTablet ? (<>
+                        {isTabletHeight ? (<>
                                 <div className='flex flex-row w-full text-3xl font-bold mb-1'>
                                     <p className='w-3/4 text-start mx-2'>제목</p>
                                     <p className='w-1/4 text-end mx-2'>답변여부</p>
@@ -115,7 +114,7 @@ export default function ConsoleContent() {
                                         key={console.id}
                                         className={`table w-full border-b border-solid border-gray-300 `}
                                     >
-                                        {isTablet ? (<>
+                                        {isTabletHeight ? (<>
                                             <div className='flex flex-row text-2xl h-16 items-center justify-between'>
                                                 <div
                                                     className='text-start text-ellipsis whitespace-nowrap overflow-hidden mx-2'>

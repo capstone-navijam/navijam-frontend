@@ -9,11 +9,11 @@ import Carousel from "react-material-ui-carousel";
 import {MdLocalPhone, MdLocationOn, MdOutlineEmail} from "react-icons/md";
 import Image from "next/image";
 import ListenerDetail from "@/app/components/Listeners/ListenerDetail";
-import {useMobile, useTablet} from "@/service/MediaQuery";
+import {useMobile, useTabletHeight} from "@/service/MediaQuery";
 
 export default function MainListeners() {
 
-    const isTablet = useTablet();
+    const isTabletHeight = useTabletHeight();
 
     const [showListenersDetail, setShowListenersDetail] = useState(false);
     const [selectedListener, setSelectedListener] = useState<ListenersListProps | null>(null);
@@ -27,7 +27,7 @@ export default function MainListeners() {
         return groupedListeners;
     }
 
-    const groupedMainListeners = groupMainListeners(mainListeners, isTablet ? 1 : 3);
+    const groupedMainListeners = groupMainListeners(mainListeners, isTabletHeight ? 1 : 3);
 
     useEffect(() => {
         const fetchMainListeners = async () => {
@@ -71,15 +71,15 @@ export default function MainListeners() {
         )}
 
         <div className='flex flex-row w-[80%] justify-between mx-auto mb-4'>
-            <p className={`font-semibold ${isTablet ? 'text-xl' : 'text-4xl'}`}>누구에게 상담 받고 싶나요 ?</p>
+            <p className={`font-semibold ${isTabletHeight ? 'text-xl' : 'text-4xl'}`}>누구에게 상담 받고 싶나요 ?</p>
             <Link href='/listeners'
-                  className={`text-gray-400 flex ${isTablet ? 'text-xl' : 'text-4xl'} items-center gap-1`}>더 많은 상담사
+                  className={`text-gray-400 flex ${isTabletHeight ? 'text-xl' : 'text-4xl'} items-center gap-1`}>더 많은 상담사
                 만나기 <FaArrowRight/></Link>
         </div>
 
         {/* 상담사 리스트 멀티 캐러셀 */}
         <Carousel
-            className={`rounded-lg italic items-center ${isTablet ? ' w-[60%]' : 'w-[80%]'} h-auto mx-auto`}
+            className={`rounded-lg italic items-center ${isTabletHeight ? ' w-[60%]' : 'w-[80%]'} h-auto mx-auto`}
             NextIcon={<FaArrowCircleRight/>}
             PrevIcon={<FaArrowCircleLeft/>}
             indicators
@@ -98,24 +98,24 @@ export default function MainListeners() {
                         <div
                             key={listener.id}
                             onClick={() => handleDetailClick(listener)}
-                            className={`flex flex-col items-center text-center ${isTablet ? 'w-full' : 'w-[30%]'} gap-5 bg-white border-yellow-2 border-4 rounded-4xl overflow-hidden whitespace-nowrap text-ellipsis`}
+                            className={`flex flex-col items-center text-center ${isTabletHeight ? 'w-full' : 'w-[30%]'} gap-5 bg-white border-yellow-2 border-4 rounded-4xl overflow-hidden whitespace-nowrap text-ellipsis`}
                         >
                             <Image
                                 src={listener.profile}
                                 alt="Listener Image"
-                                width={isTablet ? 230 : 480}
-                                height={isTablet ? 300 : 400}
-                                className={isTablet ? 'w-full h-[300px]' : 'w-full h-[400px]'}
+                                width={isTabletHeight ? 230 : 480}
+                                height={isTabletHeight ? 300 : 400}
+                                className={isTabletHeight ? 'w-full h-[300px]' : 'w-full h-[400px]'}
                             />
                             <div className='flex flex-col'>
-                                <h1 className={`${isTablet ? 'text-2xl' : 'text-4xl'} font-semibold`}>
+                                <h1 className={`${isTabletHeight ? 'text-2xl' : 'text-4xl'} font-semibold`}>
                                     {listener.nickname} <span className='text-lg font-medium'>상담사</span>
                                 </h1>
                                 <p className='text-yellow-2 mt-auto font-bold'>
                                     #{listener.categories.join(' #')}
                                 </p>
                             </div>
-                            <h2 className={`${isTablet ? 'text-lg' : 'text-xl'} text-gray-600 italic overflow-hidden whitespace-nowrap text-ellipsis max-w-full`}>
+                            <h2 className={`${isTabletHeight ? 'text-lg' : 'text-xl'} text-gray-600 italic overflow-hidden whitespace-nowrap text-ellipsis max-w-full`}>
                                 {listener.description}
                             </h2>
                             <p className='flex flex-row items-center gap-0.5'>

@@ -4,13 +4,14 @@ import Image from "next/image";
 import {MdCall} from "react-icons/md";
 import {FaCommentDots} from "react-icons/fa6";
 import {TbAlertSquare} from "react-icons/tb";
-import {useTablet} from "@/service/MediaQuery";
+import {useTabletHeight} from "@/service/MediaQuery";
 
 export default function SelectChatting() {
-    const isTablet = useTablet();
+    const isTabletHeight = useTabletHeight();
 
     return (
-        <>{isTablet ? (<>
+        <>
+            {isTabletHeight ? (<>
             <aside className='border-r-4 w-full'>
                 {/* 상단 상담 기록 헤더 */}
                 <div className='border-b-2 flex justify-center items-center text-center bg-yellow-3'

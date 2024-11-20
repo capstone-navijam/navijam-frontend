@@ -3,15 +3,15 @@
 import React from 'react'
 import Image from 'next/image'
 import {MdOutlineBusinessCenter, MdOutlineSchool} from 'react-icons/md';
-import {useMobile, useTablet} from "@/service/MediaQuery";
+import {useMobile, useTabletHeight} from "@/service/MediaQuery";
 
 export default function ListenerDetail({nickname, profile, categories, career, education}) {
 
-    const isTablet = useTablet();
+    const isTabletHeight = useTabletHeight();
 
     return (
         <>
-            {isTablet ? (
+            {isTabletHeight ? (
                 <div className='mx-auto flex flex-col bg-gradient-to-r from-gray-100 to-white'>
                     <div className='flex flex-row justify-between items-center p-6 w-full'>
                         <h1 className='text-5xl font-semibold'>{nickname} <span className='text-3xl font-medium'>상담사</span></h1>
