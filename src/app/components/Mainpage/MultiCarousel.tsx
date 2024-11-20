@@ -5,10 +5,10 @@ import {FaArrowCircleLeft, FaArrowCircleRight} from "react-icons/fa";
 import {FaCircleArrowRight} from "react-icons/fa6";
 import Link from "next/link";
 import Image from "next/image";
-import {useMobile, usePC, useTablet} from "@/service/MediaQuery"; // 반응형 미디어 쿼리 사용
+import {useMobile, usePC, useTabletHeight} from "@/service/MediaQuery"; // 반응형 미디어 쿼리 사용
 
 export default function MultiCarousel() {
-    const isTablet = useTablet();
+    const isTabletHeight = useTabletHeight();
 
     const items = [
         {
@@ -68,19 +68,19 @@ export default function MultiCarousel() {
             >
                 {items.map((e) => (
                     <div key={e.id}
-                         className={`flex ${isTablet ? 'flex-col' : 'flex-row'} items-center justify-between mx-8 mt-8 relative`}>
+                         className={`flex ${isTabletHeight ? 'flex-col' : 'flex-row'} items-center justify-between mx-8 mt-8 relative`}>
                         <div className='gap-2 flex flex-col text-center'>
                             <Link href={`/${e.path}`}
-                                  className={`rounded-3xl p-1 flex items-center gap-1 justify-center ${isTablet ? 'text-2xl' : 'text-4xl'}`}>
+                                  className={`rounded-3xl p-1 flex items-center gap-1 justify-center ${isTabletHeight ? 'text-2xl' : 'text-4xl'}`}>
                                 {e.button}
                                 <FaCircleArrowRight className='mx-1'/>
                             </Link>
-                            <p className={`${isTablet ? 'text-4xl' : 'text-6xl'} whitespace-pre-wrap`}>
+                            <p className={`${isTabletHeight ? 'text-4xl' : 'text-6xl'} whitespace-pre-wrap`}>
                                 {e.description}
                             </p>
                         </div>
                         <Image src={e.image} alt="Image" width={300} height={300}
-                             className={isTablet ? 'h-[400px] w-[600px]' : 'h-[500px] w-[700px] '}/>
+                             className={isTabletHeight ? 'h-[400px] w-[600px]' : 'h-[500px] w-[700px] '}/>
                     </div>
                 ))}
             </Carousel>

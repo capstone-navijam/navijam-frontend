@@ -13,6 +13,12 @@ const nextConfig = {
                 port: '',
                 pathname: '/navijam-bucket/**',
             },
+            {
+                protocol: 'https',
+                hostname: 'navijam-bucket.s3.ap-northeast-2.amazonaws.com',
+                port: '',
+                pathname: '/images/**',
+            },
         ],
     },
     webpack: (config) => {

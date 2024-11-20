@@ -1,14 +1,14 @@
 'use client';
 import React from 'react';
-import {useTablet} from "@/service/MediaQuery";
+import {useTabletHeight} from "@/service/MediaQuery";
 
 export default function MyComfort() {
 
-    const isTablet = useTablet();
+    const isTabletHeight = useTabletHeight();
 
     return (
 
-        <>{isTablet ? (<>
+        <>{isTabletHeight ? (<>
             <article className='w-full'>
                 <div className='border-4 border-yellow-2 w-full min-h-[660px] mb-20 rounded-2xl'>
                     {/* 상담 완료 목록 isAnswered = true */}

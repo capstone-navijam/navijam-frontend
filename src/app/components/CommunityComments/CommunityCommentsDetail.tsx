@@ -3,7 +3,7 @@ import React, {useEffect, useState} from 'react';
 import CommunityCommentsList, {
     CommunityCommentsDetailProps
 } from "@/app/components/CommunityComments/CommunityCommentsList";
-import {useTablet} from "@/service/MediaQuery";
+import {useTabletHeight} from "@/service/MediaQuery";
 import {getCookie} from "cookies-next";
 import Image from 'next/image'
 import Swal from "sweetalert2";
@@ -13,7 +13,7 @@ import {IoMdClose} from "react-icons/io";
 export default function CommunityCommentsDetail({communityId}: CommunityCommentsDetailProps) {
 
     const [loggedInUser, setLoggedInUser] = useState<string | null>(null);
-    const isTablet = useTablet();
+    const isTabletHeight = useTabletHeight();
     const router = useRouter();
     const [comments, setComments] = useState<CommunityCommentsDetailProps[]>([]);
 
@@ -77,7 +77,7 @@ export default function CommunityCommentsDetail({communityId}: CommunityComments
 
     return (
         <>
-            {isTablet ? (
+            {isTabletHeight ? (
                 <div className='mt-8 flex flex-col gap-10 mb-10'>
                     <h1 className='text-5xl mb-4'>댓글 <span className='text-yellow-6'>{comments.length}</span>개가 달렸어요.
                     </h1>

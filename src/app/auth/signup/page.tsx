@@ -7,11 +7,11 @@ import AuthCheckEmail from '@/app/components/AuthCheck/AuthCheckEmail';
 import Swal from 'sweetalert2';
 import ImageRegister from '@/app/components/Register/ImageRegister';
 import useInput from '@/service/useInput';
-import {useMobile, useTablet} from "@/service/MediaQuery";
+import {useMobile, useTabletHeight} from "@/service/MediaQuery";
 
 export default function SignUpPage() {
 
-    const isTablet = useTablet();
+    const isTabletHeight = useTabletHeight();
     const email = useInput('');
     const nickname = useInput('');
     const password = useInput('');
@@ -82,7 +82,7 @@ export default function SignUpPage() {
             nickname: nickname.value,
             password: password.value,
             checkPassword: checkPassword.value,
-            profile: profileURL || `/images/Profile.jpeg`,
+            profile: profileURL || `${process.env.NEXT_PUBLIC_S3_BASE_URL}/images/profiles/navijam-default-profile.png`,
         };
 
         try {
@@ -124,7 +124,7 @@ export default function SignUpPage() {
 
     return (
         <>
-            {isTablet ? (
+            {isTabletHeight ? (
                 <form onSubmit={handleSubmit}>
                     <div className="flex flex-col h-full mt-10 w-full mx-auto text-nowrap">
                         <div className="px-6 py-8 rounded border-yellow-6 border-2 shadow-xl text-black w-full">

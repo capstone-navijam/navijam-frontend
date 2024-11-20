@@ -6,12 +6,12 @@ import {FaPen, FaSortNumericDown, FaSortNumericUp} from "react-icons/fa";
 import {ComfortListAll, ComfortListProps} from "@/app/components/Comfort/ComfortListAll";
 import ComfortSearch from "@/app/components/Comfort/ComfortSearch";
 import Pagination from '@mui/material/Pagination';
-import {useTablet} from "@/service/MediaQuery";
+import {useTabletHeight} from "@/service/MediaQuery";
 import Link from "next/link";
 
 export default function ComfortContent() {
 
-    const isTablet = useTablet();
+    const isTabletHeight = useTabletHeight();
 
     const [showComfortMemberRegister, setShowComfortMemberRegister] = useState(false);
     const [comforts, setComforts] = useState<ComfortListProps[]>([]);
@@ -65,98 +65,191 @@ export default function ComfortContent() {
         <>
             {showComfortMemberRegister ? (
                 <ComfortMemberRegister/>
-            ) : (
-                <>
-                    {comforts.length === 0 ? (
-                        <section className='content-center '>
-                            <div className='flex flex-col text-center'>
-                                <h1 className={`font-bold mt-52 ${isTablet ? 'text-5xl' : 'text-7xl'}`}>위로 받기</h1>
-                                {isTablet ? (
-                                    <span className='mt-4 text-2xl'>내용은 비밀이 보장되므로,<br/>작은 고민이라도 괜찮아요.</span>) : (
-                                    <span className='mt-4 text-3xl'>내용은 비밀이 보장되므로, 작은 고민이라도 괜찮아요.</span>)}
-                            </div>
-                            <div className='flex justify-center mt-8'>
-                                <button
-                                    onClick={handleClick}
-                                    className={`${isTablet ? 'w-[95%]' : 'w-[75%]'} h-28 text-center bg-yellow-6 p-8 rounded-lg`}
-                                >
-                                    <div
-                                        className={`flex flex-row justify-center gap-2 text-white ${isTablet ? 'text-2xl' : 'text-3xl'}`}>
-                                        <FaPen className='mt-1'/>
-                                        <span>고민을 털어 놓으면 한결 마음이 편질거에요.</span>
+            ) : (<>
+                    {isTabletHeight ? (<>
+                        <>
+                            {comforts.length === 0 ? (
+                                <section className='content-center '>
+                                    <div className='flex flex-col text-center'>
+                                        <h1 className={`font-bold mt-52 text-5xl`}>위로 받기</h1>
+                                        <span className='mt-4 text-2xl'>내용은 비밀이 보장되므로,<br/>작은 고민이라도 괜찮아요.</span>
                                     </div>
-                                </button>
-                            </div>
-                            <div className='flex justify-center mt-6 mb-52 '>
-                                <div
-                                    className={`${isTablet ? 'w-[95%] text-2xl' : 'w-[75%] text-3xl '} h-20 text-center bg-user-gray p-4 rounded-lg`}>
-                                    <span>아직 기록된 고민이 없어요.</span>
-                                </div>
-                            </div>
-                        </section>
-                    ) : (
-
-                        <section className='content-center'>
-
-                            <div className='flex flex-col text-center'>
-                                <h1 className={`font-bold mt-8 ${isTablet ? 'text-5xl' : 'text-7xl'}`}>위로
-                                    받기</h1>
-                                {isTablet ? (
-                                    <span className='mt-4 text-2xl'>내용은 비밀이 보장되므로,<br/>작은 고민이라도 괜찮아요.</span>) : (
-                                    <span className='mt-4 text-3xl'>내용은 비밀이 보장되므로, 작은 고민이라도 괜찮아요.</span>)}
-
-                            </div>
-                            <div className='flex justify-center mt-8'>
-                                <button
-                                    onClick={handleClick}
-                                    className={`${isTablet ? 'w-[95%]' : 'w-[75%]'} h-28 text-center bg-yellow-6 p-8 rounded-lg`}
-                                >
-                                    <div
-                                        className={`flex flex-row justify-center gap-2 text-white ${isTablet ? 'text-2xl' : 'text-3xl'}`}>
-                                        <FaPen className='mt-1'/>
-                                        <span>고민을 털어 놓으면 한결 마음이 편질거에요.</span>
+                                    <div className='flex justify-center mt-8'>
+                                        <button
+                                            onClick={handleClick}
+                                            className={`w-[95%] h-28 text-center bg-yellow-6 p-8 rounded-lg`}
+                                        >
+                                            <div
+                                                className={`flex flex-row justify-center gap-2 text-white text-2xl`}>
+                                                <FaPen className='mt-1'/>
+                                                <span>고민을 털어 놓으면 한결 마음이 편질거에요.</span>
+                                            </div>
+                                        </button>
                                     </div>
-                                </button>
-                            </div>
-                            <div
-                                className={`flex flex-row justify-between ${isTablet ? 'w-[95%]' : 'w-[75%]'} mx-auto mt-4`}>
-                                {/* 검색 컴포넌트 */}
-                                <ComfortSearch/>
-                                {/* 내림차순, 오름차순 컴포넌트 */}
-                                {sortOrder === 'desc' ? (
-                                    <button onClick={() => handleSortOrder('asc')}
-                                            className='text-2xl  flex items-center gap-0.5'>
-                                        <span className='text-lg font-semibold'>정렬</span><FaSortNumericDown/>
-                                    </button>
-                                ) : (
-                                    <button onClick={() => handleSortOrder('desc')}
-                                            className='text-2xl  flex items-center gap-0.5'>
-                                        <span className='text-lg font-semibold'>정렬</span><FaSortNumericUp/>
-                                    </button>
-                                )}
-                            </div>
-
-                            {/* 위로받기 게시글 전체 목록 */}
-                            <div className={`flex flex-col gap-5  mt-2 items-center mx-auto w-full`}>
-                                {currentComforts.map((comfort) => (
-                                    <Link href={`/comforts/${comfort.id}`} as={`/comforts/${comfort.id}`} className={`${isTablet ? 'w-[95%] h-[100px]' : 'w-[75%]'} mt-4`}>
-                                        <div key={comfort.id}
-                                             className={`flex rounded-lg justify-between border-2 items-center font-semibold border-yellow-6 p-6 w-full`}>
-                                            <h1 className={`${isTablet ? 'text-2xl' : 'text-3xl'}  w-1/2 text-ellipsis whitespace-nowrap overflow-hidden`}>{comfort.title}</h1>
-                                            <p className={`${isTablet ? 'text-lg' : 'text-xl'} w-1/2 text-gray-400 text-end`}>{comfort.createdAt}</p>
+                                    <div className='flex justify-center mt-6 mb-52 '>
+                                        <div
+                                            className={`w-[95%] text-2xl h-20 text-center bg-user-gray p-4 rounded-lg`}>
+                                            <span>아직 기록된 고민이 없어요.</span>
                                         </div>
-                                    </Link>
-                                ))}
+                                    </div>
+                                </section>
+                            ) : (
 
-                                <Pagination
-                                    count={Math.ceil(comforts.length / comfortsPerPage)}
-                                    page={currentPage}
-                                    onChange={handlePageChange}
-                                    className="p-1 mb-10 mt-5"
-                                />
-                            </div>
-                        </section>
-                    )}
+                                <section className='content-center'>
+
+                                    <div className='flex flex-col text-center'>
+                                        <h1 className={`font-bold mt-8 text-5xl`}>위로
+                                            받기</h1>
+                                        <span className='mt-4 text-2xl'>내용은 비밀이 보장되므로,<br/>작은 고민이라도 괜찮아요.</span>
+                                    </div>
+                                    <div className='flex justify-center mt-8'>
+                                        <button
+                                            onClick={handleClick}
+                                            className={`${isTabletHeight ? 'w-[95%]' : 'w-[75%]'} h-28 text-center bg-yellow-6 p-8 rounded-lg`}
+                                        >
+                                            <div
+                                                className={`flex flex-row justify-center gap-2 text-white text-2xl`}>
+                                                <FaPen className='mt-1'/>
+                                                <span>고민을 털어 놓으면 한결 마음이 편질거에요.</span>
+                                            </div>
+                                        </button>
+                                    </div>
+                                    <div
+                                        className={`flex flex-row justify-between w-[95%] mx-auto mt-4`}>
+                                        {/* 검색 컴포넌트 */}
+                                        <ComfortSearch/>
+                                        {/* 내림차순, 오름차순 컴포넌트 */}
+                                        {sortOrder === 'desc' ? (
+                                            <button onClick={() => handleSortOrder('asc')}
+                                                    className='text-2xl  flex items-center gap-0.5'>
+                                                <span className='text-lg font-semibold'>정렬</span><FaSortNumericDown/>
+                                            </button>
+                                        ) : (
+                                            <button onClick={() => handleSortOrder('desc')}
+                                                    className='text-2xl  flex items-center gap-0.5'>
+                                                <span className='text-lg font-semibold'>정렬</span><FaSortNumericUp/>
+                                            </button>
+                                        )}
+                                    </div>
+
+                                    {/* 위로받기 게시글 전체 목록 */}
+                                    <div className={`flex flex-col gap-5  mt-2 items-center mx-auto w-full`}>
+                                        {currentComforts.map((comfort) => (
+                                            <Link href={`/comforts/${comfort.id}`} as={`/comforts/${comfort.id}`}
+                                                  className={`w-[95%] h-[100px] mt-4`}>
+                                                <div key={comfort.id}
+                                                     className={`flex rounded-lg justify-between border-2 items-center font-semibold border-yellow-6 p-6 w-full`}>
+                                                    <h1 className={`text-2xl w-1/2 text-ellipsis whitespace-nowrap overflow-hidden`}>{comfort.title}</h1>
+                                                    <p className={`text-lg w-1/2 text-gray-400 text-end`}>{comfort.createdAt}</p>
+                                                </div>
+                                            </Link>
+                                        ))}
+
+                                        <Pagination
+                                            count={Math.ceil(comforts.length / comfortsPerPage)}
+                                            page={currentPage}
+                                            onChange={handlePageChange}
+                                            className="p-1 mb-10 mt-5"
+                                        />
+                                    </div>
+                                </section>
+                            )}
+                        </>
+                    </>) : (<>
+                        <>
+                            {comforts.length === 0 ? (
+                                <section className='content-center '>
+                                    <div className='flex flex-col text-center'>
+                                        <h1 className={`font-bold mt-52 text-7xl`}>위로
+                                            받기</h1>
+                                            <span className='mt-4 text-3xl'>내용은 비밀이 보장되므로, 작은 고민이라도 괜찮아요.</span>
+                                    </div>
+                                    <div className='flex justify-center mt-8'>
+                                        <button
+                                            onClick={handleClick}
+                                            className={`w-[75%] h-28 text-center bg-yellow-6 p-8 rounded-lg`}
+                                        >
+                                            <div
+                                                className={`flex flex-row justify-center gap-2 text-white text-3xl`}>
+                                                <FaPen className='mt-1'/>
+                                                <span>고민을 털어 놓으면 한결 마음이 편질거에요.</span>
+                                            </div>
+                                        </button>
+                                    </div>
+                                    <div className='flex justify-center mt-6 mb-52 '>
+                                        <div
+                                            className={`w-[75%] text-3xl h-20 text-center bg-user-gray p-4 rounded-lg`}>
+                                            <span>아직 기록된 고민이 없어요.</span>
+                                        </div>
+                                    </div>
+                                </section>
+                            ) : (
+
+                                <section className='content-center'>
+
+                                    <div className='flex flex-col text-center'>
+                                        <h1 className={`font-bold mt-8 text-7xl`}>위로
+                                            받기</h1>
+                                        {isTabletHeight ? (
+                                            <span
+                                                className='mt-4 text-2xl'>내용은 비밀이 보장되므로,<br/>작은 고민이라도 괜찮아요.</span>) : (
+                                            <span className='mt-4 text-3xl'>내용은 비밀이 보장되므로, 작은 고민이라도 괜찮아요.</span>)}
+
+                                    </div>
+                                    <div className='flex justify-center mt-8'>
+                                        <button
+                                            onClick={handleClick}
+                                            className={`w-[75%] h-28 text-center bg-yellow-6 p-8 rounded-lg`}
+                                        >
+                                            <div
+                                                className={`flex flex-row justify-center gap-2 text-white text-3xl`}>
+                                                <FaPen className='mt-1'/>
+                                                <span>고민을 털어 놓으면 한결 마음이 편질거에요.</span>
+                                            </div>
+                                        </button>
+                                    </div>
+                                    <div
+                                        className={`flex flex-row justify-between w-[75%] mx-auto mt-4`}>
+                                        {/* 검색 컴포넌트 */}
+                                        <ComfortSearch/>
+                                        {/* 내림차순, 오름차순 컴포넌트 */}
+                                        {sortOrder === 'desc' ? (
+                                            <button onClick={() => handleSortOrder('asc')}
+                                                    className='text-2xl  flex items-center gap-0.5'>
+                                                <span className='text-lg font-semibold'>정렬</span><FaSortNumericDown/>
+                                            </button>
+                                        ) : (
+                                            <button onClick={() => handleSortOrder('desc')}
+                                                    className='text-2xl  flex items-center gap-0.5'>
+                                                <span className='text-lg font-semibold'>정렬</span><FaSortNumericUp/>
+                                            </button>
+                                        )}
+                                    </div>
+
+                                    {/* 위로받기 게시글 전체 목록 */}
+                                    <div className={`flex flex-col gap-5  mt-2 items-center mx-auto w-full`}>
+                                        {currentComforts.map((comfort) => (
+                                            <Link href={`/comforts/${comfort.id}`} as={`/comforts/${comfort.id}`}
+                                                  className={`${isTabletHeight ? 'w-[95%] h-[100px]' : 'w-[75%]'} mt-4`}>
+                                                <div key={comfort.id}
+                                                     className={`flex rounded-lg justify-between border-2 items-center font-semibold border-yellow-6 p-6 w-full`}>
+                                                    <h1 className={`text-3xl w-1/2 text-ellipsis whitespace-nowrap overflow-hidden`}>{comfort.title}</h1>
+                                                    <p className={`text-xl w-1/2 text-gray-400 text-end`}>{comfort.createdAt}</p>
+                                                </div>
+                                            </Link>
+                                        ))}
+
+                                        <Pagination
+                                            count={Math.ceil(comforts.length / comfortsPerPage)}
+                                            page={currentPage}
+                                            onChange={handlePageChange}
+                                            className="p-1 mb-10 mt-5"
+                                        />
+                                    </div>
+                                </section>
+                            )}
+                        </>
+                    </>)}
                 </>
             )}
         </>

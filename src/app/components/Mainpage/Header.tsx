@@ -7,7 +7,7 @@ import Image from "next/image";
 import {PiListBold} from "react-icons/pi";  // 토글 아이콘
 import Logout from "@/app/components/Mainpage/Logout";
 import HeaderSkeleton from '../SkeletonUI/HeaderSkeleton';
-import {usePC, useTablet} from "@/service/MediaQuery";
+import {usePC, useTabletHeight} from "@/service/MediaQuery";
 
 interface HeaderProps {
     nickname: string;
@@ -19,7 +19,7 @@ interface HeaderProps {
 export default function Header({nickname, status, role, profile}: HeaderProps) {
 
     const isPC = usePC();
-    const isTablet = useTablet();
+    const isTabletHeight = useTabletHeight();
 
     const [isLoading, setIsLoading] = useState(true);
     const [isNavOpen, setIsNavOpen] = useState(false);  // 토글 상태 관리
@@ -58,7 +58,7 @@ export default function Header({nickname, status, role, profile}: HeaderProps) {
                         <div className="w-full mt-2 mb-2 border-[2px] border-lightGray/30"></div>
 
                         {/* 태블릿 화면 */}
-                        {isTablet && (
+                        {isTabletHeight && (
                             <div className='flex p-4 font-["Tenada"]'>
                                 <div className="flex flex-col items-center w-full">
                                     <div className="flex justify-between items-center w-full">
@@ -153,7 +153,7 @@ export default function Header({nickname, status, role, profile}: HeaderProps) {
                         <div className="w-full mt-1 mb-2 border-[2px] border-lightGray/30"></div>
 
 
-                        {isTablet ? (
+                        {isTabletHeight ? (
                             <div className='flex p-4 font-["Tenada"] items-center'>
                                 <div className="flex flex-col items-center w-full">
                                     <div className="flex justify-between items-center w-full">

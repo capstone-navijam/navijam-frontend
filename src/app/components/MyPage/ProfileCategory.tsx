@@ -1,22 +1,21 @@
 'use client';
 
 import React, { useState } from 'react';
-import MyProfile from "@/app/components/Mypage/MyProfile";
-import MyComfort from "@/app/components/Mypage/MyComfort";
-import MyCommunity from "@/app/components/Mypage/MyCommunity";
-import MyCounseling from "@/app/components/Mypage/MyCounseling";
-import { useTablet } from "@/service/MediaQuery";
+import MyProfile from "@/app/components/MyPage/MyProfile";
+import MyComfort from "@/app/components/MyPage/MyComfort";
+import MyCommunity from "@/app/components/MyPage/MyCommunity";
+import MyCounseling from "@/app/components/MyPage/MyCounseling";
+import { useTabletHeight } from "@/service/MediaQuery";
 import { IoIosArrowForward, IoIosArrowDown } from 'react-icons/io';
-import Image from 'next/image'
 
 export default function ProfileCategory() {
-    const isTablet = useTablet();
-    const [selectedMenu, setSelectedMenu] = useState('profile'); // 현재 선택된 메뉴 ID
+    const isTabletHeight = useTabletHeight();
+    const [selectedMenu, setSelectedMenu] = useState('Profile'); // 현재 선택된 메뉴 ID
     const [menuLabel, setMenuLabel] = useState('내 프로필'); // 버튼에 표시할 현재 메뉴 이름
     const [isNavOpen, setIsNavOpen] = useState(false); // 네비게이션 메뉴 표시 여부 상태
 
     const menuItems = [
-        { id: 'profile', label: '내 프로필', component: <MyProfile /> },
+        { id: 'Profile', label: '내 프로필', component: <MyProfile /> },
         { id: 'Comfort', label: '위로받기', component: <MyComfort /> },
         { id: 'Community', label: '커뮤니티', component: <MyCommunity /> },
         { id: 'counseling', label: '상담내역', component: <MyCounseling /> },
@@ -26,7 +25,7 @@ export default function ProfileCategory() {
         setSelectedMenu(menuId); // 선택된 메뉴 ID 업데이트
         setMenuLabel(menuLabel); // 선택된 메뉴 이름 업데이트
 
-        if (isTablet) {
+        if (isTabletHeight) {
             setIsNavOpen(false); // 태블릿 환경에서는 메뉴 닫기
         }
     };
@@ -37,7 +36,7 @@ export default function ProfileCategory() {
 
     return (
         <>
-            {isTablet ? (
+            {isTabletHeight ? (
                 <section className="relative">
                     {/* 버튼에 현재 메뉴 이름 표시 */}
                     <button onClick={toggleNav} className="text-4xl p-4 flex items-center gap-2">
@@ -69,17 +68,8 @@ export default function ProfileCategory() {
                 </section>
             ) : (
                 <section className="flex flex-row">
-                    <aside className="border-l-2 h-full w-[35%] shadow-custom">
-                        <div className='flex flex-col items-center gap-4'>
-                            <Image src='/images/Profile.jpeg' alt="Default Profile" width={400} height={400}
-                                   className='w-[200px] h-[200px]'/>
+                    <aside className="border-l-2 w-[35%] shadow-custom">
 
-                            {/* {mypage.nickname}이 들어갈 곳 */}
-                            <h1 className='text-5xl'>짱구</h1>
-
-                            {/* {mypage.address}가 들어갈 곳 */}
-                            <h2 className='text-2xl'>test1@test.com</h2>
-                        </div>
                         <ul className="flex flex-col gap-24 p-4 mx-4 mt-8 mb-2 font-bold">
                             {menuItems.map((menu) => (
                                 <li

@@ -3,12 +3,12 @@
 import React from 'react';
 import {FaPen} from "react-icons/fa";
 import CommunityList from "@/app/components/Community/CommunityList";
-import {useTablet} from "@/service/MediaQuery";
+import {useTabletHeight} from "@/service/MediaQuery";
 import {useRouter} from "next/navigation";
 
 export default function CommunityContent() {
 
-    const isTablet = useTablet();
+    const isTabletHeight = useTabletHeight();
     const router = useRouter();
     const handleClick = () => {
         router.push('/community/register')
@@ -16,7 +16,7 @@ export default function CommunityContent() {
 
     return (
         <>
-            {isTablet ? (<>
+            {isTabletHeight ? (<>
                 <div className='w-[95%] mx-auto mt-4 flex justify-end'>
                     <button
                         onClick={handleClick}
