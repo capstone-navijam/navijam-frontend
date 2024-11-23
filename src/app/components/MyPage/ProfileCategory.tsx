@@ -1,12 +1,12 @@
 'use client';
 
-import React, { useState } from 'react';
+import React, {useState} from 'react';
 import MyProfile from "@/app/components/MyPage/MyProfile";
 import MyComfort from "@/app/components/MyPage/MyComfort";
 import MyCommunity from "@/app/components/MyPage/MyCommunity";
 import MyCounseling from "@/app/components/MyPage/MyCounseling";
-import { useTabletHeight } from "@/service/MediaQuery";
-import { IoIosArrowForward, IoIosArrowDown } from 'react-icons/io';
+import {useTabletHeight} from "@/service/MediaQuery";
+import {IoIosArrowForward, IoIosArrowDown} from 'react-icons/io';
 
 export default function ProfileCategory() {
     const isTabletHeight = useTabletHeight();
@@ -15,10 +15,10 @@ export default function ProfileCategory() {
     const [isNavOpen, setIsNavOpen] = useState(false); // 네비게이션 메뉴 표시 여부 상태
 
     const menuItems = [
-        { id: 'Profile', label: '내 프로필', component: <MyProfile /> },
-        { id: 'Comfort', label: '위로받기', component: <MyComfort /> },
-        { id: 'Community', label: '커뮤니티', component: <MyCommunity /> },
-        { id: 'counseling', label: '상담내역', component: <MyCounseling /> },
+        {id: 'Profile', label: '내 프로필', component: <MyProfile/>},
+        {id: 'Comfort', label: '위로받기', component: <MyComfort/>},
+        {id: 'Community', label: '커뮤니티', component: <MyCommunity/>},
+        {id: 'counseling', label: '상담내역', component: <MyCounseling/>},
     ];
 
     const handleMenuClick = (menuId, menuLabel) => {
@@ -41,7 +41,7 @@ export default function ProfileCategory() {
                     {/* 버튼에 현재 메뉴 이름 표시 */}
                     <button onClick={toggleNav} className="text-4xl p-4 flex items-center gap-2">
                         {menuLabel}
-                        {isNavOpen ? <IoIosArrowDown /> : <IoIosArrowForward />}
+                        {isNavOpen ? <IoIosArrowDown/> : <IoIosArrowForward/>}
                     </button>
 
                     {/* 토글 메뉴 */}
@@ -69,8 +69,7 @@ export default function ProfileCategory() {
             ) : (
                 <section className="flex flex-row">
                     <aside className="border-l-2 w-[35%] shadow-custom">
-
-                        <ul className="flex flex-col gap-24 p-4 mx-4 mt-8 mb-2 font-bold">
+                        <ul className="flex flex-col gap-24 p-4 mx-4 font-bold justify-center h-full">
                             {menuItems.map((menu) => (
                                 <li
                                     key={menu.id}
