@@ -46,7 +46,7 @@ export default function MyCounseling() {
                 </div>
             </article>
         </>) : (<>
-            <article className='w-full'>
+            <article className='w-full min-h-[805px]'>
                 <h1 className='text-6xl font-semibold mt-4'>상담하기 목록</h1>
                 <div className='border-4 border-yellow-2 w-full min-h-[660px] mt-2 rounded-2xl'>
                     {/* 상담 완료 목록 isAnswered = true */}

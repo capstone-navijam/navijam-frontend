@@ -15,8 +15,8 @@ export default function ComfortMemberModify() {
     const router = useRouter();
 
     const handleChange = useCallback((titleValue: string, contentValue: string) => {
-        title.onChange({ target: { value: titleValue } });
-        content.onChange({ target: { value: contentValue } });
+        title.onChange({target: {value: titleValue}});
+        content.onChange({target: {value: contentValue}});
     }, [title, content]);
 
     useEffect(() => {
@@ -43,47 +43,47 @@ export default function ComfortMemberModify() {
     const handleSubmit = async (e) => {
         e.preventDefault();
 
-        const token = getCookie('accessToken');
         const formData = {
             title: title.value,
             content: content.value,
         };
 
-        try {
-            const res = await fetch(`${process.env["NEXT_PUBLIC_BACKEND_SERVER"]}/comforts/${id.toString()}`, {
-                method: 'PATCH',
-                headers: {
-                    Accept: 'application/json',
-                    'Content-Type': 'application/json',
-                    Authorization: `Bearer ${token}`,
-                },
-                body: JSON.stringify(formData),
-            });
+        Swal.fire({
+            title: "위로받기 수정",
+            text: "정말로 수정하시겠습니까?",
+            icon: "info",
+            showCancelButton: true,
+            confirmButtonText: "수정",
+            confirmButtonColor: "#FAAD00",
+            cancelButtonText: "취소",
+            cancelButtonColor: "#FF0000"
+        }).then(async (result) => {
+            if (result.isConfirmed) {
+                const token = getCookie('accessToken');
 
-            if (res.ok) {
-                Swal.fire({
-                    title: "위로받기 수정",
-                    text: "정말로 수정하시겠습니까?",
-                    icon: "info",
-                    showCancelButton: true,
-                    confirmButtonText: "수정",
-                    confirmButtonColor: "#FAAD00",
-                    cancelButtonText: "취소",
-                    cancelButtonColor: "#FF0000"
-                }).then((result) => {
-                    if (result.isConfirmed) {
+                try {
+                    const res = await fetch(`${process.env["NEXT_PUBLIC_BACKEND_SERVER"]}/comforts/${id.toString()}`, {
+                        method: 'PATCH',
+                        headers: {
+                            Accept: 'application/json',
+                            'Content-Type': 'application/json',
+                            Authorization: `Bearer ${token}`,
+                        },
+                        body: JSON.stringify(formData),
+                    });
+                    if (res.ok) {
                         Swal.fire({title: "수정 완료!", text: "수정되었습니다.", icon: "success", timer: 1000});
                         router.push(`/comforts/${id.toString()}`);
+                    } else {
+                        Swal.fire({title: "게시글 수정에 실패하였습니다.", text: "다시 시도해주세요.", icon: "error", timer: 1000});
                     }
-                });
-            } else {
-                Swal.fire({title: "게시글 수정에 실패하였습니다.", text: "다시 시도해주세요.", icon: "error", timer: 1000});
 
+                } catch (err) {
+                    console.error('게시글 수정 중 오류 발생');
+                }
             }
-        } catch (err) {
-            console.error('게시글 수정 중 오류 발생');
-        }
-    };
+        });
+    }
 
     return (
         <>

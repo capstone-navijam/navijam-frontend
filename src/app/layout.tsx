@@ -23,6 +23,7 @@ export default function RootLayout({
     const [nickname, setNickname] = useState("");
     const [role, setRole] = useState("");
     const [profile, setProfile] = useState("");
+
     useEffect(() => {
         const token = getCookie('accessToken')
         const username = getCookie('nickname')
@@ -57,7 +58,7 @@ export default function RootLayout({
             <title>나비잠 - 온라인 정신상담 웹 플랫폼</title>
         </head>
         <body className='flex flex-col w-full mx-auto'>
-        <Header nickname={nickname} status={status} role={role} profile={profile}/>
+        <Header nickname={nickname} status={status} role={role} profileImage={profile}/>
         <main className='grow'>{children}</main>
         <Footer/>
         </body>

@@ -13,16 +13,21 @@ interface HeaderProps {
     nickname: string;
     status: boolean;
     role: string;
-    profile: string;
+    profileImage: string;
 }
 
-export default function Header({nickname, status, role, profile}: HeaderProps) {
+export default function Header({nickname, status, role, profileImage}: HeaderProps) {
 
     const isPC = usePC();
     const isTabletHeight = useTabletHeight();
 
     const [isLoading, setIsLoading] = useState(true);
     const [isNavOpen, setIsNavOpen] = useState(false);  // 토글 상태 관리
+    const [profile, setProfile] = useState<string>(profileImage);
+
+    useEffect(() => {
+        setProfile(profileImage);
+    }, [profileImage]);
 
     useEffect(() => {
         if (status !== undefined) {
@@ -123,10 +128,18 @@ export default function Header({nickname, status, role, profile}: HeaderProps) {
                                         {role === "LISTENER" ? (<>상담사님<br/>환영합니다.</>) : (<>님 환영합니다.</>)}
                                     </p>
                                     {profile ? (
-                                        <Image src={profile} alt="Profile Image" width={60} height={60}
-                                               className='rounded-full object-cover -mt-2 w-[60px] h-[60px]'/>
+                                        <Link href='/mypage'>
+                                            <Image
+                                                src={profile}
+                                                alt="Profile Image"
+                                                width={60}
+                                                height={60}
+                                                className="rounded-full object-cover -mt-2 w-[60px] h-[60px]"
+                                            /></Link>
                                     ) : (
-                                        <Link href='/mypage' className='text-3xl'> <FiUser/></Link>
+                                        <Link href="/mypage" className="text-3xl">
+                                            <FiUser/>
+                                        </Link>
                                     )}
                                 </div>
                             </div>
