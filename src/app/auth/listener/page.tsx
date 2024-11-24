@@ -158,19 +158,19 @@ export default function SignUpPage() {
 
                                     <div className="flex items-center">
                                         <label htmlFor="password" className="text-2xl font-semibold w-40 text-wrap">비밀번호<span className="text-red-500">*</span></label>
-                                        <input id="password" className="block border border-yellow-6 p-5 w-full rounded placeholder:text-lg" type="password" {...password} placeholder="비밀번호를 입력해주세요(영여/숫자/특수문자 1개씩 필수 입력)" />
+                                        <input id="password" pattern="^(?=.*\d)(?=.*[a-zA-Z])(?=.*[^a-zA-Z0-9]).{8,14}$" className="block border border-yellow-6 p-5 w-full rounded placeholder:text-lg" type="password" {...password} placeholder="비밀번호를 입력해주세요(영여/숫자/특수문자 1개씩 필수 입력)" />
                                     </div>
 
                                     <div className="flex items-center">
                                         <label htmlFor="checkPassword" className="text-2xl font-semibold w-40 text-wrap">비밀번호<br/>재확인<span className="text-red-500">*</span></label>
-                                        <input id="checkPassword" className="block border border-yellow-6 p-5 w-full rounded placeholder:text-lg" type="password" {...checkPassword} placeholder="비밀번호를 다시 입력해주세요" />
+                                        <input id="checkPassword" pattern="^(?=.*\d)(?=.*[a-zA-Z])(?=.*[^a-zA-Z0-9]).{8,14}$" className="block border border-yellow-6 p-5 w-full rounded placeholder:text-lg" type="password" {...checkPassword} placeholder="비밀번호를 다시 입력해주세요" />
                                     </div>
 
                                     <div className="flex items-center">
                                         <label htmlFor="userName" className="text-2xl font-semibold w-40 text-wrap">닉네임<span className="text-red-500">*</span></label>
                                         <div className="w-full">
                                             <div className="flex items-center gap-2">
-                                                <input id="userName" className="block border border-yellow-6 p-5 w-full rounded placeholder:text-lg" type="text" {...nickname} placeholder="닉네임을 입력해주세요" />
+                                                <input id="userName" pattern="^[a-zA-Z0-9가-힣]{2,8}$" className="block border border-yellow-6 p-5 w-full rounded placeholder:text-lg" type="text" {...nickname} placeholder="닉네임을 입력해주세요" />
                                                 <button type="button" onClick={handleCheckNickname} className="border p-4 text-2xl rounded border-yellow-6  hover:bg-yellow-6 hover:text-white">중복 확인</button>
                                             </div>
                                             <span className={`${nicknameValid === false ? 'text-red-500 text-2xl' : 'text-green-500 text-2xl'}`}>{nicknameMessage}</span>
@@ -179,17 +179,17 @@ export default function SignUpPage() {
 
                                     <div className="flex items-center">
                                         <label htmlFor="phoneNumber" className="text-2xl font-semibold w-40 text-wrap">휴대전화</label>
-                                        <input id="phoneNumber" className="block border border-yellow-6 p-5 w-full rounded placeholder:text-lg" type="text" {...phoneNumber} placeholder="하이픈(-) 붙여서 휴대전화를 입력해주세요" />
+                                        <input id="phoneNumber" pattern="^\d{3}-\d{4}-\d{4}$" className="block border border-yellow-6 p-5 w-full rounded placeholder:text-lg" type="text" {...phoneNumber} placeholder="하이픈(-) 붙여서 휴대전화를 입력해주세요" />
                                     </div>
 
                                     <div className="flex items-center">
                                         <label htmlFor="contactNumber" className="text-2xl font-semibold w-40 text-wrap">전화번호</label>
-                                        <input id="contactNumber" className="block border border-yellow-6 p-5 w-full rounded placeholder:text-lg" type="text" {...contactNumber} placeholder="하이픈(-) 붙여서 전화번호를 입력해주세요" />
+                                        <input id="contactNumber" pattern="^\d{2,3}-\d{3,4}-\d{4}$" className="block border border-yellow-6 p-5 w-full rounded placeholder:text-lg" type="text" {...contactNumber} placeholder="하이픈(-) 붙여서 전화번호를 입력해주세요" />
                                     </div>
 
                                     <div className="flex items-center">
                                         <label htmlFor="address" className="text-2xl font-semibold w-40 text-wrap">주소</label>
-                                        <input id="address" className="block border border-yellow-6 p-5 w-full rounded placeholder:text-lg" type="text" {...address} placeholder="주소를 입력해주세요" />
+                                        <input id="address" pattern="^[\s\w\d가-힣]*$" className="block border border-yellow-6 p-5 w-full rounded placeholder:text-lg" type="text" {...address} placeholder="주소를 입력해주세요" />
                                     </div>
 
                                     <ListenerRegisterCareer careerField={careerField} setCareerField={setCareerField} />
