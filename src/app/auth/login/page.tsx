@@ -66,7 +66,7 @@ export default function LoginPage() {
             Swal.fire({
                 icon: 'error',
                 title: '로그인 실패!',
-                text: '다시 로그인해주세요.',
+                text: '아이디 또는 비밀번호가 일치하지 않습니다.',
                 confirmButtonColor: "#FAAC01"
             });
         }

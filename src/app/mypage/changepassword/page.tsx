@@ -69,8 +69,8 @@ export default function ChangePassword() {
             });
             if (res.ok) {
                 Swal.fire({
-                    title: "수정 완료!",
-                    text: "수정되었습니다.",
+                    title: "변경 완료!",
+                    text: "변경되었습니다.",
                     icon: "success",
                     timer: 1000,
                 });
@@ -94,7 +94,7 @@ export default function ChangePassword() {
                 onSubmit={handleSubmit}
                 className="border-4 border-yellow-2 w-[95%] h-[810px] mx-auto flex flex-col mt-24 mb-24 rounded-3xl"
             >
-                <h1 className="text-5xl p-4 font-bold">비밀번호 수정</h1>
+                <h1 className="text-5xl p-4 font-bold">비밀번호 변경</h1>
                 <div className="flex items-center mt-20 mb-5">
                     <label
                         htmlFor="newPassword"
@@ -186,7 +186,7 @@ export default function ChangePassword() {
                 onSubmit={handleSubmit}
                 className="border-4 border-yellow-2 w-[40%] h-[805px] mx-auto flex flex-col mt-10 mb-10 rounded-3xl"
             >
-                <h1 className="text-5xl p-4 font-bold">비밀번호 수정</h1>
+                <h1 className="text-5xl p-4 font-bold">비밀번호 변경</h1>
                 <div className="flex items-center mt-20 mb-5">
                     <label
                         htmlFor="newPassword"

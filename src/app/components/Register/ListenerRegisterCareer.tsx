@@ -44,6 +44,7 @@ export default function ListenerRegisterCareer({careerField, setCareerField}) {
                                     className={`block border border-yellow-6 p-5 w-full rounded ${isTabletHeight ? ' placeholder:text-lg text-xl':' placeholder:text-xl text-2xl'}`}
                                     type="text"
                                     value={field}
+                                    pattern="^[\s\w\d가-힣]{1,30}$"
                                     onChange={(e) => handleChange(index, e.target.value)}
                                     placeholder="경력을 입력해주세요"
                                 />

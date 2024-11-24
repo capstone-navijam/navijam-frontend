@@ -41,6 +41,7 @@ export default function ListenerRegisterEducation({educationField, setEducationF
                             <div key={index} className='flex'>
                                 <input
                                     id={`career-${index}`}
+                                    pattern="^[\s\w\d가-힣]{1,30}$"
                                     className={`block border border-yellow-6 p-5 w-full rounded ${isTabletHeight ? ' placeholder:text-lg text-xl':' placeholder:text-xl text-2xl'} `}
                                     type="text"
                                     value={field}
