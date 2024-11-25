@@ -26,16 +26,16 @@ export async function ListenersListAll() {
 
         return result.data.map((item: ListenersListProps) => ({
             id: item.id,
-            nickname: item.nickname,
-            profile: item.profile,
-            categories: item.categories,
-            description: item.description,
-            address: item.address,
-            contactNumber: item.contactNumber,
-            email: item.email,
-            career: item.career,
-            education: item.education,
-        }))
+            nickname: item.nickname || '',
+            profile: item.profile || '',
+            categories: item.categories || [],
+            description: item.description || '', // 기본값 추가
+            address: item.address || '', // 기본값 추가
+            contactNumber: item.contactNumber || '', // 기본값 추가
+            email: item.email || '',
+            career: item.career || [],
+            education: item.education || [],
+        }));
     } else {
         console.error('응답 실패');
         return [];

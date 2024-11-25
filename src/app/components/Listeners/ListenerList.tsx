@@ -60,7 +60,6 @@ export default function ListenerList() {
                         onClick={(e) => e.stopPropagation()}
                         className={`bg-white rounded-xl shadow-lg  ${isTabletHeight ? ' w-[70%] min-h-[1000px]' : ' w-[48%] min-h-[1000px]'}`}>
                         <ListenerDetail
-                            id={selectedListener.id}
                             nickname={selectedListener.nickname}
                             categories={selectedListener.categories}
                             profile={selectedListener.profile}
@@ -69,7 +68,6 @@ export default function ListenerList() {
                             description={selectedListener.description}
                             address={selectedListener.address}
                             contactNumber={selectedListener.contactNumber}
-                            email={selectedListener.email}
                         />
 
 
@@ -102,8 +100,7 @@ export default function ListenerList() {
                                                     className={`${isTabletHeight ? 'text-2xl' : 'text-4xl'} font-medium`}>상담사</span>
                                             </h1>
                                             <p className={`text-yellow-2 ${isTabletHeight ? 'text-xl mt-3' : 'text-3xl mt-auto'} font-bold`}>#{listener.categories.join(' #')}</p>
-                                            <div
-                                                className={`${isTabletHeight ? 'mt-3 text-xl' : 'mt-10'} text-2xl  -mx-1`}>평점: <span
+                                            <div className={`${isTabletHeight ? 'mt-3 text-xl' : 'mt-10'} text-2xl  -mx-1`}>평점: <span
                                                 className='text-yellow-2'>4.3</span></div>
                                         </div>
                                         <h2 className={`${isTabletHeight ? 'text-xl' : 'text-3xl'} text-gray-600`}><span
