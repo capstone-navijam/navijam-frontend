@@ -24,6 +24,7 @@ export default function ListenerList() {
             try {
                 const data = await ListenersListAll();
                 setListeners(data)
+
             } catch (err) {
                 console.error('상담사를 불러오는데 실패했습니다.')
             }
@@ -35,6 +36,7 @@ export default function ListenerList() {
     const handleDetailClick = (listener: ListenersListProps) => {
         setShowListenersDetail(true);
         setSelectedListener(listener);
+
     }
 
     const handleCloseModal = () => {

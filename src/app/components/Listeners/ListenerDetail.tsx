@@ -7,6 +7,17 @@ import {useTabletHeight} from "@/service/MediaQuery";
 import {useRouter} from "next/navigation";
 import {GoComment} from "react-icons/go";
 
+interface ListenerDetailProps {
+    nickname: string;
+    profile: string;
+    categories: string[];
+    career: string[];
+    education: string[];
+    description?: string; // 선택적으로 설정
+    address?: string;     // 선택적으로 설정
+    contactNumber?: string; // 선택적으로 설정
+}
+
 export default function ListenerDetail({
                                            nickname,
                                            profile,
@@ -16,7 +27,7 @@ export default function ListenerDetail({
                                            description,
                                            address,
                                            contactNumber
-                                       }) {
+                                       }: ListenerDetailProps) {
 
     const isTabletHeight = useTabletHeight();
     const router = useRouter();
@@ -50,13 +61,16 @@ export default function ListenerDetail({
                         </div>
 
                         <div className='flex flex-col gap-10 p-4 w-full mt-10'>
-                            <p className='text-3xl flex flex-row items-center text-yellow-1 font-medium whitespace-nowrap'><GoComment/>한 줄 소개: <span
+                            <p className='text-3xl flex flex-row items-center text-yellow-1 font-medium whitespace-nowrap'>
+                                <GoComment/>한 줄 소개: <span
                                 className='text-2xl mt-2 mx-2 text-black'>{description}</span></p>
 
-                            <p className='text-3xl flex flex-row items-center text-yellow-1 font-medium whitespace-nowrap'><MdLocationOn/>주소: <span
+                            <p className='text-3xl flex flex-row items-center text-yellow-1 font-medium whitespace-nowrap'>
+                                <MdLocationOn/>주소: <span
                                 className='text-2xl mt-2 mx-2 text-black'>{address}</span></p>
 
-                            <p className='text-3xl flex flex-row items-center text-yellow-1 font-medium whitespace-nowrap'><MdLocalPhone/>연락처: <span
+                            <p className='text-3xl flex flex-row items-center text-yellow-1 font-medium whitespace-nowrap'>
+                                <MdLocalPhone/>연락처: <span
                                 className='text-2xl mt-2 mx-2 text-black'>{contactNumber}</span></p>
 
                             <p className='text-3xl flex items-center font-medium gap-2 text-yellow-1'>
