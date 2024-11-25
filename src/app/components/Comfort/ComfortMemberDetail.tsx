@@ -6,12 +6,14 @@ import {useParams, useRouter} from "next/navigation";
 import Image from 'next/image'
 import Swal from "sweetalert2";
 import {getCookie} from "cookies-next";
-import {useMobile, useTabletHeight} from "@/service/MediaQuery";
+import {useTabletHeight} from "@/service/MediaQuery";
+import Link from "next/link";
 
 export default function ComfortMemberDetail() {
 
     const isTabletHeight = useTabletHeight();
 
+    const nickname = getCookie('nickname');
     const [comfort, setComfort] = useState<ComfortListDetailProps | null>(null);
     const {id} = useParams(); // URL 파라미터에서 id 가져오기
     const router = useRouter();
@@ -115,13 +117,22 @@ export default function ComfortMemberDetail() {
                     <div className="border-4 rounded-xl h-[50%] w-[95%] mx-auto border-yellow-6 p-4 flex flex-col mt-4">
                         <div className='justify-between flex flex-row mt-2'>
                             <div className='flex flex-col gap-2'>
-                                <p className='mx-2 text-2xl text-yellow-6 font-semibold'>#{comfort.categories.join(' #')}</p>
-                                <h1 className='text-4xl font-semibold mx-2'>{comfort.title}</h1>
-                            </div>
-                            <div className='flex items-center mt-10'>
-                                <p className='text-xl text-gray-500 mx-2'>작성자: {comfort.writerNickname}</p>
-                                <Image src={comfort.writerProfile} alt="Profile" width={80} height={80}
-                                       className="rounded-full object-cover w-[30px] h-[30px]" />
+                                <div className='flex flex-row justify-between'>
+                                    <p className='mx-2 text-2xl text-yellow-6 font-semibold'>#{comfort.categories.join(' #')}</p>
+                                    <div className='flex items-center'>
+                                        <p className='text-xl text-gray-500 mx-2'>작성자: {comfort.writerNickname}</p>
+                                        {nickname === comfort.writerNickname ? (<>
+                                            <Link href='/mypage'>
+                                                <Image src={comfort.writerProfile} alt="Profile" width={80} height={80}
+                                                       className="rounded-full object-cover w-[30px] h-[30px]"/>
+                                            </Link>
+                                        </>) : (<>
+                                            <Image src={comfort.writerProfile} alt="Profile" width={80} height={80}
+                                                   className="rounded-full object-cover w-[30px] h-[30px]"/>
+                                        </>)}
+                                    </div>
+                                </div>
+                                <h1 className='text-4xl font-semibold mx-2 overflow-hidden text-ellipsis whitespace-nowrap'>{comfort.title}</h1>
                             </div>
                         </div>
 
@@ -187,8 +198,15 @@ export default function ComfortMemberDetail() {
                             </div>
                             <div className='flex items-center mt-10'>
                                 <p className='text-3xl text-gray-500 mx-2'>작성자: {comfort.writerNickname}</p>
-                                <Image src={comfort.writerProfile} alt="Profile" width={80} height={80}
-                                       className="rounded-full object-cover w-[60px] h-[60px]" />
+                                {nickname === comfort.writerNickname ? (<>
+                                    <Link href='/mypage'>
+                                        <Image src={comfort.writerProfile} alt="Profile" width={80} height={80}
+                                               className="rounded-full object-cover w-[60px] h-[60px]"/>
+                                    </Link>
+                                </>) : (<>
+                                    <Image src={comfort.writerProfile} alt="Profile" width={80} height={80}
+                                           className="rounded-full object-cover w-[60px] h-[60px]"/>
+                                </>)}
                             </div>
                         </div>
 
@@ -198,11 +216,11 @@ export default function ComfortMemberDetail() {
                             <p className='whitespace-pre-wrap leading-normal text-3xl'>{comfort.content}</p>
                         </div>
 
-                        {role === "MEMBER" && (
-                            <div className='flex flex-col mt-auto'>
-                            <span className='w-fit text-xl ml-auto mr-4'>
+                        <span className='w-fit text-xl ml-auto mr-4'>
                                 {new Date(comfort.createdAt).toLocaleDateString().replace(/\.$/, '')} 작성
                             </span>
+                        {role === "MEMBER" && (
+                            <div className='flex flex-col mt-auto'>
                                 <div className='flex flex-row justify-between'>
                                     <button
                                         type="button"

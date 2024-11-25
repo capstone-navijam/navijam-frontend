@@ -86,7 +86,7 @@ export default function MyProfile() {
                             });
                         }
                         Swal.fire({title: "변경 완료!", text: "변경되었습니다.", icon: "success", timer: 1000}).then(() => {
-                            router.push(`/mypage`);
+                            window.location.replace(`/mypage`);
                         });
 
                     } else {
@@ -117,7 +117,7 @@ export default function MyProfile() {
                                         id="nickname"
                                         className="block border border-yellow-6 p-2 rounded placeholder:text-xl text-2xl"
                                         type="text"
-                                        pattern="^[a-zA-Z가-힣]{2,8}$"
+                                        pattern="^[a-zA-Z가-힣0-9]{2,8}$"
                                         value={nickname.value}
                                         onChange={nickname.onChange}
                                         placeholder="새로운 닉네임을 입력해주세요."
@@ -125,7 +125,7 @@ export default function MyProfile() {
                                     <p className='mx-1 text-gray-500'>입력하지 않을 시, 닉네임은 유지됩니다.</p>
                                 </div>
                                 <button type="submit"
-                                        className="bg-yellow-6 text-white text-3xl rounded-xl p-2">닉네임 수정
+                                        className="bg-yellow-6 text-white text-3xl rounded-xl p-2">닉네임 변경
                                 </button>
                             </form>
                             <div className="flex flex-row justify-between">
@@ -135,7 +135,7 @@ export default function MyProfile() {
                                 </div>
                                 <button
                                     onClick={() => router.push('/mypage/changepassword')}
-                                    className="bg-yellow-6 text-white text-3xl rounded-xl p-2">비밀번호 수정
+                                    className="bg-yellow-6 text-white text-3xl rounded-xl p-2">비밀번호 변경
                                 </button>
                             </div>
                         </div>
@@ -157,7 +157,7 @@ export default function MyProfile() {
                                         id="nickname"
                                         className="block border border-yellow-6 p-2 rounded placeholder:text-2xl text-4xl"
                                         type="text"
-                                        pattern="^[a-zA-Z가-힣]{2,8}$"
+                                        pattern="^[a-zA-Z가-힣0-9]{2,8}$"
                                         value={nickname.value}
                                         onChange={nickname.onChange}
                                         placeholder="새로운 닉네임을 입력해주세요."
@@ -165,7 +165,7 @@ export default function MyProfile() {
                                     <p className='mx-1 text-gray-500'>입력하지 않을 시, 닉네임은 유지됩니다.</p>
                                 </div>
                                 <button type="submit"
-                                        className="bg-yellow-6 text-white text-3xl rounded-xl p-2">닉네임 수정
+                                        className="bg-yellow-6 text-white text-3xl rounded-xl p-2">닉네임 변경
                                 </button>
                             </form>
                             <div className="flex flex-row justify-between">
@@ -175,7 +175,7 @@ export default function MyProfile() {
                                 </div>
                                 <button
                                     onClick={() => router.push('/mypage/changepassword')}
-                                    className="bg-yellow-6 text-white text-3xl rounded-xl p-2">비밀번호 수정
+                                    className="bg-yellow-6 text-white text-3xl rounded-xl p-2">비밀번호 변경
                                 </button>
                             </div>
                         </div>

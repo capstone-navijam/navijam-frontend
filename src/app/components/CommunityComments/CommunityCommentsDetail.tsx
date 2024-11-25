@@ -9,6 +9,7 @@ import Image from 'next/image'
 import Swal from "sweetalert2";
 import {useRouter} from "next/navigation";
 import {IoMdClose} from "react-icons/io";
+import Link from "next/link";
 
 export default function CommunityCommentsDetail({communityId}: CommunityCommentsDetailProps) {
 
@@ -16,6 +17,7 @@ export default function CommunityCommentsDetail({communityId}: CommunityComments
     const isTabletHeight = useTabletHeight();
     const router = useRouter();
     const [comments, setComments] = useState<CommunityCommentsDetailProps[]>([]);
+    const nickname = getCookie('nickname');
 
     useEffect(() => {
         const userName = getCookie("nickname");
@@ -64,7 +66,7 @@ export default function CommunityCommentsDetail({communityId}: CommunityComments
                     if (res.ok) {
                         Swal.fire({title: "삭제 완료!", text: "삭제되었습니다.", icon: "success", timer: 1000});
                         setComments(prevComments => prevComments.filter(comment => comment.id !== commentId)); // 삭제된 댓글 제외
-                        router.push(`/community/${communityId}`);
+                        window.location.reload();
                     } else {
                         Swal.fire({title: "댓글 삭제에 실패하였습니다.", text: "다시 시도해주세요.", icon: "error", timer: 1000});
                     }
@@ -87,13 +89,25 @@ export default function CommunityCommentsDetail({communityId}: CommunityComments
                                 <div className='flex flex-row justify-between mx-2 text-center items-center'>
                                     <div className='flex flex-row gap-2 items-center text-center'>
                                         <p className='text-3xl'>{comment.nickname}</p>
-                                        <Image
-                                            src={comment.profile}
-                                            alt="Profile Image"
-                                            width={30}
-                                            height={30}
-                                            className='mt-1 rounded-full object-cover w-[45px] h-[45px]'
-                                        />
+                                        {nickname === comment.nickname ? (<>
+                                            <Link href='/mypage'>
+                                                <Image
+                                                    src={comment.profile}
+                                                    alt="Profile Image"
+                                                    width={30}
+                                                    height={30}
+                                                    className='mt-1 rounded-full object-cover w-[45px] h-[45px]'
+                                                />
+                                            </Link>
+                                        </>) : (<>
+                                            <Image
+                                                src={comment.profile}
+                                                alt="Profile Image"
+                                                width={30}
+                                                height={30}
+                                                className='mt-1 rounded-full object-cover w-[45px] h-[45px]'
+                                            />
+                                        </>)}
                                     </div>
                                     <div className='flex flex-row items-center'>
                                         <p className='text-xl -mt-0.5'>{comment.timestamp}</p>
@@ -120,13 +134,23 @@ export default function CommunityCommentsDetail({communityId}: CommunityComments
                                 <div className='flex flex-row justify-between mx-2 text-center items-center'>
                                     <div className='flex flex-row gap-2 items-center text-center'>
                                         <p className='text-4xl'>{comment.nickname}</p>
-                                        <Image
-                                            src={comment.profile}
-                                            alt="Profile Image"
-                                            width={30}
-                                            height={30}
-                                            className='mt-1 rounded-full object-cover w-[60px] h-[60px]'
-                                        />
+                                        {nickname === comment.nickname ? (<><Link href='/mypage'>
+                                            <Image
+                                                src={comment.profile}
+                                                alt="Profile Image"
+                                                width={30}
+                                                height={30}
+                                                className='mt-1 rounded-full object-cover w-[60px] h-[60px]'
+                                            />
+                                        </Link></>) : (<>
+                                            <Image
+                                                src={comment.profile}
+                                                alt="Profile Image"
+                                                width={30}
+                                                height={30}
+                                                className='mt-1 rounded-full object-cover w-[60px] h-[60px]'
+                                            />
+                                        </>)}
                                     </div>
                                     <div className='flex flex-row items-center'>
                                         <p className='text-2xl -mt-0.5'>{comment.timestamp}</p>

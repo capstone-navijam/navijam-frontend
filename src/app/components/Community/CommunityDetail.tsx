@@ -9,6 +9,11 @@ import {useTabletHeight} from "@/service/MediaQuery";
 import CommunityCommentsRegister from "@/app/components/CommunityComments/CommunityCommentsRegister";
 import CommunityCommentsDetail from "@/app/components/CommunityComments/CommunityCommentsDetail";
 import CommunityLikesCount from "@/app/components/Community/CommunityLikesCount";
+import Link from "next/link";
+import {FaRegCommentAlt} from "react-icons/fa";
+import CommunityCommentsList, {
+    CommunityCommentsDetailProps
+} from "@/app/components/CommunityComments/CommunityCommentsList";
 
 
 export default function CommunityDetail() {
@@ -16,6 +21,8 @@ export default function CommunityDetail() {
     const isTabletHeight = useTabletHeight();
 
     const [community, setCommunity] = useState<CommunityListDetailProps | null>(null);
+    const [comments, setComments] = useState<CommunityCommentsDetailProps[]>([]);
+    const nickname = getCookie('nickname');
 
     const [loggedInUser, setLoggedInUser] = useState<string | null>(null); // 로그인한 사용자 이름 상태
     const {id} = useParams();
@@ -42,6 +49,22 @@ export default function CommunityDetail() {
             }
         };
         fetchCommunity();
+    }, [id]);
+
+
+    useEffect(() => {
+        const fetchComments = async () => {
+            if (id) {
+                try {
+                    //@ts-ignore
+                    const data = await CommunityCommentsList(BigInt(id));
+                    setComments(data);
+                } catch (err) {
+                    console.error('커뮤니티 댓글 상세 정보를 불러오는 데 실패했습니다', err)
+                }
+            }
+        }
+        fetchComments()
     }, [id]);
 
 
@@ -94,117 +117,173 @@ export default function CommunityDetail() {
     }
 
     return (<>
-        {isTabletHeight ? (<>
-            <section className='w-[95%] mx-auto mt-20'>
-                <div className="w-[20%] border-[4px] border-yellow-6"></div>
+            {isTabletHeight ? (<>
+                <section className='w-[95%] mx-auto mt-20'>
+                    <div className="w-[20%] border-[4px] border-yellow-6"></div>
 
-                <div className='flex flex-row justify-between'>
-                    <div className='flex flex-row gap-4'>
-                        <h1 className='text-4xl mt-4 font-semibold overflow-hidden text-ellipsis whitespace-nowrap'>{community.title}</h1>
-                        <div className='flex flec-row items-end gap-2 text-2xl'>
-                            <CommunityLikesCount communityId={community.id} initialLiked={community.liked}
-                                                 initialLikeCount={community.likeCount}/>
+                    <div className='flex flex-row justify-between'>
+                        <div className='flex flex-row gap-4'>
+                            <h1 className='text-4xl mt-4 font-semibold overflow-hidden text-ellipsis whitespace-nowrap'>{community.title}</h1>
+                        </div>
+                        <div className='flex flex-row items-end gap-4'>
+                            <p className='text-3xl overflow-hidden text-ellipsis whitespace-nowrap'>{community.nickname}</p>
+                            {nickname === community.nickname ? (<>
+                                <Link href='/mypage'>
+                                    <Image src={community.profile} alt="Profile" width={100} height={100}
+                                           className='rounded-full w-[45px] h-[45px]'/>
+                                </Link>
+
+                            </>) : (<>
+                                <Image src={community.profile} alt="Profile" width={100} height={100}
+                                       className='rounded-full w-[45px] h-[45px]'/>
+                            </>)}
                         </div>
                     </div>
-                    <div className='flex flex-row items-end gap-4'>
-                        <p className='text-3xl overflow-hidden text-ellipsis whitespace-nowrap'>{community.nickname}</p>
-                        <Image src={community.profile} alt="Profile" width={100} height={100}
-                               className='rounded-full w-[45px] h-[45px]'/>
+                    <div className='flex flex-row justify-between'>
+                        <p className='text-2xl text-yellow-2 font-bold mt-2'>{community.categories.join(', ')}</p>
                     </div>
-                </div>
-                <div className='flex flex-row justify-between'>
-                    <p className='text-2xl text-yellow-2 font-bold mt-2'>{community.categories.join(', ')}</p>
-                    <p className='items-end text-xl mt-1'>{community.timestamp}</p>
-                </div>
-                <p className='mt-8 whitespace-pre-wrap leading-normal text-3xl  min-h-[480px]'>{community.content}</p>
+                    <p className='mt-8 whitespace-pre-wrap leading-normal text-3xl  min-h-[480px]'>{community.content}</p>
 
-                {/* 로그인된 사용자와 작성자가 같을 경우에만 수정/삭제 버튼 표시 */}
-                {loggedInUser === community.nickname && (
-                    <div className='flex flex-row mb-2 justify-end'>
-                        <button
-                            type="button"
-                            onClick={handleModifyClick}
-                            className={`bg-white border-yellow-2 border-4 text-black text-3xl p-1.5 rounded-lg w-fit mx-2`}
-                        >
-                            수정하기
-                        </button>
-                        <button
-                            type="button"
-                            onClick={handleDeleteClick}
-                            className={`bg-white border-yellow-2 border-4 text-black p-1.5 text-3xl rounded-lg w-fit mx-2`}
-                        >
-                            삭제하기
-                        </button>
-                    </div>
-                )}
+                    {/* 로그인된 사용자와 작성자가 같을 경우에만 수정/삭제 버튼 표시 */}
+                    {loggedInUser === community.nickname ? (<>
+                            <div className='flex flex-col justify-end'>
+                                <p className='ml-auto mx-3 text-2xl mt-1'>{community.timestamp}</p>
+                                <div className='flex flex-row justify-between'>
+                                    <div className="items-end gap-2 mt-4 text-4xl">
+                                        <div className='flex flex-row gap-2'>
+                                            <CommunityLikesCount communityId={community.id}
+                                                                 initialLiked={community.liked}
+                                                                 initialLikeCount={community.likeCount}/>
+                                            <FaRegCommentAlt className='text-yellow-2'/>
+                                            <span className='text-yellow-2 -mt-1'>{comments.length}</span>
+                                        </div>
+                                    </div>
+                                    <div className='flex flex-row mb-2 justify-end'>
+                                        <button
+                                            type="button"
+                                            onClick={handleModifyClick}
+                                            className={`bg-white border-yellow-2 border-4 text-black text-3xl p-1.5 rounded-lg w-fit mx-2`}
+                                        >
+                                            수정하기
+                                        </button>
+                                        <button
+                                            type="button"
+                                            onClick={handleDeleteClick}
+                                            className={`bg-white border-yellow-2 border-4 text-black p-1.5 text-3xl rounded-lg w-fit mx-2`}
+                                        >
+                                            삭제하기
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </>
+                    ) : (<>
+                        <div className='flex flec-row items-end justify-between gap-2 mb-2 text-4xl'>
+                            <div className='flex flex-row gap-2'>
+                                <CommunityLikesCount communityId={community.id} initialLiked={community.liked}
+                                                     initialLikeCount={community.likeCount}/>
+                                <FaRegCommentAlt className='text-yellow-2'/>
+                                <span className='text-yellow-2 -mt-1'>{comments.length}</span>
+                            </div>
+                            <p className='items-end text-2xl mt-1'>{community.timestamp}</p>
+                        </div>
+                    </>)}
 
-                <div className="w-full border-[4px] border-yellow-6"></div>
-            </section>
+                    <div className="w-full border-[4px] border-yellow-6"></div>
+                </section>
 
-            <section className='w-[95%] mx-auto mt-10'>
-                <CommunityCommentsDetail id={community.memberId} nickname={community.nickname}
-                                         profile={community.profile} content={community.profile}
-                                         timestamp={community.timestamp} communityId={community.id}/>
-                <div className="w-full mt-1 mb-4 border-[2px] border-lightGray/30"></div>
-                <CommunityCommentsRegister communityId={community.id}/>
+                <section className='w-[95%] mx-auto mt-10'>
+                    <CommunityCommentsDetail id={community.memberId} nickname={community.nickname}
+                                             profile={community.profile} content={community.profile}
+                                             timestamp={community.timestamp} communityId={community.id}/>
+                    <div className="w-full mt-1 mb-4 border-[2px] border-lightGray/30"></div>
+                    <CommunityCommentsRegister communityId={community.id}/>
 
-            </section>
-        </>) : (<>
-            <section className='w-[80%] mx-auto mt-20'>
-            <div className="w-[10%] border-[4px] border-yellow-6"></div>
+                </section>
+            </>) : (<>
+                <section className='w-[80%] mx-auto mt-20'>
+                    <div className="w-[10%] border-[4px] border-yellow-6"></div>
 
-                <div className='flex flex-row justify-between'>
-                    <div className='flex flex-row gap-4'>
+                    <div className='flex flex-row justify-between'>
                         <h1 className='text-6xl mt-4 font-semibold'>{community.title}</h1>
-                        <div className='flex flec-row items-end gap-2 text-4xl'>
-                            <CommunityLikesCount communityId={community.id} initialLiked={community.liked} initialLikeCount={community.likeCount} />
+
+                        <div className='flex flex-row items-end gap-4'>
+                            <p className='text-4xl overflow-hidden text-ellipsis whitespace-nowrap'>{community.nickname}</p>
+                            {nickname === community.nickname ? (<>
+                                <Link href='/mypage'>
+                                    <Image src={community.profile} alt="Profile" width={100} height={100}
+                                           className='rounded-full w-[60px] h-[60px]'/>
+                                </Link>
+                            </>) : (<>
+                                <Image src={community.profile} alt="Profile" width={100} height={100}
+                                       className='rounded-full w-[60px] h-[60px]'/>
+                            </>)}
                         </div>
                     </div>
-                    <div className='flex flex-row items-end gap-4'>
-                        <p className='text-4xl overflow-hidden text-ellipsis whitespace-nowrap'>{community.nickname}</p>
-                        <Image src={community.profile} alt="Profile" width={100} height={100}
-                               className='rounded-full w-[60px] h-[60px]'/>
+                    <div className='flex flex-row justify-between'>
+                        <p className='text-4xl text-yellow-2 font-bold mt-2'>{community.categories.join(', ')}</p>
                     </div>
-                </div>
-                <div className='flex flex-row justify-between'>
-                    <p className='text-4xl text-yellow-2 font-bold mt-2'>{community.categories.join(', ')}</p>
+                    <p className='mt-8 text-3xl min-h-[480px] whitespace-pre-wrap leadng-normal '>{community.content}</p>
 
-                    <p className='items-end text-2xl mt-1'>{community.timestamp}</p>
-                </div>
-                <p className='mt-8 text-3xl min-h-[480px] whitespace-pre-wrap leadng-normal '>{community.content}</p>
+                    {/* 로그인된 사용자와 작성자가 같을 경우에만 수정/삭제 버튼 표시 */}
+                    {loggedInUser === community.nickname ? (
+                        <>
+                            <div className='flex flex-col justify-end'>
+                                <p className='ml-auto mx-3 text-2xl mt-1'>{community.timestamp}</p>
+                                <div className='flex flex-row justify-between'>
+                                    <div className="items-end gap-2 mt-4 text-4xl">
+                                        <div className='flex flex-row gap-2'>
+                                            <CommunityLikesCount communityId={community.id}
+                                                                 initialLiked={community.liked}
+                                                                 initialLikeCount={community.likeCount}/>
+                                            <FaRegCommentAlt className='text-yellow-2'/>
+                                            <span className='text-yellow-2 -mt-1'>{comments.length}</span>
+                                        </div>
+                                    </div>
+                                    <div className='flex flex-row mb-2 justify-end'>
+                                        <button
+                                            type="button"
+                                            onClick={handleModifyClick}
+                                            className={`bg-white border-yellow-2 border-4 text-black text-3xl p-1.5 rounded-lg w-fit mx-2`}
+                                        >
+                                            수정하기
+                                        </button>
+                                        <button
+                                            type="button"
+                                            onClick={handleDeleteClick}
+                                            className={`bg-white border-yellow-2 border-4 text-black p-1.5 text-3xl rounded-lg w-fit mx-2`}
+                                        >
+                                            삭제하기
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </>
+                    ) : (<>
+                            <div className='flex flec-row items-end justify-between gap-2 mb-2 text-4xl'>
+                                <div className='flex flex-row gap-2'>
+                                    <CommunityLikesCount communityId={community.id} initialLiked={community.liked}
+                                                         initialLikeCount={community.likeCount}/>
+                                    <FaRegCommentAlt className='text-yellow-2'/>
+                                    <span className='text-yellow-2 -mt-1'>{comments.length}</span>
+                                </div>
+                                <p className='items-end text-2xl mt-1'>{community.timestamp}</p>
+                            </div>
+                        </>
+                    )}
 
-                {/* 로그인된 사용자와 작성자가 같을 경우에만 수정/삭제 버튼 표시 */}
-                {loggedInUser === community.nickname && (
-                    <div className='flex flex-row mb-2 justify-end'>
-                        <button
-                            type="button"
-                            onClick={handleModifyClick}
-                            className={`bg-white border-yellow-2 border-4 text-black text-3xl p-1.5 rounded-lg w-fit mx-2`}
-                        >
-                            수정하기
-                        </button>
-                        <button
-                            type="button"
-                            onClick={handleDeleteClick}
-                            className={`bg-white border-yellow-2 border-4 text-black p-1.5 text-3xl rounded-lg w-fit mx-2`}
-                        >
-                            삭제하기
-                        </button>
-                    </div>
-                )}
+                    <div className="w-full border-[4px] border-yellow-6"></div>
+                </section>
 
-                <div className="w-full border-[4px] border-yellow-6"></div>
-            </section>
+                <section className='w-[80%] mx-auto mt-10'>
+                    <CommunityCommentsDetail id={community.memberId} nickname={community.nickname}
+                                             profile={community.profile} content={community.profile}
+                                             timestamp={community.timestamp} communityId={community.id}/>
+                    <div className="w-full mt-1 mb-4 border-[2px] border-lightGray/30"></div>
+                    <CommunityCommentsRegister communityId={community.id}/>
+                </section>
+            </>)}
 
-            <section className='w-[80%] mx-auto mt-10'>
-                <CommunityCommentsDetail id={community.memberId} nickname={community.nickname}
-                                         profile={community.profile} content={community.profile}
-                                         timestamp={community.timestamp} communityId={community.id}/>
-                <div className="w-full mt-1 mb-4 border-[2px] border-lightGray/30"></div>
-                <CommunityCommentsRegister communityId={community.id}/>
-
-            </section>
-        </>)}
-
-    </>);
+        </>
+    );
 }

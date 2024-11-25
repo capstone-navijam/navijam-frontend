@@ -10,6 +10,7 @@ import ComfortCommentsRegister from "@/app/components/ComfortComments/ComfortCom
 import ComfortCommentsDetail from "@/app/components/ComfortComments/ComfortCommentsDetail";
 import ComfortCommentsList from '@/app/components/ComfortComments/ComfortCommentsList';
 import {useMobile, useTabletHeight} from '@/service/MediaQuery';
+import Link from 'next/link';
 
 interface Props {
     consoles: ConsoleProps[];
@@ -115,7 +116,8 @@ export default function ComfortListenerDetail({consoles}: Props) {
             <div className='flex flex-col mx-auto mt-8 mb-10'>
                 <div className={` ${isTabletHeight ? 'w-[95%]' : 'w-[80%]'} mx-auto`}>
                     <div className={`${isTabletHeight ? 'w-[25%]' : 'w-[15%]'}  border-[4px] border-yellow-2`}></div>
-                    <h1 className={`font-[Tenada] text-start mt-4 ${isTabletHeight ? 'text-3xl' : 'text-4xl'}`}>전문가의 답변</h1>
+                    <h1 className={`font-[Tenada] text-start mt-4 ${isTabletHeight ? 'text-3xl' : 'text-4xl'}`}>전문가의
+                        답변</h1>
                 </div>
                 <div className={`mx-auto ${isTabletHeight ? 'w-[95%]' : 'w-[80%]'}`}> {/* 하단 여백 추가 */}
                     {consoles.length > 0 ? (
@@ -127,29 +129,41 @@ export default function ComfortListenerDetail({consoles}: Props) {
                                 <div className='mb-4'>
                                     <div className='flex flex-row justify-between items-center mx-2'>
                                         <div className='flex flex-row gap-1 items-center'>
-                                            <p className={` ${isTabletHeight ? 'text-3xl' : 'text-4xl'}`}>{console.nickname} <span
-                                                className={` ${isTabletHeight ? 'text-xl' : 'text-2xl'}`}>상담사</span>
+                                            <p className={` ${isTabletHeight ? 'text-3xl' : 'text-4xl'}`}>{console.nickname}
+                                                <span
+                                                    className={` ${isTabletHeight ? 'text-xl' : 'text-2xl'}`}>상담사</span>
                                             </p>
-                                            <Image src={console.profile} alt="Profile" width={30} height={30}
-                                                   className={`rounded-full object-cover  ${isTabletHeight ? ' w-[30px] h-[30px] ' : ' w-[60px] h-[60px] '}`}/>
+                                            {role === "LISTENER" && nickName === console.nickname ? (<>
+                                                <Link href="/mypage">
+                                                    <Image src={console.profile} alt="Profile" width={30} height={30}
+                                                           className={`rounded-full object-cover  ${isTabletHeight ? ' w-[30px] h-[30px] ' : ' w-[60px] h-[60px] '}`}/>
+                                                </Link>
+                                            </>) : (<>
+                                                <Image src={console.profile} alt="Profile" width={30} height={30}
+                                                       className={`rounded-full object-cover  ${isTabletHeight ? ' w-[30px] h-[30px] ' : ' w-[60px] h-[60px] '}`}/>
+                                            </>)}
                                         </div>
                                         <p className={`${isTabletHeight ? 'text-lg' : 'text-xl'} mt-2`}>{console.timestamp}</p>
                                     </div>
 
                                     <div className="mx-auto w-full border-[1px] border-lightGray/30 mt-2 mb-2"></div>
 
-                                    <div className={`mx-1 mt-4 whitespace-pre-wrap leading-normal ${isTabletHeight ? 'text-xl' : 'text-3xl'}`}
-                                       >{console.content}</div>
+                                    <div
+                                        className={`mx-1 mt-4 whitespace-pre-wrap leading-normal ${isTabletHeight ? 'text-xl' : 'text-3xl'}`}
+                                    >{console.content}</div>
                                 </div>
 
-                                <div className='mx-1 flex flex-row gap-6 justify-between mt-10 text-center items-center'>
+                                <div
+                                    className='mx-1 flex flex-row gap-6 justify-between mt-10 text-center items-center'>
                                     <div className='flex flex-row items-center text-center gap-2'>
-                                        <FaRegComment className={`mt-4 ${isTabletHeight ? 'text-3xl' : 'text-4xl'} text-yellow-6`}
-                                                      onClick={() => handleCommentClick(console.id)}/>
+                                        <FaRegComment
+                                            className={`mt-4 ${isTabletHeight ? 'text-3xl' : 'text-4xl'} text-yellow-6`}
+                                            onClick={() => handleCommentClick(console.id)}/>
                                         {commentCount[console.id] > 0 &&
-                                            <span className={`mt-4  ${isTabletHeight ? 'text-2xl' : 'text-3xl'} text-yellow-6`}>{commentCount[console.id]}</span>}
+                                            <span
+                                                className={`mt-4  ${isTabletHeight ? 'text-2xl' : 'text-3xl'} text-yellow-6`}>{commentCount[console.id]}</span>}
                                     </div>
-                                    {role === "LISTENER" && nickName === console.nickname ? (
+                                    {nickName === console.nickname ? (
                                         <div className='gap-4 flex flex-row'>
                                             <button
                                                 onClick={handleModifyClick}
