@@ -1,12 +1,12 @@
-import React, { useEffect, useState } from 'react';
+import React, {useEffect, useState} from 'react';
 import ComfortMemberRegister from "@/app/components/Comfort/ComfortMemberRegister";
-import { FaPen, FaSortNumericDown, FaSortNumericUp } from "react-icons/fa";
-import { ComfortListAll, ComfortListProps } from "@/app/components/Comfort/ComfortListAll";
+import {FaPen, FaSortNumericDown, FaSortNumericUp} from "react-icons/fa";
+import {ComfortListAll, ComfortListProps} from "@/app/components/Comfort/ComfortListAll";
 import ComfortSearch from "@/app/components/Comfort/ComfortSearch";
 import Pagination from '@mui/material/Pagination';
-import { useTabletHeight } from "@/service/MediaQuery";
+import {useTabletHeight} from "@/service/MediaQuery";
 import Link from "next/link";
-import { useSearchParams } from "next/navigation";
+import {useSearchParams} from "next/navigation";
 
 export default function ComfortContent() {
     const isTabletHeight = useTabletHeight();
@@ -79,7 +79,7 @@ export default function ComfortContent() {
     return (
         <>
             {showComfortMemberRegister ? (
-                <ComfortMemberRegister />
+                <ComfortMemberRegister/>
             ) : (
                 <>
                     {isTabletHeight ? (
@@ -87,7 +87,7 @@ export default function ComfortContent() {
                             <div className='flex flex-col text-center'>
                                 <h1 className={`font-bold mt-8 text-5xl`}>위로 받기</h1>
                                 <span className='mt-4 text-2xl'>
-                                    내용은 비밀이 보장되므로,<br />작은 고민이라도 괜찮아요.
+                                    내용은 비밀이 보장되므로,<br/>작은 고민이라도 괜찮아요.
                                 </span>
                             </div>
                             <div className='flex justify-center mt-8'>
@@ -96,20 +96,22 @@ export default function ComfortContent() {
                                     className={`w-[95%] h-28 text-center bg-yellow-6 p-8 rounded-lg`}
                                 >
                                     <div className={`flex flex-row justify-center gap-2 text-white text-2xl`}>
-                                        <FaPen className='mt-1' />
+                                        <FaPen className='mt-1'/>
                                         <span>고민을 털어 놓으면 한결 마음이 편질거에요.</span>
                                     </div>
                                 </button>
                             </div>
                             <div className={`flex flex-row justify-between w-[95%] mx-auto mt-4`}>
-                                <ComfortSearch placeholder="검색하기" />
+                                <ComfortSearch placeholder="검색하기"/>
                                 {sortOrder === 'desc' ? (
-                                    <button onClick={() => handleSortOrder('asc')} className='text-2xl flex items-center gap-0.5'>
-                                        <span className='text-lg font-semibold'>정렬</span><FaSortNumericDown />
+                                    <button onClick={() => handleSortOrder('asc')}
+                                            className='text-2xl flex items-center gap-0.5'>
+                                        <span className='text-lg font-semibold'>정렬</span><FaSortNumericDown/>
                                     </button>
                                 ) : (
-                                    <button onClick={() => handleSortOrder('desc')} className='text-2xl flex items-center gap-0.5'>
-                                        <span className='text-lg font-semibold'>정렬</span><FaSortNumericUp />
+                                    <button onClick={() => handleSortOrder('desc')}
+                                            className='text-2xl flex items-center gap-0.5'>
+                                        <span className='text-lg font-semibold'>정렬</span><FaSortNumericUp/>
                                     </button>
                                 )}
                             </div>
@@ -117,10 +119,17 @@ export default function ComfortContent() {
                             {/* 게시글 목록 */}
                             <div className={`flex flex-col gap-5 mt-2 items-center mx-auto w-full`}>
                                 {currentComforts.length === 0 ? (
-                                    <p>검색된 게시글이 없습니다.</p>
+                                    <div
+                                        className={`w-[95%] h-28 text-center bg-gray-400 p-8 rounded-lg mt-2`}
+                                    >
+                                        <div className={`flex flex-row justify-center gap-2 text-white text-2xl `}>
+                                            <span>등록된 글이 없습니다.</span>
+                                        </div>
+                                    </div>
                                 ) : (
                                     currentComforts.map((comfort) => (
-                                        <Link key={comfort.id} href={`/comforts/${comfort.id}`} className={`w-[95%] h-[100px] mt-4`}>
+                                        <Link key={comfort.id} href={`/comforts/${comfort.id}`}
+                                              className={`w-[95%] h-[100px] mt-4`}>
                                             <div
                                                 className={`flex rounded-lg justify-between border-2 items-center font-semibold border-yellow-6 p-6 w-full`}>
                                                 <h1 className={`text-2xl w-1/2 text-ellipsis whitespace-nowrap overflow-hidden`}>
@@ -144,7 +153,7 @@ export default function ComfortContent() {
                             <div className='flex flex-col text-center'>
                                 <h1 className={`font-bold mt-8 text-7xl`}>위로 받기</h1>
                                 <span className='mt-4 text-3xl'>
-                                    내용은 비밀이 보장되므로,<br />작은 고민이라도 괜찮아요.
+                                    내용은 비밀이 보장되므로,<br/>작은 고민이라도 괜찮아요.
                                 </span>
                             </div>
                             <div className='flex justify-center mt-8'>
@@ -153,20 +162,22 @@ export default function ComfortContent() {
                                     className={`w-[75%] h-28 text-center bg-yellow-6 p-8 rounded-lg`}
                                 >
                                     <div className={`flex flex-row justify-center gap-2 text-white text-3xl`}>
-                                        <FaPen className='mt-1' />
+                                        <FaPen className='mt-1'/>
                                         <span>고민을 털어 놓으면 한결 마음이 편질거에요.</span>
                                     </div>
                                 </button>
                             </div>
                             <div className={`flex flex-row justify-between w-[75%] mx-auto mt-4`}>
-                                <ComfortSearch placeholder="검색하기" />
+                                <ComfortSearch placeholder="검색하기"/>
                                 {sortOrder === 'desc' ? (
-                                    <button onClick={() => handleSortOrder('asc')} className='text-2xl flex items-center gap-0.5'>
-                                        <span className='text-lg font-semibold'>정렬</span><FaSortNumericDown />
+                                    <button onClick={() => handleSortOrder('asc')}
+                                            className='text-4xl flex items-center gap-0.5'>
+                                        <span className='font-semibold'>정렬</span><FaSortNumericDown/>
                                     </button>
                                 ) : (
-                                    <button onClick={() => handleSortOrder('desc')} className='text-2xl flex items-center gap-0.5'>
-                                        <span className='text-lg font-semibold'>정렬</span><FaSortNumericUp />
+                                    <button onClick={() => handleSortOrder('desc')}
+                                            className='text-4xl flex items-center gap-0.5'>
+                                        <span className='font-semibold'>정렬</span><FaSortNumericUp/>
                                     </button>
                                 )}
                             </div>
@@ -174,10 +185,15 @@ export default function ComfortContent() {
                             {/* 게시글 목록 */}
                             <div className={`flex flex-col gap-5 mt-2 items-center mx-auto w-full`}>
                                 {currentComforts.length === 0 ? (
-                                    <p>검색된 게시글이 없습니다.</p>
+                                    <div className={`w-[75%] h-28 text-center bg-gray-400 p-8 rounded-lg mt-2`}>
+                                        <div className={`flex flex-row justify-center gap-2 text-white text-2xl`}>
+                                            <span>등록된 글이 없습니다.</span>
+                                        </div>
+                                    </div>
                                 ) : (
                                     currentComforts.map((comfort) => (
-                                        <Link key={comfort.id} href={`/comforts/${comfort.id}`} className={`w-[75%] h-[100px] mt-4`}>
+                                        <Link key={comfort.id} href={`/comforts/${comfort.id}`}
+                                              className={`w-[75%] h-[100px] mt-4`}>
                                             <div
                                                 className={`flex rounded-lg justify-between border-2 items-center font-semibold border-yellow-6 p-6 w-full`}>
                                                 <h1 className={`text-3xl w-1/2 text-ellipsis whitespace-nowrap overflow-hidden`}>

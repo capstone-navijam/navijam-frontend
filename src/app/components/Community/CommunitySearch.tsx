@@ -1,49 +1,48 @@
 "use client";
 
-import React, { useState } from "react";
-import { FaSearch } from "react-icons/fa";
-import { GoPlus, GoDash } from "react-icons/go";
-import { useDebouncedCallback } from "use-debounce";
-import { useCustomSearchParams } from "@/service/useCustomSearchParams";
-import { useTabletHeight } from "@/service/MediaQuery";
+import React, {useState} from "react";
+import {FaSearch} from "react-icons/fa";
+import {GoPlus, GoDash} from "react-icons/go";
+import {useDebouncedCallback} from "use-debounce";
+import {useCustomSearchParams} from "@/service/useCustomSearchParams";
+import {useTabletHeight} from "@/service/MediaQuery";
 
 const categories = [
     "자유", "육아", "진로", "결혼", "외모", "인간관계", "중독", "이별", "가족", "친구", "건강", "정신건강", "사랑",
 ];
 
-export default function ConsoleSearch({ placeholder }: { placeholder: string }) {
+export default function CommunitySearch({placeholder}: { placeholder: string }) {
+
     const isTabletHeight = useTabletHeight();
-    const { searchParams, setSearchParams } = useCustomSearchParams();
+
+    const {searchParams, setSearchParams} = useCustomSearchParams();
     const [showCategories, setShowCategories] = useState(false);
 
-    // 검색 입력 처리
     const handleSearch = useDebouncedCallback((term: string) => {
-        const newParams = { ...searchParams, query: term || "" };
+        const newParams = {...searchParams, query: term || ""};
         setSearchParams(newParams);
     }, 500);
 
-    // 카테고리 클릭 처리
     const handleCategoryClick = (category: string) => {
         const newCategory = category === searchParams.query ? "" : category; // 동일한 카테고리 클릭 시 초기화
-        const newParams = { ...searchParams, query: newCategory };
+        const newParams = {...searchParams, query: newCategory};
         setSearchParams(newParams);
     };
 
-    // 카테고리 표시 전환
     const toggleCategories = () => {
         setShowCategories((prev) => !prev);
     };
 
     return (
         <>
-            {isTabletHeight ? (
+            {isTabletHeight ? (<>
                 <article className="mx-4">
                     <h1 className="text-2xl font-medium">커뮤니티 검색</h1>
                     <div className="flex flex-row items-center mt-1">
                         <label htmlFor="search" className="sr-only">
                             Search
                         </label>
-                        <FaSearch className="text-xl items-center" />
+                        <FaSearch className="text-xl items-center"/>
                         <input
                             type="text"
                             placeholder={placeholder || "검색하기"}
@@ -53,14 +52,14 @@ export default function ConsoleSearch({ placeholder }: { placeholder: string }) 
                         />
                     </div>
                 </article>
-            ) : (
+            </>) : (<>
                 <article className="mx-4">
-                    <h1 className="text-2xl font-medium text-start mt-10">등록된 글 검색</h1>
+                    <h1 className="text-2xl font-medium">커뮤니티 검색</h1>
                     <div className="flex flex-row items-center mt-1">
                         <label htmlFor="search" className="sr-only">
                             Search
                         </label>
-                        <FaSearch className="text-xl items-center" />
+                        <FaSearch className="text-xl items-center"/>
                         <input
                             type="text"
                             placeholder={placeholder || "검색하기"}
@@ -74,11 +73,11 @@ export default function ConsoleSearch({ placeholder }: { placeholder: string }) 
                         <div className="flex flex-row justify-between items-center text-2xl">
                             <h1 className="text-2xl">카테고리</h1>
                             <button onClick={toggleCategories} className="focus:outline-none">
-                                {showCategories ? <GoDash /> : <GoPlus />}
+                                {showCategories ? <GoDash/> : <GoPlus/>}
                             </button>
                         </div>
                         <div className="w-full border-[1px] mt-0.5 border-black"></div>
-                        {showCategories && (
+                        {showCategories && ( // 카테고리 표시 조건
                             <div className="grid grid-cols-2 gap-4 mt-4">
                                 {categories.map((category) => (
                                     <button
@@ -97,7 +96,7 @@ export default function ConsoleSearch({ placeholder }: { placeholder: string }) 
                         )}
                     </div>
                 </article>
-            )}
+            </>)}
         </>
     );
 }

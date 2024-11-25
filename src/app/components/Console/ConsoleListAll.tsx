@@ -4,7 +4,7 @@ export interface ConsoleListProps {
     id: string;
     title: string;
     createdAt: string;
-    categories: [];
+    categories: string[];
     content: string;
     isAnswered: boolean;
     writerNickname: string;

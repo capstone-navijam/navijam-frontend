@@ -5,6 +5,7 @@ import {FaPen} from "react-icons/fa";
 import CommunityList from "@/app/components/Community/CommunityList";
 import {useTabletHeight} from "@/service/MediaQuery";
 import {useRouter} from "next/navigation";
+import CommunitySearch from "@/app/components/Community/CommunitySearch";
 
 export default function CommunityContent() {
 
@@ -17,7 +18,8 @@ export default function CommunityContent() {
     return (
         <>
             {isTabletHeight ? (<>
-                <div className='w-[95%] mx-auto mt-4 flex justify-end'>
+                <div className='w-[95%] mx-auto mt-4 flex justify-between'>
+                    <CommunitySearch placeholder="검색하기"/>
                     <button
                         onClick={handleClick}
                         className='w-[20%] text-center bg-yellow-6 p-3 rounded-lg block text-ellipsis'
