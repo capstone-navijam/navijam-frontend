@@ -15,7 +15,6 @@ export default function ListenerDetail({
                                            education,
                                            description,
                                            address,
-                                           phoneNumber,
                                            contactNumber
                                        }) {
 
