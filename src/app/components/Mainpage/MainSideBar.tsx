@@ -76,16 +76,17 @@ export default function MainSideBar() {
                         <p className='text-sm'>커뮤니티</p>
                     </Link>
                     <hr className="border-0 border-l-2 border-dotted h-5 mx-auto border-yellow-3"/>
-                    <Link href='/chat' className='flex flex-col items-center'>
-                        <MdOutlineNoteAlt
-                            className='text-yellow-3 text-6xl border-2 rounded-full border-yellow-3 p-2 hover:bg-yellow-3 hover:scale-105 hover:text-white'/>
-                        <p className='text-sm'>실시간상담</p>
-                    </Link>
-                    <hr className="border-0 border-l-2 border-dotted h-5 mx-auto border-yellow-3"/>
+
                     <Link href='/listeners' className='flex flex-col items-center -mx-2'>
                         <MdOutlineSummarize
                             className='text-yellow-3 text-6xl border-2 rounded-full border-yellow-3 p-2 hover:bg-yellow-3 hover:scale-105 hover:text-white'/>
-                        <p className='text-sm'>상담사 리스트</p>
+                        <p className='text-sm'>나비잠 멘토</p>
+                    </Link>
+                    <hr className="border-0 border-l-2 border-dotted h-5 mx-auto border-yellow-3"/>
+                    <Link href='/chat' className='flex flex-col items-center'>
+                        <MdOutlineNoteAlt
+                            className='text-yellow-3 text-6xl border-2 rounded-full border-yellow-3 p-2 hover:bg-yellow-3 hover:scale-105 hover:text-white'/>
+                        <p className='text-sm'>실시간 상담</p>
                     </Link>
                     <hr className="border-0 border-l-2 border-dotted h-5 mx-auto border-yellow-3"/>
                     <Link href='/mypage' className='flex flex-col items-center'>

@@ -43,6 +43,28 @@ export default function ComfortMemberModify() {
     const handleSubmit = async (e) => {
         e.preventDefault();
 
+        if (title.value.length < 5 || title.value.length > 40) {
+            Swal.fire({
+                title: "작성 실패",
+                text: "제목은 5~40 글자 사이여야 합니다.",
+                icon: "warning",
+                confirmButtonText: "확인",
+                confirmButtonColor: "#FAAC01"
+            });
+            return;
+        }
+
+        if (content.value.length < 20) {
+            Swal.fire({
+                title: "작성 실패",
+                text: "내용은 최소 20글자 이상이어야 합니다.",
+                icon: "warning",
+                confirmButtonText: "확인",
+                confirmButtonColor: "#FAAC01"
+            });
+            return;
+        }
+
         const formData = {
             title: title.value,
             content: content.value,

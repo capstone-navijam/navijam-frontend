@@ -102,6 +102,7 @@ export default function CommunityRegister() {
         <>
             {isTabletHeight ? (<>
                 {showCommunityContent ? (<CommunityContent/>) : (
+
                     <form onSubmit={handleSubmit}>
                         <div className='mt-14 rounded-lg mx-auto border-yellow-6 border-2 h-[45%] w-[95%]'>
                             {/* 제목 */}
