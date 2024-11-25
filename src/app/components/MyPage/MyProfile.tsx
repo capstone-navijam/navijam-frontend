@@ -86,7 +86,7 @@ export default function MyProfile() {
                             });
                         }
                         Swal.fire({title: "변경 완료!", text: "변경되었습니다.", icon: "success", timer: 1000}).then(() => {
-                            router.push(`/mypage`);
+                            window.location.replace(`/mypage`);
                         });
 
                     } else {

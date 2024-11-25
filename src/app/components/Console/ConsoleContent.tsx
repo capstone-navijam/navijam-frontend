@@ -64,7 +64,7 @@ export default function ConsoleContent() {
                     <span className='mt-4 text-2xl'>내용은 비밀이 보장되므로,<br/>작은 고민이라도 괜찮아요.</span>) : (
                     <span className='mt-4 text-3xl'>내용은 비밀이 보장되므로, 작은 고민이라도 괜찮아요.</span>)}
                 <div
-                    className={`border-2 border-yellow-6 ${isTabletHeight ? 'w-[95%]' : 'w-[75%]'} h-full mx-auto mt-12 rounded-lg flex flex-col mb-10`}>
+                    className={`border-2 border-yellow-6 ${isTabletHeight ? 'w-[95%]' : 'w-[95%]'} h-full mx-auto mt-12 rounded-lg flex flex-col mb-10`}>
                     <div>
                         <div className='flex flex-row items-center justify-between p-4'>
                             <p className='font-[Tenada] text-5xl mx-2 text-center'>등록된 글 목록</p>
