@@ -6,19 +6,18 @@ import ComfortSearch from "@/app/components/Comfort/ComfortSearch";
 import Pagination from '@mui/material/Pagination';
 import {useTabletHeight} from "@/service/MediaQuery";
 import Link from "next/link";
-import {useSearchParams} from "next/navigation";
+import {useCustomSearchParams} from "@/service/useCustomSearchParams";
 
 export default function ComfortContent() {
     const isTabletHeight = useTabletHeight();
+    const {searchParams} = useCustomSearchParams();
+
     const [showComfortMemberRegister, setShowComfortMemberRegister] = useState(false);
     const [comforts, setComforts] = useState<ComfortListProps[]>([]);
-    const [filteredComforts, setFilteredComforts] = useState<ComfortListProps[]>([]);
     const [sortOrder, setSortOrder] = useState<'asc' | 'desc'>('desc');
     const [currentPage, setCurrentPage] = useState(1);
     const [comfortsPerPage] = useState(4);
 
-    const searchParams = useSearchParams();
-    const searchTerm = searchParams.get("query") || '';
 
     const sortComforts = (data: ComfortListProps[], order: 'asc' | 'desc') => {
         return data.sort((a, b) => {
@@ -34,9 +33,7 @@ export default function ComfortContent() {
         const fetchComforts = async () => {
             try {
                 const data = await ComfortListAll();
-                const sortedData = sortComforts(data, 'desc');
-                setComforts(sortedData);
-                setFilteredComforts(sortedData); // 데이터를 정렬한 후 저장
+                setComforts(sortComforts(data, 'desc'));
             } catch (err) {
                 console.error("게시글을 불러오는 데 실패했습니다.");
             }
@@ -45,22 +42,12 @@ export default function ComfortContent() {
     }, []);
 
     // searchTerm 또는 comforts 변경 시 필터링
-    useEffect(() => {
-        if (searchTerm) {
-            const filtered = comforts.filter((comfort) =>
-                comfort.title.toLowerCase().includes(searchTerm.toLowerCase())
-            );
-            setFilteredComforts(filtered);
-        } else {
-            setFilteredComforts(comforts); // 검색어가 없으면 전체 데이터를 표시
-        }
-    }, [searchTerm, comforts]);
+
 
     const handleSortOrder = (order: 'asc' | 'desc') => {
         setSortOrder(order);
         const sortedData = sortComforts([...comforts], order);
         setComforts(sortedData);
-        setFilteredComforts(sortedData); // 정렬 후 필터링 데이터도 업데이트
     };
 
     const handleClick = () => {
@@ -71,10 +58,13 @@ export default function ComfortContent() {
         setCurrentPage(page);
     }
 
-    const currentComforts = filteredComforts.slice(
-        (currentPage - 1) * comfortsPerPage,
-        currentPage * comfortsPerPage
-    );
+    const currentComforts = comforts.filter((comfort) => {
+        const query = searchParams.query?.toLowerCase() || "";
+        return (
+            comfort.title.toLowerCase().includes(query)
+        )
+    }).slice((currentPage - 1) * comfortsPerPage, currentPage * comfortsPerPage);
+
 
     return (
         <>
@@ -143,7 +133,7 @@ export default function ComfortContent() {
                                     ))
                                 )}
                                 <Pagination
-                                    count={Math.ceil(filteredComforts.length / comfortsPerPage)}
+                                    count={Math.ceil(comforts.length / comfortsPerPage)}
                                     page={currentPage}
                                     onChange={handlePageChange}
                                     className="p-1 mb-10 mt-5"
@@ -209,7 +199,7 @@ export default function ComfortContent() {
                                     ))
                                 )}
                                 <Pagination
-                                    count={Math.ceil(filteredComforts.length / comfortsPerPage)}
+                                    count={Math.ceil(comforts.length / comfortsPerPage)}
                                     page={currentPage}
                                     onChange={handlePageChange}
                                     className="p-1 mb-10 mt-5"
