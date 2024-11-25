@@ -6,6 +6,7 @@ import {MdLocalPhone, MdLocationOn, MdOutlineBusinessCenter, MdOutlineSchool} fr
 import {useTabletHeight} from "@/service/MediaQuery";
 import {useRouter} from "next/navigation";
 import {GoComment} from "react-icons/go";
+import {ListenersListProps} from "@/app/components/Listeners/ListenersListAll";
 
 export default function ListenerDetail({
                                            nickname,
@@ -16,7 +17,7 @@ export default function ListenerDetail({
                                            description,
                                            address,
                                            contactNumber
-                                       }) {
+                                       }: ListenersListProps) {
 
     const isTabletHeight = useTabletHeight();
     const router = useRouter();
