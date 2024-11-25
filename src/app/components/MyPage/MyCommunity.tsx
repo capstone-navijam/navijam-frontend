@@ -155,7 +155,7 @@ export default function MyCommunity() {
                             </div>
                         ) : (
                             <div className="flex justify-center items-center text-4xl min-h-[300px]">
-                                아직 등록된 글이 없습니다.
+                                아직 등록한 글이 없습니다.
                             </div>
                         )}
 
@@ -184,7 +184,7 @@ export default function MyCommunity() {
                             </div>
                         ) : (
                             <div className="flex justify-center items-center text-4xl min-h-[300px]">
-                                아직 등록된 댓글이 없습니다.
+                                아직 등록한 댓글이 없습니다.
                             </div>
                         )}
                     </div>
