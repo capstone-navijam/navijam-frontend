@@ -219,7 +219,7 @@ export default function Header({nickname, status, role, profileImage}: HeaderPro
                                     <Link href='/chat' className='hover:text-gray-700 hover:scale-105'>실시간 상담</Link>
                                     <Link href='/mypage' className='hover:text-gray-700 hover:scale-105'>마이 페이지</Link>
                                 </nav>
-                                <Link href='/mypage' className='ml-auto text-3xl'><FiUser/></Link>
+                                <Link href='/mypage' className='ml-auto text-gray-400 hover:text-gray-700 -mt-2 text-5xl'><FiUser/></Link>
                             </div>
                         )}
 

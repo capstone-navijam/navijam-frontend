@@ -11,6 +11,7 @@ import CommunityLikesCount from "@/app/components/Community/CommunityLikesCount"
 export default function MainCommunity() {
 
     const [mainCommunity, setMainCommunity] = useState<CommunityListProps[]>([]);
+    const [topCommunities, setTopCommunities] = useState<CommunityListProps[]>([]);
     const router = useRouter();
     const isTabletHeight = useTabletHeight();
 
@@ -19,6 +20,9 @@ export default function MainCommunity() {
             try {
                 const data = await CommunityListAll();
                 setMainCommunity(data);
+
+                const topLiked = data.sort((a, b) => b.likeCount - a.likeCount).slice(0, 5);
+                setTopCommunities(topLiked);
             } catch (err) {
                 console.error('커뮤니티 게시글을 불러오는 데 실패했습니다.')
             }
@@ -47,7 +51,7 @@ export default function MainCommunity() {
                     animation={"slide"}
                     duration={500}
                 >
-                    {mainCommunity.map((community) => (
+                    {topCommunities.map((community) => (
                         <div key={community.id}
                              onClick={() => handleDetailClick(community.id)}
                         >
@@ -88,7 +92,7 @@ export default function MainCommunity() {
             </section>
         </>) : (
             <>
-                <section className="mt-12">
+                <section className="mt-28">
                     <div className='flex flex-col items-center text-center'>
                         <h1 className='font-semibold text-yellow-6 text-7xl mb-4 mt-12'>같이 소통해요</h1>
                         <p className='text-3xl'>비슷한 고민을 가진 사람들과 대화를 나눠보세요.</p>
