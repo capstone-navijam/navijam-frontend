@@ -104,11 +104,6 @@ export default function LoginPage() {
                                     />
                                 </div>
 
-                                <div className="mx-auto items-center text-gray-400 flex w-[80%] mt-2">
-                                    <MdCheckCircleOutline className="mx-1 text-3xl" />
-                                    <p className="text-2xl">로그인 상태 유지</p>
-                                </div>
-
                                 <button className="w-[80%] mx-auto bg-yellow-2 text-white text-5xl font-semibold rounded-lg h-24 mt-20" type="submit">
                                     로그인
                                 </button>
@@ -149,11 +144,6 @@ export default function LoginPage() {
                                         {...password}
                                         placeholder="비밀번호"
                                     />
-                                </div>
-
-                                <div className="mx-auto items-center text-gray-400 flex w-[80%] mt-2">
-                                    <MdCheckCircleOutline className="mx-1 text-3xl" />
-                                    <p className="text-2xl">로그인 상태 유지</p>
                                 </div>
 
                                 <button className="w-[80%] mx-auto bg-yellow-2 text-white text-5xl font-semibold rounded-lg h-24 mt-20" type="submit">
