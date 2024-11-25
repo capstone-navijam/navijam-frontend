@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react';
+import React, {Suspense, useEffect, useState} from 'react';
 import ComfortMemberRegister from "@/app/components/Comfort/ComfortMemberRegister";
 import {FaPen, FaSortNumericDown, FaSortNumericUp} from "react-icons/fa";
 import {ComfortListAll, ComfortListProps} from "@/app/components/Comfort/ComfortListAll";
@@ -102,7 +102,9 @@ export default function ComfortContent() {
                                 </button>
                             </div>
                             <div className={`flex flex-row justify-between w-[95%] mx-auto mt-4`}>
-                                <ComfortSearch placeholder="검색하기"/>
+                                <Suspense>
+                                    <ComfortSearch placeholder="검색하기"/>
+                                </Suspense>
                                 {sortOrder === 'desc' ? (
                                     <button onClick={() => handleSortOrder('asc')}
                                             className='text-2xl flex items-center gap-0.5'>
@@ -168,7 +170,9 @@ export default function ComfortContent() {
                                 </button>
                             </div>
                             <div className={`flex flex-row justify-between w-[75%] mx-auto mt-4`}>
-                                <ComfortSearch placeholder="검색하기"/>
+                                <Suspense>
+                                    <ComfortSearch placeholder="검색하기"/>
+                                </Suspense>
                                 {sortOrder === 'desc' ? (
                                     <button onClick={() => handleSortOrder('asc')}
                                             className='text-4xl flex items-center gap-0.5'>

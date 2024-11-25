@@ -1,6 +1,6 @@
 'use client';
 
-import React from 'react';
+import React, { Suspense } from 'react';
 import {FaPen} from "react-icons/fa";
 import CommunityList from "@/app/components/Community/CommunityList";
 import {useTabletHeight} from "@/service/MediaQuery";
@@ -19,7 +19,9 @@ export default function CommunityContent() {
         <>
             {isTabletHeight ? (<>
                 <div className='w-[95%] mx-auto mt-4 flex justify-between'>
-                    <CommunitySearch placeholder="검색하기"/>
+                    <Suspense>
+                        <CommunitySearch placeholder="검색하기"/>
+                    </Suspense>
                     <button
                         onClick={handleClick}
                         className='w-[20%] text-center bg-yellow-6 p-3 rounded-lg block text-ellipsis'

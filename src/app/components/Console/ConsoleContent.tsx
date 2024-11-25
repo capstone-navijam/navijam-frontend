@@ -1,6 +1,6 @@
 'use client';
 
-import React, {useEffect, useState} from 'react';
+import React, {Suspense, useEffect, useState} from 'react';
 import ConsoleListAll, {ConsoleListProps} from "@/app/components/Console/ConsoleListAll";
 import {MdOutlineCheckBox, MdOutlineCheckBoxOutlineBlank} from 'react-icons/md';
 import ConsoleSearch from "@/app/components/Console/ConsoleSearch";
@@ -69,7 +69,9 @@ export default function ConsoleContent() {
                     <span className='mt-4 text-2xl'>내용은 비밀이 보장되므로,<br/>작은 고민이라도 괜찮아요.</span>) : (
                     <span className='mt-4 text-3xl'>내용은 비밀이 보장되므로, 작은 고민이라도 괜찮아요.</span>)}
                 <div className='flex flex-row'>
-                    <ConsoleSearch placeholder="검색하기"/>
+                    <Suspense>
+                        <ConsoleSearch placeholder="검색하기"/>
+                    </Suspense>
                     <section
                         className={`border-2 border-yellow-6 ${isTabletHeight ? 'w-[95%]' : 'w-[70%]'} min-h-[800px] mt-12 rounded-lg flex flex-col mb-10`}>
                         <div>
