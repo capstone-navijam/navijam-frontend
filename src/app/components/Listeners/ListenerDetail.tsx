@@ -2,76 +2,141 @@
 
 import React from 'react'
 import Image from 'next/image'
-import {MdOutlineBusinessCenter, MdOutlineSchool} from 'react-icons/md';
-import {useMobile, useTabletHeight} from "@/service/MediaQuery";
+import {MdLocalPhone, MdLocationOn, MdOutlineBusinessCenter, MdOutlineSchool} from 'react-icons/md';
+import {useTabletHeight} from "@/service/MediaQuery";
+import {useRouter} from "next/navigation";
+import {GoComment} from "react-icons/go";
 
-export default function ListenerDetail({nickname, profile, categories, career, education}) {
+export default function ListenerDetail({
+                                           nickname,
+                                           profile,
+                                           categories,
+                                           career,
+                                           education,
+                                           description,
+                                           address,
+                                           phoneNumber,
+                                           contactNumber
+                                       }) {
 
     const isTabletHeight = useTabletHeight();
+    const router = useRouter();
 
     return (
         <>
             {isTabletHeight ? (
-                <div className='mx-auto flex flex-col bg-gradient-to-r from-gray-100 to-white'>
-                    <div className='flex flex-row justify-between items-center p-6 w-full'>
-                        <h1 className='text-5xl font-semibold'>{nickname} <span className='text-3xl font-medium'>상담사</span></h1>
-                        <p className='text-yellow-2 font-bold mt-2 text-xl'>#{categories.join(' #')}</p>
-                    </div>
-                    <div className="w-full  border-[2px] border-yellow-6/30"></div>
-                    <div className='flex justify-center'>
-                        <Image src={profile} alt="Profile Image" className='rounded-xl w-full h-[480px]' width={300} height={150} />
-                    </div>
-                    <div className='flex flex-col gap-6 p-4 mt-6'>
-                        <p className='text-3xl flex items-center font-medium gap-2'>
-                            <MdOutlineBusinessCenter className='text-5xl' />
-                            경력
-                        </p>
-                        <ul className='mx-4 mb-4 list-disc font-sans'>
-                            {career.map((item, index) => (
-                                <li key={index} className='mt-2 text-xl'>{item}</li>
-                            ))}
-                        </ul>
-                        <p className='text-3xl flex items-center font-medium gap-2'>
-                            <MdOutlineSchool className='text-5xl' />
-                            학력
-                        </p>
-                        <ul className='mx-4 list-disc font-sans mb-10'>
-                            {education.map((item, index) => (
-                                <li key={index} className='mt-2 text-xl'>{item}</li>
-                            ))}
-                        </ul>
-                    </div>
-                </div>
-            ) : (
-                <div className='mx-auto flex h-full bg-gradient-to-r from-gray-100 to-white'>
-                    <div className='flex flex-col p-10 w-full'>
+                <div className='mx-auto flex h-full bg-white  '>
+                    <div className='flex flex-col w-full'>
                         <div className='flex flex-row gap-2'>
-                            <h1 className='text-6xl font-semibold'>{nickname} <span className='text-4xl font-medium'>상담사</span></h1>
-                            <p className='text-yellow-2 font-bold mt-auto text-2xl'>#{categories.join(' #')}</p>
+                            <Image src={profile} alt="Profile Image" className='rounded-r-xl w-[200px] h-[250px]'
+                                   width={500} height={200}/>
+                            <div className="flex flex-col w-full">
+                                <div className='flex flex-row gap-2 mt-4'>
+                                    <h1 className='text-5xl font-semibold'>{nickname} <span
+                                        className='text-3xl font-medium'>상담사</span></h1>
+                                    <p className='text-yellow-2 font-bold mt-5 text-xl'>#{categories.join(' #')}</p>
+                                </div>
+                                <div className="w-full border-[2px] border-yellow-2 mt-2"></div>
+
+                                <div className='flex flex-row gap-2 mt-16'>
+                                    <button
+                                        onClick={() => router.push('/chat')}
+                                        className="border-2 border-yellow-2 p-4 text-2xl rounded-xl font-medium hover:bg-yellow-2 hover:text-white">1회
+                                        가격: 50,000원
+                                    </button>
+                                    <div className="text-2xl mt-10">평점: <span className='text-yellow-2'>4.3</span></div>
+                                </div>
+                                <p className='text-2xl mx-1'>상담 가능 시간 : 09:00 ~ 18:00</p>
+                            </div>
                         </div>
-                        <div className="w-full mt-4 mb-2 border-[2px] border-yellow-6/30"></div>
-                        <div className='flex flex-col gap-6 p-4'>
-                            <p className='text-4xl flex items-center font-medium gap-2'>
-                                <MdOutlineBusinessCenter className='text-6xl -mt-1' />
+
+                        <div className='flex flex-col gap-10 p-4 w-full mt-10'>
+                            <p className='text-3xl flex flex-row items-center text-yellow-1 font-medium whitespace-nowrap'><GoComment/>한 줄 소개: <span
+                                className='text-2xl mt-2 mx-2 text-black'>{description}</span></p>
+
+                            <p className='text-3xl flex flex-row items-center text-yellow-1 font-medium whitespace-nowrap'><MdLocationOn/>주소: <span
+                                className='text-2xl mt-2 mx-2 text-black'>{address}</span></p>
+
+                            <p className='text-3xl flex flex-row items-center text-yellow-1 font-medium whitespace-nowrap'><MdLocalPhone/>연락처: <span
+                                className='text-2xl mt-2 mx-2 text-black'>{contactNumber}</span></p>
+
+                            <p className='text-3xl flex items-center font-medium gap-2 text-yellow-1'>
+                                <MdOutlineBusinessCenter className='text-2xl -mt-1 '/>
                                 경력
                             </p>
-                            <ul className='mx-4 mb-4 list-disc font-sans'>
+                            <ul className='mx-10 mb-4 list-disc font-sans'>
                                 {career.map((item, index) => (
                                     <li key={index} className='mt-2 text-2xl'>{item}</li>
                                 ))}
                             </ul>
-                            <p className='text-4xl flex items-center font-medium gap-2'>
-                                <MdOutlineSchool className='text-6xl -mt-1' />
+                            <p className='text-3xl flex items-center font-medium gap-2 text-yellow-1'>
+                                <MdOutlineSchool className='text-2xl -mt-1 '/>
                                 학력
                             </p>
-                            <ul className='mx-4 list-disc font-sans'>
+                            <ul className='mx-10 list-disc font-sans'>
                                 {education.map((item, index) => (
                                     <li key={index} className='mt-2 text-2xl'>{item}</li>
                                 ))}
                             </ul>
                         </div>
                     </div>
-                    <Image src={profile} alt="Profile Image" className='rounded-r-xl' width={500} height={200} />
+                </div>
+            ) : (
+                <div className='mx-auto flex h-full bg-white  '>
+                    <div className='flex flex-col p-10 w-full'>
+                        <div className='flex flex-row gap-2'>
+                            <Image src={profile} alt="Profile Image" className='rounded-r-xl w-[250px] h-[300px]'
+                                   width={500} height={200}/>
+                            <div className="flex flex-col w-full">
+                                <div className='flex flex-row gap-2'>
+                                    <h1 className='text-6xl font-semibold'>{nickname} <span
+                                        className='text-4xl font-medium'>상담사</span></h1>
+                                    <p className='text-yellow-2 font-bold mt-7 text-2xl'>#{categories.join(' #')}</p>
+                                </div>
+                                <div className="w-full border-[2px] border-yellow-2 mt-2"></div>
+
+                                <div className='flex flex-row gap-2 mt-32'>
+                                    <button
+                                        onClick={() => router.push('/chat')}
+                                        className="border-2 border-yellow-2 p-4 text-3xl rounded-xl font-medium hover:bg-yellow-2 hover:text-white">1회
+                                        가격: 50,000원
+                                    </button>
+                                    <div className="text-2xl mt-10">평점: <span className='text-yellow-2'>4.3</span></div>
+                                </div>
+                                <p className='text-2xl mx-1'>상담 가능 시간 : 09:00 ~ 18:00</p>
+                            </div>
+                        </div>
+
+                        <div className='flex flex-col gap-6 p-4'>
+                            <p className='text-4xl flex flex-row items-center text-yellow-1'><GoComment/>한 줄 소개: <span
+                                className='text-3xl mt-2 mx-12 text-black'>{description}</span></p>
+
+                            <p className='text-4xl flex flex-row items-center text-yellow-1'><MdLocationOn/>주소: <span
+                                className='text-3xl mt-2 mx-[124px] text-black'>{address}</span></p>
+
+                            <p className='text-4xl flex flex-row items-center text-yellow-1'><MdLocalPhone/>연락처: <span
+                                className='text-3xl mt-2 mx-24 text-black'>{contactNumber}</span></p>
+
+                            <p className='text-4xl flex items-center font-medium gap-2 text-yellow-1'>
+                                <MdOutlineBusinessCenter className='text-6xl -mt-1 '/>
+                                경력
+                            </p>
+                            <ul className='mx-10 mb-4 list-disc font-sans'>
+                                {career.map((item, index) => (
+                                    <li key={index} className='mt-2 text-3xl'>{item}</li>
+                                ))}
+                            </ul>
+                            <p className='text-4xl flex items-center font-medium gap-2 text-yellow-1'>
+                                <MdOutlineSchool className='text-6xl -mt-1 '/>
+                                학력
+                            </p>
+                            <ul className='mx-10 list-disc font-sans'>
+                                {education.map((item, index) => (
+                                    <li key={index} className='mt-2 text-3xl'>{item}</li>
+                                ))}
+                            </ul>
+                        </div>
+                    </div>
                 </div>
             )}
         </>
