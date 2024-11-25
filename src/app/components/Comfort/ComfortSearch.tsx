@@ -1,7 +1,7 @@
 "use client"
 import React from 'react';
 import {FaSearch} from "react-icons/fa";
-import {usePathname, useRouter, useSearchParams} from 'next/navigation';
+import {ReadonlyURLSearchParams, usePathname, useRouter, useSearchParams} from 'next/navigation';
 import {useDebouncedCallback} from "use-debounce";
 
 
@@ -11,7 +11,9 @@ export default function ComfortSearch({placeholder}: { placeholder: string }) {
     const {replace} = useRouter();
 
     const handleSearch = useDebouncedCallback((term: string) => {
-        const params = new URLSearchParams(searchParams);
+        //@ts-ignore
+        const readonlyParams: ReadonlyURLSearchParams = new URLSearchParams(window.location.search)
+        const params = new URLSearchParams(readonlyParams);
 
         if (term) {
             params.set('query', term);
