@@ -67,7 +67,6 @@ export default function ListenerList() {
                             education={selectedListener.education}
                             description={selectedListener.description}
                             address={selectedListener.address}
-                            phoneNumber={selectedListener.phoneNumber}
                             contactNumber={selectedListener.contactNumber}
                         />
 
