@@ -1,10 +1,19 @@
-"use client"
+"use client";
 
-import {usePathname, useRouter, useSearchParams} from "next/navigation"
+import { usePathname, useRouter, useSearchParams } from "next/navigation";
 
-type NewParamsType = { [key: string]: string }
+type NewParamsType = { [key: string]: string };
 
 export function useCustomSearchParams() {
+    if (typeof window === "undefined") {
+        return {
+            searchParams: {},
+            setSearchParams: () => {
+                throw new Error("useCustomSearchParams can only be used in the client environment.");
+            },
+        };
+    }
+
     const router = useRouter();
     const pathname = usePathname();
     const _searchParams = useSearchParams();
@@ -16,11 +25,11 @@ export function useCustomSearchParams() {
             else searchParams.delete(key);
         }
         return searchParams.toString();
-    }
+    };
 
     const setSearchParams = (newParams: NewParamsType) => {
         return router.push(`${pathname}?${setNewParams(newParams)}`);
-    }
+    };
 
-    return {searchParams: Object.fromEntries(searchParams), setSearchParams};
+    return { searchParams: Object.fromEntries(searchParams), setSearchParams };
 }
