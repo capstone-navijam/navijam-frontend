@@ -10,7 +10,7 @@ import Swal from "sweetalert2";
 import {getCookie} from "cookies-next";
 
 interface ListenerDetailProps {
-    id: string;
+    id?: string;
     nickname: string;
     profile: string;
     categories: string[];
@@ -19,8 +19,8 @@ interface ListenerDetailProps {
     description?: string; // 선택적으로 설정
     address?: string;     // 선택적으로 설정
     contactNumber?: string; // 선택적으로 설정
-    availableTime: string[];
-    formattedPrice: string;
+    availableTime?: string[];
+    formattedPrice?: string;
 }
 
 export default function ListenerDetail({
