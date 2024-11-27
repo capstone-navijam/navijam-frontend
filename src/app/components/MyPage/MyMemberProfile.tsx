@@ -9,7 +9,7 @@ import useInput from "@/service/useInput";
 import Swal from "sweetalert2";
 import {getCookie, setCookie} from "cookies-next";
 
-export default function MyProfile() {
+export default function MyMemberProfile() {
     const isTabletHeight = useTabletHeight();
     const nickname = useInput('');
     const [member, setMember] = useState<MyPageMemberProfileProps | null>(null);

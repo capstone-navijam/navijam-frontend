@@ -1,25 +1,44 @@
 'use client';
 
-import React, {useState} from 'react';
-import MyProfile from "@/app/components/MyPage/MyProfile";
+import React, {useEffect, useState} from 'react';
+import MyMemberProfile from "@/app/components/MyPage/MyMemberProfile";
 import MyComfort from "@/app/components/MyPage/MyComfort";
 import MyCommunity from "@/app/components/MyPage/MyCommunity";
 import MyCounseling from "@/app/components/MyPage/MyCounseling";
+import MyConsole from "@/app/components/MyPage/MyConsole";
 import {useTabletHeight} from "@/service/MediaQuery";
 import {IoIosArrowForward, IoIosArrowDown} from 'react-icons/io';
+import {getCookie} from 'cookies-next';
+import MyListenerProfile from './MyListenerProfile';
 
 export default function ProfileCategory() {
     const isTabletHeight = useTabletHeight();
-    const [selectedMenu, setSelectedMenu] = useState('Profile'); // 현재 선택된 메뉴 ID
-    const [menuLabel, setMenuLabel] = useState('내 프로필'); // 버튼에 표시할 현재 메뉴 이름
-    const [isNavOpen, setIsNavOpen] = useState(false); // 네비게이션 메뉴 표시 여부 상태
+    const [role, setRole] = useState(null);
+    const [selectedMenu, setSelectedMenu] = useState('Profile');
+    const [menuLabel, setMenuLabel] = useState('내 프로필');
+    const [isNavOpen, setIsNavOpen] = useState(false);
 
-    const menuItems = [
-        {id: 'Profile', label: '내 프로필', component: <MyProfile/>},
-        {id: 'Comfort', label: '위로받기', component: <MyComfort/>},
-        {id: 'Community', label: '커뮤니티', component: <MyCommunity/>},
-        {id: 'counseling', label: '상담내역', component: <MyCounseling/>},
-    ];
+
+    useEffect(() => {
+        const role = getCookie("Role");
+        setRole(role);
+    }, []);
+
+    const menuItems = role === "LISTENER"
+        ? [
+            {id: 'Profile', label: '내 프로필', component: <MyListenerProfile/>},
+            {id: 'Console', label: '위로하기', component: <MyConsole/>},
+            {id: 'Community', label: '커뮤니티', component: <MyCommunity/>},
+            {id: 'counseling', label: '상담내역', component: <MyCounseling/>},
+        ]
+        :
+        [
+            {id: 'Profile', label: '내 프로필', component: <MyMemberProfile/>},
+            {id: 'Comfort', label: '위로받기', component: <MyComfort/>},
+            {id: 'Community', label: '커뮤니티', component: <MyCommunity/>},
+            {id: 'counseling', label: '상담내역', component: <MyCounseling/>},
+        ]
+    ;
 
     const handleMenuClick = (menuId, menuLabel) => {
         setSelectedMenu(menuId); // 선택된 메뉴 ID 업데이트
@@ -53,7 +72,7 @@ export default function ProfileCategory() {
                                     className={`text-3xl cursor-pointer ${
                                         selectedMenu === menu.id ? 'text-black' : 'text-gray-400'
                                     }`}
-                                    onClick={() => handleMenuClick(menu.id, menu.label)} // 메뉴 클릭 시 ID와 이름 전달
+                                    onClick={() => handleMenuClick(menu.id, menu.label)}
                                 >
                                     {menu.label}
                                 </li>
@@ -76,7 +95,7 @@ export default function ProfileCategory() {
                                     className={`text-5xl cursor-pointer ${
                                         selectedMenu === menu.id ? 'text-black' : 'text-gray-400'
                                     }`}
-                                    onClick={() => handleMenuClick(menu.id, menu.label)} // 메뉴 클릭 시 ID와 이름 전달
+                                    onClick={() => handleMenuClick(menu.id, menu.label)}
                                 >
                                     {menu.label}
                                     <div>
