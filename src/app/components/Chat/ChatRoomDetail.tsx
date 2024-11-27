@@ -8,7 +8,7 @@ import {useTabletHeight} from "@/service/MediaQuery";
 
 export default function ChatRoomDetail({roomId}) {
 
-    const isTabletHeight =useTabletHeight();
+    const isTabletHeight = useTabletHeight();
     const [messages, setMessages] = useState([]);
     const [newMessage, setNewMessage] = useState("");
     const [isConnected, setIsConnected] = useState(false);
@@ -99,6 +99,12 @@ export default function ChatRoomDetail({roomId}) {
         setNewMessage("");
     };
 
+    const handleKeyDown = (e) => {
+        if (e.key === "Enter") {
+            handleSendMessage();
+        }
+    };
+
     const handleExit = () => {
         socket.emit("endChatRoom", {roomId});
     };
@@ -106,7 +112,7 @@ export default function ChatRoomDetail({roomId}) {
     return (
         <>{isTabletHeight ? (<>
             <section className='w-full'>
-                <div className="max-h-[1120px] overflow-y-auto mx-auto">
+                <div className="max-h-[1100px] min-h-[1100px] overflow-y-auto">
                     {messages.map((message, index) => {
                         const isOwnMessage = message.senderNickname === nickname;
 
@@ -117,7 +123,7 @@ export default function ChatRoomDetail({roomId}) {
                                     isOwnMessage ? "items-end" : "items-start"
                                 }`}
                             >
-                                <div className="flex flex-col gap-4">
+                                <div className="flex flex-col gap-4 mt-6">
                                     {!isOwnMessage && (
                                         <p className="text-4xl">{message.senderNickname}</p>
                                     )}
@@ -154,10 +160,12 @@ export default function ChatRoomDetail({roomId}) {
                         className="border-2 p-4 w-full border-yellow-2 mx-10 rounded-2xl text-xl"
                         placeholder="입력하기"
                         onChange={(e) => setNewMessage(e.target.value)}
+                        onKeyDown={handleKeyDown}
                     />
                     <button
                         onClick={handleSendMessage}
                         className="w-[15%] rounded-2xl  bg-yellow-2 text-white p-4 text-xl"
+
                     >
                         전송
                     </button>
@@ -170,8 +178,8 @@ export default function ChatRoomDetail({roomId}) {
                 </div>
             </section>
         </>) : (<>
-            <section className='w-full'>
-                <div className="max-h-[840px] overflow-y-auto mx-auto">
+            <section className='w-full  flex flex-col justify-between'>
+                <div className="min-h-[820px] max-h-[840px] overflow-y-auto">
                     {messages.map((message, index) => {
                         const isOwnMessage = message.senderNickname === nickname;
 
@@ -182,7 +190,7 @@ export default function ChatRoomDetail({roomId}) {
                                     isOwnMessage ? "items-end" : "items-start"
                                 }`}
                             >
-                                <div className="flex flex-col gap-4">
+                                <div className="flex flex-col gap-4 mt-4">
                                     {!isOwnMessage && (
                                         <p className="text-4xl">{message.senderNickname}</p>
                                     )}
@@ -219,6 +227,7 @@ export default function ChatRoomDetail({roomId}) {
                         className="border-2 p-4 w-full border-yellow-2 mx-10 rounded-2xl text-2xl"
                         placeholder="입력하기"
                         onChange={(e) => setNewMessage(e.target.value)}
+                        onKeyDown={handleKeyDown}
                     />
                     <button
                         onClick={handleSendMessage}

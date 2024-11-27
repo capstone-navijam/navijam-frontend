@@ -175,15 +175,15 @@ export default function ListenerDetail({
                             </div>
                         </div>
 
-                        <div className='flex flex-col gap-6 p-4'>
-                            <p className='text-4xl flex flex-row items-center text-yellow-1'><GoComment/>한 줄 소개: <span
-                                className='text-3xl mt-2 mx-12 text-black'>{description}</span></p>
+                        <div className='flex flex-col gap-2 p-4'>
+                            <p className='text-4xl flex flex-row items-center text-yellow-1 whitespace-nowrap '><GoComment/>한 줄 소개: <span
+                                className='text-3xl mt-2 text-black  mx-1 whitespace-pre-wrap'>{description}</span></p>
 
-                            <p className='text-4xl flex flex-row items-center text-yellow-1'><MdLocationOn/>주소: <span
-                                className='text-3xl mt-2 mx-[124px] text-black'>{address}</span></p>
+                            <p className='text-4xl flex flex-row items-center text-yellow-1 whitespace-nowrap'><MdLocationOn/>주소: <span
+                                className='text-3xl mt-2 text-black mx-1 whitespace-pre-wrap'>{address}</span></p>
 
-                            <p className='text-4xl flex flex-row items-center text-yellow-1'><MdLocalPhone/>연락처: <span
-                                className='text-3xl mt-2 mx-24 text-black'>{contactNumber}</span></p>
+                            <p className='text-4xl flex flex-row items-center text-yellow-1 whitespace-nowrap'><MdLocalPhone/>연락처: <span
+                                className='text-3xl mt-2 text-black mx-1 whitespace-pre-wrap'>{contactNumber}</span></p>
 
                             <p className='text-4xl flex items-center font-medium gap-2 text-yellow-1'>
                                 <MdOutlineBusinessCenter className='text-6xl -mt-1 '/>
