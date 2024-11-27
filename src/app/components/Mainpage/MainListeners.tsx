@@ -61,10 +61,13 @@ export default function MainListeners() {
                     className='bg-white rounded-xl shadow-lg w-[70%] h-auto '>
                     <ListenerDetail
                         nickname={selectedListener.nickname}
-                        categories={selectedListener.categories}
                         profile={selectedListener.profile}
+                        categories={selectedListener.categories}
                         career={selectedListener.career}
                         education={selectedListener.education}
+                        description={selectedListener.description}
+                        address={selectedListener.address}
+                        contactNumber={selectedListener.contactNumber}
                     />
                 </div>
             </div>
@@ -73,7 +76,8 @@ export default function MainListeners() {
         <div className='flex flex-row w-[80%] justify-between mx-auto mb-4'>
             <p className={`font-semibold ${isTabletHeight ? 'text-xl' : 'text-4xl'}`}>누구에게 상담 받고 싶나요 ?</p>
             <Link href='/listeners'
-                  className={`text-gray-400 flex ${isTabletHeight ? 'text-xl' : 'text-4xl'} items-center gap-1`}>더 많은 상담사
+                  className={`text-gray-400 flex ${isTabletHeight ? 'text-xl' : 'text-4xl'} items-center gap-1`}>더 많은
+                상담사
                 만나기 <FaArrowRight/></Link>
         </div>
 
@@ -123,9 +127,6 @@ export default function MainListeners() {
                             </p>
                             <p className='flex flex-row items-center gap-0.5'>
                                 <MdLocalPhone/> {listener.contactNumber}
-                            </p>
-                            <p className='flex flex-row items-center gap-0.5'>
-                                <MdOutlineEmail/> {listener.email}
                             </p>
                         </div>
                     ))}
