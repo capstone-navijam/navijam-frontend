@@ -69,9 +69,12 @@ export default function MainCommunity() {
                                  className='relative flex flex-col border-4 w-full h-[380px] rounded-3xl border-yellow-2 p-2 overflow-hidden'
                             >
                                 <div className='flex justify-between items-center'>
-                                    <p className='text-4xl font-bold whitespace-nowrap text-ellipsis overflow-hidden w-[70%]'>{community.title}</p>
+                                    <div className='flex flex-col'>
+                                        <p className='text-4xl font-bold whitespace-nowrap text-ellipsis overflow-hidden w-full'>{community.title}</p>
+                                        <p className="text-2xl text-yellow-2"
+                                           style={{whiteSpace: "pre-line"}}>{community.categories.join(`\n`)}</p>
+                                    </div>
                                     <div className='flex flex-row items-center gap-1'>
-                                        <p className="text-2xl text-yellow-2" style={{whiteSpace: "pre-line"}}>{community.categories.join(`\n`)}</p>
                                         <Image src={community.profile} alt="Profile Image" width={100} height={100}
                                                className="rounded-full w-[50px] h-[50px]"/>
                                     </div>
