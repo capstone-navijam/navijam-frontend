@@ -4,6 +4,7 @@ export interface ComfortListProps {
     id: string;
     title: string;
     createdAt: string;
+    timestamp: string;
 }
 
 export async function ComfortListAll(): Promise<ComfortListProps[]> {
@@ -26,7 +27,8 @@ export async function ComfortListAll(): Promise<ComfortListProps[]> {
         return result.data.map((item: ComfortListProps) => ({
             id: item.id,
             title: item.title,
-            createdAt: item.createdAt
+            createdAt: item.createdAt,
+            timestamp: item.timestamp,
         }))
     } else {
         console.error('응답 실패')

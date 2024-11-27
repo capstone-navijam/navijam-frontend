@@ -19,7 +19,6 @@ export interface ComfortListDetailProps {
     writerId: string;
     writerProfile: string;
     writerNickname: string;
-    createdAt: string;
     isAnswered: boolean;
     consoles: ConsoleProps[];
 }
@@ -48,7 +47,6 @@ export default async function ComfortListDetail(id: bigint): Promise<ComfortList
             writerNickname: result.data.writerNickname,
             categories: result.data.categories,
             timestamp: result.data.timestamp,
-            createdAt: result.data.createdAt,
             isAnswered: result.data.isAnswered,
             consoles: result.data.consoles,
         };

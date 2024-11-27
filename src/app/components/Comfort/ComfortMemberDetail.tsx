@@ -147,7 +147,7 @@ export default function ComfortMemberDetail() {
                         {role === "MEMBER" ? (
                             <div className='flex flex-col mt-auto'>
                             <span className='w-fit text-2xl ml-auto mr-4'>
-                                {new Date(comfort.createdAt).toLocaleDateString().replace(/\.$/, '')} 작성
+                                {comfort.timestamp}
                             </span>
                                 <div className='flex flex-row justify-between'>
                                     <button
@@ -177,7 +177,7 @@ export default function ComfortMemberDetail() {
                             </div>
                         ) : (<>
                          <span className='w-fit text-2xl ml-auto mr-4'>
-                                {new Date(comfort.createdAt).toLocaleDateString().replace(/\.$/, '')} 작성
+                                {comfort.timestamp}
                             </span>
                         </>)}
                     </div>
@@ -253,7 +253,7 @@ export default function ComfortMemberDetail() {
                             </div>
                         ) : (<>
                          <span className='w-fit text-3xl ml-auto mr-4'>
-                                {new Date(comfort.createdAt).toLocaleDateString().replace(/\.$/, '')} 작성
+                                {comfort.timestamp}
                             </span>
                         </>)}
                     </div>

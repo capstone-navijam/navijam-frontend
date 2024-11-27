@@ -108,7 +108,7 @@ export default function ListenerDetail({
                                 <div className='flex flex-row gap-2'>
                                     <h1 className='text-6xl font-semibold'>{nickname} <span
                                         className='text-4xl font-medium'>상담사</span></h1>
-                                    <p className='text-yellow-2 font-bold mt-5 text-2xl'>#{categories.join(' #')}</p>
+                                    <p className='text-yellow-2 font-bold mt-7 text-2xl'>#{categories.join(' #')}</p>
                                 </div>
                                 <div className="w-full border-[2px] border-yellow-2 mt-2"></div>
 
