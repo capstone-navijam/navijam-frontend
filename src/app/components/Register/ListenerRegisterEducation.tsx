@@ -32,15 +32,16 @@ export default function ListenerRegisterEducation({educationField, setEducationF
         <>
             {/* 경력 label과 입력 필드들 */}
             <div className='flex items-center'>
-                <label htmlFor='career'
-                       className={` ${isTabletHeight ? 'text-2xl' : 'text-3xl'}  font-semibold w-40 text-wrap`}>학력</label>
+                <label htmlFor='education'
+                       className={` ${isTabletHeight ? 'text-2xl' : 'text-3xl'}  font-semibold w-40 text-wrap`}>학력<span
+                    className="text-red-500">*</span></label>
 
                 <div className='flex flex-col w-full'>
                     <div className=' flex flex-col gap-6 w-full'>
                         {educationField.map((field, index) => (
                             <div key={index} className='flex'>
                                 <input
-                                    id={`career-${index}`}
+                                    id={`education-${index}`}
                                     pattern="^[\s\w\d가-힣]{1,30}$"
                                     className={`block border border-yellow-6 p-5 w-full rounded ${isTabletHeight ? ' placeholder:text-lg text-xl':' placeholder:text-xl text-2xl'} `}
                                     type="text"

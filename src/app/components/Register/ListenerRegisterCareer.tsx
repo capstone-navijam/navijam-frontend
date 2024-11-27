@@ -33,7 +33,8 @@ export default function ListenerRegisterCareer({careerField, setCareerField}) {
             {/* 경력 label과 입력 필드들 */}
             <div className='flex items-center'>
                 <label htmlFor='career'
-                       className={` ${isTabletHeight ? 'text-2xl' : 'text-3xl'}  font-semibold w-40 text-wrap`}>경력</label>
+                       className={` ${isTabletHeight ? 'text-2xl' : 'text-3xl'}  font-semibold w-40 text-wrap`}>경력<span
+                    className="text-red-500">*</span></label>
 
                 <div className='flex flex-col w-full'>
                     <div className=' flex flex-col gap-6 w-full'>

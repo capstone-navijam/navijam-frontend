@@ -31,10 +31,11 @@ export default function ComfortCategory({selectedCategories, setSelectedCategori
             <div className='flex flex-col w-full'>
                 <div className='flex'>
                     <label htmlFor='category'
-                           className={` ${isTabletHeight ? 'text-2xl' : 'text-3xl'}  font-semibold w-40 text-wrap`}>카테고리</label>
+                           className={` ${isTabletHeight ? 'text-2xl' : 'text-3xl'}  font-semibold w-40 text-wrap`}>카테고리<span
+                        className="text-red-500">*</span></label>
 
                     <div className=' text-center flex gap-4 flex-wrap w-full'>
-                        {categories.map(category => (
+                    {categories.map(category => (
                             <div
                                 key={category}
                                 onClick={() => handleClick(category)}
