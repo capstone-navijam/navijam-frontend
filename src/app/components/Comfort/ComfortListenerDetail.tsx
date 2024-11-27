@@ -17,7 +17,6 @@ interface Props {
 }
 
 export default function ComfortListenerDetail({consoles}: Props) {
-
     const isTabletHeight = useTabletHeight();
 
     const [role, setRole] = useState("");
@@ -43,7 +42,7 @@ export default function ComfortListenerDetail({consoles}: Props) {
         const fetchComfort = async () => {
             //@ts-ignore
             await ComfortListDetail(BigInt(id));
-        }
+        };
         fetchComfort();
     }, [id]);
 
@@ -60,14 +59,12 @@ export default function ComfortListenerDetail({consoles}: Props) {
         fetchCommentCounts();
     }, [consoles]);
 
-
     const handleModifyClick = () => {
         router.push(`/comforts/${id.toString()}/modify`);
-    }
+    };
 
     const handleDeleteClick = async (consoleId: string) => {
-
-        const token = getCookie('accessToken');
+        const token = getCookie("accessToken");
 
         try {
             Swal.fire({
@@ -82,19 +79,29 @@ export default function ComfortListenerDetail({consoles}: Props) {
             }).then(async (result) => {
                 if (result.isConfirmed) {
                     const res = await fetch(`${process.env["NEXT_PUBLIC_BACKEND_SERVER"]}/consoles/${consoleId}`, {
-                        method: 'DELETE',
+                        method: "DELETE",
                         headers: {
-                            Accept: 'application/json',
-                            'Content-Type': 'application/json',
+                            Accept: "application/json",
+                            "Content-Type": "application/json",
                             Authorization: `Bearer ${token}`,
                         },
                     });
 
                     if (res.ok) {
-                        Swal.fire({title: "삭제 완료!", text: "삭제되었습니다.", icon: "success", timer: 1000});
+                        Swal.fire({
+                            title: "삭제 완료!",
+                            text: "삭제되었습니다.",
+                            icon: "success",
+                            timer: 1000,
+                        });
                         window.location.replace(`/comforts/${id.toString()}`);
                     } else {
-                        Swal.fire({title: "게시글 삭제에 실패하였습니다.", text: "다시 시도해주세요.", icon: "error", timer: 1000});
+                        Swal.fire({
+                            title: "게시글 삭제에 실패하였습니다.",
+                            text: "다시 시도해주세요.",
+                            icon: "error",
+                            timer: 1000,
+                        });
                     }
                 }
             });
@@ -104,115 +111,134 @@ export default function ComfortListenerDetail({consoles}: Props) {
     };
 
     const handleCommentClick = (consoleId: string) => {
-        setActiveCommentBoxId(prev => (prev === consoleId ? null : consoleId));
-    }
+        setActiveCommentBoxId((prev) => (prev === consoleId ? null : consoleId));
+    };
 
     const handleCommentCountUpdate = (consoleId: string, count: number) => {
-        setCommentCount(prev => ({...prev, [consoleId]: count}));
-    }
+        setCommentCount((prev) => ({...prev, [consoleId]: count}));
+    };
 
     return (
         <>
-            <div className='flex flex-col mx-auto mt-8 mb-10'>
-                <div className={` ${isTabletHeight ? 'w-[95%]' : 'w-[80%]'} mx-auto`}>
-                    <div className={`${isTabletHeight ? 'w-[25%]' : 'w-[15%]'}  border-[4px] border-yellow-2`}></div>
-                    <h1 className={`font-[Tenada] text-start mt-4 ${isTabletHeight ? 'text-3xl' : 'text-4xl'}`}>전문가의
-                        답변</h1>
+            <div className="flex flex-col mx-auto mt-8 mb-10">
+                <div className={`${isTabletHeight ? "w-[95%]" : "w-[80%]"} mx-auto`}>
+                    <div className={`${isTabletHeight ? "w-[25%]" : "w-[15%]"} border-[4px] border-yellow-2`}></div>
+                    <h1 className={`font-[Tenada] text-start mt-4 ${isTabletHeight ? "text-3xl" : "text-4xl"}`}>
+                        전문가의 답변
+                    </h1>
                 </div>
-                <div className={`mx-auto ${isTabletHeight ? 'w-[95%]' : 'w-[80%]'}`}> {/* 하단 여백 추가 */}
+                <div className={`${isTabletHeight ? "w-[95%]" : "w-[80%]"} mx-auto`}>
                     {consoles.length > 0 ? (
                         consoles.map((console) => (
                             <div
-                                className='mt-10 rounded-lg mx-auto w-full h-auto text-start border-yellow-2 border-2 p-4'
                                 key={console.id}
+                                className="mt-10 rounded-lg mx-auto w-full h-auto text-start border-yellow-2 border-2 p-4"
                             >
-                                <div className='mb-4'>
-                                    <div className='flex flex-row justify-between items-center mx-2'>
-                                        <div className='flex flex-row gap-1 items-center'>
-                                            <p className={` ${isTabletHeight ? 'text-3xl' : 'text-4xl'}`}>{console.nickname}
-                                                <span
-                                                    className={` ${isTabletHeight ? 'text-xl' : 'text-2xl'}`}>상담사</span>
-                                            </p>
-                                            {role === "LISTENER" && nickName === console.nickname ? (<>
-                                                <Link href="/mypage">
-                                                    <Image src={console.profile} alt="Profile" width={30} height={30}
-                                                           className={`rounded-full object-cover  ${isTabletHeight ? ' w-[30px] h-[30px] ' : ' w-[60px] h-[60px] '}`}/>
-                                                </Link>
-                                            </>) : (<>
-                                                <Image src={console.profile} alt="Profile" width={30} height={30}
-                                                       className={`rounded-full object-cover  ${isTabletHeight ? ' w-[30px] h-[30px] ' : ' w-[60px] h-[60px] '}`}/>
-                                            </>)}
-                                        </div>
-                                        <p className={`${isTabletHeight ? 'text-lg' : 'text-xl'} mt-2`}>{console.timestamp}</p>
+                                {role === "LISTENER" && console.nickname !== nickName ? (
+                                    <div className="text-center text-gray-500 text-2xl py-20">
+                                        다른 상담사의 글은 볼 수 없습니다.
                                     </div>
-
-                                    <div className="mx-auto w-full border-[1px] border-lightGray/30 mt-2 mb-2"></div>
-
-                                    <div
-                                        className={`mx-1 mt-4 whitespace-pre-wrap leading-normal ${isTabletHeight ? 'text-xl' : 'text-3xl'}`}
-                                    >{console.content}</div>
-                                </div>
-
-                                <div
-                                    className='mx-1 flex flex-row gap-6 justify-between mt-10 text-center items-center'>
-                                    <div className='flex flex-row items-center text-center gap-2'>
-                                        <FaRegComment
-                                            className={`mt-4 ${isTabletHeight ? 'text-3xl' : 'text-4xl'} text-yellow-6`}
-                                            onClick={() => handleCommentClick(console.id)}/>
-                                        {commentCount[console.id] > 0 &&
-                                            <span
-                                                className={`mt-4  ${isTabletHeight ? 'text-2xl' : 'text-3xl'} text-yellow-6`}>{commentCount[console.id]}</span>}
-                                    </div>
-                                    {nickName === console.nickname ? (
-                                        <div className='gap-4 flex flex-row'>
-                                            <button
-                                                onClick={handleModifyClick}
-                                                className='border-2 p-1 w-16 bg-yellow-6 border-yellow-6 rounded-xl text-white text-xl'
-                                            >
-                                                수정
-                                            </button>
-                                            <button
-                                                onClick={() => handleDeleteClick(console.id)}
-                                                className='border-2 p-1 w-16 bg-yellow-6 border-yellow-6 rounded-xl text-white text-xl'
-                                            >
-                                                삭제
-                                            </button>
-                                        </div>
-                                    ) : null}
-                                </div>
-
-                                {activeCommentBoxId === console.id && (
+                                ) : (
                                     <>
-                                        <ComfortCommentsRegister consoleId={console.id}/>
-                                        <ComfortCommentsDetail consoleId={console.id}
-                                                               onCommentCount={(count) => handleCommentCountUpdate(console.id, count)}/>
+                                        <div className="mb-4">
+                                            <div className="flex flex-row justify-between items-center mx-2">
+                                                <div className="flex flex-row gap-1 items-center">
+                                                    <p className={` ${isTabletHeight ? "text-3xl" : "text-4xl"}`}>
+                                                        {console.nickname}<span
+                                                        className={` ${isTabletHeight ? "text-xl" : "text-2xl"}`}>
+                                                            상담사
+                                                        </span>
+                                                    </p>
+                                                    <Image
+                                                        src={console.profile}
+                                                        alt="Profile"
+                                                        width={30}
+                                                        height={30}
+                                                        className={`rounded-full object-cover ${
+                                                            isTabletHeight
+                                                                ? " w-[30px] h-[30px] "
+                                                                : " w-[60px] h-[60px] "
+                                                        }`}
+                                                    />
+                                                </div>
+                                                <p className={`${isTabletHeight ? "text-lg" : "text-xl"} mt-2`}>
+                                                    {console.timestamp}
+                                                </p>
+                                            </div>
+
+                                            <div
+                                                className="mx-auto w-full border-[1px] border-lightGray/30 mt-2 mb-2"></div>
+
+                                            <div
+                                                className={`mx-1 mt-4 whitespace-pre-wrap leading-normal ${isTabletHeight ? "text-xl" : "text-3xl"}`}>{console.content}</div>
+                                        </div>
+
+                                        <div
+                                            className="mx-1 flex flex-row gap-6 justify-between mt-10 text-center items-center">
+                                            <div className="flex flex-row items-center text-center gap-2">
+                                                <FaRegComment
+                                                    className={`mt-4 ${
+                                                        isTabletHeight ? "text-3xl" : "text-4xl"
+                                                    } text-yellow-6`}
+                                                    onClick={() => handleCommentClick(console.id)}
+                                                />{commentCount[console.id] > 0 && (<span
+                                                    className={`mt-4 ${isTabletHeight ? "text-2xl" : "text-3xl"} text-yellow-6`}>{commentCount[console.id]}</span>
+                                            )}
+                                            </div>
+                                            {nickName === console.nickname && (
+                                                <div className="gap-4 flex flex-row">
+                                                    <button
+                                                        onClick={handleModifyClick}
+                                                        className="border-2 p-1 w-16 bg-yellow-6 border-yellow-6 rounded-xl text-white text-xl"
+                                                    >
+                                                        수정
+                                                    </button>
+                                                    <button
+                                                        onClick={() => handleDeleteClick(console.id)}
+                                                        className="border-2 p-1 w-16 bg-yellow-6 border-yellow-6 rounded-xl text-white text-xl"
+                                                    >
+                                                        삭제
+                                                    </button>
+                                                </div>
+                                            )}
+                                        </div>
+
+                                        {activeCommentBoxId === console.id && (
+                                            <>
+                                                <ComfortCommentsRegister consoleId={console.id}/>
+                                                <ComfortCommentsDetail
+                                                    consoleId={console.id}
+                                                    onCommentCount={(count) =>
+                                                        handleCommentCountUpdate(console.id, count)
+                                                    }
+                                                />
+                                            </>
+                                        )}
                                     </>
                                 )}
                             </div>
                         ))
                     ) : (
-                        <>
-                            {role === "MEMBER" && (
-                                <div
-                                    className='relative mt-10 rounded-lg mx-auto w-full h-[250px] text-start border-yellow-2 border-2 p-4'>
-                                    <p className={`${isTabletHeight ? 'text-4xl' : 'text-6xl'} items-center text-center mt-20 text-gray-500`}>아직
-                                        등록된 답변이
-                                        없습니다.</p>
-                                </div>
-                            )}
-                        </>
-                    )}
-
-                    {role === "LISTENER" && !consoles.some((console) => console.nickname === nickName) && (
-                        <div className='h-[30%] mx-auto'>
-                            <ComfortListenerRegister/>
+                        <div
+                            className="relative mt-10 rounded-lg mx-auto w-full h-[250px] text-start border-yellow-2 border-2 p-4">
+                            <p
+                                className={`${
+                                    isTabletHeight ? "text-4xl" : "text-6xl"
+                                } items-center text-center mt-20 text-gray-500`}
+                            >
+                                아직 등록된 답변이 없습니다.
+                            </p>
                         </div>
                     )}
+
+                    {role === "LISTENER" &&
+                        !consoles.some((console) => console.nickname === nickName) && (
+                            <div className="h-[30%] mx-auto">
+                                <ComfortListenerRegister/>
+                            </div>
+                        )}
                 </div>
             </div>
         </>
     );
 }
-
-
-{/* role === "MEMBER"는 모든 ComfortCommentsDetail을 볼 수 있지만, role === "LISTENER" 인 경우 다른 상담사의 댓글을 볼 수 없고 자기남긴 댓글만 볼 수 있게"*/}

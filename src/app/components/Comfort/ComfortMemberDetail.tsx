@@ -225,6 +225,9 @@ export default function ComfortMemberDetail() {
 
                         {role === "MEMBER" ? (
                             <div className='flex flex-col mt-auto'>
+                                <span className='w-fit text-2xl ml-auto mr-4'>
+                                {comfort.timestamp}
+                            </span>
                                 <div className='flex flex-row justify-between'>
                                     <button
                                         type="button"
@@ -252,7 +255,7 @@ export default function ComfortMemberDetail() {
                                 </div>
                             </div>
                         ) : (<>
-                         <span className='w-fit text-3xl ml-auto mr-4'>
+                         <span className='w-fit text-2xl ml-auto mr-4'>
                                 {comfort.timestamp}
                             </span>
                         </>)}

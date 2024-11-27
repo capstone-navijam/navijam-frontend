@@ -1,13 +1,16 @@
 'use client';
 
-import React from 'react'
+import React, {useState} from 'react'
 import Image from 'next/image'
 import {MdLocalPhone, MdLocationOn, MdOutlineBusinessCenter, MdOutlineSchool, MdOutlineTimer} from 'react-icons/md';
 import {useTabletHeight} from "@/service/MediaQuery";
 import {useRouter} from "next/navigation";
 import {GoComment} from "react-icons/go";
+import Swal from "sweetalert2";
+import {getCookie} from "cookies-next";
 
 interface ListenerDetailProps {
+    id: string;
     nickname: string;
     profile: string;
     categories: string[];
@@ -16,9 +19,12 @@ interface ListenerDetailProps {
     description?: string; // 선택적으로 설정
     address?: string;     // 선택적으로 설정
     contactNumber?: string; // 선택적으로 설정
+    availableTime: string[];
+    formattedPrice: string;
 }
 
 export default function ListenerDetail({
+                                           id,
                                            nickname,
                                            profile,
                                            categories,
@@ -26,11 +32,52 @@ export default function ListenerDetail({
                                            education,
                                            description,
                                            address,
-                                           contactNumber
+                                           contactNumber,
+                                           availableTime,
+                                           formattedPrice,
                                        }: ListenerDetailProps) {
 
     const isTabletHeight = useTabletHeight();
     const router = useRouter();
+
+    const handleClick = () => {
+        Swal.fire({
+            icon: 'info',
+            title: '실시간 상담 신청',
+            text: '결제하시겠습니까?',
+            showCancelButton: true,
+            confirmButtonText: "결제",
+            confirmButtonColor: "#FAAD00",
+            cancelButtonText: "취소",
+            cancelButtonColor: "#FF0000"
+        }).then(async (result) => {
+            if (result.isConfirmed) {
+                const token = getCookie('accessToken');
+
+
+
+                try {
+                    const res = await fetch(`${process.env["NEXT_PUBLIC_BACKEND_SERVER"]}/reservations`, {
+                        method: 'POST',
+                        headers: {
+                            "Accept": 'application/json',
+                            "Content-Type": 'application/json',
+                            Authorization: `Bearer ${token}`,
+                        },
+                        body: JSON.stringify({listenerId: Number(id)})
+                    });
+
+                    if (res.ok) {
+                        Swal.fire({title: "결제 완료!", text: "결제되었습니다.", icon: "success", timer: 1000});
+                        router.push(`/chat`);
+                    }
+                } catch (err) {
+                    console.error("전문가 아이디 제공 실패");
+                }
+
+            }
+        })
+    }
 
     return (
         <>
@@ -49,17 +96,17 @@ export default function ListenerDetail({
                                 <div className="w-full border-[2px] border-yellow-2 mt-2"></div>
 
                                 <div className='flex flex-col gap-2 mt-[60px]'>
-                                    <p className='text-2xl mx-1 flex flex-row items-center'><MdOutlineTimer
-                                        className='text-yellow-2 text-3xl'/>상담 가능 시간 : 09:00 ~ 18:00</p>
                                     <div className='flex flex-row gap-2'>
                                         <button
                                             onClick={() => router.push('/chat')}
-                                            className="border-2 border-yellow-2 p-4 text-3xl rounded-xl font-medium hover:bg-yellow-2 hover:text-white">1회
-                                            가격: 50,000원
+                                            className="border-2 border-yellow-2 p-4 text-2xl rounded-xl font-medium hover:bg-yellow-2 hover:text-white">1회
+                                            가격: {formattedPrice}
                                         </button>
-                                        <div className="text-3xl mt-10">평점: <span className='text-yellow-2'>4.3</span>
+                                        <div className="text-2xl mt-10">평점: <span className='text-yellow-2'>4.3</span>
                                         </div>
                                     </div>
+                                    <p className='text-2xl mx-1 flex flex-row items-center'><MdOutlineTimer
+                                        className='text-yellow-2 text-3xl'/>상담 가능 시간 : {availableTime}</p>
                                 </div>
                             </div>
                         </div>
@@ -112,17 +159,18 @@ export default function ListenerDetail({
                                 </div>
                                 <div className="w-full border-[2px] border-yellow-2 mt-2"></div>
 
-                                <div className='flex flex-col gap-2 mt-28'>
-                                    <p className='text-2xl mx-1 flex flex-row items-center'><MdOutlineTimer className='text-yellow-2 text-3xl'/>상담 가능 시간 : 09:00 ~ 18:00</p>
+                                <div className='flex flex-col gap-2 mt-4'>
                                     <div className='flex flex-row gap-2'>
                                         <button
-                                            onClick={() => router.push('/chat')}
+                                            onClick={handleClick}
                                             className="border-2 border-yellow-2 p-4 text-3xl rounded-xl font-medium hover:bg-yellow-2 hover:text-white">1회
-                                            가격: 50,000원
+                                            가격: {formattedPrice}
                                         </button>
                                         <div className="text-3xl mt-10">평점: <span className='text-yellow-2'>4.3</span>
                                         </div>
                                     </div>
+                                    <p className='text-2xl mx-1 flex flex-row items-center'><MdOutlineTimer
+                                        className='text-yellow-2 text-3xl'/>상담 가능 시간 : {availableTime}</p>
                                 </div>
                             </div>
                         </div>

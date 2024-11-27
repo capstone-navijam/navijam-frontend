@@ -17,7 +17,10 @@ export interface MyPageListenerProfileProps {
 }
 
 export interface MyPageListenerConsoleProps {
-    id
+    id: string,
+    categories: string[],
+    title: string,
+    timestamp: string,
 }
 
 export async function ListenerProfile(): Promise<MyPageListenerProfileProps | null> {
@@ -52,5 +55,28 @@ export async function ListenerProfile(): Promise<MyPageListenerProfileProps | nu
     } else {
         console.error('응답 실패');
         return null;
+    }
+}
+
+export async function ListenerConsole(): Promise<MyPageListenerConsoleProps | null> {
+    const token = getCookie('accessToken');
+
+    const res = await fetch(`${process.env["NEXT_PUBLIC_BACKEND_SERVER"]}/mypage/comforts/no-answered`, {
+        method: 'GET',
+        headers: {
+            "Accept": "application/json",
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${token}`,
+        }
+    });
+
+    if (res.ok) {
+        const result = await res.json();
+        return result.data.map((item: any) => ({
+            id: item.id,
+            categories: item.categories,
+            title: item.title,
+            timestamp: item.timestamp,
+        }));
     }
 }

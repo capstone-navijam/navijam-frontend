@@ -140,7 +140,7 @@ export default function ComfortMemberModify() {
                         onChange={content.onChange}
                     />
                 </div>
-                <div className={`mt-10 mx-auto ${isTabletHeight ? 'w-[95%]' : 'w-[80%]'} flex justify-between`}>
+                <div className={`mt-10 mb-10 mx-auto ${isTabletHeight ? 'w-[95%]' : 'w-[80%]'} flex justify-between`}>
                     <button
                         type="button"
                         onClick={handleClick}

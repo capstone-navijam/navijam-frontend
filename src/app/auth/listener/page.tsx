@@ -427,7 +427,7 @@ export default function SignUpPage() {
                                         <label htmlFor="description" className="text-3xl font-semibold w-40 text-wrap">한줄소개<span
                                             className="text-red-500">*</span></label>
                                         <input id="description"
-                                               className="block border border-yellow-6 p-5 w-full rounded placeholder:text-xl"
+                                               className="block border border-yellow-6 p-5 w-full rounded placeholder:text-xl text-2xl"
                                                type="text" {...description} placeholder="간단하게 한 줄로 소개 부탁드립니다."/>
                                     </div>
 
