@@ -34,7 +34,7 @@ export default function MultiCarousel() {
         },
         {
             id: 4,
-            description: "전문적인 상담이 필요하다면,\n주저말고 언제든 상담해보세요.”",
+            description: "전문적인 상담이 필요하다면,\n주저말고 언제든 상담해보세요.",
             button: '실시간 상담',
             path: 'chat',
             image: '/images/carouselImage4.svg',

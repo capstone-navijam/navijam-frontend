@@ -37,8 +37,7 @@ export default function ConsoleSearch({ placeholder }: { placeholder: string }) 
     return (
         <>
             {isTabletHeight ? (
-                <article className="mx-4">
-                    <h1 className="text-2xl font-medium">커뮤니티 검색</h1>
+                <article>
                     <div className="flex flex-row items-center mt-1">
                         <label htmlFor="search" className="sr-only">
                             Search

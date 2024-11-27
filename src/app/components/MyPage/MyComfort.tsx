@@ -1,7 +1,7 @@
 'use client';
-import React, {useEffect, useState} from 'react';
-import {useTabletHeight} from "@/service/MediaQuery";
-import {MemberComforts} from "@/app/components/MyPage/MemberProfile";
+import React, { useEffect, useState } from 'react';
+import { useTabletHeight } from "@/service/MediaQuery";
+import { MemberComforts } from "@/app/components/MyPage/MemberProfile";
 import Pagination from '@mui/material/Pagination';
 import Link from 'next/link';
 
@@ -54,63 +54,59 @@ export default function MyComfort() {
                     <div className="border-4 border-yellow-2 w-full min-h-[660px] mb-20 rounded-2xl p-3 ">
                         <h2 className="text-4xl font-semibold mb-4">상담 완료</h2>
                         {answeredComforts.length > 0 ? (
-                            <>
-                                <div className=' min-h-[300px]'>
-                                    {currentAnsweredComfort.map(item => (
-                                        <Link href={`/comforts/${item.id}`} key={item.id}>
-                                            <div className="p-2 border-b flex flex-row justify-between items-center">
-                                                <p className="text-lg font-medium">{item.title}</p>
-                                                <p className="text-sm text-gray-500">
-                                                    {new Date(item.createdAt).toLocaleDateString()}
-                                                </p>
-                                            </div>
-                                        </Link>
-                                    ))}
-                                    <Pagination
-                                        count={Math.ceil(answeredComforts.length / comfortPerPage)}
-                                        page={answeredPage}
-                                        onChange={(e, page) => setAnsweredPage(page)}
-                                        className="p-1 mt-4 mx-auto"
-                                        style={{display: 'flex', justifyContent: 'center'}}
-                                    />
-                                </div>
-                            </>
+                            <div className='min-h-[300px]'>
+                                {currentAnsweredComfort.map(item => (
+                                    <Link href={`/comforts/${item.id}`} key={item.id}>
+                                        <div className="p-2 border-b flex flex-row justify-between items-center">
+                                            <p className="text-lg font-medium">{item.title}</p>
+                                            <p className="text-sm text-gray-500">
+                                                {new Date(item.createdAt).toLocaleDateString()}
+                                            </p>
+                                        </div>
+                                    </Link>
+                                ))}
+                            </div>
                         ) : (
                             <div className="flex justify-center items-center text-4xl min-h-[300px]">
                                 아직 등록된 글이 없습니다.
                             </div>
                         )}
+                        <div className="flex justify-center mt-4">
+                            <Pagination
+                                count={Math.ceil(answeredComforts.length / comfortPerPage)}
+                                page={answeredPage}
+                                onChange={(e, page) => setAnsweredPage(page)}
+                            />
+                        </div>
 
                         <div className="w-[99%] mx-auto border-[2px] border-yellow-2 my-4"></div>
 
                         <h2 className="text-4xl font-semibold mb-4">답변 대기중</h2>
                         {unAnsweredComforts.length > 0 ? (
-                            <>
-                                <div className=' min-h-[300px]'>
-                                    {currentUnAnsweredComfort.map(item => (
-                                        <Link href={`/comforts/${item.id}`} key={item.id}>
-                                            <div className="p-2 border-b flex flex-row justify-between items-center">
-                                                <p className="text-3xl font-medium">{item.title}</p>
-                                                <p className="text-xl text-gray-500">
-                                                    {new Date(item.createdAt).toLocaleDateString()}
-                                                </p>
-                                            </div>
-                                        </Link>
-                                    ))}
-                                    <Pagination
-                                        count={Math.ceil(unAnsweredComforts.length / comfortPerPage)}
-                                        page={unAnsweredPage}
-                                        onChange={(e, page) => setUnAnsweredPage(page)}
-                                        className="p-1 mt-4 mx-auto"
-                                        style={{display: 'flex', justifyContent: 'center'}}
-                                    />
-                                </div>
-                            </>
+                            <div className='min-h-[300px]'>
+                                {currentUnAnsweredComfort.map(item => (
+                                    <Link href={`/comforts/${item.id}`} key={item.id}>
+                                        <div className="p-2 border-b flex flex-row justify-between items-center">
+                                            <p className="text-3xl font-medium">{item.title}</p>
+                                            <p className="text-xl text-gray-500">
+                                                {new Date(item.createdAt).toLocaleDateString()}
+                                            </p>
+                                        </div>
+                                    </Link>
+                                ))}
+                            </div>
                         ) : (
                             <div className="flex justify-center items-center text-4xl min-h-[300px]">
                                 아직 등록된 글이 없습니다.
                             </div>
                         )}
+                        <div className="flex justify-center mt-4">
+                            <Pagination
+                                count={Math.ceil(unAnsweredComforts.length / comfortPerPage)}
+                                page={unAnsweredPage}
+                                onChange={(e, page) => setUnAnsweredPage(page)}
+                            />
+                        </div>
                     </div>
                 </article>
             ) : (
@@ -119,63 +115,59 @@ export default function MyComfort() {
                     <div className="border-4 border-yellow-2 w-full min-h-[660px] rounded-2xl p-3 mt-4">
                         <h2 className="text-4xl font-semibold mb-4">상담 완료</h2>
                         {answeredComforts.length > 0 ? (
-                            <>
-                                <div className=' min-h-[250px]'>
-                                    {currentAnsweredComfort.map(item => (
-                                        <Link href={`/comforts/${item.id}`} key={item.id}>
-                                            <div className="p-2 border-b flex flex-row justify-between items-center">
-                                                <p className="text-lg font-medium">{item.title}</p>
-                                                <p className="text-sm text-gray-500">
-                                                    {new Date(item.createdAt).toLocaleDateString()}
-                                                </p>
-                                            </div>
-                                        </Link>
-                                    ))}
-                                    <Pagination
-                                        count={Math.ceil(answeredComforts.length / comfortPerPage)}
-                                        page={answeredPage}
-                                        onChange={(e, page) => setAnsweredPage(page)}
-                                        className="p-1 mt-4 mx-auto"
-                                        style={{display: 'flex', justifyContent: 'center'}}
-                                    />
-                                </div>
-                            </>
+                            <div className='min-h-[300px]'>
+                                {currentAnsweredComfort.map(item => (
+                                    <Link href={`/comforts/${item.id}`} key={item.id}>
+                                        <div className="p-2 border-b flex flex-row justify-between items-center">
+                                            <p className="text-lg font-medium">{item.title}</p>
+                                            <p className="text-sm text-gray-500">
+                                                {new Date(item.createdAt).toLocaleDateString()}
+                                            </p>
+                                        </div>
+                                    </Link>
+                                ))}
+                            </div>
                         ) : (
-                            <div className="flex justify-center items-center text-4xl min-h-[250px]">
+                            <div className="flex justify-center items-center text-4xl min-h-[240px]">
                                 아직 등록된 글이 없습니다.
                             </div>
                         )}
+                        <div className="flex justify-center mt-4">
+                            <Pagination
+                                count={Math.ceil(answeredComforts.length / comfortPerPage)}
+                                page={answeredPage}
+                                onChange={(e, page) => setAnsweredPage(page)}
+                            />
+                        </div>
 
                         <div className="w-[95%] mx-auto border-[2px] border-yellow-2 my-4"></div>
 
-                        <h2 className="text-4xl font-semibold mb-4">답변 대기중</h2>
+                        <h2 className="text-4xl font-semibold mb-4 mt-6">답변 대기중</h2>
                         {unAnsweredComforts.length > 0 ? (
-                            <>
-                                <div className=' min-h-[250px]'>
-                                    {currentUnAnsweredComfort.map(item => (
-                                        <Link href={`/comforts/${item.id}`} key={item.id}>
-                                            <div className="p-2 border-b flex flex-row justify-between items-center">
-                                                <p className="text-3xl font-medium">{item.title}</p>
-                                                <p className="text-xl text-gray-500">
-                                                    {new Date(item.createdAt).toLocaleDateString()}
-                                                </p>
-                                            </div>
-                                        </Link>
-                                    ))}
-                                    <Pagination
-                                        count={Math.ceil(unAnsweredComforts.length / comfortPerPage)}
-                                        page={unAnsweredPage}
-                                        onChange={(e, page) => setUnAnsweredPage(page)}
-                                        className="p-1 mt-4 mx-auto"
-                                        style={{display: 'flex', justifyContent: 'center'}}
-                                    />
-                                </div>
-                            </>
+                            <div className='min-h-[300px]'>
+                                {currentUnAnsweredComfort.map(item => (
+                                    <Link href={`/comforts/${item.id}`} key={item.id}>
+                                        <div className="p-2 border-b flex flex-row justify-between items-center">
+                                            <p className="text-3xl font-medium">{item.title}</p>
+                                            <p className="text-xl text-gray-500">
+                                                {new Date(item.createdAt).toLocaleDateString()}
+                                            </p>
+                                        </div>
+                                    </Link>
+                                ))}
+                            </div>
                         ) : (
-                            <div className="flex justify-center items-center text-4xl min-h-[250px]">
+                            <div className="flex justify-center items-center text-4xl min-h-[240px]">
                                 아직 등록된 글이 없습니다.
                             </div>
                         )}
+                        <div className="flex justify-center mt-4">
+                            <Pagination
+                                count={Math.ceil(unAnsweredComforts.length / comfortPerPage)}
+                                page={unAnsweredPage}
+                                onChange={(e, page) => setUnAnsweredPage(page)}
+                            />
+                        </div>
                     </div>
                 </article>
             )}

@@ -140,7 +140,7 @@ export default function CommunityDetail() {
                         </div>
                     </div>
                     <div className='flex flex-row justify-between'>
-                        <p className='text-2xl text-yellow-2 font-bold mt-2'>{community.categories.join(', ')}</p>
+                        <p className='text-2xl text-yellow-2 font-bold mt-2'>#{community.categories.join(' #')}</p>
                     </div>
                     <p className='mt-8 whitespace-pre-wrap leading-normal text-3xl  min-h-[480px]'>{community.content}</p>
 
@@ -149,13 +149,15 @@ export default function CommunityDetail() {
                             <div className='flex flex-col justify-end'>
                                 <p className='ml-auto mx-3 text-2xl mt-1'>{community.timestamp}</p>
                                 <div className='flex flex-row justify-between'>
-                                    <div className="items-end gap-2 mt-4 text-4xl">
-                                        <div className='flex flex-row gap-2'>
+                                    <div className="items-end gap-6 mt-2 text-5xl">
+                                        <div className='flex flex-row gap-6'>
                                             <CommunityLikesCount communityId={community.id}
                                                                  initialLiked={community.liked}
                                                                  initialLikeCount={community.likeCount}/>
-                                            <FaRegCommentAlt className='text-yellow-2'/>
-                                            <span className='text-yellow-2 -mt-1'>{comments.length}</span>
+                                            <div className='flex flex-row gap-2'>
+                                                <FaRegCommentAlt className='text-yellow-2'/>
+                                                <span className='text-yellow-2 -mt-1'>{comments.length}</span>
+                                            </div>
                                         </div>
                                     </div>
                                     <div className='flex flex-row mb-2 justify-end'>
@@ -178,14 +180,16 @@ export default function CommunityDetail() {
                             </div>
                         </>
                     ) : (<>
-                        <div className='flex flec-row items-end justify-between gap-2 mb-2 text-4xl'>
-                            <div className='flex flex-row gap-2'>
-                                <CommunityLikesCount communityId={community.id} initialLiked={community.liked}
+                        <div className="items-end gap-6 mt-2 text-5xl">
+                            <div className='flex flex-row gap-6'>
+                                <CommunityLikesCount communityId={community.id}
+                                                     initialLiked={community.liked}
                                                      initialLikeCount={community.likeCount}/>
-                                <FaRegCommentAlt className='text-yellow-2'/>
-                                <span className='text-yellow-2 -mt-1'>{comments.length}</span>
+                                <div className='flex flex-row gap-2'>
+                                    <FaRegCommentAlt className='text-yellow-2'/>
+                                    <span className='text-yellow-2 -mt-1'>{comments.length}</span>
+                                </div>
                             </div>
-                            <p className='items-end text-2xl mt-1'>{community.timestamp}</p>
                         </div>
                     </>)}
 
@@ -221,7 +225,7 @@ export default function CommunityDetail() {
                         </div>
                     </div>
                     <div className='flex flex-row justify-between'>
-                        <p className='text-4xl text-yellow-2 font-bold mt-2'>{community.categories.join(', ')}</p>
+                        <p className='text-4xl text-yellow-2 font-bold mt-2'>#{community.categories.join(' #')}</p>
                     </div>
                     <p className='mt-8 text-3xl min-h-[480px] whitespace-pre-wrap leadng-normal '>{community.content}</p>
 
@@ -231,13 +235,15 @@ export default function CommunityDetail() {
                             <div className='flex flex-col justify-end'>
                                 <p className='ml-auto mx-3 text-2xl mt-1'>{community.timestamp}</p>
                                 <div className='flex flex-row justify-between'>
-                                    <div className="items-end gap-2 mt-4 text-4xl">
-                                        <div className='flex flex-row gap-2'>
+                                    <div className="items-end gap-6 mt-2 text-5xl">
+                                        <div className='flex flex-row gap-6'>
                                             <CommunityLikesCount communityId={community.id}
                                                                  initialLiked={community.liked}
                                                                  initialLikeCount={community.likeCount}/>
-                                            <FaRegCommentAlt className='text-yellow-2'/>
-                                            <span className='text-yellow-2 -mt-1'>{comments.length}</span>
+                                            <div className='flex flex-row gap-2'>
+                                                <FaRegCommentAlt className='text-yellow-2'/>
+                                                <span className='text-yellow-2 -mt-1'>{comments.length}</span>
+                                            </div>
                                         </div>
                                     </div>
                                     <div className='flex flex-row mb-2 justify-end'>

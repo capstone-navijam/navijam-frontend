@@ -30,7 +30,7 @@ export async function MemberProfile(): Promise<MyPageMemberProfileProps | null> 
 
     const token = getCookie('accessToken');
 
-    const res = await fetch(`${process.env["NEXT_PUBLIC_BACKEND_SERVER"]}/mypage/profile`, {
+    const res = await fetch(`${process.env["NEXT_PUBLIC_BACKEND_SERVER"]}/mypage/profile/member`, {
         method: 'GET',
         headers: {
             "Accept": "application/json",

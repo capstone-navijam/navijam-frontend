@@ -116,13 +116,13 @@ export default function ImageChange({ImageUrl}: ImageChangeUrlProps) {
         });
     };
 
-    return (<div>
+    return (<div className='flex flex-col mx-auto'>
         <Image
             src={profile}
             alt="profile"
             width={250}
             height={250}
-            className="w-[150px] h-[150px] cursor-pointer rounded-full"
+            className="w-[200px] h-[200px] cursor-pointer rounded-full"
             onClick={() => fileInput.current.click()} // 이미지 클릭 시 파일 선택
         />
         <input
@@ -134,7 +134,7 @@ export default function ImageChange({ImageUrl}: ImageChangeUrlProps) {
             onChange={handleImageChange}
         />
         <button
-            className="mt-4 bg-yellow-6 text-white text-3xl rounded-xl p-2 w-[160px]"
+            className="mt-4 bg-yellow-6 text-white text-3xl rounded-xl text-center p-2 w-[200px]"
             onClick={handleSubmit}
         >
             프로필 변경

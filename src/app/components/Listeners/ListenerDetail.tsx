@@ -2,7 +2,7 @@
 
 import React from 'react'
 import Image from 'next/image'
-import {MdLocalPhone, MdLocationOn, MdOutlineBusinessCenter, MdOutlineSchool} from 'react-icons/md';
+import {MdLocalPhone, MdLocationOn, MdOutlineBusinessCenter, MdOutlineSchool, MdOutlineTimer} from 'react-icons/md';
 import {useTabletHeight} from "@/service/MediaQuery";
 import {useRouter} from "next/navigation";
 import {GoComment} from "react-icons/go";
@@ -48,15 +48,19 @@ export default function ListenerDetail({
                                 </div>
                                 <div className="w-full border-[2px] border-yellow-2 mt-2"></div>
 
-                                <div className='flex flex-row gap-2 mt-16'>
-                                    <button
-                                        onClick={() => router.push('/chat')}
-                                        className="border-2 border-yellow-2 p-4 text-2xl rounded-xl font-medium hover:bg-yellow-2 hover:text-white">1회
-                                        가격: 50,000원
-                                    </button>
-                                    <div className="text-2xl mt-10">평점: <span className='text-yellow-2'>4.3</span></div>
+                                <div className='flex flex-col gap-2 mt-[60px]'>
+                                    <p className='text-2xl mx-1 flex flex-row items-center'><MdOutlineTimer
+                                        className='text-yellow-2 text-3xl'/>상담 가능 시간 : 09:00 ~ 18:00</p>
+                                    <div className='flex flex-row gap-2'>
+                                        <button
+                                            onClick={() => router.push('/chat')}
+                                            className="border-2 border-yellow-2 p-4 text-3xl rounded-xl font-medium hover:bg-yellow-2 hover:text-white">1회
+                                            가격: 50,000원
+                                        </button>
+                                        <div className="text-3xl mt-10">평점: <span className='text-yellow-2'>4.3</span>
+                                        </div>
+                                    </div>
                                 </div>
-                                <p className='text-2xl mx-1'>상담 가능 시간 : 09:00 ~ 18:00</p>
                             </div>
                         </div>
 
@@ -104,19 +108,22 @@ export default function ListenerDetail({
                                 <div className='flex flex-row gap-2'>
                                     <h1 className='text-6xl font-semibold'>{nickname} <span
                                         className='text-4xl font-medium'>상담사</span></h1>
-                                    <p className='text-yellow-2 font-bold mt-7 text-2xl'>#{categories.join(' #')}</p>
+                                    <p className='text-yellow-2 font-bold mt-5 text-2xl'>#{categories.join(' #')}</p>
                                 </div>
                                 <div className="w-full border-[2px] border-yellow-2 mt-2"></div>
 
-                                <div className='flex flex-row gap-2 mt-32'>
-                                    <button
-                                        onClick={() => router.push('/chat')}
-                                        className="border-2 border-yellow-2 p-4 text-3xl rounded-xl font-medium hover:bg-yellow-2 hover:text-white">1회
-                                        가격: 50,000원
-                                    </button>
-                                    <div className="text-2xl mt-10">평점: <span className='text-yellow-2'>4.3</span></div>
+                                <div className='flex flex-col gap-2 mt-28'>
+                                    <p className='text-2xl mx-1 flex flex-row items-center'><MdOutlineTimer className='text-yellow-2 text-3xl'/>상담 가능 시간 : 09:00 ~ 18:00</p>
+                                    <div className='flex flex-row gap-2'>
+                                        <button
+                                            onClick={() => router.push('/chat')}
+                                            className="border-2 border-yellow-2 p-4 text-3xl rounded-xl font-medium hover:bg-yellow-2 hover:text-white">1회
+                                            가격: 50,000원
+                                        </button>
+                                        <div className="text-3xl mt-10">평점: <span className='text-yellow-2'>4.3</span>
+                                        </div>
+                                    </div>
                                 </div>
-                                <p className='text-2xl mx-1'>상담 가능 시간 : 09:00 ~ 18:00</p>
                             </div>
                         </div>
 
