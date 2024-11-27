@@ -85,7 +85,7 @@ export default function CommunityCommentsDetail({communityId}: CommunityComments
                     </h1>
                     {comments.length > 0 ? (
                         comments.map(comment => (
-                            <div key={comment.id} className='border-2 rounded-3xl h-auto p-2'>
+                            <div key={comment.id} className='border-2 rounded-3xl min-h-[200px] p-2 border-gray-400'>
                                 <div className='flex flex-row justify-between mx-2 text-center items-center'>
                                     <div className='flex flex-row gap-2 items-center text-center'>
                                         <p className='text-3xl'>{comment.nickname}</p>
@@ -110,14 +110,11 @@ export default function CommunityCommentsDetail({communityId}: CommunityComments
                                         </>)}
                                     </div>
                                     <div className='flex flex-row items-center'>
-                                        <p className='text-xl -mt-0.5'>{comment.timestamp}</p>
-                                        {loggedInUser === comment.nickname && (<IoMdClose
-                                            className='text-3xl'
-                                            onClick={() => handleDeleteClick(comment.id)} // comment.id 전달
-                                        />)}
+                                        <p className='text-2xl -mt-0.5'>{comment.timestamp}</p>
                                     </div>
                                 </div>
-                                <p className='text-3xl leading-normal whitespace-pre-wrap mt-10 mb-10 mx-2'>{comment.content}</p>
+                                <p className='text-3xl leading-normal whitespace-pre-wrap mt-8 mx-2'>{comment.content}</p>
+                                {loggedInUser === comment.nickname && (<div className='text-3xl border-2 w-[80px] border-gray-400 text-gray-500 text-center p-1 ml-auto rounded-xl' onClick={() => handleDeleteClick(comment.id)}>삭제</div>)}
                             </div>
                         ))
                     ) : (
@@ -130,7 +127,7 @@ export default function CommunityCommentsDetail({communityId}: CommunityComments
                     </h1>
                     {comments.length > 0 ? (
                         comments.map(comment => (
-                            <div key={comment.id} className='border-2 rounded-3xl h-auto p-2'>
+                            <div key={comment.id} className='border-2 rounded-3xl h-auto p-2 border-gray-400'>
                                 <div className='flex flex-row justify-between mx-2 text-center items-center'>
                                     <div className='flex flex-row gap-2 items-center text-center'>
                                         <p className='text-4xl'>{comment.nickname}</p>
@@ -152,15 +149,10 @@ export default function CommunityCommentsDetail({communityId}: CommunityComments
                                             />
                                         </>)}
                                     </div>
-                                    <div className='flex flex-row items-center'>
-                                        <p className='text-2xl -mt-0.5'>{comment.timestamp}</p>
-                                        {loggedInUser === comment.nickname && (<IoMdClose
-                                            className='text-3xl'
-                                            onClick={() => handleDeleteClick(comment.id)} // comment.id 전달
-                                        />)}
-                                    </div>
+                                    <p className='text-3xl -mt-0.5'>{comment.timestamp}</p>
                                 </div>
                                 <p className='text-4xl leading-normal whitespace-pre-wrap mt-10 mb-10 mx-2'>{comment.content}</p>
+                                {loggedInUser === comment.nickname && (<div className='text-3xl border-2 w-[80px] border-gray-400 text-gray-500 text-center p-1 ml-auto rounded-xl' onClick={() => handleDeleteClick(comment.id)}>삭제</div>)}
                             </div>
                         ))
                     ) : (

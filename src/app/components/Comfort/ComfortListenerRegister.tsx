@@ -5,8 +5,11 @@ import {getCookie} from 'cookies-next';
 import useInput from '@/service/useInput';
 import Swal from 'sweetalert2';
 import {useParams} from "next/navigation";
+import {useTabletHeight} from "@/service/MediaQuery";
 
 export default function ComfortListenerRegister() {
+    const isTabletHeight = useTabletHeight();
+
     const consoleContent = useInput('');
     const {id} = useParams();
     const handleSubmit = async (e: any) => {
@@ -56,37 +59,71 @@ export default function ComfortListenerRegister() {
 
     return (
         <>
-            <div className='flex flex-col mx-auto'>
-                <form onSubmit={handleSubmit}>
-                    <div className='mt-4 rounded-lg mx-auto border-yellow-2 border-2'>
+            {isTabletHeight ? (<>
+                <div className='flex flex-col mx-auto'>
+                    <form onSubmit={handleSubmit}>
+                        <div className='mt-4 rounded-lg mx-auto border-yellow-2 border-2'>
                             <textarea
                                 name="content"
                                 id="content"
-                                className='w-full rounded-lg mt-2 placeholder:pt-[100px] text-xl p-1 h-[250px] outline-0 block placeholder:text-4xl placeholder:text-center placeholder:items-center resize-none  transition-all duration-500'
+                                className='w-full rounded-lg mt-2 placeholder:pt-[100px] text-2xl p-1 h-[250px] outline-0 block placeholder:text-4xl placeholder:text-center placeholder:items-center resize-none  transition-all duration-500'
                                 title="내용을 입력해주세요."
                                 placeholder="답변하기"
                                 value={consoleContent.value}
                                 onChange={consoleContent.onChange}
                                 style={{lineHeight: '1.8'}}
                             />
-                    </div>
-                    <div className='mt-4 w-full flex justify-between mb-10'>
-                        <button
-                            type="button"
-                            onClick={handleBackClick}
-                            className='bg-gray-300 text-xl p-1.5 rounded-lg w-36'
-                        >
-                            뒤로가기
-                        </button>
-                        <button
-                            type="submit"
-                            className='bg-white border-yellow-2 border text-xl p-1.5 rounded-lg text-black w-36'
-                        >
-                            작성완료
-                        </button>
-                    </div>
-                </form>
-            </div>
+                        </div>
+                        <div className='mt-4 w-full flex justify-between mb-10'>
+                            <button
+                                type="button"
+                                onClick={handleBackClick}
+                                className='bg-gray-300 text-2xl p-1.5 rounded-lg w-36'
+                            >
+                                뒤로가기
+                            </button>
+                            <button
+                                type="submit"
+                                className='bg-white border-yellow-2 border text-2xl p-1.5 rounded-lg text-black w-36'
+                            >
+                                작성완료
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </>) : (<>
+                <div className='flex flex-col mx-auto'>
+                    <form onSubmit={handleSubmit}>
+                        <div className='mt-4 rounded-lg mx-auto border-yellow-2 border-2'>
+                            <textarea
+                                name="content"
+                                id="content"
+                                className='w-full rounded-lg mt-2 text-3xl placeholder:pt-[100px] p-1 min-h-[250px] outline-0 block placeholder:text-4xl placeholder:text-center placeholder:items-center resize-none  transition-all duration-500'
+                                title="내용을 입력해주세요."
+                                placeholder="답변하기"
+                                value={consoleContent.value}
+                                onChange={consoleContent.onChange}
+                                style={{lineHeight: '1.8'}}
+                            />
+                        </div>
+                        <div className='mt-4 w-full flex justify-between mb-10'>
+                            <button
+                                type="button"
+                                onClick={handleBackClick}
+                                className='bg-gray-300 text-3xl p-1.5 rounded-lg w-36'
+                            >
+                                뒤로가기
+                            </button>
+                            <button
+                                type="submit"
+                                className='bg-white border-yellow-2 border text-3xl p-1.5 rounded-lg text-black w-36'
+                            >
+                                작성완료
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </>)}
         </>
     );
 }

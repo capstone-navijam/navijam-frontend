@@ -64,7 +64,7 @@ export default function CommunityList() {
                                                    className='w-[40px] h-[40px] rounded-full'/>
                                         </div>
                                     </div>
-                                    <p className="text-yellow-2 text-xl">{community.categories.join(', ')}</p>
+                                    <p className="text-yellow-2 text-xl">#{community.categories.join(' #')}</p>
                                     <p className="text-2xl truncate mt-2 whitespace-pre-wrap overflow-hidden h-[125px]">{community.content}</p> {/* 긴 내용은 잘라냅니다 */}
 
                                     <div
@@ -100,7 +100,7 @@ export default function CommunityList() {
 
                                     <Link href={`/community/${community.id}`} as={`/community/${community.id}`}>
                                         <div key={community.id}
-                                             className="relative border-2 border-yellow-6 rounded-3xl p-4 cursor-pointer w-full h-[400px]">
+                                             className="relative border-2 border-yellow-6 rounded-3xl p-4 cursor-pointer w-full h-[340px]">
                                             <div className='flex flex-row items-center mt-2 justify-between'>
                                                 <p className="font-bold text-4xl whitespace-nowrap overflow-hidden text-ellipsis ">{community.title}</p>
                                                 <div className='flex flex-row gap-2'>
@@ -110,8 +110,8 @@ export default function CommunityList() {
                                                            className='w-[30px] h-[30px] rounded-full'/>
                                                 </div>
                                             </div>
-                                            <p className="text-yellow-1 text-2xl mt-2">#{community.categories.join(' #')}</p>
-                                            <p className="text-3xl truncate mt-4 whitespace-pre-wrap overflow-hidden h-[220px]">{community.content}</p> {/* 긴 내용은 잘라냅니다 */}
+                                            <p className="text-yellow-2 text-2xl mt-2">#{community.categories.join(' #')}</p>
+                                            <p className="text-3xl truncate mt-4 whitespace-pre-wrap overflow-hidden h-[144px]">{community.content}</p> {/* 긴 내용은 잘라냅니다 */}
 
                                             <div className='absolute bottom-2 left-2 w-full flex flex-row justify-between  text-3xl'>
                                                 <div className='flex flex-row gap-4'>

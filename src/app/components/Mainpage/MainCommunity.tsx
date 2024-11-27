@@ -63,7 +63,7 @@ export default function MainCommunity() {
                 <div className='w-[80%] mx-auto mt-12 mb-12'>
                     <p className='text-4xl font-medium mb-4'>최근 등록된 커뮤니티</p>
                     <div className='flex flex-col gap-4 w-full'>
-                        {mainCommunity.map((community) => (
+                        {mainCommunity.slice(0, 3).map((community) => (
                             <div key={community.id}
                                  onClick={() => handleDetailClick(community.id)}
                                  className='relative flex flex-col border-4 w-full h-[380px] rounded-3xl border-yellow-2 p-2 overflow-hidden'
@@ -119,7 +119,7 @@ export default function MainCommunity() {
                     <div className='w-[80%] mx-auto mt-12 mb-12'>
                         <p className='text-5xl font-medium mb-8'>최근 등록된 커뮤니티</p>
                         <div className='flex flex-row gap-4'>
-                            {mainCommunity.map((community) => (
+                            {mainCommunity.slice(0, 3).map((community) => (
                                 <div key={community.id}
                                      className='relative flex flex-col border-4 w-[33%] h-[500px] rounded-3xl border-yellow-2 p-2'
                                 >
@@ -149,21 +149,3 @@ export default function MainCommunity() {
         </>);
 }
 
-
-/*
-*   <section className='mt-12 flex flex-col items-center text-center'>
-            <div className="w-[64%] mt-1 mb-10 border-[2px] border-lightGray/30"></div>
-
-            <div className='w-[60%] mt-14'>
-                <div className='justify-between flex text-center items-center'>
-                    <p className='text-2xl'>전문가의 조언</p>
-                    <Link href='counselors' className='text-yellow-2'>전체보기</Link>
-                </div>
-                <div className='flex gap-6 mt-10'>
-                    <div className='shadow-lg rounded-lg border-yellow-6 border-2 h-[30vh] w-full bg-white'>본문 내용</div>
-                    <div className='shadow-lg rounded-lg border-yellow-6 border-2 h-[30vh] w-full bg-white'>본문 내용</div>
-                    <div className='shadow-lg rounded-lg border-yellow-6 border-2 h-[30vh] w-full bg-white'>본문 내용</div>
-                </div>
-            </div>
-        </section>
-        * */

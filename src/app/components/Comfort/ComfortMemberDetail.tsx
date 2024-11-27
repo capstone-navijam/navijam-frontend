@@ -114,13 +114,13 @@ export default function ComfortMemberDetail() {
                         </div>
                     )}
 
-                    <div className="border-4 rounded-xl h-[50%] w-[95%] mx-auto border-yellow-6 p-4 flex flex-col mt-4">
+                    <div
+                        className="border-4 rounded-xl min-h-[400px] w-[95%] mx-auto border-yellow-6 p-4 flex flex-col mt-4">
                         <div className='justify-between flex flex-row mt-2'>
-                            <div className='flex flex-col gap-2'>
-                                <div className='flex flex-row justify-between'>
+                            <div className='flex flex-col gap-2 w-full'>
+                                <div className='flex flex-row justify-between '>
                                     <p className='mx-2 text-2xl text-yellow-6 font-semibold'>#{comfort.categories.join(' #')}</p>
                                     <div className='flex items-center'>
-                                        <p className='text-xl text-gray-500 mx-2'>작성자: {comfort.writerNickname}</p>
                                         {nickname === comfort.writerNickname ? (<>
                                             <Link href='/mypage'>
                                                 <Image src={comfort.writerProfile} alt="Profile" width={80} height={80}
@@ -130,6 +130,8 @@ export default function ComfortMemberDetail() {
                                             <Image src={comfort.writerProfile} alt="Profile" width={80} height={80}
                                                    className="rounded-full object-cover w-[30px] h-[30px]"/>
                                         </>)}
+                                        <p className='text-xl text-gray-500 mx-2'>작성자: {comfort.writerNickname}</p>
+
                                     </div>
                                 </div>
                                 <h1 className='text-4xl font-semibold mx-2 overflow-hidden text-ellipsis whitespace-nowrap'>{comfort.title}</h1>
@@ -138,13 +140,13 @@ export default function ComfortMemberDetail() {
 
                         <div className="mx-auto w-full border-[1px] border-lightGray/30 mt-2 mb-2"></div>
 
-                        <div className='mt-6 mx-4'>
+                        <div className='mt-6 mx-4 min-h-[200px]'>
                             <p className='whitespace-pre-wrap leadng-normal text-xl'>{comfort.content}</p>
                         </div>
 
-                        {role === "MEMBER" && (
+                        {role === "MEMBER" ? (
                             <div className='flex flex-col mt-auto'>
-                            <span className='w-fit text-lg ml-auto mr-4'>
+                            <span className='w-fit text-2xl ml-auto mr-4'>
                                 {new Date(comfort.createdAt).toLocaleDateString().replace(/\.$/, '')} 작성
                             </span>
                                 <div className='flex flex-row justify-between'>
@@ -173,7 +175,11 @@ export default function ComfortMemberDetail() {
                                     </div>
                                 </div>
                             </div>
-                        )}
+                        ) : (<>
+                         <span className='w-fit text-2xl ml-auto mr-4'>
+                                {new Date(comfort.createdAt).toLocaleDateString().replace(/\.$/, '')} 작성
+                            </span>
+                        </>)}
                     </div>
                 </>
             ) : (
@@ -190,14 +196,14 @@ export default function ComfortMemberDetail() {
                         </div>
                     )}
 
-                    <div className="border-4 rounded-xl h-[50%] w-[80%] mx-auto border-yellow-6 p-4 flex flex-col mt-4">
+                    <div
+                        className="border-4 rounded-xl min-h-[600px] w-[80%] mx-auto border-yellow-6 p-4 flex flex-col mt-4">
                         <div className='justify-between flex flex-row mt-2'>
                             <div className='flex flex-col gap-2'>
                                 <p className='mx-2 text-3xl text-yellow-6 font-semibold'>#{comfort.categories.join(' #')}</p>
                                 <h1 className='text-5xl font-semibold mx-2'>{comfort.title}</h1>
                             </div>
                             <div className='flex items-center mt-10'>
-                                <p className='text-3xl text-gray-500 mx-2'>작성자: {comfort.writerNickname}</p>
                                 {nickname === comfort.writerNickname ? (<>
                                     <Link href='/mypage'>
                                         <Image src={comfort.writerProfile} alt="Profile" width={80} height={80}
@@ -207,19 +213,17 @@ export default function ComfortMemberDetail() {
                                     <Image src={comfort.writerProfile} alt="Profile" width={80} height={80}
                                            className="rounded-full object-cover w-[60px] h-[60px]"/>
                                 </>)}
+                                <p className='text-3xl text-gray-500 mx-2'>작성자: {comfort.writerNickname}</p>
                             </div>
                         </div>
 
                         <div className="mx-auto w-full border-[1px] border-lightGray/30 mt-2 mb-2"></div>
 
-                        <div className='mt-6 mx-4'>
+                        <div className='mt-6 mx-4 min-h-[400px]'>
                             <p className='whitespace-pre-wrap leading-normal text-3xl'>{comfort.content}</p>
                         </div>
 
-                        <span className='w-fit text-xl ml-auto mr-4'>
-                                {new Date(comfort.createdAt).toLocaleDateString().replace(/\.$/, '')} 작성
-                            </span>
-                        {role === "MEMBER" && (
+                        {role === "MEMBER" ? (
                             <div className='flex flex-col mt-auto'>
                                 <div className='flex flex-row justify-between'>
                                     <button
@@ -247,7 +251,11 @@ export default function ComfortMemberDetail() {
                                     </div>
                                 </div>
                             </div>
-                        )}
+                        ) : (<>
+                         <span className='w-fit text-3xl ml-auto mr-4'>
+                                {new Date(comfort.createdAt).toLocaleDateString().replace(/\.$/, '')} 작성
+                            </span>
+                        </>)}
                     </div>
                 </>
             )}
