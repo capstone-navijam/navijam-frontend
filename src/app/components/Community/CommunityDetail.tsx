@@ -126,7 +126,6 @@ export default function CommunityDetail() {
                             <h1 className='text-4xl mt-4 font-semibold overflow-hidden text-ellipsis whitespace-nowrap'>{community.title}</h1>
                         </div>
                         <div className='flex flex-row items-end gap-4'>
-                            <p className='text-3xl overflow-hidden text-ellipsis whitespace-nowrap'>{community.nickname}</p>
                             {nickname === community.nickname ? (<>
                                 <Link href='/mypage'>
                                     <Image src={community.profile} alt="Profile" width={100} height={100}
@@ -137,6 +136,8 @@ export default function CommunityDetail() {
                                 <Image src={community.profile} alt="Profile" width={100} height={100}
                                        className='rounded-full w-[45px] h-[45px]'/>
                             </>)}
+                            <p className='text-3xl overflow-hidden text-ellipsis whitespace-nowrap'>{community.nickname}</p>
+
                         </div>
                     </div>
                     <div className='flex flex-row justify-between'>
@@ -212,7 +213,6 @@ export default function CommunityDetail() {
                         <h1 className='text-6xl mt-4 font-semibold'>{community.title}</h1>
 
                         <div className='flex flex-row items-end gap-4'>
-                            <p className='text-4xl overflow-hidden text-ellipsis whitespace-nowrap'>{community.nickname}</p>
                             {nickname === community.nickname ? (<>
                                 <Link href='/mypage'>
                                     <Image src={community.profile} alt="Profile" width={100} height={100}
@@ -222,6 +222,7 @@ export default function CommunityDetail() {
                                 <Image src={community.profile} alt="Profile" width={100} height={100}
                                        className='rounded-full w-[60px] h-[60px]'/>
                             </>)}
+                            <p className='text-4xl overflow-hidden text-ellipsis whitespace-nowrap'>{community.nickname}</p>
                         </div>
                     </div>
                     <div className='flex flex-row justify-between'>
