@@ -1,7 +1,7 @@
 'use client';
-import React, { useEffect, useState } from 'react';
-import { useTabletHeight } from "@/service/MediaQuery";
-import { MemberComforts } from "@/app/components/MyPage/MemberProfile";
+import React, {useEffect, useState} from 'react';
+import {useTabletHeight} from "@/service/MediaQuery";
+import {MemberComforts} from "@/app/components/MyPage/MemberProfile";
 import Pagination from '@mui/material/Pagination';
 import Link from 'next/link';
 
@@ -27,11 +27,33 @@ export default function MyComfort() {
     }, []);
 
     if (comfort === null) {
-        return <p>데이터를 불러오는 중입니다...</p>;
+        return (
+            <>
+                <h1 className="text-6xl font-semibold mt-4">위로받기 목록</h1>
+                <div
+                    className="border-4 border-yellow-2 w-full min-h-[660px] rounded-2xl mt-4 text-4xl flex items-center justify-center">
+                    데이터를 불러오는 중입니다...
+                </div>
+            </>);
     }
 
     if (comfort.length === 0) {
-        return <p>등록된 데이터가 없습니다. 다시 시도해주세요.</p>;
+        return (
+            <>
+                {isTabletHeight ? (<>
+                    <div
+                        className="border-4 mt-4 border-yellow-2 w-full min-h-[660px] rounded-2xl text-4xl flex items-center justify-center">
+                    등록된 위로받기 글이 없습니다.
+                    </div>
+                </>) : (<>
+                    <h1 className="text-6xl font-semibold mt-4">위로받기 목록</h1>
+                    <div
+                        className="border-4 mt-4 border-yellow-2 w-full min-h-[660px] rounded-2xl text-4xl flex items-center justify-center">
+                        등록된 위로받기 글이 없습니다.
+                    </div>
+                </>)}
+
+            </>);
     }
 
     const answeredComforts = comfort.filter(item => item.isAnswered);
@@ -119,8 +141,8 @@ export default function MyComfort() {
                                 {currentAnsweredComfort.map(item => (
                                     <Link href={`/comforts/${item.id}`} key={item.id}>
                                         <div className="p-2 border-b flex flex-row justify-between items-center">
-                                            <p className="text-lg font-medium">{item.title}</p>
-                                            <p className="text-sm text-gray-500">
+                                            <p className="text-3xl font-medium">{item.title}</p>
+                                            <p className="text-xl text-gray-500">
                                                 {new Date(item.createdAt).toLocaleDateString()}
                                             </p>
                                         </div>

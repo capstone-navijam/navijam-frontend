@@ -122,10 +122,10 @@ export default function Header({nickname, status, role, profileImage}: HeaderPro
                                     <Link href='/mypage' className='hover:text-gray-700 hover:scale-105'>마이 페이지</Link>
                                 </nav>
 
-                                <div className='flex ml-auto gap-6 text-center items-center'>
-                                    <p className='text-3xl font-[Tenada]'>
+                                <div className='flex text-center items-center w-[20%] justify-end'>
+                                    <p className='text-3xl font-[Tenada] w-full '>
                                         <span className='text-yellow-6'>{nickname}</span>
-                                        {role === "LISTENER" ? (<> 상담사님<br/>환영합니다.</>) : (<>님 <br/>환영합니다.</>)}
+                                        {role === "LISTENER" ? (<span> 상담사님<br/>어서오세요.</span>) : (<span>님<br/>어서오세요.</span>)}
                                     </p>
                                     {profile ? (
                                         <Link href='/mypage'>
@@ -134,7 +134,7 @@ export default function Header({nickname, status, role, profileImage}: HeaderPro
                                                 alt="Profile Image"
                                                 width={60}
                                                 height={60}
-                                                className="rounded-full object-cover -mt-2 w-[60px] h-[60px]"
+                                                className="rounded-full -mt-2 w-[75px] h-[75px]"
                                             /></Link>
                                     ) : (
                                         <Link href="/mypage" className="text-3xl">
@@ -219,7 +219,8 @@ export default function Header({nickname, status, role, profileImage}: HeaderPro
                                     <Link href='/chat' className='hover:text-gray-700 hover:scale-105'>실시간 상담</Link>
                                     <Link href='/mypage' className='hover:text-gray-700 hover:scale-105'>마이 페이지</Link>
                                 </nav>
-                                <Link href='/mypage' className='ml-auto text-gray-400 hover:text-gray-700 -mt-2 text-5xl'><FiUser/></Link>
+                                <Link href='/mypage'
+                                      className='ml-auto text-gray-400 hover:text-gray-700 -mt-2 text-5xl'><FiUser/></Link>
                             </div>
                         )}
 

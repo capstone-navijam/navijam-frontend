@@ -28,30 +28,58 @@ export default function ComfortCategory({selectedCategories, setSelectedCategori
 
     return (
         <>
-            <div className='flex flex-col w-full'>
-                <div className='flex'>
-                    <label htmlFor='category'
-                           className={` ${isTabletHeight ? 'text-2xl' : 'text-3xl'}  font-semibold w-40 text-wrap`}>카테고리<span
-                        className="text-red-500">*</span></label>
+            {isTabletHeight ? (<>
+                <div className='flex flex-col w-full'>
+                    <div className='flex'>
+                        <label htmlFor='category'
+                               className={`text-3xl w-36`}>카테고리</label>
 
-                    <div className=' text-center flex gap-4 flex-wrap w-full'>
-                    {categories.map(category => (
-                            <div
-                                key={category}
-                                onClick={() => handleClick(category)}
-                                className={`text-xl h-fit w-20 p-1 rounded-2xl border-2 cursor-pointer ${selectedCategories.includes(category) ? 'bg-yellow-6 text-white border-yellow-6' : 'bg-white text-black border-yellow-6'}`}
-                            >
-                                {category}
-                            </div>
-                        ))}
+                        <div className=' text-center flex gap-4 flex-wrap w-full'>
+                            {categories.map(category => (
+                                <div
+                                    key={category}
+                                    onClick={() => handleClick(category)}
+                                    className={`text-xl h-fit w-24 p-1 rounded-2xl border-2 cursor-pointer ${selectedCategories.includes(category) ? 'bg-yellow-6 text-white border-yellow-6' : 'bg-white text-black border-yellow-6'}`}
+                                >
+                                    {category}
+                                </div>
+                            ))}
+                        </div>
                     </div>
+                    {/* 선택된 카테고리가 3개 이상일 때 경고 메시지 표시 */}
+                    {selectedCategories.length >= 3 && (
+                        <p className={`${isTabletHeight ? 'w-[56%]' : 'w-[72%]'} text-red-500 mx-auto mt-2`}>카테고리는 최대
+                            3개까지만
+                            가능합니다.</p>
+                    )}
+
                 </div>
-                {/* 선택된 카테고리가 3개 이상일 때 경고 메시지 표시 */}
-                {selectedCategories.length >= 3 && (
-                    <p className={`${isTabletHeight ? 'w-[65%]' : 'w-[72%]'} text-red-500 mx-auto mt-2`}>카테고리는 최대 3개까지만 가능합니다.</p>
-                )}
+            </>) : (<>
+                <div className='flex flex-col w-full'>
+                    <div className='flex'>
+                        <label htmlFor='category'
+                               className={`text-3xl w-36`}>카테고리</label>
 
-            </div>
+                        <div className=' text-center flex gap-4 flex-wrap w-full'>
+                            {categories.map(category => (
+                                <div
+                                    key={category}
+                                    onClick={() => handleClick(category)}
+                                    className={`text-xl h-fit w-24 p-1 rounded-2xl border-2 cursor-pointer ${selectedCategories.includes(category) ? 'bg-yellow-6 text-white border-yellow-6' : 'bg-white text-black border-yellow-6'}`}
+                                >
+                                    {category}
+                                </div>
+                            ))}
+                        </div>
+                    </div>
+                    {/* 선택된 카테고리가 3개 이상일 때 경고 메시지 표시 */}
+                    {selectedCategories.length >= 3 && (
+                        <p className={`${isTabletHeight ? 'w-[65%]' : 'w-[72%]'} text-red-500 mx-auto mt-2`}>카테고리는 최대
+                            3개까지만
+                            가능합니다.</p>
+                    )}
 
+                </div>
+            </>)}
         </>);
 }

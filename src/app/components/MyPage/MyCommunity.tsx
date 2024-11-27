@@ -42,11 +42,29 @@ export default function MyCommunity() {
     }, []);
 
     if (community === null || communityComment === null) {
-        return <p>데이터를 불러오는 중입니다...</p>;
+        return <div
+            className="border-4 border-yellow-2 w-full min-h-[660px] rounded-2xl mt-auto text-4xl flex items-center justify-center">
+            데이터를 불러오는 중입니다.
+        </div>;
     }
 
     if (community.length === 0 && communityComment.length === 0) {
-        return <p>등록된 데이터가 없습니다. 다시 시도해주세요.</p>;
+        return (
+            <>
+                {isTabletHeight ? (<>
+                    <div
+                        className="border-4 mt-4 border-yellow-2 w-full min-h-[660px] rounded-2xl text-4xl flex items-center justify-center">
+                        등록된 커뮤니티 글이 없습니다.
+                    </div>
+                </>) : (<>
+                    <h1 className="text-6xl font-semibold mt-4">커뮤니티 목록</h1>
+                    <div
+                        className="border-4 mt-4 border-yellow-2 w-full min-h-[660px] rounded-2xl text-4xl flex items-center justify-center">
+                        등록한 커뮤니티 글이 없습니다.
+                    </div>
+                </>)}
+
+            </>);
     }
 
     const currentCommunity = community.slice(
