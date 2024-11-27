@@ -125,7 +125,7 @@ export default function Header({nickname, status, role, profileImage}: HeaderPro
                                 <div className='flex ml-auto gap-6 text-center items-center'>
                                     <p className='text-3xl font-[Tenada]'>
                                         <span className='text-yellow-6'>{nickname}</span>
-                                        {role === "LISTENER" ? (<>상담사님<br/>환영합니다.</>) : (<>님 환영합니다.</>)}
+                                        {role === "LISTENER" ? (<> 상담사님<br/>환영합니다.</>) : (<>님 <br/>환영합니다.</>)}
                                     </p>
                                     {profile ? (
                                         <Link href='/mypage'>

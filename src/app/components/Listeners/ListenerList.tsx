@@ -101,8 +101,8 @@ export default function ListenerList() {
                                                 <span
                                                     className={`${isTabletHeight ? 'text-2xl' : 'text-4xl'} font-medium`}>상담사</span>
                                             </h1>
-                                            <p className={`text-yellow-2 ${isTabletHeight ? 'text-xl mt-3' : 'text-3xl mt-auto'} font-bold`}>#{listener.categories.join(' #')}</p>
-                                            <div className={`${isTabletHeight ? 'mt-3 text-xl' : 'mt-10'} text-2xl  -mx-1`}>평점: <span
+                                            <p className={`text-yellow-2 ${isTabletHeight ? 'text-xl mt-3' : 'text-3xl mt-6'} font-bold`}>#{listener.categories.join(' #')}</p>
+                                            <div className={`${isTabletHeight ? 'mt-3 text-xl' : 'mt-7'} text-2xl  -mx-1`}>평점: <span
                                                 className='text-yellow-2'>4.3</span></div>
                                         </div>
                                         <h2 className={`${isTabletHeight ? 'text-xl' : 'text-3xl'} text-gray-600`}><span
