@@ -154,7 +154,7 @@ export default function SelectChatting() {
                                             className='flex flex-row p-2 border-2 min-h-[200px] justify-center items-center'>
                                             <Image src={chat.profile} alt="Default Image" width={250} height={250}
                                                    className='w-[150px] h-[200px] '/>
-                                            <div className='w-[80%] flex flex-col gap-10'>
+                                            <div className='w-[80%] flex flex-col gap-10 mx-2'>
                                                 <div className='flex flex-row justify-between w-full'>
                                                     <h1 className='text-4xl'>{chat.nickname}<span
                                                         className='text-3xl mx-1'>상담사</span></h1>
@@ -195,7 +195,7 @@ export default function SelectChatting() {
                                             className='flex flex-row p-2 border-2 min-h-[200px] justify-center items-center'>
                                             <Image src={chat.profile} alt="Default Image" width={250} height={250}
                                                    className='w-[150px] h-[200px] '/>
-                                            <div className='w-[80%] flex flex-col gap-10'>
+                                            <div className='w-[80%] flex flex-col gap-10 mx-4'>
                                                 <div className='flex flex-row justify-between w-full'>
                                                     <h1 className='text-4xl'>{chat.nickname}<span
                                                         className='text-3xl mx-1'>상담사</span></h1>
