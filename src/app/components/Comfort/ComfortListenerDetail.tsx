@@ -213,3 +213,6 @@ export default function ComfortListenerDetail({consoles}: Props) {
         </>
     );
 }
+
+
+{/* role === "MEMBER"는 모든 ComfortCommentsDetail을 볼 수 있지만, role === "LISTENER" 인 경우 다른 상담사의 댓글을 볼 수 없고 자기남긴 댓글만 볼 수 있게"*/}
