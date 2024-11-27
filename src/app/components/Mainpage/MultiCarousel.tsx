@@ -13,7 +13,7 @@ export default function MultiCarousel() {
     const items = [
         {
             id: 1,
-            description: "당신의 하루를 온전히\n할 수 있도록 도와줄게요.",
+            description: "당신의 하루를 온전히\n마무리 할 수 있도록 도와줄게요.",
             button: '위로받기',
             path: 'comforts',
             image: '/images/carouselImage1.svg',

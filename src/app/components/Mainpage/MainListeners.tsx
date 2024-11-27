@@ -109,7 +109,7 @@ export default function MainListeners() {
                                 alt="Listener Image"
                                 width={isTabletHeight ? 230 : 480}
                                 height={isTabletHeight ? 300 : 400}
-                                className={isTabletHeight ? 'w-full h-[300px]' : 'w-full h-[400px]'}
+                                className={isTabletHeight ? 'w-full h-[300px]' : 'w-full h-[500px]'}
                             />
                             <div className='flex flex-col'>
                                 <h1 className={`${isTabletHeight ? 'text-3xl' : 'text-4xl'} font-semibold`}>
