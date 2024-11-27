@@ -16,6 +16,10 @@ export interface MyPageListenerProfileProps {
     formattedPrice: string,
 }
 
+export interface MyPageListenerConsoleProps {
+    id
+}
+
 export async function ListenerProfile(): Promise<MyPageListenerProfileProps | null> {
     const token = getCookie('accessToken');
 
