@@ -112,20 +112,20 @@ export default function MainListeners() {
                                 className={isTabletHeight ? 'w-full h-[300px]' : 'w-full h-[400px]'}
                             />
                             <div className='flex flex-col'>
-                                <h1 className={`${isTabletHeight ? 'text-2xl' : 'text-4xl'} font-semibold`}>
-                                    {listener.nickname} <span className='text-lg font-medium'>상담사</span>
+                                <h1 className={`${isTabletHeight ? 'text-3xl' : 'text-4xl'} font-semibold`}>
+                                    {listener.nickname} <span className='text-xl font-medium'>상담사</span>
                                 </h1>
-                                <p className='text-yellow-2 mt-auto font-bold'>
+                                <p className='text-yellow-2 text-xl mt-auto font-bold'>
                                     #{listener.categories.join(' #')}
                                 </p>
                             </div>
-                            <h2 className={`${isTabletHeight ? 'text-lg' : 'text-xl'} text-gray-600 italic overflow-hidden whitespace-nowrap text-ellipsis max-w-full`}>
+                            <h2 className={`${isTabletHeight ? 'text-2xl' : 'text-2xl'} text-gray-600 italic overflow-hidden whitespace-nowrap text-ellipsis max-w-full`}>
                                 {listener.description}
                             </h2>
-                            <p className='flex flex-row items-center gap-0.5'>
+                            <p className='flex flex-row text-2xl  items-center gap-0.5'>
                                 <MdLocationOn/> {listener.address}
                             </p>
-                            <p className='flex flex-row items-center gap-0.5'>
+                            <p className='flex flex-row text-2xl items-center gap-0.5'>
                                 <MdLocalPhone/> {listener.contactNumber}
                             </p>
                         </div>
