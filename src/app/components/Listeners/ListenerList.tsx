@@ -24,7 +24,7 @@ export default function ListenerList() {
             try {
                 const data = await ListenersListAll();
                 setListeners(data)
-
+                setSelectedListener(data);
             } catch (err) {
                 console.error('상담사를 불러오는데 실패했습니다.')
             }
@@ -37,6 +37,7 @@ export default function ListenerList() {
         setShowListenersDetail(true);
         setSelectedListener(listener);
 
+
     }
 
     const handleCloseModal = () => {
@@ -47,10 +48,12 @@ export default function ListenerList() {
         setCurrentPage(page);
     }
 
+
     const currentListeners = listeners.slice(
         (currentPage - 1) * listenersPerPage,
         currentPage * listenersPerPage
     )
+
 
     return (
         <>
@@ -62,6 +65,7 @@ export default function ListenerList() {
                         onClick={(e) => e.stopPropagation()}
                         className={`bg-white rounded-xl shadow-lg  ${isTabletHeight ? ' w-[70%] min-h-[1000px]' : ' w-[48%] min-h-[1000px]'}`}>
                         <ListenerDetail
+                            id={selectedListener.id}
                             nickname={selectedListener.nickname}
                             categories={selectedListener.categories}
                             profile={selectedListener.profile}
@@ -70,6 +74,8 @@ export default function ListenerList() {
                             description={selectedListener.description}
                             address={selectedListener.address}
                             contactNumber={selectedListener.contactNumber}
+                            availableTime={selectedListener.availableTime}
+                            formattedPrice={selectedListener.formattedPrice}
                         />
 
 
@@ -95,14 +101,15 @@ export default function ListenerList() {
                                            height={400}
                                            className='rounded-2xl'
                                     />
-                                    <div className='flex flex-col gap-6 mx-4'>
+                                    <div className='flex flex-col gap-6 mx-4 w-full'>
                                         <div className='flex gap-2'>
                                             <h1 className={`${isTabletHeight ? 'text-4xl' : 'text-6xl'} font-semibold`}>{listener.nickname}
                                                 <span
                                                     className={`${isTabletHeight ? 'text-2xl' : 'text-4xl'} font-medium`}>상담사</span>
                                             </h1>
                                             <p className={`text-yellow-2 ${isTabletHeight ? 'text-xl mt-3' : 'text-3xl mt-6'} font-bold`}>#{listener.categories.join(' #')}</p>
-                                            <div className={`${isTabletHeight ? 'mt-3 text-xl' : 'mt-7'} text-2xl  -mx-1`}>평점: <span
+                                            <div
+                                                className={`${isTabletHeight ? 'mt-3 text-xl' : 'mt-7'} text-2xl  -mx-1`}>평점: <span
                                                 className='text-yellow-2'>4.3</span></div>
                                         </div>
                                         <h2 className={`${isTabletHeight ? 'text-xl' : 'text-3xl'} text-gray-600`}><span
@@ -111,10 +118,15 @@ export default function ListenerList() {
                                             <MdLocationOn/>{listener.address}</p>
                                         <p className={`flex flex-row items-center gap-1 ${isTabletHeight ? 'text-xl' : 'text-2xl'}`}>
                                             <MdLocalPhone/>{listener.contactNumber}</p>
-                                        <p className={`${isTabletHeight ? 'text-xl' : 'text-3xl'} mt-2 flex flex-row gap-1 items-center`}
-                                           key={listener.id}
-                                           onClick={() => handleDetailClick(listener)}
-                                        >전문가 프로필 보기 <MdArrowForward/></p>
+
+                                        <div className='w-full flex flex-row justify-between'>
+                                            <p className={`${isTabletHeight ? 'text-xl' : 'text-3xl'} mt-2 items-center`}>1회
+                                                상담 가격: {listener.formattedPrice}</p>
+                                            <p className={`${isTabletHeight ? 'text-xl' : 'text-3xl'} mt-2 flex flex-row gap-1 items-center`}
+                                               key={listener.id}
+                                               onClick={() => handleDetailClick(listener)}
+                                            >전문가 프로필 보기 <MdArrowForward/></p>
+                                        </div>
                                     </div>
                                 </div>
                                 <div
@@ -134,6 +146,3 @@ export default function ListenerList() {
         </>
     );
 }
-
-
-//   {isMobile ? (<></>): (<aside><ListenerSearch/><ListenerSearchCategory/></aside>)}

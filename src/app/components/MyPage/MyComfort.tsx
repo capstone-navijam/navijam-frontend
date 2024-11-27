@@ -43,13 +43,13 @@ export default function MyComfort() {
                 {isTabletHeight ? (<>
                     <div
                         className="border-4 mt-4 border-yellow-2 w-full min-h-[660px] rounded-2xl text-4xl flex items-center justify-center">
-                    등록된 위로받기 글이 없습니다.
+                    등록한 위로받기 글이 없습니다.
                     </div>
                 </>) : (<>
                     <h1 className="text-6xl font-semibold mt-4">위로받기 목록</h1>
                     <div
                         className="border-4 mt-4 border-yellow-2 w-full min-h-[660px] rounded-2xl text-4xl flex items-center justify-center">
-                        등록된 위로받기 글이 없습니다.
+                        등록한 위로받기 글이 없습니다.
                     </div>
                 </>)}
 

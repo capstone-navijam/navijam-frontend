@@ -12,6 +12,7 @@ export interface CommunityListProps {
     liked: boolean,
     likeCount: number,
     timestamp: string,
+    commentCount: number,
 }
 
 export default async function CommunityListAll(): Promise<CommunityListProps[]> {
@@ -39,7 +40,8 @@ export default async function CommunityListAll(): Promise<CommunityListProps[]> 
             memberId: item.memberId,
             liked: item.liked,
             likeCount: item.likeCount,
-            timestamp: item.timestamp
+            timestamp: item.timestamp,
+            commentCount: item.commentCount,
         }))
     }
 

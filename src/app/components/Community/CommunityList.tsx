@@ -124,7 +124,11 @@ export default function CommunityList() {
                                                 initialLiked={community.liked}
                                                 initialLikeCount={community.likeCount}
                                             />
-                                            <FaRegCommentAlt className="text-yellow-2" />
+                                            <div className='flex flex-row gap-2'>
+                                                <FaRegCommentAlt className='text-yellow-2'/>
+                                                <span
+                                                    className='text-yellow-2 -mt-1'>{community.commentCount}</span>
+                                            </div>
                                         </div>
                                         <p className="text-xl mx-6">{community.timestamp}</p>
                                     </div>
@@ -206,7 +210,11 @@ export default function CommunityList() {
                                                             initialLiked={community.liked}
                                                             initialLikeCount={community.likeCount}
                                                         />
-                                                        <FaRegCommentAlt className="text-yellow-2"/>
+                                                        <div className='flex flex-row gap-2'>
+                                                            <FaRegCommentAlt className='text-yellow-2'/>
+                                                            <span
+                                                                className='text-yellow-2 -mt-1'>{community.commentCount}</span>
+                                                        </div>
                                                     </div>
                                                     <p className="text-2xl mx-6">{community.timestamp}</p>
                                                 </div>
