@@ -68,7 +68,7 @@ export default function ProfileCategory() {
                 </section>
             ) : (
                 <section className="flex flex-row">
-                    <aside className="border-l-2 w-[35%] shadow-custom">
+                    <aside className="border-l-2 w-[24%] shadow-custom">
                         <ul className="flex flex-col gap-24 p-4 mx-4 font-bold justify-center h-full">
                             {menuItems.map((menu) => (
                                 <li
@@ -81,7 +81,7 @@ export default function ProfileCategory() {
                                     {menu.label}
                                     <div>
                                         {selectedMenu === menu.id && (
-                                            <div className="w-[30%] border-[2px] border-black mt-2"></div>
+                                            <div className="w-[44%] border-[2px] border-black mt-2"></div>
                                         )}
                                     </div>
                                 </li>

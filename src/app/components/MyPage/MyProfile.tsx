@@ -107,9 +107,8 @@ export default function MyProfile() {
                         className="border-4 border-yellow-6 rounded-2xl flex flex-row mt-4 items-center w-full min-h-[300px] p-4 gap-4"
                     >
                         {/* 프로필 이미지 변경 */}
-
-                        <ImageChange ImageUrl={handleImageUpload}/>
                         <div className="flex flex-col gap-8 w-full">
+                            <ImageChange ImageUrl={handleImageUpload}/>
                             <form onSubmit={handleSubmit} className="flex flex-row gap-4 items-center">
                                 <span className="text-3xl">닉네임 :</span>
                                 <div className='flex flex-col w-[55%] mt-6'>
@@ -145,37 +144,42 @@ export default function MyProfile() {
                 <article className="w-full min-h-[805px]">
                     <h1 className="text-6xl w-fit font-semibold mt-4">내 프로필</h1>
                     <div
-                        className="border-4 border-yellow-6 rounded-2xl flex flex-row mt-24 items-center w-[95%] mx-auto min-h-[480px] p-4 gap-4"
+                        className="border-4 border-yellow-6 rounded-2xl flex flex-row mt-12 items-center w-[95%] mx-auto min-h-[740px] p-4 gap-4"
                     >
                         {/* 프로필 이미지 변경 */}
-                        <ImageChange ImageUrl={handleImageUpload}/>
-                        <div className="flex flex-col gap-20 w-full">
-                            <form onSubmit={handleSubmit} className="flex flex-row gap-4 items-center">
-                                <span className="text-5xl">닉네임 :</span>
-                                <div className='flex flex-col w-[60%] mx-4 mt-6'>
-                                    <input
-                                        id="nickname"
-                                        className="block border border-yellow-6 p-2 rounded placeholder:text-2xl text-4xl"
-                                        type="text"
-                                        pattern="^[a-zA-Z가-힣0-9]{2,8}$"
-                                        value={nickname.value}
-                                        onChange={nickname.onChange}
-                                        placeholder="새로운 닉네임을 입력해주세요."
-                                    />
-                                    <p className='mx-1 text-gray-500'>입력하지 않을 시, 닉네임은 유지됩니다.</p>
+                        <div className="flex flex-col w-full min-h-[600px]">
+                            <ImageChange ImageUrl={handleImageUpload}/>
+
+                            <div className='flex flex-col gap-12 mt-10'>
+                                <form onSubmit={handleSubmit} className="flex flex-row  items-center">
+                                    <span className="text-5xl">닉네임 :</span>
+                                    <div className='flex flex-col w-[60%] mx-4 mt-6'>
+                                        <input
+                                            id="nickname"
+                                            className="block border border-yellow-6 p-2 rounded placeholder:text-2xl text-4xl"
+                                            type="text"
+                                            pattern="^[a-zA-Z가-힣0-9]{2,8}$"
+                                            value={nickname.value}
+                                            onChange={nickname.onChange}
+                                            placeholder="새로운 닉네임을 입력해주세요."
+                                        />
+                                        <p className='mx-1 text-gray-500'>입력하지 않을 시, 닉네임은 유지됩니다.</p>
+                                    </div>
+                                    <button type="submit"
+                                            className="bg-yellow-6 text-white text-3xl rounded-xl p-2">닉네임 변경
+                                    </button>
+                                </form>
+                                <div className="flex flex-row justify-between">
+                                    <div className='flex flex-row items-center'>
+                                        <span className="text-5xl">아이디 :</span>
+                                        <p className="text-4xl mx-4"> {member.email}</p>
+                                    </div>
                                 </div>
-                                <button type="submit"
-                                        className="bg-yellow-6 text-white text-3xl rounded-xl p-2">닉네임 변경
-                                </button>
-                            </form>
-                            <div className="flex flex-row justify-between">
-                                <div className='flex flex-row items-center'>
-                                    <span className="text-5xl">아이디 :</span>
-                                    <p className="text-4xl mx-8"> {member.email}</p>
-                                </div>
+
                                 <button
                                     onClick={() => router.push('/mypage/changepassword')}
-                                    className="bg-yellow-6 text-white text-3xl rounded-xl p-2">비밀번호 변경
+                                    className="border-b-4 border-yellow-2 text-black text-4xl rounded-none p-2 w-fit mt-16 -mb-4">비밀번호
+                                    변경
                                 </button>
                             </div>
                         </div>
