@@ -84,7 +84,11 @@ export default function MainCommunity() {
                                 <div className='absolute bottom-4 left-4 flex flex-row gap-4 text-3xl'>
                                     <CommunityLikesCount communityId={community.id} initialLiked={community.liked}
                                                          initialLikeCount={community.likeCount}/>
-                                    <FaRegCommentAlt className='text-yellow-2'/>
+                                    <div className='flex flex-row gap-2'>
+                                        <FaRegCommentAlt className='text-yellow-2'/>
+                                        <span
+                                            className='text-yellow-2 -mt-1'>{community.commentCount}</span>
+                                    </div>
                                 </div>
                             </div>
 
@@ -139,7 +143,11 @@ export default function MainCommunity() {
                                     <div className='absolute bottom-4 left-4 flex flex-row gap-4 text-3xl'>
                                         <CommunityLikesCount communityId={community.id} initialLiked={community.liked}
                                                              initialLikeCount={community.likeCount}/>
-                                        <FaRegCommentAlt className='text-yellow-2'/>
+                                        <div className='flex flex-row gap-2'>
+                                            <FaRegCommentAlt className='text-yellow-2'/>
+                                            <span
+                                                className='text-yellow-2 -mt-1'>{community.commentCount}</span>
+                                        </div>
                                     </div>
                                 </div>
                             ))}
