@@ -112,7 +112,7 @@ export default function ChatRoomDetail({roomId}) {
     return (
         <>{isTabletHeight ? (<>
             <section className='w-full'>
-                <div className="max-h-[1100px] min-h-[1100px] overflow-y-auto">
+                <div className="max-h-[1000px] min-h-[1000px] overflow-y-auto">
                     {messages.map((message, index) => {
                         const isOwnMessage = message.senderNickname === nickname;
 
