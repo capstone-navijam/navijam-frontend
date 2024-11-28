@@ -60,14 +60,17 @@ export default function MainListeners() {
                     onClick={(e) => e.stopPropagation()}
                     className='bg-white rounded-xl shadow-lg w-[70%] h-auto '>
                     <ListenerDetail
+                        id={selectedListener.id}
                         nickname={selectedListener.nickname}
-                        profile={selectedListener.profile}
                         categories={selectedListener.categories}
+                        profile={selectedListener.profile}
                         career={selectedListener.career}
                         education={selectedListener.education}
                         description={selectedListener.description}
                         address={selectedListener.address}
                         contactNumber={selectedListener.contactNumber}
+                        availableTime={selectedListener.availableTime}
+                        formattedPrice={selectedListener.formattedPrice}
                     />
                 </div>
             </div>
