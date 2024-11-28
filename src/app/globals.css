@@ -3,8 +3,12 @@
 @tailwind utilities;
 
 html, body {
-    height: 100vh;
+    margin: 0;
+    padding: 0;
+    height: 100vh; /* 뷰포트 높이에 맞게 설정 */
+    width: 100%; /* 뷰포트 너비를 꽉 채우도록 설정 */
 }
+
 
 @font-face {
     font-family: "Tenada";

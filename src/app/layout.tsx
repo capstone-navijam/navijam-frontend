@@ -60,7 +60,10 @@ export default function RootLayout({
         <body className='flex flex-col w-full mx-auto'>
         <Header nickname={nickname} status={status} role={role} profileImage={profile}/>
         <main className='grow'>{children}</main>
-        <Footer/>
+        <footer className='footer'>
+            <Footer/>
+        </footer>
+
         </body>
         </html>
     );

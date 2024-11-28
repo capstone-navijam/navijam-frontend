@@ -86,8 +86,8 @@ export default function ProfileCategory() {
                     </div>
                 </section>
             ) : (
-                <section className="flex flex-row">
-                    <aside className="border-l-2 w-[24%] shadow-custom">
+                <section className="flex flex-row h-full">
+                    <aside className="border-l-2 w-[24%] shadow-custom h-full">
                         <ul className="flex flex-col gap-24 p-4 mx-4 font-bold justify-center h-full">
                             {menuItems.map((menu) => (
                                 <li
