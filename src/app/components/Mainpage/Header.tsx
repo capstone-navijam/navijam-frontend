@@ -104,7 +104,7 @@ export default function Header({nickname, status, role, profileImage}: HeaderPro
                         {/* PC 화면 */}
                         {isPC && (
                             <div className='flex p-4 font-["Tenada"]'>
-                                <nav className='flex items-center text-4xl gap-28 font-semibold text-gray-400'>
+                                <nav className='flex items-center text-3xl gap-28 font-semibold text-gray-400'>
                                     {/* 텍스트 로고 이미지 */}
                                     <Link href="/">
                                         <Image src="/images/TextLogo.png" alt="icon" width={150} height={150}
@@ -202,7 +202,7 @@ export default function Header({nickname, status, role, profileImage}: HeaderPro
                             </div>
                         ) : (
                             <div className='flex p-4 font-["Tenada"] items-center'>
-                                <nav className='flex items-center text-4xl gap-28 font-semibold text-gray-400'>
+                                <nav className='flex items-center text-3xl gap-28 font-semibold text-gray-400'>
                                     {/* 텍스트 로고 이미지 */}
                                     <Link href="/">
                                         <Image src="/images/TextLogo.png" alt="icon" width={150} height={150}

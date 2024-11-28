@@ -61,9 +61,9 @@ export default function ChatLayout({children}: { children: React.ReactNode }) {
 
     // 테블릿이 아닐 때 렌더링
     return (
-        <div className="flex">
+        <div className="flex h-full">
             {/* 좌측 상담 기록 */}
-            <article>
+            <article className='w-[45%]'>
                 <SelectChatting/>
             </article>
 

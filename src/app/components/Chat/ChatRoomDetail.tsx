@@ -178,8 +178,8 @@ export default function ChatRoomDetail({roomId}) {
                 </div>
             </section>
         </>) : (<>
-            <section className='w-full  flex flex-col justify-between'>
-                <div className="min-h-[820px] max-h-[840px] overflow-y-auto">
+            <section className='w-full  flex flex-col justify-between h-full'>
+                <div className="min-h-[1000px] max-h-[1000px] overflow-y-auto">
                     {messages.map((message, index) => {
                         const isOwnMessage = message.senderNickname === nickname;
 
@@ -220,7 +220,7 @@ export default function ChatRoomDetail({roomId}) {
                     })}
                     <div ref={messagesEndRef}></div>
                 </div>
-                <div className="w-full flex flex-row gap-4">
+                <div className="w-full flex flex-row gap-4 mb-10">
                     <input
                         type="text"
                         value={newMessage}

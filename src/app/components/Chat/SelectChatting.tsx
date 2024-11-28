@@ -55,7 +55,7 @@ export default function SelectChatting() {
         <>
             {role === "LISTENER" ? (<>
                 {isTabletHeight ? (<>
-                    <aside className='border-r-4 w-full'>
+                    <aside className='border-r-4 w-full h-full'>
                         {/* 상단 상담 기록 헤더 */}
                         <div className='border-b-2 flex justify-center items-center text-center bg-yellow-3'
                              style={{height: '140px'}}>
@@ -65,7 +65,7 @@ export default function SelectChatting() {
                         {/* 스크롤 가능한 채팅 목록 영역 */}
                         {chatRoomListener.map((chat) => (<>
                             <Link key={chat.id} href={`/chat/${chat.id}`}>
-                                <div className='overflow-y-scroll' style={{height: '940px'}}>
+                                <div className='overflow-y-scroll h-full' style={{height: '940px'}}>
                                     {/* 1:1 상담 채팅 목록 */}
                                     <div className="flex flex-col gap-2">
                                         <div
@@ -95,9 +95,9 @@ export default function SelectChatting() {
                         </>))}
                     </aside>
                 </>) : (<>
-                    <aside className='border-r-4 shadow-custom' style={{width: '540px', height: '905px'}}>
+                    <aside className='border-r-4 shadow-custom h-full'>
                         {/* 상단 상담 기록 헤더 */}
-                        <div className='border-b-2 flex justify-center items-center text-center bg-yellow-3'
+                        <div className='border-b-2 flex justify-center items-center text-center bg-yellow-3 h-full'
                              style={{height: '140px'}}>
                             <h1 className='text-5xl font-bold '>상담 기록</h1>
                         </div>
@@ -178,7 +178,7 @@ export default function SelectChatting() {
                         </>))}
                     </aside>
                 </>) : (<>
-                    <aside className='border-r-4 shadow-custom' style={{width: '540px', height: '905px'}}>
+                    <aside className='border-r-4 shadow-custom h-full'>
                         {/* 상단 상담 기록 헤더 */}
                         <div className='border-b-2 flex justify-center items-center text-center bg-yellow-3'
                              style={{height: '140px'}}>
@@ -188,7 +188,7 @@ export default function SelectChatting() {
                         {/* 스크롤 가능한 채팅 목록 영역 */}
                         {chatRoomMember.map((chat) => (<>
                             <Link key={chat.id} href={`/chat/${chat.id}`}>
-                                <div className='overflow-y-scroll' style={{height: '940px'}}>
+                                <div className='overflow-y-scroll' style={{height: '240px'}}>
                                     {/* 1:1 상담 채팅 목록 */}
                                     <div className="flex flex-col gap-2">
                                         <div
