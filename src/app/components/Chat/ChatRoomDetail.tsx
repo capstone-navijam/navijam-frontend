@@ -100,10 +100,28 @@ export default function ChatRoomDetail({roomId}) {
     };
 
     const handleKeyDown = (e) => {
+        console.log("e.key", e.key);
         if (e.key === "Enter") {
+            // Shift + Enter를 눌렀을 경우 줄바꿈 허용
+            if (e.shiftKey) {
+                return;
+            }
+
+            // 기본 동작 방지
+            e.preventDefault();
+
+            // 입력 값이 공백이거나 조합 중이면 전송하지 않음
+            if (!newMessage?.trim() || e.nativeEvent.isComposing) {
+                return;
+            }
+
+            console.log("Sending message:", newMessage);
             handleSendMessage();
         }
     };
+
+
+
 
     const handleExit = () => {
         socket.emit("endChatRoom", {roomId});
@@ -224,24 +242,25 @@ export default function ChatRoomDetail({roomId}) {
                     <input
                         type="text"
                         value={newMessage}
-                        className="border-2 p-4 w-full border-yellow-2 mx-10 rounded-2xl text-2xl"
+                        className="border-2 p-4 w-full border-yellow-2 mx-10 rounded-2xl text-xl"
                         placeholder="입력하기"
-                        onChange={(e) => setNewMessage(e.target.value)}
-                        onKeyDown={handleKeyDown}
+                        onChange={(e) => setNewMessage(e.target.value)} // 상태 업데이트
+                        onKeyDown={handleKeyDown} // Enter 키 이벤트 처리
                     />
                     <button
                         onClick={handleSendMessage}
-                        className="w-[10%] rounded-2xl  bg-yellow-2 text-white p-4 text-2xl"
+                        className="w-[15%] rounded-2xl bg-yellow-2 text-white p-4 text-xl"
                     >
                         전송
                     </button>
                     <button
                         onClick={handleExit}
-                        className="w-[10%] rounded-2xl  bg-gray-600 text-white p-4 text-2xl"
+                        className="w-[15%] rounded-2xl bg-gray-600 text-white p-4 text-2xl"
                     >
                         종료
                     </button>
                 </div>
+
             </section>
         </>)}</>
     );

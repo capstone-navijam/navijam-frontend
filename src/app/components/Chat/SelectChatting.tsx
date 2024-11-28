@@ -65,7 +65,7 @@ export default function SelectChatting() {
                         {/* 스크롤 가능한 채팅 목록 영역 */}
                         {chatRoomListener.map((chat) => (<>
                             <Link key={chat.id} href={`/chat/${chat.id}`}>
-                                <div className='overflow-y-scroll h-full' style={{height: '940px'}}>
+                                <div className='overflow-y-scroll h-full' style={{height: '240px'}}>
                                     {/* 1:1 상담 채팅 목록 */}
                                     <div className="flex flex-col gap-2">
                                         <div
@@ -105,7 +105,7 @@ export default function SelectChatting() {
                         {/* 스크롤 가능한 채팅 목록 영역 */}
                         {chatRoomListener.map((chat) => (<>
                             <Link key={chat.id} href={`/chat/${chat.id}`}>
-                                <div className='overflow-y-scroll' style={{height: '940px'}}>
+                                <div className='overflow-y-scroll' style={{height: '240px'}}>
                                     {/* 1:1 상담 채팅 목록 */}
                                     <div className="flex flex-col gap-2">
                                         <div
@@ -147,7 +147,7 @@ export default function SelectChatting() {
                         {/* 스크롤 가능한 채팅 목록 영역 */}
                         {chatRoomMember.map((chat) => (<>
                             <Link key={chat.id} href={`/chat/${chat.id}`}>
-                                <div className='overflow-y-scroll' style={{height: '940px'}}>
+                                <div className='overflow-y-scroll' style={{height: '240px'}}>
                                     {/* 1:1 상담 채팅 목록 */}
                                     <div className="flex flex-col gap-2">
                                         <div
