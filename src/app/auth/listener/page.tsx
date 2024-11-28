@@ -355,7 +355,7 @@ export default function SignUpPage() {
                                             className="text-red-500">*</span></label>
                                         <input id="password"
                                                className="block border border-yellow-6 p-5 w-full rounded placeholder:text-xl text-2xl"
-                                               type="password" {...password}
+                                               type="password" pattern="^(?=.*\d)(?=.*[a-zA-Z])(?=.*[^a-zA-Z0-9]).{8,14}$" {...password}
                                                placeholder="비밀번호를 입력해주세요(영여/숫자/특수문자 1개씩 필수 입력)"/>
                                     </div>
 
@@ -365,7 +365,7 @@ export default function SignUpPage() {
                                             className="text-red-500">*</span></label>
                                         <input id="checkPassword"
                                                className="block border border-yellow-6 p-5 w-full rounded placeholder:text-xl text-2xl"
-                                               type="password" {...checkPassword} placeholder="비밀번호를 다시 입력해주세요"/>
+                                               type="password" pattern="^(?=.*\d)(?=.*[a-zA-Z])(?=.*[^a-zA-Z0-9]).{8,14}$" {...checkPassword} placeholder="비밀번호를 다시 입력해주세요"/>
                                     </div>
 
                                     <div className="flex items-center">

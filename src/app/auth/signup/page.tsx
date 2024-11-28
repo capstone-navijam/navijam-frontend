@@ -95,6 +95,7 @@ export default function SignUpPage() {
             });
 
             if (res.status === 201) {
+                console.log(formData)
                 Swal.fire({
                     icon: 'success',
                     title: '회원가입 성공',
@@ -200,7 +201,7 @@ export default function SignUpPage() {
                                         id="password"
                                         className="block border border-yellow-6 p-5 w-full rounded placeholder:text-lg"
                                         type="password"
-                                        pattern="^(?=.*[a-zA-Z])(?=.*[0-9])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]{8,14}$"
+                                        pattern="^(?=.*\d)(?=.*[a-zA-Z])(?=.*[^a-zA-Z0-9]).{8,14}$"
                                         title="잘못된 비밀번호 형식입니다. 다시 입력해주세요."
                                         {...password}
                                         placeholder="비밀번호를 입력해주세요(영어/숫자/특수문자 1개씩 필수 입력)"
@@ -214,6 +215,7 @@ export default function SignUpPage() {
                                         id="checkPassword"
                                         className="block border border-yellow-6 p-5 w-full rounded placeholder:text-lg"
                                         type="password"
+                                        pattern="^(?=.*\d)(?=.*[a-zA-Z])(?=.*[^a-zA-Z0-9]).{8,14}$"
                                         {...checkPassword}
                                         placeholder="비밀번호를 다시 입력해주세요"
                                     />
